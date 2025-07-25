@@ -1,0 +1,385 @@
+{
+  "document_info": {
+    "filename": "file03.pdf",
+    "total_pages": 14,
+    "processing_time": 0,
+    "file_size_mb": 0.61,
+    "language_detected": "english",
+    "extraction_method": "hybrid",
+    "timestamp": "2025-07-25T19:36:02.332368",
+    "title": "To Present a Proposal for Developing the Business Plan for the Ontario Digital Library",
+    "author": "",
+    "subject": "",
+    "creator": "",
+    "creation_date": "D:20030321152338Z"
+  },
+  "headings": [
+    {
+      "id": 1,
+      "text": "Ontario’s Libraries",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 95.44,
+        "y0": 72.08,
+        "x1": 238.64,
+        "y1": 94.57,
+        "width": 143.2,
+        "height": 22.49
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.269,
+      "features": {}
+    },
+    {
+      "id": 2,
+      "text": "Working Together",
+      "level": 2,
+      "page": 1,
+      "bbox": {
+        "x0": 95.44,
+        "y0": 94.64,
+        "x1": 235.37,
+        "y1": 117.12,
+        "width": 139.93,
+        "height": 22.49
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.339,
+      "features": {}
+    },
+    {
+      "id": 3,
+      "text": "quest f",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 209.47,
+        "y0": 156.52,
+        "x1": 316.14,
+        "y1": 201.66,
+        "width": 106.67,
+        "height": 45.14
+      },
+      "font_info": {
+        "size": 32.040000915527344,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.339,
+      "features": {}
+    },
+    {
+      "id": 4,
+      "text": "r Pr",
+      "level": 0,
+      "page": 1,
+      "bbox": {
+        "x0": 332.15,
+        "y0": 156.52,
+        "x1": 387.21,
+        "y1": 201.66,
+        "width": 55.06,
+        "height": 45.14
+      },
+      "font_info": {
+        "size": 32.040000915527344,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.339,
+      "features": {}
+    },
+    {
+      "id": 5,
+      "text": "oposal",
+      "level": 0,
+      "page": 1,
+      "bbox": {
+        "x0": 385.37,
+        "y0": 156.52,
+        "x1": 497.41,
+        "y1": 201.66,
+        "width": 112.04,
+        "height": 45.14
+      },
+      "font_info": {
+        "size": 32.040000915527344,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.339,
+      "features": {}
+    },
+    {
+      "id": 6,
+      "text": "RFP: R",
+      "level": 0,
+      "page": 1,
+      "bbox": {
+        "x0": 90.02,
+        "y0": 156.77,
+        "x1": 193.74,
+        "y1": 201.92,
+        "width": 103.72,
+        "height": 45.14
+      },
+      "font_info": {
+        "size": 32.040000915527344,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.419,
+      "features": {}
+    },
+    {
+      "id": 7,
+      "text": "To Present a Proposal for Developing",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 131.8,
+        "y0": 248.4,
+        "x1": 482.06,
+        "y1": 275.18,
+        "width": 350.26,
+        "height": 26.78
+      },
+      "font_info": {
+        "size": 24.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.259,
+      "features": {}
+    },
+    {
+      "id": 8,
+      "text": "the Business Plan for the Ontario",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 131.8,
+        "y0": 276.0,
+        "x1": 440.57,
+        "y1": 302.78,
+        "width": 308.77,
+        "height": 26.78
+      },
+      "font_info": {
+        "size": 24.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.179,
+      "features": {}
+    },
+    {
+      "id": 9,
+      "text": "Digital Library",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 131.8,
+        "y0": 303.6,
+        "x1": 262.15,
+        "y1": 330.38,
+        "width": 130.35,
+        "height": 26.78
+      },
+      "font_info": {
+        "size": 24.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.299,
+      "features": {}
+    },
+    {
+      "id": 10,
+      "text": "March 21, 2003",
+      "level": 2,
+      "page": 1,
+      "bbox": {
+        "x0": 238.24,
+        "y0": 342.46,
+        "x1": 379.39,
+        "y1": 364.83,
+        "width": 141.15,
+        "height": 22.36
+      },
+      "font_info": {
+        "size": 20.040000915527344,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.35,
+      "features": {}
+    },
+    {
+      "id": 11,
+      "text": "Ontario’s Digital Library",
+      "level": 1,
+      "page": 2,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 88.6,
+        "x1": 320.05,
+        "y1": 116.83,
+        "width": 230.0,
+        "height": 28.24
+      },
+      "font_info": {
+        "size": 20.040000915527344,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.25,
+      "features": {}
+    },
+    {
+      "id": 12,
+      "text": "A Critical Component for Implementing Ontario’s Road Map to",
+      "level": 1,
+      "page": 2,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 120.32,
+        "x1": 484.94,
+        "y1": 138.13,
+        "width": 394.9,
+        "height": 17.81
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.219,
+      "features": {}
+    },
+    {
+      "id": 13,
+      "text": "Prosperity Strategy",
+      "level": 1,
+      "page": 2,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 138.67,
+        "x1": 214.5,
+        "y1": 156.48,
+        "width": 124.45,
+        "height": 17.81
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.339,
+      "features": {}
+    }
+  ],
+  "metadata": {
+    "extraction_version": "1.0.0",
+    "format_version": "1.0",
+    "generator": "PDF-Heading-Extractor-Hybrid",
+    "extraction_date": "2025-07-25T19:36:02.332368",
+    "settings": {
+      "include_confidence": true,
+      "include_debug": false,
+      "output_format": "json"
+    }
+  },
+  "hierarchy_tree": {
+    "Ontario’s Libraries": {
+      "level": 1,
+      "page": 1,
+      "children": {
+        "Working Together": {
+          "level": 2,
+          "page": 1,
+          "children": {}
+        },
+        "quest f": {
+          "level": 1,
+          "page": 1,
+          "children": {}
+        }
+      }
+    },
+    "r Pr": {
+      "level": 0,
+      "page": 1,
+      "children": {}
+    },
+    "oposal": {
+      "level": 0,
+      "page": 1,
+      "children": {}
+    },
+    "RFP: R": {
+      "level": 0,
+      "page": 1,
+      "children": {
+        "To Present a Proposal for Developing": {
+          "level": 1,
+          "page": 1,
+          "children": {}
+        },
+        "the Business Plan for the Ontario": {
+          "level": 1,
+          "page": 1,
+          "children": {}
+        },
+        "Digital Library": {
+          "level": 1,
+          "page": 1,
+          "children": {
+            "March 21, 2003": {
+              "level": 2,
+              "page": 1,
+              "children": {}
+            }
+          }
+        },
+        "Ontario’s Digital Library": {
+          "level": 1,
+          "page": 2,
+          "children": {}
+        },
+        "A Critical Component for Implementing Ontario’s Road Map to": {
+          "level": 1,
+          "page": 2,
+          "children": {}
+        },
+        "Prosperity Strategy": {
+          "level": 1,
+          "page": 2,
+          "children": {}
+        }
+      }
+    }
+  }
+}

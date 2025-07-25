@@ -1,0 +1,123 @@
+{
+  "document_info": {
+    "filename": "basic-text.pdf",
+    "total_pages": 1,
+    "processing_time": 0,
+    "file_size_mb": 0.07,
+    "language_detected": "english",
+    "extraction_method": "hybrid",
+    "timestamp": "2025-07-25T19:22:23.749359",
+    "title": "Sample Document for PDF Testing",
+    "author": "",
+    "subject": "",
+    "creator": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    "creation_date": "D:20240709133141+00'00'"
+  },
+  "headings": [
+    {
+      "id": 1,
+      "text": "Sample Document for PDF Testing",
+      "level": 0,
+      "page": 1,
+      "bbox": {
+        "x0": 43.35,
+        "y0": 33.16,
+        "x1": 412.71,
+        "y1": 58.36,
+        "width": 369.36,
+        "height": 25.2
+      },
+      "font_info": {
+        "size": 22.559999465942383,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.617,
+      "features": {}
+    },
+    {
+      "id": 2,
+      "text": "Introduction",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 43.35,
+        "y0": 83.38,
+        "x1": 142.04,
+        "y1": 102.29,
+        "width": 98.69,
+        "height": 18.9
+      },
+      "font_info": {
+        "size": 16.920000076293945,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.698,
+      "features": {
+        "semantic": {
+          "group": "introduction",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 3,
+      "text": "Text Formatting Examples",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 43.35,
+        "y0": 173.47,
+        "x1": 207.29,
+        "y1": 188.21,
+        "width": 163.94,
+        "height": 14.74
+      },
+      "font_info": {
+        "size": 13.19054889678955,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.615,
+      "features": {
+        "semantic": {
+          "group": "examples",
+          "keywords_matched": []
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "extraction_version": "1.0.0",
+    "format_version": "1.0",
+    "generator": "PDF-Heading-Extractor-Hybrid",
+    "extraction_date": "2025-07-25T19:22:23.749359",
+    "settings": {
+      "include_confidence": true,
+      "include_debug": false,
+      "output_format": "json"
+    }
+  },
+  "hierarchy_tree": {
+    "Sample Document for PDF Testing": {
+      "level": 0,
+      "page": 1,
+      "children": {
+        "Introduction": {
+          "level": 1,
+          "page": 1,
+          "children": {}
+        },
+        "Text Formatting Examples": {
+          "level": 1,
+          "page": 1,
+          "children": {}
+        }
+      }
+    }
+  }
+}

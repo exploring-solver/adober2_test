@@ -1,0 +1,58 @@
+{
+  "document_info": {
+    "filename": "file01.pdf",
+    "total_pages": 1,
+    "processing_time": 0,
+    "file_size_mb": 0.19,
+    "language_detected": "english",
+    "extraction_method": "hybrid",
+    "timestamp": "2025-07-25T19:31:31.240100",
+    "title": "Microsoft Word - LTC_CLAIM_FORMS .doc",
+    "author": "nicsi",
+    "subject": "",
+    "creator": "PScript5.dll Version 5.2.2",
+    "creation_date": "D:20110106103519+05'30'"
+  },
+  "headings": [
+    {
+      "id": 1,
+      "text": "Application form for grant of LTC advance",
+      "level": 0,
+      "page": 1,
+      "bbox": {
+        "x0": 199.86,
+        "y0": 106.08,
+        "x1": 437.19,
+        "y1": 119.1,
+        "width": 237.33,
+        "height": 13.02
+      },
+      "font_info": {
+        "size": 11.670000076293945,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.489,
+      "features": {}
+    }
+  ],
+  "metadata": {
+    "extraction_version": "1.0.0",
+    "format_version": "1.0",
+    "generator": "PDF-Heading-Extractor-Hybrid",
+    "extraction_date": "2025-07-25T19:31:31.240100",
+    "settings": {
+      "include_confidence": true,
+      "include_debug": false,
+      "output_format": "json"
+    }
+  },
+  "hierarchy_tree": {
+    "Application form for grant of LTC advance": {
+      "level": 0,
+      "page": 1,
+      "children": {}
+    }
+  }
+}
