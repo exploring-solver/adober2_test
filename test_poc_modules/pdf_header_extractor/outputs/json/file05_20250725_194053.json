@@ -1,0 +1,58 @@
+{
+  "document_info": {
+    "filename": "file05.pdf",
+    "total_pages": 1,
+    "processing_time": 0,
+    "file_size_mb": 0.94,
+    "language_detected": "english",
+    "extraction_method": "hybrid",
+    "timestamp": "2025-07-25T19:40:53.823728",
+    "title": "TOPJUMP - PARTY INVITATION 20161003 V01.cdr",
+    "author": "Art",
+    "subject": "",
+    "creator": "CorelDRAW X6",
+    "creation_date": "D:20161021124306-04'00'"
+  },
+  "headings": [
+    {
+      "id": 1,
+      "text": "HOPE To SEE You THERE!",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 33.42,
+        "y0": 598.6,
+        "x1": 299.43,
+        "y1": 634.96,
+        "width": 266.01,
+        "height": 36.36
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    }
+  ],
+  "metadata": {
+    "extraction_version": "1.0.0",
+    "format_version": "1.0",
+    "generator": "PDF-Heading-Extractor-Hybrid",
+    "extraction_date": "2025-07-25T19:40:53.823728",
+    "settings": {
+      "include_confidence": true,
+      "include_debug": false,
+      "output_format": "json"
+    }
+  },
+  "hierarchy_tree": {
+    "HOPE To SEE You THERE!": {
+      "level": 1,
+      "page": 1,
+      "children": {}
+    }
+  }
+}

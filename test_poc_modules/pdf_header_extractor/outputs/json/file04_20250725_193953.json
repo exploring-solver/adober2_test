@@ -1,0 +1,140 @@
+{
+  "document_info": {
+    "filename": "file04.pdf",
+    "total_pages": 1,
+    "processing_time": 0,
+    "file_size_mb": 0.51,
+    "language_detected": "english",
+    "extraction_method": "hybrid",
+    "timestamp": "2025-07-25T19:39:53.767101",
+    "title": "Parsippany -Troy Hills STEM Pathways",
+    "author": "",
+    "subject": "",
+    "creator": "Google",
+    "creation_date": "D:20230104101348+05'30'"
+  },
+  "headings": [
+    {
+      "id": 1,
+      "text": "Parsippany -Troy Hills STEM Pathways",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 125.82,
+        "y0": 37.37,
+        "x1": 562.15,
+        "y1": 65.38,
+        "width": 436.32,
+        "height": 28.01
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 2,
+      "text": "PATHWAY OPTIONS",
+      "level": 2,
+      "page": 1,
+      "bbox": {
+        "x0": 240.18,
+        "y0": 438.18,
+        "x1": 365.14,
+        "y1": 457.23,
+        "width": 124.96,
+        "height": 19.06
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 3,
+      "text": "Elective Course Offerings",
+      "level": 2,
+      "page": 1,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 4,
+      "text": "What Colleges Say!",
+      "level": 2,
+      "page": 1,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    }
+  ],
+  "metadata": {
+    "extraction_version": "1.0.0",
+    "format_version": "1.0",
+    "generator": "PDF-Heading-Extractor-Hybrid",
+    "extraction_date": "2025-07-25T19:39:53.767101",
+    "settings": {
+      "include_confidence": true,
+      "include_debug": false,
+      "output_format": "json"
+    }
+  },
+  "hierarchy_tree": {
+    "Parsippany -Troy Hills STEM Pathways": {
+      "level": 1,
+      "page": 1,
+      "children": {
+        "PATHWAY OPTIONS": {
+          "level": 2,
+          "page": 1,
+          "children": {}
+        },
+        "Elective Course Offerings": {
+          "level": 2,
+          "page": 1,
+          "children": {}
+        },
+        "What Colleges Say!": {
+          "level": 2,
+          "page": 1,
+          "children": {}
+        }
+      }
+    }
+  }
+}

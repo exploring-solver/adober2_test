@@ -1,0 +1,692 @@
+{
+  "document_info": {
+    "filename": "file02.pdf",
+    "total_pages": 12,
+    "processing_time": 0,
+    "file_size_mb": 0.63,
+    "language_detected": "english",
+    "extraction_method": "hybrid",
+    "timestamp": "2025-07-25T19:32:42.518285",
+    "title": "ISTQB Expert Level Modules Overview",
+    "author": "Graham Bath",
+    "subject": "",
+    "creator": "Microsoft® Word 2010",
+    "creation_date": "D:20140517140759+12'00'"
+  },
+  "headings": [
+    {
+      "id": 1,
+      "text": "Overview",
+      "level": 0,
+      "page": 1,
+      "bbox": {
+        "x0": 252.65,
+        "y0": 189.62,
+        "x1": 365.95,
+        "y1": 216.38,
+        "width": 113.3,
+        "height": 26.76
+      },
+      "font_info": {
+        "size": 24.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.644,
+      "features": {
+        "semantic": {
+          "group": "overview",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 2,
+      "text": "Foundation Level Extensions",
+      "level": 0,
+      "page": 1,
+      "bbox": {
+        "x0": 139.35,
+        "y0": 244.84,
+        "x1": 479.36,
+        "y1": 271.6,
+        "width": 340.01,
+        "height": 26.76
+      },
+      "font_info": {
+        "size": 24.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.624,
+      "features": {}
+    },
+    {
+      "id": 3,
+      "text": "Version 1.0",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 275.69,
+        "y0": 382.43,
+        "x1": 339.82,
+        "y1": 395.81,
+        "width": 64.13,
+        "height": 13.38
+      },
+      "font_info": {
+        "size": 12.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.312,
+      "features": {}
+    },
+    {
+      "id": 4,
+      "text": "International Software Testing Qualifications Board",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 103.34,
+        "y0": 465.7,
+        "x1": 513.42,
+        "y1": 485.77,
+        "width": 410.08,
+        "height": 20.07
+      },
+      "font_info": {
+        "size": 18.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.368,
+      "features": {}
+    },
+    {
+      "id": 5,
+      "text": "Revision History",
+      "level": 2,
+      "page": 3,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 108.94,
+        "x1": 201.53,
+        "y1": 126.73,
+        "width": 130.58,
+        "height": 17.8
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.649,
+      "features": {}
+    },
+    {
+      "id": 6,
+      "text": "Table of Contents",
+      "level": 2,
+      "page": 4,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 108.94,
+        "x1": 208.76,
+        "y1": 126.73,
+        "width": 137.81,
+        "height": 17.8
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.599,
+      "features": {}
+    },
+    {
+      "id": 7,
+      "text": "Acknowledgements",
+      "level": 2,
+      "page": 5,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 108.94,
+        "x1": 213.74,
+        "y1": 126.73,
+        "width": 142.79,
+        "height": 17.8
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.449,
+      "features": {}
+    },
+    {
+      "id": 8,
+      "text": "1. Introduction to the Foundation Level Extensions",
+      "level": 1,
+      "page": 6,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 122.98,
+        "x1": 466.02,
+        "y1": 140.77,
+        "width": 395.08,
+        "height": 17.8
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.749,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        },
+        "semantic": {
+          "group": "introduction",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 9,
+      "text": "2. Introduction to Foundation Level Agile Tester Extension",
+      "level": 1,
+      "page": 7,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 122.98,
+        "x1": 523.07,
+        "y1": 140.77,
+        "width": 452.12,
+        "height": 17.8
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.679,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        },
+        "semantic": {
+          "group": "introduction",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 10,
+      "text": "2.1 Intended Audience",
+      "level": 1,
+      "page": 7,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 217.35,
+        "x1": 218.72,
+        "y1": 233.01,
+        "width": 147.77,
+        "height": 15.65
+      },
+      "font_info": {
+        "size": 14.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.581,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 11,
+      "text": "2.2 Career Paths for Testers",
+      "level": 1,
+      "page": 7,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 484.52,
+        "x1": 255.16,
+        "y1": 500.18,
+        "width": 184.22,
+        "height": 15.65
+      },
+      "font_info": {
+        "size": 14.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.431,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 12,
+      "text": "2.3 Learning Objectives",
+      "level": 1,
+      "page": 7,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 613.67,
+        "x1": 225.6,
+        "y1": 629.33,
+        "width": 154.65,
+        "height": 15.65
+      },
+      "font_info": {
+        "size": 14.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.481,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 13,
+      "text": "2.4 Entry Requirements",
+      "level": 1,
+      "page": 8,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 156.99,
+        "x1": 225.63,
+        "y1": 172.65,
+        "width": 154.69,
+        "height": 15.65
+      },
+      "font_info": {
+        "size": 14.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.581,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 14,
+      "text": "2.5 Structure and Course Duration",
+      "level": 1,
+      "page": 8,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 217.11,
+        "x1": 291.95,
+        "y1": 232.77,
+        "width": 221.01,
+        "height": 15.65
+      },
+      "font_info": {
+        "size": 14.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.531,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 15,
+      "text": "2.6 Keeping It Current",
+      "level": 2,
+      "page": 9,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 133.95,
+        "x1": 215.52,
+        "y1": 149.61,
+        "width": 144.58,
+        "height": 15.65
+      },
+      "font_info": {
+        "size": 14.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.581,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 16,
+      "text": "3. Overview of the Foundation Level Extension –  Agile Tester",
+      "level": 1,
+      "page": 10,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 117.49,
+        "x1": 541.04,
+        "y1": 138.78,
+        "width": 470.1,
+        "height": 21.29
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.679,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        },
+        "semantic": {
+          "group": "overview",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 17,
+      "text": "3.1 Business Outcomes",
+      "level": 1,
+      "page": 10,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 187.95,
+        "x1": 226.28,
+        "y1": 203.61,
+        "width": 155.34,
+        "height": 15.65
+      },
+      "font_info": {
+        "size": 14.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.581,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 18,
+      "text": "3.2 Content",
+      "level": 1,
+      "page": 10,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 533.0,
+        "x1": 150.99,
+        "y1": 548.66,
+        "width": 80.04,
+        "height": 15.65
+      },
+      "font_info": {
+        "size": 14.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.481,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 19,
+      "text": "4. References",
+      "level": 1,
+      "page": 12,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 122.98,
+        "x1": 184.21,
+        "y1": 140.77,
+        "width": 113.27,
+        "height": 17.8
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.799,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        },
+        "semantic": {
+          "group": "references",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 20,
+      "text": "4.1 Trademarks",
+      "level": 1,
+      "page": 12,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 171.39,
+        "x1": 176.55,
+        "y1": 187.05,
+        "width": 105.61,
+        "height": 15.65
+      },
+      "font_info": {
+        "size": 14.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.581,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 21,
+      "text": "4.2 Documents and Web Sites",
+      "level": 1,
+      "page": 12,
+      "bbox": {
+        "x0": 70.94,
+        "y0": 257.46,
+        "x1": 267.76,
+        "y1": 273.12,
+        "width": 196.81,
+        "height": 15.65
+      },
+      "font_info": {
+        "size": 14.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.431,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "extraction_version": "1.0.0",
+    "format_version": "1.0",
+    "generator": "PDF-Heading-Extractor-Hybrid",
+    "extraction_date": "2025-07-25T19:32:42.518285",
+    "settings": {
+      "include_confidence": true,
+      "include_debug": false,
+      "output_format": "json"
+    }
+  },
+  "hierarchy_tree": {
+    "Overview": {
+      "level": 0,
+      "page": 1,
+      "children": {}
+    },
+    "Foundation Level Extensions": {
+      "level": 0,
+      "page": 1,
+      "children": {
+        "Version 1.0": {
+          "level": 1,
+          "page": 1,
+          "children": {}
+        },
+        "International Software Testing Qualifications Board": {
+          "level": 1,
+          "page": 1,
+          "children": {
+            "Revision History": {
+              "level": 2,
+              "page": 3,
+              "children": {}
+            },
+            "Table of Contents": {
+              "level": 2,
+              "page": 4,
+              "children": {}
+            },
+            "Acknowledgements": {
+              "level": 2,
+              "page": 5,
+              "children": {}
+            }
+          }
+        },
+        "1. Introduction to the Foundation Level Extensions": {
+          "level": 1,
+          "page": 6,
+          "children": {}
+        },
+        "2. Introduction to Foundation Level Agile Tester Extension": {
+          "level": 1,
+          "page": 7,
+          "children": {}
+        },
+        "2.1 Intended Audience": {
+          "level": 1,
+          "page": 7,
+          "children": {}
+        },
+        "2.2 Career Paths for Testers": {
+          "level": 1,
+          "page": 7,
+          "children": {}
+        },
+        "2.3 Learning Objectives": {
+          "level": 1,
+          "page": 7,
+          "children": {}
+        },
+        "2.4 Entry Requirements": {
+          "level": 1,
+          "page": 8,
+          "children": {}
+        },
+        "2.5 Structure and Course Duration": {
+          "level": 1,
+          "page": 8,
+          "children": {
+            "2.6 Keeping It Current": {
+              "level": 2,
+              "page": 9,
+              "children": {}
+            }
+          }
+        },
+        "3. Overview of the Foundation Level Extension –  Agile Tester": {
+          "level": 1,
+          "page": 10,
+          "children": {}
+        },
+        "3.1 Business Outcomes": {
+          "level": 1,
+          "page": 10,
+          "children": {}
+        },
+        "3.2 Content": {
+          "level": 1,
+          "page": 10,
+          "children": {}
+        },
+        "4. References": {
+          "level": 1,
+          "page": 12,
+          "children": {}
+        },
+        "4.1 Trademarks": {
+          "level": 1,
+          "page": 12,
+          "children": {}
+        },
+        "4.2 Documents and Web Sites": {
+          "level": 1,
+          "page": 12,
+          "children": {}
+        }
+      }
+    }
+  }
+}
