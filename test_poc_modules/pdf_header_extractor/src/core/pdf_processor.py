@@ -7,12 +7,12 @@ import fitz  # PyMuPDF
 import pdfplumber
 from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeoutError
 
-from core.candidate_generator import CandidateGenerator
-from core.semantic_filter import SemanticFilter
-from core.hierarchy_assigner import HierarchyAssigner
-from core.output_formatter import OutputFormatter
-from utils.validation import validate_pdf, detect_language
-from utils.text_utils import clean_text, normalize_whitespace
+from src.core.candidate_generator import CandidateGenerator
+from src.core.semantic_filter import SemanticFilter
+from src.core.hierarchy_assigner import HierarchyAssigner
+from src.core.output_formatter import OutputFormatter
+from src.utils.validation import validate_pdf, detect_language
+from src.utils.text_utils import clean_text, normalize_whitespace
 from config.settings import (
     MAX_PROCESSING_TIME, MAX_FILE_SIZE_MB, 
     OUTPUT_DIR, INCLUDE_DEBUG_INFO
@@ -418,7 +418,7 @@ class PDFProcessor:
     
     def _dict_to_node(self, heading_dict: Dict[str, Any]):
         """Convert heading dictionary to HierarchyNode for tree building."""
-        from core.hierarchy_assigner import HierarchyNode
+        from src.core.hierarchy_assigner import HierarchyNode
         
         return HierarchyNode(
             text=heading_dict["text"],
@@ -450,45 +450,134 @@ class PDFProcessor:
         """Check if running in fast mode (skip semantic filtering)."""
         return os.getenv("FAST_MODE", "false").lower() == "true"
     
-    def save_output(self, result: Dict[str, Any], output_path: str, 
-                   formats: Optional[List[str]] = None) -> Dict[str, str]:
-        """Save processing results to file(s)."""
+    def save_output(self, result: Dict[str, Any], output_path: Optional[str] = None, 
+               formats: Optional[List[str]] = None, 
+               auto_filename: bool = True) -> Dict[str, str]:
+        """Save processing results to file(s) with automatic path handling."""
+        
+        from config.settings import JSON_OUTPUT_DIR, CSV_OUTPUT_DIR, OUTPUT_DIR
         
         if formats is None:
             formats = ["json"]
         
-        output_path = Path(output_path)
+        # Handle automatic filename generation
+        if output_path is None or auto_filename:
+            # Generate filename from document info
+            doc_info = result.get("document_info", {})
+            filename = doc_info.get("filename", "output")
+            
+            # Remove extension and sanitize
+            base_name = Path(filename).stem
+            safe_name = "".join(c for c in base_name if c.isalnum() or c in (' ', '-', '_')).rstrip()
+            safe_name = safe_name.replace(' ', '_')
+            
+            # Add timestamp to avoid conflicts
+            from datetime import datetime
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            final_name = f"{safe_name}_{timestamp}"
+        else:
+            final_name = Path(output_path).stem
+        
         output_files = {}
         
         try:
-            if len(formats) == 1:
-                # Single format
-                format_type = formats[0]
+            for format_type in formats:
+                # Determine output directory based on format
                 if format_type == "json":
-                    self.output_formatter.save_json(result, output_path)
+                    output_dir = JSON_OUTPUT_DIR
+                    extension = ".json"
                 elif format_type == "csv":
-                    self.output_formatter.save_csv(result, output_path)
-                elif format_type == "xml":
-                    self.output_formatter.save_xml(result, output_path)
-                elif format_type == "markdown":
-                    self.output_formatter.save_markdown(result, output_path)
-                elif format_type == "html":
-                    self.output_formatter.save_html_outline(result, output_path)
+                    output_dir = CSV_OUTPUT_DIR
+                    extension = ".csv"
+                else:
+                    output_dir = OUTPUT_DIR
+                    extension = f".{format_type}"
                 
-                output_files[format_type] = str(output_path)
-            else:
-                # Multiple formats
-                base_path = output_path.with_suffix('')  # Remove extension
-                output_files = self.output_formatter.export_multiple_formats(
-                    result, base_path, formats
-                )
+                # Ensure directory exists
+                output_dir.mkdir(parents=True, exist_ok=True)
+                
+                # Create full output path
+                output_file = output_dir / f"{final_name}{extension}"
+                
+                # Save based on format
+                if format_type == "json":
+                    self.output_formatter.save_json(result, output_file)
+                elif format_type == "csv":
+                    self.output_formatter.save_csv(result, output_file)
+                elif format_type == "xml":
+                    self.output_formatter.save_xml(result, output_file)
+                elif format_type == "markdown":
+                    self.output_formatter.save_markdown(result, output_file)
+                elif format_type == "html":
+                    self.output_formatter.save_html_outline(result, output_file)
+                
+                output_files[format_type] = str(output_file)
+                self.logger.info(f"Saved {format_type.upper()} output to: {output_file}")
             
         except Exception as e:
             self.logger.error(f"Failed to save output: {e}")
             raise
         
         return output_files
-    
+
+    def save_output_to_custom_path(self, result: Dict[str, Any], custom_path: str, 
+                                formats: Optional[List[str]] = None) -> Dict[str, str]:
+        """Save output to a specific custom path."""
+        
+        if formats is None:
+            formats = ["json"]
+        
+        custom_path = Path(custom_path)
+        output_files = {}
+        
+        try:
+            # Ensure the custom directory exists
+            custom_path.parent.mkdir(parents=True, exist_ok=True)
+            
+            if len(formats) == 1:
+                # Single format - use the exact path provided
+                format_type = formats[0]
+                
+                if format_type == "json":
+                    self.output_formatter.save_json(result, custom_path)
+                elif format_type == "csv":
+                    self.output_formatter.save_csv(result, custom_path)
+                elif format_type == "xml":
+                    self.output_formatter.save_xml(result, custom_path)
+                elif format_type == "markdown":
+                    self.output_formatter.save_markdown(result, custom_path)
+                elif format_type == "html":
+                    self.output_formatter.save_html_outline(result, custom_path)
+                
+                output_files[format_type] = str(custom_path)
+            else:
+                # Multiple formats - use base path and add extensions
+                base_path = custom_path.with_suffix('')
+                
+                for format_type in formats:
+                    format_path = base_path.with_suffix(f'.{format_type}')
+                    
+                    if format_type == "json":
+                        self.output_formatter.save_json(result, format_path)
+                    elif format_type == "csv":
+                        self.output_formatter.save_csv(result, format_path)
+                    elif format_type == "xml":
+                        self.output_formatter.save_xml(result, format_path)
+                    elif format_type == "markdown":
+                        self.output_formatter.save_markdown(result, format_path)
+                    elif format_type == "html":
+                        self.output_formatter.save_html_outline(result, format_path)
+                    
+                    output_files[format_type] = str(format_path)
+            
+            self.logger.info(f"Saved output to custom path: {custom_path.parent}")
+            
+        except Exception as e:
+            self.logger.error(f"Failed to save to custom path: {e}")
+            raise
+        
+        return output_files
+
     def process_batch(self, pdf_paths: List[str], 
                      output_dir: Optional[str] = None,
                      max_workers: int = 2) -> Dict[str, Any]:

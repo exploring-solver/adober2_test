@@ -3,7 +3,7 @@ import logging
 from typing import List, Dict, Any, Optional, Tuple, Union
 from dataclasses import dataclass, field
 from collections import defaultdict, Counter
-from candidate_generator import HeadingCandidate
+from src.core.candidate_generator import HeadingCandidate
 import numpy as np
 from config.settings import MAX_HIERARCHY_LEVELS, TITLE_POSITION_THRESHOLD
 from config.cultural_patterns import CULTURAL_PATTERNS
@@ -91,26 +91,33 @@ class HierarchyAssigner:
         if not nodes:
             return nodes
         
-        # Group by font size
+        # Group by font size and sort
         font_sizes = sorted(set(node.font_size for node in nodes), reverse=True)
         
-        # Create level mapping based on font sizes
+        # Create more permissive level mapping
         level_mapping = {}
-        for i, size in enumerate(font_sizes[:MAX_HIERARCHY_LEVELS]):
-            level_mapping[size] = i + 1
         
-        # Special handling for title (largest font at top of document)
+        # Handle title detection (largest font at top)
         title_candidates = [
             node for node in nodes 
             if (node.font_size == max(font_sizes) and 
-                node.bbox[1] / 792 < TITLE_POSITION_THRESHOLD)  # Assuming A4 height
+                node.bbox[1] / 792 < TITLE_POSITION_THRESHOLD)
         ]
         
+        # Assign levels more generously
+        for i, size in enumerate(font_sizes):
+            if i == 0 and title_candidates:
+                level_mapping[size] = 0  # Title
+            else:
+                # Map remaining sizes to levels 1-3 (not 1-6)
+                level_mapping[size] = min(i, 3) + (1 if title_candidates else 0)
+        
+        # Apply mapping
         for node in nodes:
             if node in title_candidates and len(title_candidates) <= 2:
                 node.level = 0  # Title level
             else:
-                node.level = level_mapping.get(node.font_size, MAX_HIERARCHY_LEVELS)
+                node.level = level_mapping.get(node.font_size, 1)
         
         return nodes
     

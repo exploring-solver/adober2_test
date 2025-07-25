@@ -1,5 +1,5 @@
 try:
-    from .validation import (
+    from src.utils.validation import (
         validate_pdf, 
         validate_extraction_result,
         get_pdf_info,
@@ -9,7 +9,7 @@ try:
         ValidationError
     )
     
-    from .text_utils import (
+    from src.utils.text_utils import (
         clean_text,
         normalize_whitespace,
         extract_sentences,
@@ -23,7 +23,7 @@ try:
         is_mostly_numeric
     )
     
-    from .layout_utils import (
+    from src.utils.layout_utils import (
         LayoutUtils,
         LayoutRegion,
         ColumnInfo, 

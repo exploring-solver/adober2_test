@@ -165,29 +165,37 @@ def remove_extra_spaces(text: str) -> str:
 
 
 def extract_sentences(text: str, language: str = 'english') -> List[str]:
-    """Extract sentences from text using language-aware tokenization."""
+    """Extract sentences from text using language-aware tokenization with robust fallback."""
     if not text or not text.strip():
         return []
-    
+
     text = clean_text(text)
-    
+
+    sentences = []
+
     if NLTK_AVAILABLE:
         try:
-            # Use NLTK for better sentence tokenization
-            sentences = sent_tokenize(text, language=language if language in ['english', 'spanish', 'portuguese', 'french', 'german'] else 'english')
+            # Sanity check: ensure 'punkt' tokenizer is available
+            try:
+                nltk.data.find('tokenizers/punkt/english.pickle')
+            except LookupError:
+                nltk.download('punkt', quiet=True)
+
+            # Restrict language to those supported by NLTK
+            supported_languages = ['english', 'spanish', 'portuguese', 'french', 'german']
+            language_for_tokenize = language if language in supported_languages else 'english'
+
+            sentences = sent_tokenize(text, language=language_for_tokenize)
+
         except Exception as e:
-            logging.warning(f"NLTK sentence tokenization failed: {e}")
+            logging.warning(f"NLTK sentence tokenization failed, falling back to simple split: {e}")
             sentences = _simple_sentence_split(text)
     else:
         sentences = _simple_sentence_split(text)
-    
+
     # Clean and filter sentences
-    cleaned_sentences = []
-    for sentence in sentences:
-        sentence = sentence.strip()
-        if len(sentence) > 3:  # Minimum sentence length
-            cleaned_sentences.append(sentence)
-    
+    cleaned_sentences = [s.strip() for s in sentences if len(s.strip()) > 3]
+
     return cleaned_sentences
 
 

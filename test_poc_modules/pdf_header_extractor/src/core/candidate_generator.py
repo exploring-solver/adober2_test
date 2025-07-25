@@ -51,27 +51,88 @@ class CandidateGenerator:
         self.logger.info(f"Generating candidates for: {pdf_path}")
         
         doc = fitz.open(pdf_path)
-        candidates = []
+        all_candidates = []
         
         try:
             # First pass: analyze document statistics
             self._analyze_document_stats(doc)
             
-            # Second pass: extract candidates
+            # Second pass: extract candidates using multiple methods
             for page_num in range(len(doc)):
                 page = doc.load_page(page_num)
-                page_candidates = self._extract_page_candidates(page, page_num)
-                candidates.extend(page_candidates)
+                
+                # Method 1: Font-based detection (existing)
+                font_candidates = self._extract_page_candidates(page, page_num)
+                
+                single_word_candidates = self._detect_single_word_headings(page, page_num)
+                for candidate in single_word_candidates:
+                    # Check if we already have this text
+                    already_detected = any(
+                        existing.text.strip().lower() == candidate.text.strip().lower()
+                        for existing in font_candidates
+                    )
+                    if not already_detected:
+                        font_candidates.append(candidate)
+                
+                # Method 2: Spacing-based detection (NEW)
+                spacing_candidates = self._detect_by_spacing_and_isolation(page, page_num)
+                
+                # Combine and deduplicate
+                page_candidates = font_candidates + spacing_candidates
+                all_candidates.extend(page_candidates)
                 
         finally:
             doc.close()
             
+        # Remove duplicates based on text and position
+        unique_candidates = self._deduplicate_candidates(all_candidates)
+        
         # Filter and score candidates
-        filtered_candidates = self._filter_candidates(candidates)
+        filtered_candidates = self._filter_candidates(unique_candidates)
         scored_candidates = self._score_candidates(filtered_candidates)
         
         self.logger.info(f"Generated {len(scored_candidates)} candidates")
+        # Add at the end of generate_candidates method before return
+        if self.debug:
+            self.logger.info(f"DEBUG: Document stats: {self.document_stats}")
+            self.logger.info(f"DEBUG: Generated candidates:")
+            for i, candidate in enumerate(scored_candidates[:10]):  # Show first 10
+                self.logger.info(f"  {i+1}. '{candidate.text}' - Font: {candidate.font_size} - Score: {candidate.confidence_score}")
+        
         return scored_candidates
+    
+    def _deduplicate_candidates(self, candidates: List[HeadingCandidate]) -> List[HeadingCandidate]:
+        """Remove duplicate candidates based on text similarity and position."""
+        if not candidates:
+            return candidates
+        
+        unique_candidates = []
+        seen_texts = set()
+        
+        # Sort by confidence score (if available) or font size
+        candidates.sort(key=lambda x: getattr(x, 'confidence_score', x.font_size), reverse=True)
+        
+        for candidate in candidates:
+            text_key = candidate.text.strip().lower()
+            
+            # Check for exact text duplicates
+            if text_key in seen_texts:
+                continue
+            
+            # Check for position-based duplicates (same area)
+            is_duplicate = False
+            for existing in unique_candidates:
+                if (abs(existing.bbox[0] - candidate.bbox[0]) < 10 and
+                    abs(existing.bbox[1] - candidate.bbox[1]) < 5 and
+                    existing.page == candidate.page):
+                    is_duplicate = True
+                    break
+            
+            if not is_duplicate:
+                unique_candidates.append(candidate)
+                seen_texts.add(text_key)
+        
+        return unique_candidates
     
     def _analyze_document_stats(self, doc: fitz.Document) -> None:
         """Analyze document to understand typical font characteristics."""
@@ -106,6 +167,61 @@ class CandidateGenerator:
         }
         
         self.logger.debug(f"Document stats: {self.document_stats}")
+        
+    def _detect_single_word_headings(self, page: fitz.Page, page_num: int) -> List[HeadingCandidate]:
+        """Detect standalone single-word headings like 'Lists', 'Quote', 'Table'."""
+        candidates = []
+        blocks = page.get_text("dict")["blocks"]
+        
+        # Target words we specifically want to catch
+        target_words = {'lists', 'quote', 'table', 'figures', 'charts', 'data', 'summary', 'results'}
+        
+        for block_idx, block in enumerate(blocks):
+            if "lines" not in block:
+                continue
+                
+            for line_idx, line in enumerate(block["lines"]):
+                if not line["spans"]:
+                    continue
+                    
+                line_text = " ".join([span["text"].strip() for span in line["spans"]]).strip()
+                
+                # STRICT criteria: must be single word AND in our target list
+                if (len(line_text.split()) == 1 and 
+                    line_text.lower() in target_words and
+                    len(line_text) >= 3):
+                    
+                    # Check spacing - must have some isolation
+                    spacing_before = self._calculate_spacing_before(block_idx, line_idx, blocks)
+                    spacing_after = self._calculate_spacing_after(block_idx, line_idx, blocks)
+                    
+                    # Only accept if has spacing OR is at start of significant section
+                    if spacing_before > 8 or spacing_after > 8:
+                        dominant_span = line["spans"][0]
+                        
+                        candidate = HeadingCandidate(
+                            text=line_text,
+                            page=page_num + 1,
+                            bbox=line["bbox"],
+                            font_size=dominant_span["size"],
+                            font_weight=self._get_font_weight(dominant_span["flags"]),
+                            font_family=dominant_span["font"],
+                            is_bold=bool(dominant_span["flags"] & 2**4),
+                            is_italic=bool(dominant_span["flags"] & 2**1),
+                            alignment=self._determine_alignment(line["bbox"], page.rect.width),
+                            position_ratio=line["bbox"][1] / page.rect.height,
+                            line_spacing_before=spacing_before,
+                            line_spacing_after=spacing_after,
+                            text_length=len(line_text),
+                            features={
+                                "detection_method": "single_word_target",
+                                "target_word": True
+                            }
+                        )
+                        
+                        candidates.append(candidate)
+        
+        return candidates
     
     def _extract_page_candidates(self, page: fitz.Page, page_num: int) -> List[HeadingCandidate]:
         """Extract heading candidates from a single page."""
@@ -343,9 +459,13 @@ class CandidateGenerator:
         """Apply filters to remove unlikely candidates."""
         filtered = []
         
+        # Calculate dynamic thresholds based on document
+        avg_font_size = self.document_stats.get("avg_font_size", 12)
+        min_threshold = max(avg_font_size * 1.05, 10)  # Much lower threshold
+        
         for candidate in candidates:
-            # Font size filter
-            if candidate.font_size < self.document_stats["avg_font_size"] * FONT_SIZE_THRESHOLD_RATIO:
+            # RELAXED font size filter - accept anything slightly larger
+            if candidate.font_size < min_threshold:
                 continue
             
             # Skip very short or very long text
@@ -357,10 +477,78 @@ class CandidateGenerator:
             if alpha_ratio < 0.3:
                 continue
             
-            filtered.append(candidate)
+            # ADD: Keep candidates with significant spacing around them
+            if (candidate.line_spacing_before > 8 or 
+                candidate.line_spacing_after > 5 or
+                candidate.is_bold or
+                candidate.features.get("is_top_of_page", False)):
+                filtered.append(candidate)
+                continue
+            
+            # ADD: Keep candidates that match heading patterns
+            if (candidate.features.get("has_numbering", False) or
+                candidate.features.get("title_case", False) or
+                candidate.alignment == "center"):
+                filtered.append(candidate)
+                continue
+            
+            # Default: keep if meets basic font threshold
+            if candidate.font_size >= min_threshold:
+                filtered.append(candidate)
         
         self.logger.debug(f"Filtered {len(candidates)} -> {len(filtered)} candidates")
         return filtered
+    
+    def _detect_by_spacing_and_isolation(self, page: fitz.Page, page_num: int) -> List[HeadingCandidate]:
+        """Detect headings based on spacing and isolation patterns."""
+        candidates = []
+        blocks = page.get_text("dict")["blocks"]
+        
+        # Find standalone text lines with significant spacing
+        for block_idx, block in enumerate(blocks):
+            if "lines" not in block:
+                continue
+                
+            for line_idx, line in enumerate(block["lines"]):
+                line_text = " ".join([span["text"].strip() for span in line["spans"]])
+                
+                if not line_text.strip() or len(line_text) > MAX_HEADING_LENGTH:
+                    continue
+                
+                # Check if this line is isolated (has spacing around it)
+                spacing_before = self._calculate_spacing_before(block_idx, line_idx, blocks)
+                spacing_after = self._calculate_spacing_after(block_idx, line_idx, blocks)
+                
+                # More permissive spacing detection
+                is_isolated = (spacing_before > 5 or spacing_after > 5 or 
+                            len(line["spans"]) == 1)  # Single span often indicates heading
+                
+                if is_isolated and len(line_text.split()) <= 8:  # Reasonable heading length
+                    dominant_span = max(line["spans"], key=lambda s: len(s["text"]))
+                    
+                    candidate = HeadingCandidate(
+                        text=line_text.strip(),
+                        page=page_num + 1,
+                        bbox=line["bbox"],
+                        font_size=dominant_span["size"],
+                        font_weight=self._get_font_weight(dominant_span["flags"]),
+                        font_family=dominant_span["font"],
+                        is_bold=bool(dominant_span["flags"] & 2**4),
+                        is_italic=bool(dominant_span["flags"] & 2**1),
+                        alignment=self._determine_alignment(line["bbox"], page.rect.width),
+                        position_ratio=line["bbox"][1] / page.rect.height,
+                        line_spacing_before=spacing_before,
+                        line_spacing_after=spacing_after,
+                        text_length=len(line_text.strip()),
+                        features={
+                            "detection_method": "spacing_isolation",
+                            "spacing_score": spacing_before + spacing_after
+                        }
+                    )
+                    
+                    candidates.append(candidate)
+        
+        return candidates
     
     def _score_candidates(self, candidates: List[HeadingCandidate]) -> List[HeadingCandidate]:
         """Score candidates based on multiple features."""

@@ -3,14 +3,20 @@ import logging
 from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple, Union
 import mimetypes
-import magic
+
+try:
+    import magic
+except ImportError:
+    magic = None  # fallback
+
 import fitz  # PyMuPDF
 import json
 import re
 from datetime import datetime
 
 from config.settings import MAX_FILE_SIZE_MB, MIN_HEADING_LENGTH, MAX_HEADING_LENGTH
-from utils.text_utils import clean_text, detect_language, is_likely_heading
+from src.utils.text_utils import clean_text, detect_language, is_likely_heading
+
 
 
 class ValidationError(Exception):
@@ -41,12 +47,16 @@ class PDFValidator:
     
     def _check_magic_availability(self) -> bool:
         """Check if python-magic is available for MIME type detection."""
+        if magic is None:
+            self.logger.warning("python-magic not installed, using mimetypes fallback")
+            return False
         try:
             magic.from_file(__file__, mime=True)
             return True
         except Exception:
-            self.logger.warning("python-magic not available, using basic MIME detection")
+            self.logger.warning("python-magic failed to initialize, using mimetypes fallback")
             return False
+
     
     def validate_pdf_file(self, file_path: Union[str, Path]) -> Dict[str, Any]:
         """Comprehensive PDF file validation."""

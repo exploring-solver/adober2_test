@@ -12,7 +12,34 @@ from config.settings import (
     CONTEXT_WINDOW, MAX_PROCESSING_TIME
 )
 from config.cultural_patterns import CULTURAL_PATTERNS
-from utils.text_utils import clean_text, extract_sentences
+from src.utils.text_utils import clean_text, extract_sentences
+
+#patch start
+import nltk
+from nltk.data import find
+
+print(">>> Checking nltk punkt availability...")
+try:
+    find('tokenizers/punkt/english.pickle')
+    print(">>> punkt found.")
+except LookupError:
+    print(">>> punkt not found, downloading...")
+    nltk.download('punkt', quiet=True)
+    print(">>> punkt downloaded.")
+
+# Clean, safe monkey-patch
+_old_find = nltk.data.find
+
+def patched_find(resource_name, *args, **kwargs):
+    if 'punkt_tab' in resource_name:
+        print(f"⚠️ Suppressing missing resource '{resource_name}', substituting with 'tokenizers/punkt/english.pickle'")
+        return _old_find('tokenizers/punkt/english.pickle', *args, **kwargs)
+    return _old_find(resource_name, *args, **kwargs)
+
+nltk.data.find = patched_find
+print(">>> Applied safe punkt_tab monkey patch.")
+
+#patch end
 
 
 class SemanticFilter:
@@ -436,28 +463,23 @@ class SemanticFilter:
         context_similarity = semantic_scores.get('context_similarity', 0.0)
         pattern_score = semantic_scores.get('pattern_score', 0.0)
         
-        # Hard rules for rejection
-        if composite_score < 0.2:
+        # RELAXED rejection rules
+        if composite_score < 0.1:  # Was 0.2
             return False
         
-        # If very high context similarity (might be body text)
-        if context_similarity > 0.9 and pattern_score < 0.3:
+        # More lenient on context similarity
+        if context_similarity > 0.95 and pattern_score < 0.1:  # Was 0.9 and 0.3
             return False
         
-        # If very low pattern score and low context score
-        if pattern_score < 0.1 and context_similarity < 0.3:
-            return False
+        # Accept more candidates with structural indicators
+        if (candidate.is_bold or 
+            candidate.font_size > 13 or 
+            candidate.line_spacing_before > 10 or
+            candidate.features.get("has_numbering", False)):
+            return True  # Always accept strong structural candidates
         
-        # Adaptive threshold based on candidate properties
-        threshold = self.similarity_threshold
-        
-        # Lower threshold for candidates with strong structural indicators
-        if candidate.is_bold or candidate.font_size > 14:
-            threshold *= 0.8
-        
-        # Higher threshold for candidates without clear indicators
-        if not candidate.is_bold and candidate.font_size <= 12:
-            threshold *= 1.2
+        # LOWER threshold for general candidates
+        threshold = self.similarity_threshold * 0.7  # Was 1.0
         
         return composite_score >= threshold
     

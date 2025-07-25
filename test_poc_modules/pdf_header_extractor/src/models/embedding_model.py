@@ -12,7 +12,7 @@ from threading import Lock
 import hashlib
 
 from config.settings import EMBEDDING_MODEL, MODEL_DIR
-from utils.text_utils import clean_text, normalize_whitespace
+from src.utils.text_utils import clean_text, normalize_whitespace
 
 
 class EmbeddingModel:

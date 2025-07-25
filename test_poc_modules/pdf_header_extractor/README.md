@@ -58,20 +58,20 @@ python -c "from sentence_transformers import SentenceTransformer; SentenceTransf
 
 ```bash
 # Extract headings from a PDF
-python src/main.py document.pdf
+python -m src.main document.pdf
 
 # Save results to file
-python src/main.py document.pdf --output results.json
+python -m src.main document.pdf --output results.json
 
 # Use Round 1A hackathon format
-python src/main.py document.pdf --round1a --output results.json
+python -m src.main document.pdf --round1a --output results.json
 
 # Enable debug mode for detailed logging
-python src/main.py document.pdf --debug
+python -m src.main document.pdf --debug
 
 # Specify document language for better accuracy
-python src/main.py document.pdf --language ja  # Japanese
-python src/main.py document.pdf --language hi  # Hindi
+python -m src.main document.pdf --language ja  # Japanese
+python -m src.main document.pdf --language hi  # Hindi
 ```
 
 ## Step-by-Step Usage Guide
@@ -84,7 +84,7 @@ python src/main.py document.pdf --language hi  # Hindi
 ### Step 2: Run the Extraction
 ```bash
 # Basic extraction
-python src/main.py your_document.pdf --round1a --output result.json
+python -m src.main your_document.pdf --round1a --output result.json
 ```
 
 ### Step 3: Check the Output
@@ -117,13 +117,13 @@ The system generates a JSON file in the **Round 1A format**:
 
 ```bash
 # Process multiple languages
-python src/main.py japanese_doc.pdf --language ja --round1a --output result_ja.json
+python -m src.main japanese_doc.pdf --language ja --round1a --output result_ja.json
 
 # Enable fast mode (skip semantic filtering for speed)
-FAST_MODE=true python src/main.py document.pdf --round1a --output result.json
+FAST_MODE=true python -m src.main document.pdf --round1a --output result.json
 
 # Get detailed processing statistics
-python src/main.py document.pdf --debug --round1a --output result.json
+python -m src.main document.pdf --debug --round1a --output result.json
 ```
 
 ## Configuration Options
@@ -176,9 +176,8 @@ python src/main.py document.pdf --debug --round1a --output result.json
 
 **Import Errors:**
 ```bash
-# If you get import errors, try:
-export PYTHONPATH="${PYTHONPATH}:$(pwd)"
-python src/main.py document.pdf
+# If you get import errors, use structured execution:
+python -m src.main document.pdf
 ```
 
 **Model Download Issues:**
@@ -196,7 +195,7 @@ FAST_MODE=true python src/main.py document.pdf --round1a
 ### Debug Mode
 Enable debug mode for detailed diagnostics:
 ```bash
-python src/main.py document.pdf --debug --round1a --output result.json
+python -m src.main document.pdf --debug --round1a --output result.json
 ```
 
 This provides:

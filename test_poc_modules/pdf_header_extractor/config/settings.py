@@ -5,6 +5,9 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent.parent
 DATA_DIR = BASE_DIR / "data"
 OUTPUT_DIR = BASE_DIR / "outputs"
+JSON_OUTPUT_DIR = OUTPUT_DIR / "json"
+CSV_OUTPUT_DIR = OUTPUT_DIR / "csv"
+DEBUG_OUTPUT_DIR = OUTPUT_DIR / "debug"
 MODEL_DIR = DATA_DIR / "models"
 
 # Processing Configuration
@@ -13,7 +16,10 @@ BATCH_SIZE = 32
 MAX_FILE_SIZE_MB = 100
 
 # Font Analysis Thresholds
-FONT_SIZE_THRESHOLD_RATIO = 1.2  # 20% larger than body text
+# Make font thresholds more inclusive
+FONT_SIZE_THRESHOLD_RATIO = 1.05  # Only 5% larger than average
+MIN_FONT_SIZE_FOR_HEADING = 10    # Absolute minimum
+RELATIVE_SIZE_BONUS = 1.1         # Even small increases count
 BOLD_WEIGHT_THRESHOLD = 600
 MIN_HEADING_LENGTH = 3
 MAX_HEADING_LENGTH = 200

@@ -1,9 +1,12 @@
 import click
 import time
 from pathlib import Path
-from core.pdf_processor import PDFProcessor
-from utils.validation import validate_pdf
 import logging
+
+from src.core.pdf_processor import PDFProcessor
+from src.utils.validation import validate_pdf
+from config.settings import JSON_OUTPUT_DIR
+
 
 @click.command()
 @click.argument('pdf_path', type=click.Path(exists=True))
@@ -33,8 +36,8 @@ def main(pdf_path, output, debug, language):
         
         # Save output
         if output:
-            processor.save_output(result, output)
-            click.echo(f"Results saved to: {output}")
+            processor.save_output(result, JSON_OUTPUT_DIR)
+            click.echo(f"Results saved to: {JSON_OUTPUT_DIR}")
         else:
             click.echo(result)
         

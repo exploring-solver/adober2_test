@@ -15,8 +15,8 @@ __all__ = [
 
 # Optional: Import main classes for convenience
 try:
-    from .core.pdf_processor import PDFProcessor
-    from .utils.validation import validate_pdf
+    from src.core.pdf_processor import PDFProcessor
+    from src.utils.validation import validate_pdf
     __all__.extend(["PDFProcessor", "validate_pdf"])
 except ImportError:
     # Graceful handling if dependencies aren't available yet

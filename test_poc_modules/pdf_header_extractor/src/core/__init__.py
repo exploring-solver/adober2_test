@@ -1,11 +1,11 @@
 try:
-    from .pdf_processor import PDFProcessor
-    from .candidate_generator import CandidateGenerator, HeadingCandidate
-    from .semantic_filter import SemanticFilter
-    from .hierarchy_assigner import HierarchyAssigner, HierarchyNode
-    from .output_formatter import OutputFormatter
-    from models.embedding_model import EmbeddingModel
-    from models.font_analyzer import FontAnalyzer, FontInfo, FontStatistics
+    from src.core.pdf_processor import PDFProcessor
+    from src.core.candidate_generator import CandidateGenerator, HeadingCandidate
+    from src.core.semantic_filter import SemanticFilter
+    from src.core.hierarchy_assigner import HierarchyAssigner, HierarchyNode
+    from src.core.output_formatter import OutputFormatter
+    from src.models.embedding_model import EmbeddingModel
+    from src.models.font_analyzer import FontAnalyzer, FontInfo, FontStatistics
     
     __all__ = [
         "PDFProcessor",
