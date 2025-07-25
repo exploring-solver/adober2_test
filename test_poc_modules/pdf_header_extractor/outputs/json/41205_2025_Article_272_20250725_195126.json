@@ -1,0 +1,520 @@
+{
+  "document_info": {
+    "filename": "41205_2025_Article_272.pdf",
+    "total_pages": 9,
+    "processing_time": 0,
+    "file_size_mb": 1.49,
+    "language_detected": "english",
+    "extraction_method": "hybrid",
+    "timestamp": "2025-07-25T19:51:26.718402",
+    "title": "",
+    "author": "",
+    "subject": "",
+    "creator": "Adobe InDesign 18.3 (Windows)",
+    "creation_date": "D:20250607101616+02'00'"
+  },
+  "headings": [
+    {
+      "id": 1,
+      "text": "Contribution of 3D visualization and printing in teaching lung segments anatomy",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 2,
+      "text": "Abstract",
+      "level": 2,
+      "page": 1,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 3,
+      "text": "Background",
+      "level": 2,
+      "page": 1,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 4,
+      "text": "Methods",
+      "level": 2,
+      "page": 2,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 5,
+      "text": "Study population and teaching process",
+      "level": 3,
+      "page": 2,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 6,
+      "text": "Traditional teaching group (TRAD group)",
+      "level": 3,
+      "page": 2,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 7,
+      "text": "3D visualization teaching group (VIS3D group)",
+      "level": 3,
+      "page": 3,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 8,
+      "text": "3D printing teaching group (PRINT3D group)",
+      "level": 3,
+      "page": 3,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 9,
+      "text": "Student satisfaction survey",
+      "level": 3,
+      "page": 3,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 10,
+      "text": "Statistical analysis",
+      "level": 3,
+      "page": 3,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 11,
+      "text": "Ethics",
+      "level": 3,
+      "page": 3,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 12,
+      "text": "Results",
+      "level": 2,
+      "page": 3,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 13,
+      "text": "Student characteristics",
+      "level": 3,
+      "page": 3,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 14,
+      "text": "Pre and post test scores",
+      "level": 3,
+      "page": 5,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 15,
+      "text": "Students' evaluation of the teaching content",
+      "level": 3,
+      "page": 6,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 16,
+      "text": "Discussion",
+      "level": 2,
+      "page": 6,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 17,
+      "text": "Conclusion",
+      "level": 2,
+      "page": 8,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 18,
+      "text": "References",
+      "level": 2,
+      "page": 8,
+      "bbox": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 100,
+        "y1": 20,
+        "width": 100,
+        "height": 20
+      },
+      "font_info": {
+        "size": 14,
+        "weight": "bold",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    }
+  ],
+  "metadata": {
+    "extraction_version": "1.0.0",
+    "format_version": "1.0",
+    "generator": "PDF-Heading-Extractor-Hybrid",
+    "extraction_date": "2025-07-25T19:51:26.718402",
+    "settings": {
+      "include_confidence": true,
+      "include_debug": false,
+      "output_format": "json"
+    }
+  },
+  "hierarchy_tree": {
+    "Contribution of 3D visualization and printing in teaching lung segments anatomy": {
+      "level": 1,
+      "page": 1,
+      "children": {
+        "Abstract": {
+          "level": 2,
+          "page": 1,
+          "children": {}
+        },
+        "Background": {
+          "level": 2,
+          "page": 1,
+          "children": {}
+        },
+        "Methods": {
+          "level": 2,
+          "page": 2,
+          "children": {
+            "Study population and teaching process": {
+              "level": 3,
+              "page": 2,
+              "children": {}
+            },
+            "Traditional teaching group (TRAD group)": {
+              "level": 3,
+              "page": 2,
+              "children": {}
+            },
+            "3D visualization teaching group (VIS3D group)": {
+              "level": 3,
+              "page": 3,
+              "children": {}
+            },
+            "3D printing teaching group (PRINT3D group)": {
+              "level": 3,
+              "page": 3,
+              "children": {}
+            },
+            "Student satisfaction survey": {
+              "level": 3,
+              "page": 3,
+              "children": {}
+            },
+            "Statistical analysis": {
+              "level": 3,
+              "page": 3,
+              "children": {}
+            },
+            "Ethics": {
+              "level": 3,
+              "page": 3,
+              "children": {}
+            }
+          }
+        },
+        "Results": {
+          "level": 2,
+          "page": 3,
+          "children": {
+            "Student characteristics": {
+              "level": 3,
+              "page": 3,
+              "children": {}
+            },
+            "Pre and post test scores": {
+              "level": 3,
+              "page": 5,
+              "children": {}
+            },
+            "Students' evaluation of the teaching content": {
+              "level": 3,
+              "page": 6,
+              "children": {}
+            }
+          }
+        },
+        "Discussion": {
+          "level": 2,
+          "page": 6,
+          "children": {}
+        },
+        "Conclusion": {
+          "level": 2,
+          "page": 8,
+          "children": {}
+        },
+        "References": {
+          "level": 2,
+          "page": 8,
+          "children": {}
+        }
+      }
+    }
+  }
+}

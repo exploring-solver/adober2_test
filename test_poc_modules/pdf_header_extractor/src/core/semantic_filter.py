@@ -341,8 +341,8 @@ class SemanticFilter:
             if context_similarities:
                 # Return mean similarity, but penalize if too similar (might be body text)
                 mean_similarity = np.mean(context_similarities)
-                if mean_similarity > 0.8:  # Too similar to surrounding text
-                    return mean_similarity * 0.7  # Penalize
+                if mean_similarity > 0.7:  # Too similar to surrounding text
+                    return mean_similarity * 0.5  # Penalize
                 return mean_similarity
             
             return 0.5
@@ -457,31 +457,46 @@ class SemanticFilter:
             return np.zeros(384)  # Default dimension for MiniLM
     
     def _should_keep_candidate(self, candidate, semantic_scores: Dict[str, float]) -> bool:
-        """Decision function for keeping or filtering out candidates."""
+        """Decision function using document-adaptive criteria."""
         
         composite_score = semantic_scores.get('composite_score', 0.0)
         context_similarity = semantic_scores.get('context_similarity', 0.0)
         pattern_score = semantic_scores.get('pattern_score', 0.0)
         
-        # RELAXED rejection rules
-        if composite_score < 0.1:  # Was 0.2
-            return False
+        # Adaptive threshold based on candidate characteristics
+        base_threshold = 0.2
         
-        # More lenient on context similarity
-        if context_similarity > 0.95 and pattern_score < 0.1:  # Was 0.9 and 0.3
-            return False
-        
-        # Accept more candidates with structural indicators
+        # Lower threshold for candidates with strong structural indicators
         if (candidate.is_bold or 
-            candidate.font_size > 13 or 
-            candidate.line_spacing_before > 10 or
-            candidate.features.get("has_numbering", False)):
-            return True  # Always accept strong structural candidates
+            candidate.line_spacing_before > 8 or
+            candidate.line_spacing_after > 5):
+            base_threshold *= 0.5  # Much more lenient
         
-        # LOWER threshold for general candidates
-        threshold = self.similarity_threshold * 0.7  # Was 1.0
+        # Lower threshold for short text (likely headings)
+        if len(candidate.text.split()) <= 3:
+            base_threshold *= 0.6
         
-        return composite_score >= threshold
+        # Lower threshold for text ending with colon
+        if candidate.text.strip().endswith(':'):
+            base_threshold *= 0.4
+        
+        # Lower threshold for larger fonts
+        if hasattr(candidate, 'font_size') and candidate.font_size > 13:
+            base_threshold *= 0.7
+        
+        # Reject only clearly problematic candidates
+        if composite_score < base_threshold:
+            return False
+        
+        # Don't reject based on high context similarity alone for short text
+        if len(candidate.text.split()) <= 2:
+            return composite_score > 0.1
+        
+        # For longer text, be more careful about context similarity
+        if context_similarity > 0.95 and pattern_score < 0.1 and len(candidate.text.split()) > 5:
+            return False
+        
+        return True
     
     def get_semantic_statistics(self, filtered_candidates: List) -> Dict[str, Any]:
         """Get statistics about semantic filtering results."""
