@@ -1,0 +1,392 @@
+{
+  "timestamp": "2025-07-25T13:59:24.002750",
+  "round1a": {
+    "summary": {
+      "total_documents": 3,
+      "successful": 3,
+      "success_rate": 100.0,
+      "avg_processing_time": 0.0,
+      "total_headings": 33,
+      "meets_time_constraint": true
+    },
+    "detailed_results": {
+      "sample1.pdf": {
+        "success": true,
+        "processing_time": 0.0,
+        "is_valid": true,
+        "outline": {
+          "title": "Graph Neural Networks for Drug Discovery",
+          "outline": [
+            {
+              "level": "H1",
+              "text": "1. Introduction",
+              "page": 1
+            },
+            {
+              "level": "H2",
+              "text": "1.1 Background",
+              "page": 2
+            },
+            {
+              "level": "H2",
+              "text": "1.2 Problem Statement",
+              "page": 3
+            },
+            {
+              "level": "H1",
+              "text": "2. Methodology",
+              "page": 4
+            },
+            {
+              "level": "H2",
+              "text": "2.1 Data Collection",
+              "page": 5
+            },
+            {
+              "level": "H2",
+              "text": "2.2 Model Architecture",
+              "page": 6
+            },
+            {
+              "level": "H3",
+              "text": "2.2.1 Graph Convolution",
+              "page": 7
+            },
+            {
+              "level": "H3",
+              "text": "2.2.2 Attention Mechanism",
+              "page": 8
+            },
+            {
+              "level": "H1",
+              "text": "3. Results",
+              "page": 9
+            },
+            {
+              "level": "H2",
+              "text": "3.1 Performance Analysis",
+              "page": 10
+            },
+            {
+              "level": "H1",
+              "text": "4. Conclusion",
+              "page": 11
+            }
+          ]
+        },
+        "heading_count": 11,
+        "title": "Graph Neural Networks for Drug Discovery"
+      },
+      "sample2.pdf": {
+        "success": true,
+        "processing_time": 0.0,
+        "is_valid": true,
+        "outline": {
+          "title": "Graph Neural Networks for Drug Discovery",
+          "outline": [
+            {
+              "level": "H1",
+              "text": "1. Introduction",
+              "page": 1
+            },
+            {
+              "level": "H2",
+              "text": "1.1 Background",
+              "page": 2
+            },
+            {
+              "level": "H2",
+              "text": "1.2 Problem Statement",
+              "page": 3
+            },
+            {
+              "level": "H1",
+              "text": "2. Methodology",
+              "page": 4
+            },
+            {
+              "level": "H2",
+              "text": "2.1 Data Collection",
+              "page": 5
+            },
+            {
+              "level": "H2",
+              "text": "2.2 Model Architecture",
+              "page": 6
+            },
+            {
+              "level": "H3",
+              "text": "2.2.1 Graph Convolution",
+              "page": 7
+            },
+            {
+              "level": "H3",
+              "text": "2.2.2 Attention Mechanism",
+              "page": 8
+            },
+            {
+              "level": "H1",
+              "text": "3. Results",
+              "page": 9
+            },
+            {
+              "level": "H2",
+              "text": "3.1 Performance Analysis",
+              "page": 10
+            },
+            {
+              "level": "H1",
+              "text": "4. Conclusion",
+              "page": 11
+            }
+          ]
+        },
+        "heading_count": 11,
+        "title": "Graph Neural Networks for Drug Discovery"
+      },
+      "sample3.pdf": {
+        "success": true,
+        "processing_time": 0.0,
+        "is_valid": true,
+        "outline": {
+          "title": "Graph Neural Networks for Drug Discovery",
+          "outline": [
+            {
+              "level": "H1",
+              "text": "1. Introduction",
+              "page": 1
+            },
+            {
+              "level": "H2",
+              "text": "1.1 Background",
+              "page": 2
+            },
+            {
+              "level": "H2",
+              "text": "1.2 Problem Statement",
+              "page": 3
+            },
+            {
+              "level": "H1",
+              "text": "2. Methodology",
+              "page": 4
+            },
+            {
+              "level": "H2",
+              "text": "2.1 Data Collection",
+              "page": 5
+            },
+            {
+              "level": "H2",
+              "text": "2.2 Model Architecture",
+              "page": 6
+            },
+            {
+              "level": "H3",
+              "text": "2.2.1 Graph Convolution",
+              "page": 7
+            },
+            {
+              "level": "H3",
+              "text": "2.2.2 Attention Mechanism",
+              "page": 8
+            },
+            {
+              "level": "H1",
+              "text": "3. Results",
+              "page": 9
+            },
+            {
+              "level": "H2",
+              "text": "3.1 Performance Analysis",
+              "page": 10
+            },
+            {
+              "level": "H1",
+              "text": "4. Conclusion",
+              "page": 11
+            }
+          ]
+        },
+        "heading_count": 11,
+        "title": "Graph Neural Networks for Drug Discovery"
+      }
+    }
+  },
+  "round1b": {
+    "summary": {
+      "total_cases": 3,
+      "successful": 3,
+      "success_rate": 100.0,
+      "avg_processing_time": 0.0,
+      "total_sections": 9,
+      "total_subsections": 6,
+      "meets_time_constraint": true
+    },
+    "detailed_results": {
+      "test_case_1": {
+        "success": true,
+        "processing_time": 0.0,
+        "is_valid": true,
+        "result": {
+          "metadata": {
+            "input_documents": [
+              "Graph Neural Networks for Drug Discovery",
+              "Graph Neural Networks for Drug Discovery",
+              "Graph Neural Networks for Drug Discovery"
+            ],
+            "persona": "PhD Researcher in Computational Biology specializing in machine learning",
+            "job_to_be_done": "Prepare a comprehensive literature review focusing on methodologies, datasets, and performance benchmarks",
+            "processing_timestamp": "2025-07-25T13:59:24.001749"
+          },
+          "extracted_sections": [
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 4,
+              "section_title": "2. Methodology",
+              "importance_rank": 1
+            },
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 9,
+              "section_title": "3. Results",
+              "importance_rank": 2
+            },
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 2,
+              "section_title": "1.1 Background",
+              "importance_rank": 3
+            }
+          ],
+          "subsection_analysis": [
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 5,
+              "refined_text": "Data collection methodology involves gathering molecular structures from public databases. The dataset includes over 10,000 compounds with known drug-target interactions.",
+              "parent_section": "2.1 Data Collection"
+            },
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 6,
+              "refined_text": "The graph neural network architecture consists of multiple layers of graph convolution operations. Each layer aggregates information from neighboring nodes in the molecular graph.",
+              "parent_section": "2.2 Model Architecture"
+            }
+          ]
+        },
+        "sections_found": 3,
+        "subsections_found": 2
+      },
+      "test_case_2": {
+        "success": true,
+        "processing_time": 0.0,
+        "is_valid": true,
+        "result": {
+          "metadata": {
+            "input_documents": [
+              "Graph Neural Networks for Drug Discovery",
+              "Graph Neural Networks for Drug Discovery"
+            ],
+            "persona": "Investment Analyst with expertise in technology sector evaluation",
+            "job_to_be_done": "Analyze revenue trends, R&D investments, and market positioning strategies",
+            "processing_timestamp": "2025-07-25T13:59:24.001749"
+          },
+          "extracted_sections": [
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 4,
+              "section_title": "2. Methodology",
+              "importance_rank": 1
+            },
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 9,
+              "section_title": "3. Results",
+              "importance_rank": 2
+            },
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 2,
+              "section_title": "1.1 Background",
+              "importance_rank": 3
+            }
+          ],
+          "subsection_analysis": [
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 5,
+              "refined_text": "Data collection methodology involves gathering molecular structures from public databases. The dataset includes over 10,000 compounds with known drug-target interactions.",
+              "parent_section": "2.1 Data Collection"
+            },
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 6,
+              "refined_text": "The graph neural network architecture consists of multiple layers of graph convolution operations. Each layer aggregates information from neighboring nodes in the molecular graph.",
+              "parent_section": "2.2 Model Architecture"
+            }
+          ]
+        },
+        "sections_found": 3,
+        "subsections_found": 2
+      },
+      "test_case_3": {
+        "success": true,
+        "processing_time": 0.0,
+        "is_valid": true,
+        "result": {
+          "metadata": {
+            "input_documents": [
+              "Graph Neural Networks for Drug Discovery",
+              "Graph Neural Networks for Drug Discovery",
+              "Graph Neural Networks for Drug Discovery"
+            ],
+            "persona": "Undergraduate Chemistry Student preparing for final exams",
+            "job_to_be_done": "Identify key concepts and mechanisms for exam preparation on reaction kinetics",
+            "processing_timestamp": "2025-07-25T13:59:24.001749"
+          },
+          "extracted_sections": [
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 4,
+              "section_title": "2. Methodology",
+              "importance_rank": 1
+            },
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 9,
+              "section_title": "3. Results",
+              "importance_rank": 2
+            },
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 2,
+              "section_title": "1.1 Background",
+              "importance_rank": 3
+            }
+          ],
+          "subsection_analysis": [
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 5,
+              "refined_text": "Data collection methodology involves gathering molecular structures from public databases. The dataset includes over 10,000 compounds with known drug-target interactions.",
+              "parent_section": "2.1 Data Collection"
+            },
+            {
+              "document": "Graph Neural Networks for Drug Discovery",
+              "page_number": 6,
+              "refined_text": "The graph neural network architecture consists of multiple layers of graph convolution operations. Each layer aggregates information from neighboring nodes in the molecular graph.",
+              "parent_section": "2.2 Model Architecture"
+            }
+          ]
+        },
+        "sections_found": 3,
+        "subsections_found": 2
+      }
+    }
+  },
+  "overall_assessment": {
+    "functional_complete": true,
+    "performance_ok": true,
+    "ready_for_production": true
+  }
+}
