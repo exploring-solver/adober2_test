@@ -87,8 +87,14 @@ class CandidateGenerator:
         # Remove duplicates based on text and position
         unique_candidates = self._deduplicate_candidates(all_candidates)
         
-        # Filter and score candidates
-        filtered_candidates = self._filter_candidates(unique_candidates)
+        merged_candidates = self._merge_fragmented_candidates(unique_candidates)
+        
+        # Filter and score candidates        
+        filtered_candidates = [
+                c for c in unique_candidates
+                if len(c.text.strip()) >= 5 or c.font_size >= 2 * self.document_stats["avg_font_size"]
+            ]
+
         scored_candidates = self._score_candidates(filtered_candidates)
         
         self.logger.info(f"Generated {len(scored_candidates)} candidates")
@@ -100,6 +106,33 @@ class CandidateGenerator:
                 self.logger.info(f"  {i+1}. '{candidate.text}' - Font: {candidate.font_size} - Score: {candidate.confidence_score}")
         
         return scored_candidates
+        """Check if text could be a standalone heading."""
+        if not text or len(text) < 2:
+            return False
+        
+        # Add PDF-specific heading words
+        pdf_heading_words = {
+            'summary', 'background', 'timeline', 'milestones', 'approach',
+            'evaluation', 'appendix', 'introduction', 'conclusion', 'overview',
+            'methodology', 'results', 'discussion', 'references', 'abstract',
+            'preamble', 'membership', 'term', 'chair', 'meetings', 'funding',
+            'implementation', 'phase', 'phases'
+        }
+        
+        # Check if it's a common heading word
+        if text.lower().strip() in pdf_heading_words:
+            return True
+        
+        # Original checks...
+        word_count = len(text.split())
+        if word_count > 5:
+            return False
+            
+        # Check if it starts with capital letter (title case)
+        if text[0].isupper() and word_count <= 3:
+            return True
+        
+        return False
     
     def _deduplicate_candidates(self, candidates: List[HeadingCandidate]) -> List[HeadingCandidate]:
         """Remove duplicate candidates based on text similarity and position."""
@@ -232,49 +265,122 @@ class CandidateGenerator:
         for block_idx, block in enumerate(blocks):
             if "lines" not in block:
                 continue
-                
-            # Process each line in the block
+            
             for line_idx, line in enumerate(block["lines"]):
-                line_text = ""
-                line_bbox = line["bbox"]
                 spans = line["spans"]
-                
                 if not spans:
                     continue
+
+                # FIX: Improved text extraction to prevent corruption
+                line_text = self._extract_clean_line_text(spans)
                 
-                # Combine spans in the line
-                dominant_span = max(spans, key=lambda s: (s["size"], len(s["text"])))
-                line_text = " ".join([span["text"].strip() for span in spans])
-                
-                if not self._is_potential_heading_text(line_text):
+                if not line_text or not self._is_potential_heading_text(line_text):
                     continue
                 
-                # Calculate features
-                features = self._extract_line_features(
-                    line, line_text, line_bbox, page.rect.height, page.rect.width, block_idx, line_idx, blocks
-                )
-
-                # Create candidate
+                # Get dominant span for font analysis
+                dominant_span = max(spans, key=lambda s: len(s["text"]))
+                
                 candidate = HeadingCandidate(
-                    text=line_text.strip(),
+                    text=line_text,
                     page=page_num + 1,
-                    bbox=line_bbox,
+                    bbox=line["bbox"],
                     font_size=dominant_span["size"],
                     font_weight=self._get_font_weight(dominant_span["flags"]),
                     font_family=dominant_span["font"],
                     is_bold=bool(dominant_span["flags"] & 2**4),
                     is_italic=bool(dominant_span["flags"] & 2**1),
-                    alignment=self._determine_alignment(line_bbox, page.rect.width),
-                    position_ratio=line_bbox[1] / page_height,
-                    line_spacing_before=features["spacing_before"],
-                    line_spacing_after=features["spacing_after"],
-                    text_length=len(line_text.strip()),
-                    features=features
+                    alignment=self._determine_alignment(line["bbox"], page.rect.width),
+                    position_ratio=line["bbox"][1] / page.rect.height,
+                    line_spacing_before=self._calculate_spacing_before(block_idx, line_idx, blocks),
+                    line_spacing_after=self._calculate_spacing_after(block_idx, line_idx, blocks),
+                    text_length=len(line_text),
+                    features={
+                        "detection_method": "clean_line_extraction"
+                    }
                 )
                 
                 candidates.append(candidate)
         
         return candidates
+
+    def _extract_clean_line_text(self, spans: List[Dict[str, Any]]) -> str:
+        """Extract clean text from spans, avoiding corruption through overlap detection."""
+        if not spans:
+            return ""
+        
+        if len(spans) == 1:
+            return spans[0]["text"].strip()
+        
+        # Sort spans by x-position
+        sorted_spans = sorted(spans, key=lambda s: s["bbox"][0])
+        
+        # Remove overlapping spans (common cause of duplication)
+        clean_spans = []
+        for span in sorted_spans:
+            span_text = span["text"].strip()
+            if not span_text:
+                continue
+                
+            # Check if this span overlaps significantly with previous spans
+            is_duplicate = False
+            for existing_span in clean_spans:
+                # Check bbox overlap
+                overlap_x = min(span["bbox"][2], existing_span["bbox"][2]) - max(span["bbox"][0], existing_span["bbox"][0])
+                span_width = span["bbox"][2] - span["bbox"][0]
+                
+                # If more than 50% overlap, check text similarity
+                if overlap_x > span_width * 0.5:
+                    # Check if texts are similar (Levenshtein-like)
+                    if self._texts_are_similar(span_text, existing_span["text"]):
+                        is_duplicate = True
+                        break
+            
+            if not is_duplicate:
+                clean_spans.append(span)
+        
+        # Join clean spans
+        return " ".join([span["text"].strip() for span in clean_spans]).strip()
+
+    def _texts_are_similar(self, text1: str, text2: str, threshold: float = 0.7) -> bool:
+        """Check if two texts are similar (generic similarity check)."""
+        if not text1 or not text2:
+            return False
+        
+        # Simple character-based similarity
+        set1 = set(text1.lower())
+        set2 = set(text2.lower())
+        
+        if not set1 or not set2:
+            return False
+        
+        intersection = len(set1.intersection(set2))
+        union = len(set1.union(set2))
+        
+        similarity = intersection / union if union > 0 else 0
+        return similarity >= threshold
+    
+    def _remove_text_duplications(self, text: str) -> str:
+        """Remove obvious text duplications."""
+        import re
+        
+        # Remove repeated words/phrases
+        words = text.split()
+        if len(words) <= 1:
+            return text
+        
+        # Check for immediate repetitions
+        cleaned_words = [words[0]]
+        for i in range(1, len(words)):
+            if words[i] != words[i-1]:  # Don't add if same as previous
+                cleaned_words.append(words[i])
+        
+        # Check for pattern repetitions like "RFP: R RFP: R"
+        cleaned_text = " ".join(cleaned_words)
+        
+        # Remove patterns where single characters repeat the start of words
+        cleaned_text = re.sub(r'\b(\w+):\s*\w\s+\1:', r'\1:', cleaned_text)
+        
+        return cleaned_text
     
     def _extract_line_features(self, line: Dict, text: str, bbox: Tuple,
                            page_height: float, page_width: float,
@@ -312,33 +418,57 @@ class CandidateGenerator:
         return features
     
     def _is_potential_heading_text(self, text: str) -> bool:
-        """Quick filter for potential heading text."""
+        """Assess heading potential using universal linguistic patterns."""
         text = text.strip()
         
-        if len(text) < MIN_HEADING_LENGTH or len(text) > MAX_HEADING_LENGTH:
+        if len(text) < 2 or len(text) > 200:
             return False
         
-        # Skip page numbers, footnotes, headers/footers
+        # Skip obvious non-headings (universal patterns)
         if re.match(r'^\d+$', text):  # Just numbers
             return False
         
-        if re.match(r'^[ivxlcdm]+$', text.lower()):  # Roman numerals only
+        if re.match(r'^[ivxlcdm]+$', text.lower()):  # Just roman numerals
             return False
         
-        # Skip common non-heading patterns
-        skip_patterns = [
-            r'^page \d+',
-            r'^\d+/\d+$',  # Page ratios
-            r'^www\.',     # URLs
-            r'^http',      # URLs
-            r'@',          # Email patterns
-        ]
+        # Skip URLs, emails (universal)
+        if '@' in text or 'http' in text.lower() or 'www.' in text.lower():
+            return False
         
-        for pattern in skip_patterns:
-            if re.search(pattern, text.lower()):
-                return False
+        # Positive indicators (universal across languages/document types)
         
-        return True
+        # Short text with colon (very common heading pattern)
+        if text.endswith(':') and len(text.split()) <= 6:
+            return True
+        
+        # Title case text (common heading pattern)
+        if text.istitle() and len(text.split()) <= 8:
+            return True
+        
+        # All caps short text
+        if text.isupper() and 2 <= len(text.split()) <= 4:
+            return True
+        
+        # Numbered items (universal pattern)
+        if re.match(r'^\d+\.?\s+[A-Z]', text):
+            return True
+        
+        # Lettered items
+        if re.match(r'^[A-Z]\.?\s+[A-Z]', text):
+            return True
+        
+        # Single capitalized word (could be section header)
+        words = text.split()
+        if len(words) == 1 and words[0][0].isupper() and len(words[0]) >= 4:
+            return True
+        
+        # Multiple words, first capitalized, reasonable length
+        if (len(words) <= 8 and 
+            words[0][0].isupper() and 
+            not text.endswith('.')):  # Headings typically don't end with periods
+            return True
+        
+        return False
     
     def _get_font_weight(self, flags: int) -> str:
         """Extract font weight from flags."""
@@ -550,7 +680,176 @@ class CandidateGenerator:
         
         return candidates
     
+    def _merge_fragmented_candidates(self, candidates: List[HeadingCandidate]) -> List[HeadingCandidate]:
+        """Merge candidates that appear to be fragments of the same heading."""
+        if not candidates:
+            return candidates
+        
+        # Sort by page and position
+        candidates.sort(key=lambda x: (x.page, x.bbox[1], x.bbox[0]))
+        
+        merged = []
+        used_indices = set()
+        
+        for i, current in enumerate(candidates):
+            if i in used_indices:
+                continue
+                
+            # Look for fragments on the same line with same font size
+            fragments = [current]
+            fragment_indices = [i]
+            
+            for j, next_candidate in enumerate(candidates[i+1:], i+1):
+                if j in used_indices:
+                    continue
+                    
+                # Check if they should be merged
+                same_line = abs(current.bbox[1] - next_candidate.bbox[1]) < 3
+                same_font = abs(current.font_size - next_candidate.font_size) < 1
+                same_page = current.page == next_candidate.page
+                horizontal_gap = next_candidate.bbox[0] - current.bbox[2]
+                close_enough = horizontal_gap < 100  # Allow larger gaps
+                
+                if same_line and same_font and same_page and close_enough:
+                    fragments.append(next_candidate)
+                    fragment_indices.append(j)
+            
+            # Merge if we have multiple fragments
+            if len(fragments) > 1:
+                # Sort fragments by x position
+                fragments.sort(key=lambda x: x.bbox[0])
+                
+                merged_text = " ".join([f.text.strip() for f in fragments])
+                merged_bbox = (
+                    fragments[0].bbox[0],   # leftmost x
+                    min(f.bbox[1] for f in fragments),  # top y
+                    fragments[-1].bbox[2],  # rightmost x  
+                    max(f.bbox[3] for f in fragments)   # bottom y
+                )
+                
+                merged_candidate = HeadingCandidate(
+                    text=merged_text,
+                    page=current.page,
+                    bbox=merged_bbox,
+                    font_size=current.font_size,
+                    font_weight=current.font_weight,
+                    font_family=current.font_family,
+                    is_bold=current.is_bold,
+                    is_italic=current.is_italic,
+                    alignment=current.alignment,
+                    position_ratio=current.position_ratio,
+                    line_spacing_before=current.line_spacing_before,
+                    line_spacing_after=current.line_spacing_after,
+                    text_length=len(merged_text),
+                    features=current.features
+                )
+                merged.append(merged_candidate)
+                used_indices.update(fragment_indices)
+            else:
+                merged.append(current)
+                used_indices.add(i)
+        
+        return merged
+    
+    def _calculate_dynamic_thresholds(self, all_candidates: List[HeadingCandidate]) -> Dict[str, float]:
+        """Calculate dynamic thresholds based on actual document content."""
+        if not all_candidates:
+            return {"font_threshold": 12.0, "spacing_threshold": 5.0}
+        
+        # Analyze font size distribution
+        font_sizes = [c.font_size for c in all_candidates]
+        font_sizes_array = np.array(font_sizes)
+        
+        # Use percentile-based thresholds instead of fixed ratios
+        p25 = np.percentile(font_sizes_array, 25)
+        p50 = np.percentile(font_sizes_array, 50)  # Median
+        p75 = np.percentile(font_sizes_array, 75)
+        
+        # Dynamic font threshold: anything above 60th percentile
+        font_threshold = np.percentile(font_sizes_array, 60)
+        
+        # Analyze spacing distribution
+        spacing_values = [c.line_spacing_before + c.line_spacing_after for c in all_candidates]
+        spacing_array = np.array([s for s in spacing_values if s > 0])
+        
+        if len(spacing_array) > 0:
+            # Dynamic spacing threshold: above 70th percentile
+            spacing_threshold = np.percentile(spacing_array, 70)
+        else:
+            spacing_threshold = 5.0
+        
+        return {
+            "font_threshold": max(font_threshold, p50),  # At least median
+            "spacing_threshold": max(spacing_threshold, 3.0),  # At least 3pt
+            "p25": p25,
+            "p50": p50,
+            "p75": p75
+        }
+
     def _score_candidates(self, candidates: List[HeadingCandidate]) -> List[HeadingCandidate]:
+        """Score candidates using dynamic thresholds."""
+        if not candidates:
+            return candidates
+        
+        # Calculate dynamic thresholds
+        thresholds = self._calculate_dynamic_thresholds(candidates)
+        
+        for candidate in candidates:
+            score = 0.0
+            
+            # Font size score (relative to document distribution)
+            if candidate.font_size >= thresholds["p75"]:
+                score += 40  # Top 25% fonts
+            elif candidate.font_size >= thresholds["p50"]:
+                score += 25  # Above median
+            elif candidate.font_size >= thresholds["font_threshold"]:
+                score += 15  # Above threshold
+            
+            # Bold weight (universal indicator)
+            if candidate.is_bold:
+                score += 25
+            
+            # Spacing score (relative to document)
+            total_spacing = candidate.line_spacing_before + candidate.line_spacing_after
+            if total_spacing >= thresholds["spacing_threshold"]:
+                score += 20
+            elif total_spacing > 0:
+                score += 10
+            
+            # Position score (universal - top of page more likely heading)
+            if candidate.position_ratio < 0.15:  # Top 15% of page
+                score += 15
+            elif candidate.position_ratio < 0.3:  # Top 30% of page
+                score += 10
+            
+            # Text characteristics (universal patterns)
+            text = candidate.text.strip()
+            
+            # Colon ending (common across document types)
+            if text.endswith(':'):
+                score += 10
+            
+            # Title case (universal)
+            if text.istitle():
+                score += 10
+            
+            # Short text (headings typically shorter)
+            word_count = len(text.split())
+            if 1 <= word_count <= 5:
+                score += 10
+            elif word_count <= 8:
+                score += 5
+            
+            # All caps (sometimes headings)
+            if text.isupper() and word_count <= 4:
+                score += 8
+            
+            # Normalize score to 0-1
+            candidate.confidence_score = min(1.0, score / 100.0)
+        
+        # Sort by confidence
+        candidates.sort(key=lambda x: x.confidence_score, reverse=True)
+        return candidates
         """Score candidates based on multiple features."""
         for candidate in candidates:
             score = 0.0

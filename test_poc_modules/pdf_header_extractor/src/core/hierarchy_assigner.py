@@ -1,6 +1,6 @@
 import re
 import logging
-from typing import List, Dict, Any, Optional, Tuple, Union
+from typing import List, Dict, Any, Optional, Tuple, Union, Set
 from dataclasses import dataclass, field
 from collections import defaultdict, Counter
 from src.core.candidate_generator import HeadingCandidate
@@ -87,37 +87,79 @@ class HierarchyAssigner:
         )
     
     def _assign_by_font_hierarchy(self, nodes: List[HierarchyNode]) -> List[HierarchyNode]:
-        """Assign levels based on font size hierarchy."""
+        """Assign levels based on font size distribution analysis."""
         if not nodes:
             return nodes
         
-        # Group by font size and sort
-        font_sizes = sorted(set(node.font_size for node in nodes), reverse=True)
+        # Analyze font size distribution
+        font_sizes = [node.font_size for node in nodes]
+        unique_sizes = sorted(set(font_sizes), reverse=True)
         
-        # Create more permissive level mapping
+        if len(unique_sizes) == 1:
+            # All same size - use other factors
+            return self._assign_by_non_font_factors(nodes)
+        
+        # Use natural breaks in font size distribution
+        size_breaks = self._find_natural_size_breaks(unique_sizes)
+        
+        # Create level mapping based on breaks
         level_mapping = {}
+        current_level = 1
         
-        # Handle title detection (largest font at top)
-        title_candidates = [
-            node for node in nodes 
-            if (node.font_size == max(font_sizes) and 
-                node.bbox[1] / 792 < TITLE_POSITION_THRESHOLD)
-        ]
-        
-        # Assign levels more generously
-        for i, size in enumerate(font_sizes):
-            if i == 0 and title_candidates:
-                level_mapping[size] = 0  # Title
-            else:
-                # Map remaining sizes to levels 1-3 (not 1-6)
-                level_mapping[size] = min(i, 3) + (1 if title_candidates else 0)
+        for i, size in enumerate(unique_sizes):
+            if i in size_breaks:
+                current_level += 1
+            level_mapping[size] = min(current_level, 6)  # Max level 6
         
         # Apply mapping
         for node in nodes:
-            if node in title_candidates and len(title_candidates) <= 2:
-                node.level = 0  # Title level
-            else:
-                node.level = level_mapping.get(node.font_size, 1)
+            node.level = level_mapping.get(node.font_size, 3)  # Default to level 3
+        
+        return nodes
+
+    def _find_natural_size_breaks(self, sorted_sizes: List[float]) -> Set[int]:
+        """Find natural breaks in font size distribution."""
+        if len(sorted_sizes) <= 2:
+            return set()
+        
+        breaks = set()
+        
+        # Look for significant gaps between consecutive sizes
+        for i in range(1, len(sorted_sizes)):
+            size_diff = sorted_sizes[i-1] - sorted_sizes[i]
+            
+            # If difference is more than 2 points, it's likely a level break
+            if size_diff >= 2.0:
+                breaks.add(i)
+            # If difference is more than 20% of the smaller size
+            elif size_diff > sorted_sizes[i] * 0.2:
+                breaks.add(i)
+        
+        return breaks
+
+    def _assign_by_non_font_factors(self, nodes: List[HierarchyNode]) -> List[HierarchyNode]:
+        """Assign levels when font sizes are similar."""
+        
+        # Use spacing and position as primary factors
+        for node in nodes:
+            level = 2  # Default
+            
+            # Top of page likely higher level
+            if node.bbox[1] < 150:  # Top 150 points
+                level = 1
+            
+            # Large spacing suggests higher level
+            spacing_before = getattr(node, 'spacing_before', 0)
+            if spacing_before > 15:
+                level = max(1, level - 1)
+            elif spacing_before > 8:
+                level = max(2, level)
+            
+            # Bold text suggests higher level
+            if getattr(node, 'is_bold', False):
+                level = max(1, level - 1)
+            
+            node.level = level
         
         return nodes
     

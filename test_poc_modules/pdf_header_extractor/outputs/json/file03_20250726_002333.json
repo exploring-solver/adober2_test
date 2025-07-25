@@ -1,0 +1,5779 @@
+{
+  "document_info": {
+    "filename": "file03.pdf",
+    "total_pages": 14,
+    "processing_time": 0,
+    "file_size_mb": 0.61,
+    "language_detected": "english",
+    "extraction_method": "hybrid",
+    "timestamp": "2025-07-26T00:23:33.926482",
+    "title": "To Present a Proposal for Developing the Business Plan for the Ontario Digital Library",
+    "author": "",
+    "subject": "",
+    "creator": "",
+    "creation_date": "D:20030321152338Z"
+  },
+  "headings": [
+    {
+      "id": 1,
+      "text": "Ontario’s Libraries",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 95.44,
+        "y0": 72.08,
+        "x1": 238.64,
+        "y1": 94.57,
+        "width": 143.2,
+        "height": 22.49
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.75,
+      "features": {}
+    },
+    {
+      "id": 2,
+      "text": "Working Together",
+      "level": 2,
+      "page": 1,
+      "bbox": {
+        "x0": 95.44,
+        "y0": 94.64,
+        "x1": 235.37,
+        "y1": 117.12,
+        "width": 139.93,
+        "height": 22.49
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.95,
+      "features": {}
+    },
+    {
+      "id": 3,
+      "text": "quest f",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 209.47,
+        "y0": 156.52,
+        "x1": 316.14,
+        "y1": 201.66,
+        "width": 106.67,
+        "height": 45.14
+      },
+      "font_info": {
+        "size": 32.040000915527344,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 4,
+      "text": "r Pr",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 332.15,
+        "y0": 156.52,
+        "x1": 387.21,
+        "y1": 201.66,
+        "width": 55.06,
+        "height": 45.14
+      },
+      "font_info": {
+        "size": 32.040000915527344,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 5,
+      "text": "oposal",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 385.37,
+        "y0": 156.52,
+        "x1": 497.41,
+        "y1": 201.66,
+        "width": 112.04,
+        "height": 45.14
+      },
+      "font_info": {
+        "size": 32.040000915527344,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 6,
+      "text": "RFP: R",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 90.02,
+        "y0": 156.77,
+        "x1": 193.74,
+        "y1": 201.92,
+        "width": 103.72,
+        "height": 45.14
+      },
+      "font_info": {
+        "size": 32.040000915527344,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.68,
+      "features": {}
+    },
+    {
+      "id": 7,
+      "text": "To Present a Proposal for Developing",
+      "level": 1,
+      "page": 1,
+      "bbox": {
+        "x0": 131.8,
+        "y0": 248.4,
+        "x1": 482.06,
+        "y1": 275.18,
+        "width": 350.26,
+        "height": 26.78
+      },
+      "font_info": {
+        "size": 24.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {}
+    },
+    {
+      "id": 8,
+      "text": "the Business Plan for the Ontario",
+      "level": 2,
+      "page": 1,
+      "bbox": {
+        "x0": 131.8,
+        "y0": 276.0,
+        "x1": 440.57,
+        "y1": 302.78,
+        "width": 308.77,
+        "height": 26.78
+      },
+      "font_info": {
+        "size": 24.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {}
+    },
+    {
+      "id": 9,
+      "text": "Digital Library",
+      "level": 2,
+      "page": 1,
+      "bbox": {
+        "x0": 131.8,
+        "y0": 303.6,
+        "x1": 262.15,
+        "y1": 330.38,
+        "width": 130.35,
+        "height": 26.78
+      },
+      "font_info": {
+        "size": 24.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 10,
+      "text": "March 21, 2003",
+      "level": 3,
+      "page": 1,
+      "bbox": {
+        "x0": 238.24,
+        "y0": 342.46,
+        "x1": 379.39,
+        "y1": 364.83,
+        "width": 141.15,
+        "height": 22.36
+      },
+      "font_info": {
+        "size": 20.040000915527344,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.8,
+      "features": {}
+    },
+    {
+      "id": 11,
+      "text": "learners and effective contributors towards Ontario’s prosperity.",
+      "level": 2,
+      "page": 1,
+      "bbox": {
+        "x0": 91.67,
+        "y0": 722.11,
+        "x1": 389.49,
+        "y1": 735.99,
+        "width": 297.82,
+        "height": 13.87
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.4,
+      "features": {}
+    },
+    {
+      "id": 12,
+      "text": "Ontario’s Digital Library",
+      "level": 1,
+      "page": 2,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 88.6,
+        "x1": 320.05,
+        "y1": 116.83,
+        "width": 230.0,
+        "height": 28.24
+      },
+      "font_info": {
+        "size": 20.040000915527344,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.75,
+      "features": {}
+    },
+    {
+      "id": 13,
+      "text": "A Critical Component for Implementing Ontario’s Road Map to",
+      "level": 1,
+      "page": 2,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 120.32,
+        "x1": 484.94,
+        "y1": 138.13,
+        "width": 394.9,
+        "height": 17.81
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 14,
+      "text": "Prosperity Strategy",
+      "level": 1,
+      "page": 2,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 138.67,
+        "x1": 214.5,
+        "y1": 156.48,
+        "width": 124.45,
+        "height": 17.81
+      },
+      "font_info": {
+        "size": 15.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.9,
+      "features": {}
+    },
+    {
+      "id": 15,
+      "text": "Summary",
+      "level": 0,
+      "page": 2,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 195.72,
+        "x1": 158.74,
+        "y1": 212.63,
+        "width": 62.7,
+        "height": 16.91
+      },
+      "font_info": {
+        "size": 12.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.9,
+      "features": {
+        "semantic": {
+          "group": "summary",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 16,
+      "text": "developed is to document and clearly communicate:",
+      "level": 1,
+      "page": 2,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 279.2,
+        "x1": 339.9,
+        "y1": 291.52,
+        "width": 243.86,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {}
+    },
+    {
+      "id": 17,
+      "text": "the financial plan for the implementation",
+      "level": 2,
+      "page": 2,
+      "bbox": {
+        "x0": 132.04,
+        "y0": 316.51,
+        "x1": 319.41,
+        "y1": 328.83,
+        "width": 187.36,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {
+        "semantic": {
+          "group": "implementation",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 18,
+      "text": "revenues, etc.",
+      "level": 3,
+      "page": 2,
+      "bbox": {
+        "x0": 132.64,
+        "y0": 341.83,
+        "x1": 201.37,
+        "y1": 354.15,
+        "width": 68.73,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 19,
+      "text": "implementation and operational stages",
+      "level": 2,
+      "page": 2,
+      "bbox": {
+        "x0": 132.64,
+        "y0": 405.05,
+        "x1": 315.57,
+        "y1": 417.37,
+        "width": 182.93,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {
+        "semantic": {
+          "group": "implementation",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 20,
+      "text": "the marketing and communications plan for the ODL",
+      "level": 3,
+      "page": 2,
+      "bbox": {
+        "x0": 132.04,
+        "y0": 417.65,
+        "x1": 377.37,
+        "y1": 429.97,
+        "width": 245.33,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {}
+    },
+    {
+      "id": 21,
+      "text": "later than September 30, 2003",
+      "level": 4,
+      "page": 2,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 455.57,
+        "x1": 240.45,
+        "y1": 467.89,
+        "width": 144.41,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 22,
+      "text": "Timeline:",
+      "level": 5,
+      "page": 2,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 480.29,
+        "x1": 141.52,
+        "y1": 492.61,
+        "width": 45.47,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.9,
+      "features": {}
+    },
+    {
+      "id": 23,
+      "text": "April 21, 2003.",
+      "level": 2,
+      "page": 2,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 580.17,
+        "x1": 169.34,
+        "y1": 592.49,
+        "width": 73.3,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.95,
+      "features": {}
+    },
+    {
+      "id": 24,
+      "text": "committee .",
+      "level": 3,
+      "page": 2,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 642.8,
+        "x1": 150.65,
+        "y1": 655.12,
+        "width": 54.61,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 25,
+      "text": "commence as soon as possible thereafter.",
+      "level": 4,
+      "page": 2,
+      "bbox": {
+        "x0": 96.05,
+        "y0": 680.11,
+        "x1": 295.83,
+        "y1": 692.43,
+        "width": 199.78,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {}
+    },
+    {
+      "id": 26,
+      "text": "March 2003",
+      "level": 5,
+      "page": 2,
+      "bbox": {
+        "x0": 296.71,
+        "y0": 734.04,
+        "x1": 340.93,
+        "y1": 742.48,
+        "width": 44.23,
+        "height": 8.44
+      },
+      "font_info": {
+        "size": 7.559999942779541,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 27,
+      "text": "seek further response to these Terms of Reference.",
+      "level": 1,
+      "page": 3,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 84.81,
+        "x1": 338.43,
+        "y1": 97.13,
+        "width": 242.39,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 28,
+      "text": "information or question responses.",
+      "level": 2,
+      "page": 3,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 172.77,
+        "x1": 259.27,
+        "y1": 185.09,
+        "width": 163.23,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.8,
+      "features": {}
+    },
+    {
+      "id": 29,
+      "text": "Background",
+      "level": 1,
+      "page": 3,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 206.16,
+        "x1": 174.09,
+        "y1": 223.07,
+        "width": 78.04,
+        "height": 16.91
+      },
+      "font_info": {
+        "size": 12.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.9,
+      "features": {
+        "semantic": {
+          "group": "background",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 30,
+      "text": "skills and resources at work or at home.",
+      "level": 1,
+      "page": 3,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 364.86,
+        "x1": 276.89,
+        "y1": 377.18,
+        "width": 186.85,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {}
+    },
+    {
+      "id": 31,
+      "text": "content infrastructure needed to support a knowledge society.",
+      "level": 1,
+      "page": 3,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 465.4,
+        "x1": 377.93,
+        "y1": 477.73,
+        "width": 287.89,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {}
+    },
+    {
+      "id": 32,
+      "text": "rooms.",
+      "level": 2,
+      "page": 3,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 616.59,
+        "x1": 125.33,
+        "y1": 628.91,
+        "width": 35.29,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 33,
+      "text": "Equitable access for all Ontarians:",
+      "level": 1,
+      "page": 4,
+      "bbox": {
+        "x0": 90.03,
+        "y0": 349.04,
+        "x1": 264.72,
+        "y1": 361.36,
+        "width": 174.68,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 34,
+      "text": "Ontario citizens",
+      "level": 2,
+      "page": 4,
+      "bbox": {
+        "x0": 108.03,
+        "y0": 386.35,
+        "x1": 183.01,
+        "y1": 398.67,
+        "width": 74.98,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 35,
+      "text": "services for library clients.",
+      "level": 2,
+      "page": 4,
+      "bbox": {
+        "x0": 108.03,
+        "y0": 423.67,
+        "x1": 230.33,
+        "y1": 435.99,
+        "width": 122.3,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 36,
+      "text": "Shared decision-making and accountability:",
+      "level": 1,
+      "page": 4,
+      "bbox": {
+        "x0": 90.03,
+        "y0": 448.26,
+        "x1": 313.1,
+        "y1": 460.58,
+        "width": 223.06,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 37,
+      "text": "licenses and services",
+      "level": 2,
+      "page": 4,
+      "bbox": {
+        "x0": 108.03,
+        "y0": 485.58,
+        "x1": 210.46,
+        "y1": 497.9,
+        "width": 102.43,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 38,
+      "text": "communities and institutions.",
+      "level": 2,
+      "page": 4,
+      "bbox": {
+        "x0": 108.03,
+        "y0": 522.89,
+        "x1": 245.16,
+        "y1": 535.22,
+        "width": 137.13,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 39,
+      "text": "Shared governance structure:",
+      "level": 1,
+      "page": 4,
+      "bbox": {
+        "x0": 90.03,
+        "y0": 547.49,
+        "x1": 242.68,
+        "y1": 559.81,
+        "width": 152.64,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 40,
+      "text": "Shared funding:",
+      "level": 1,
+      "page": 4,
+      "bbox": {
+        "x0": 90.03,
+        "y0": 621.4,
+        "x1": 173.77,
+        "y1": 633.73,
+        "width": 83.74,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 41,
+      "text": "Local points of entry:",
+      "level": 1,
+      "page": 5,
+      "bbox": {
+        "x0": 90.0,
+        "y0": 72.11,
+        "x1": 199.46,
+        "y1": 84.43,
+        "width": 109.46,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 42,
+      "text": "providing the underpinning, not overshadowing.",
+      "level": 2,
+      "page": 5,
+      "bbox": {
+        "x0": 114.0,
+        "y0": 122.75,
+        "x1": 336.69,
+        "y1": 135.07,
+        "width": 222.69,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 43,
+      "text": "Services envisioned for the ODL’s include:",
+      "level": 2,
+      "page": 5,
+      "bbox": {
+        "x0": 90.0,
+        "y0": 147.95,
+        "x1": 289.3,
+        "y1": 160.27,
+        "width": 199.3,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.85,
+      "features": {}
+    },
+    {
+      "id": 44,
+      "text": "Access:",
+      "level": 2,
+      "page": 5,
+      "bbox": {
+        "x0": 90.0,
+        "y0": 173.28,
+        "x1": 135.24,
+        "y1": 185.6,
+        "width": 45.24,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 45,
+      "text": "to credible web sites and electronic resources",
+      "level": 3,
+      "page": 5,
+      "bbox": {
+        "x0": 107.99,
+        "y0": 198.59,
+        "x1": 333.8,
+        "y1": 210.92,
+        "width": 225.81,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {}
+    },
+    {
+      "id": 46,
+      "text": "to digital government information",
+      "level": 4,
+      "page": 5,
+      "bbox": {
+        "x0": 107.99,
+        "y0": 211.19,
+        "x1": 270.72,
+        "y1": 223.51,
+        "width": 162.73,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 47,
+      "text": "to local digital collections",
+      "level": 4,
+      "page": 5,
+      "bbox": {
+        "x0": 107.99,
+        "y0": 223.91,
+        "x1": 232.21,
+        "y1": 236.23,
+        "width": 124.21,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 48,
+      "text": "Guidance and Advice:",
+      "level": 2,
+      "page": 5,
+      "bbox": {
+        "x0": 90.0,
+        "y0": 249.24,
+        "x1": 208.71,
+        "y1": 261.56,
+        "width": 118.71,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.95,
+      "features": {}
+    },
+    {
+      "id": 49,
+      "text": "to support e-learning",
+      "level": 3,
+      "page": 5,
+      "bbox": {
+        "x0": 107.99,
+        "y0": 261.83,
+        "x1": 211.98,
+        "y1": 274.15,
+        "width": 103.98,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 50,
+      "text": "to assist citizens as they use web-links",
+      "level": 4,
+      "page": 5,
+      "bbox": {
+        "x0": 107.99,
+        "y0": 287.15,
+        "x1": 299.41,
+        "y1": 299.47,
+        "width": 191.42,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {}
+    },
+    {
+      "id": 51,
+      "text": "Training:",
+      "level": 2,
+      "page": 5,
+      "bbox": {
+        "x0": 90.0,
+        "y0": 299.74,
+        "x1": 140.16,
+        "y1": 312.06,
+        "width": 50.16,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 52,
+      "text": "for library workers",
+      "level": 3,
+      "page": 5,
+      "bbox": {
+        "x0": 107.99,
+        "y0": 312.46,
+        "x1": 198.55,
+        "y1": 324.78,
+        "width": 90.55,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 53,
+      "text": "for the general public",
+      "level": 4,
+      "page": 5,
+      "bbox": {
+        "x0": 107.99,
+        "y0": 325.06,
+        "x1": 213.9,
+        "y1": 337.38,
+        "width": 105.9,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 54,
+      "text": "Provincial Purchasing & Licensing:",
+      "level": 2,
+      "page": 5,
+      "bbox": {
+        "x0": 90.0,
+        "y0": 350.38,
+        "x1": 277.63,
+        "y1": 362.7,
+        "width": 187.63,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 55,
+      "text": "Technological Support:",
+      "level": 2,
+      "page": 5,
+      "bbox": {
+        "x0": 90.0,
+        "y0": 388.31,
+        "x1": 215.88,
+        "y1": 400.63,
+        "width": 125.88,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 56,
+      "text": "library web sites",
+      "level": 3,
+      "page": 5,
+      "bbox": {
+        "x0": 107.99,
+        "y0": 426.22,
+        "x1": 189.9,
+        "y1": 438.54,
+        "width": 81.9,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 57,
+      "text": "What could the ODL really mean?",
+      "level": 3,
+      "page": 5,
+      "bbox": {
+        "x0": 90.0,
+        "y0": 466.18,
+        "x1": 270.23,
+        "y1": 481.74,
+        "width": 180.23,
+        "height": 15.56
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {}
+    },
+    {
+      "id": 58,
+      "text": "For each Ontario citizen it could mean:",
+      "level": 1,
+      "page": 5,
+      "bbox": {
+        "x0": 90.0,
+        "y0": 493.77,
+        "x1": 286.32,
+        "y1": 506.09,
+        "width": 196.32,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.9,
+      "features": {}
+    },
+    {
+      "id": 59,
+      "text": "resources for their personal, educational and professional needs;",
+      "level": 2,
+      "page": 5,
+      "bbox": {
+        "x0": 162.0,
+        "y0": 519.21,
+        "x1": 464.95,
+        "y1": 531.53,
+        "width": 302.94,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {}
+    },
+    {
+      "id": 60,
+      "text": "community, school, or academic library;",
+      "level": 3,
+      "page": 5,
+      "bbox": {
+        "x0": 162.0,
+        "y0": 544.52,
+        "x1": 348.55,
+        "y1": 556.84,
+        "width": 186.54,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 61,
+      "text": "perspectives;",
+      "level": 4,
+      "page": 5,
+      "bbox": {
+        "x0": 162.0,
+        "y0": 582.43,
+        "x1": 226.68,
+        "y1": 594.75,
+        "width": 64.68,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 62,
+      "text": "experience",
+      "level": 5,
+      "page": 5,
+      "bbox": {
+        "x0": 162.0,
+        "y0": 607.75,
+        "x1": 216.43,
+        "y1": 620.07,
+        "width": 54.43,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 63,
+      "text": "For each Ontario student it could mean:",
+      "level": 2,
+      "page": 5,
+      "bbox": {
+        "x0": 90.0,
+        "y0": 632.22,
+        "x1": 291.73,
+        "y1": 644.54,
+        "width": 201.73,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.9,
+      "features": {}
+    },
+    {
+      "id": 64,
+      "text": "resources and services",
+      "level": 3,
+      "page": 5,
+      "bbox": {
+        "x0": 162.0,
+        "y0": 657.66,
+        "x1": 272.82,
+        "y1": 669.98,
+        "width": 110.82,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 65,
+      "text": "elementary, secondary or post-secondary levels",
+      "level": 4,
+      "page": 5,
+      "bbox": {
+        "x0": 162.0,
+        "y0": 682.97,
+        "x1": 387.09,
+        "y1": 695.3,
+        "width": 225.09,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 66,
+      "text": "For each Ontario library it could mean:",
+      "level": 2,
+      "page": 6,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 110.01,
+        "x1": 285.73,
+        "y1": 122.33,
+        "width": 195.69,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 67,
+      "text": "and services",
+      "level": 3,
+      "page": 6,
+      "bbox": {
+        "x0": 162.04,
+        "y0": 148.04,
+        "x1": 223.91,
+        "y1": 160.36,
+        "width": 61.87,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 68,
+      "text": "expertise",
+      "level": 4,
+      "page": 6,
+      "bbox": {
+        "x0": 162.04,
+        "y0": 173.36,
+        "x1": 207.58,
+        "y1": 185.68,
+        "width": 45.54,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 69,
+      "text": "For the Ontario government it could mean:",
+      "level": 1,
+      "page": 6,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 223.88,
+        "x1": 305.87,
+        "y1": 236.2,
+        "width": 215.84,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 70,
+      "text": "(supports Ontario’s lifelong learning strategy)",
+      "level": 2,
+      "page": 6,
+      "bbox": {
+        "x0": 162.04,
+        "y0": 299.82,
+        "x1": 372.28,
+        "y1": 312.14,
+        "width": 210.24,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 71,
+      "text": "knowledge supports and tools",
+      "level": 3,
+      "page": 6,
+      "bbox": {
+        "x0": 162.04,
+        "y0": 337.85,
+        "x1": 303.73,
+        "y1": 350.17,
+        "width": 141.69,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 72,
+      "text": "ODL can be found in the appendixes.",
+      "level": 1,
+      "page": 6,
+      "bbox": {
+        "x0": 90.05,
+        "y0": 425.69,
+        "x1": 265.93,
+        "y1": 438.01,
+        "width": 175.88,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {
+        "semantic": {
+          "group": "appendix",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 73,
+      "text": "The Business Plan to be Developed",
+      "level": 2,
+      "page": 6,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 459.12,
+        "x1": 314.09,
+        "y1": 476.03,
+        "width": 218.05,
+        "height": 16.91
+      },
+      "font_info": {
+        "size": 12.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {}
+    },
+    {
+      "id": 74,
+      "text": "2007. The planning process must also secure the full commitment of all stakeholders, as",
+      "level": 1,
+      "page": 6,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 541.52,
+        "x1": 504.08,
+        "y1": 553.84,
+        "width": 414.03,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.5,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 75,
+      "text": "represented on the Steering Committee.",
+      "level": 2,
+      "page": 6,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 554.12,
+        "x1": 279.19,
+        "y1": 566.44,
+        "width": 189.15,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 76,
+      "text": "Specifically, the business plan must include:",
+      "level": 3,
+      "page": 6,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 578.24,
+        "x1": 296.42,
+        "y1": 590.56,
+        "width": 206.38,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.75,
+      "features": {}
+    },
+    {
+      "id": 77,
+      "text": "the commitment of all stakeholders to their responsibilities",
+      "level": 1,
+      "page": 7,
+      "bbox": {
+        "x0": 132.04,
+        "y0": 84.81,
+        "x1": 401.88,
+        "y1": 97.13,
+        "width": 269.84,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 78,
+      "text": "indicate how this consultative process will be approached.",
+      "level": 2,
+      "page": 7,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 135.45,
+        "x1": 360.55,
+        "y1": 147.77,
+        "width": 270.5,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {
+        "semantic": {
+          "group": "approach",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 79,
+      "text": "Milestones",
+      "level": 3,
+      "page": 7,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 270.12,
+        "x1": 166.5,
+        "y1": 287.03,
+        "width": 70.46,
+        "height": 16.91
+      },
+      "font_info": {
+        "size": 12.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.8,
+      "features": {}
+    },
+    {
+      "id": 80,
+      "text": "for responses to be evaluated.",
+      "level": 4,
+      "page": 7,
+      "bbox": {
+        "x0": 126.04,
+        "y0": 352.88,
+        "x1": 269.5,
+        "y1": 365.2,
+        "width": 143.47,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 81,
+      "text": "no later than September 30, 2003.",
+      "level": 5,
+      "page": 7,
+      "bbox": {
+        "x0": 126.04,
+        "y0": 390.2,
+        "x1": 287.91,
+        "y1": 402.52,
+        "width": 161.87,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {}
+    },
+    {
+      "id": 82,
+      "text": "Approach and Specific Proposal Requirements",
+      "level": 2,
+      "page": 7,
+      "bbox": {
+        "x0": 99.52,
+        "y0": 423.6,
+        "x1": 387.17,
+        "y1": 440.51,
+        "width": 287.64,
+        "height": 16.91
+      },
+      "font_info": {
+        "size": 12.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {
+        "semantic": {
+          "group": "approach",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 83,
+      "text": "electronic resource publishers/vendors.",
+      "level": 1,
+      "page": 7,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 507.08,
+        "x1": 274.65,
+        "y1": 519.4,
+        "width": 184.61,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 84,
+      "text": "The proposal should include the following information:",
+      "level": 1,
+      "page": 7,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 531.8,
+        "x1": 341.97,
+        "y1": 544.12,
+        "width": 251.93,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.75,
+      "features": {}
+    },
+    {
+      "id": 85,
+      "text": "a) name of the firm/consultant",
+      "level": 2,
+      "page": 7,
+      "bbox": {
+        "x0": 108.04,
+        "y0": 556.39,
+        "x1": 249.22,
+        "y1": 568.71,
+        "width": 141.19,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 86,
+      "text": "responsibilities on this project and relevant experience/qualifications",
+      "level": 3,
+      "page": 7,
+      "bbox": {
+        "x0": 108.04,
+        "y0": 581.71,
+        "x1": 424.26,
+        "y1": 594.03,
+        "width": 316.22,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {}
+    },
+    {
+      "id": 87,
+      "text": "planning and building stakeholder commitment",
+      "level": 4,
+      "page": 7,
+      "bbox": {
+        "x0": 108.04,
+        "y0": 607.02,
+        "x1": 327.01,
+        "y1": 619.34,
+        "width": 218.97,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 88,
+      "text": "including a timeline",
+      "level": 5,
+      "page": 7,
+      "bbox": {
+        "x0": 108.04,
+        "y0": 644.93,
+        "x1": 199.81,
+        "y1": 657.25,
+        "width": 91.78,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 89,
+      "text": "structure",
+      "level": 5,
+      "page": 7,
+      "bbox": {
+        "x0": 108.04,
+        "y0": 670.25,
+        "x1": 151.76,
+        "y1": 682.57,
+        "width": 43.72,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 90,
+      "text": "Evaluation and Awarding of Contract",
+      "level": 1,
+      "page": 8,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 81.0,
+        "x1": 324.98,
+        "y1": 97.91,
+        "width": 228.94,
+        "height": 16.91
+      },
+      "font_info": {
+        "size": 12.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.85,
+      "features": {}
+    },
+    {
+      "id": 91,
+      "text": "Demonstrated experience",
+      "level": 2,
+      "page": 8,
+      "bbox": {
+        "x0": 126.04,
+        "y0": 222.92,
+        "x1": 243.67,
+        "y1": 235.24,
+        "width": 117.63,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 92,
+      "text": "Cost, including expenses",
+      "level": 3,
+      "page": 8,
+      "bbox": {
+        "x0": 126.04,
+        "y0": 235.51,
+        "x1": 239.44,
+        "y1": 247.83,
+        "width": 113.39,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 93,
+      "text": "Timeline and projected completion date",
+      "level": 3,
+      "page": 8,
+      "bbox": {
+        "x0": 126.04,
+        "y0": 248.11,
+        "x1": 301.79,
+        "y1": 260.43,
+        "width": 175.74,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 94,
+      "text": "(mridley@uoguelph.ca).",
+      "level": 1,
+      "page": 8,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 299.35,
+        "x1": 199.08,
+        "y1": 311.67,
+        "width": 109.04,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 95,
+      "text": "Committee.",
+      "level": 1,
+      "page": 8,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 337.26,
+        "x1": 144.34,
+        "y1": 349.58,
+        "width": 54.3,
+        "height": 12.32
+      },
+      "font_info": {
+        "size": 11.039999961853027,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.8,
+      "features": {}
+    },
+    {
+      "id": 96,
+      "text": "Appendix A:  ODL Envisioned Phases & Funding",
+      "level": 1,
+      "page": 9,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 107.52,
+        "x1": 383.56,
+        "y1": 124.43,
+        "width": 293.52,
+        "height": 16.91
+      },
+      "font_info": {
+        "size": 12.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.8,
+      "features": {
+        "semantic": {
+          "group": "appendix",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 97,
+      "text": "Phase I:  Business Planning",
+      "level": 2,
+      "page": 9,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 139.79,
+        "x1": 219.39,
+        "y1": 150.9,
+        "width": 129.35,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {}
+    },
+    {
+      "id": 98,
+      "text": "Timeline: March 2003 – September 2003",
+      "level": 2,
+      "page": 9,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 162.82,
+        "x1": 268.01,
+        "y1": 173.94,
+        "width": 177.97,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 99,
+      "text": "Result: The ODL business plan",
+      "level": 3,
+      "page": 9,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 197.27,
+        "x1": 226.6,
+        "y1": 208.38,
+        "width": 136.56,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {}
+    },
+    {
+      "id": 100,
+      "text": "communication components so critical in a consultative process.",
+      "level": 2,
+      "page": 9,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 300.96,
+        "x1": 361.23,
+        "y1": 312.07,
+        "width": 271.19,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.5,
+      "features": {}
+    },
+    {
+      "id": 101,
+      "text": "Phase II: Implementing and Transitioning",
+      "level": 2,
+      "page": 9,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 335.28,
+        "x1": 278.52,
+        "y1": 346.4,
+        "width": 188.48,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.8,
+      "features": {}
+    },
+    {
+      "id": 102,
+      "text": "Timeline: April 2004 – December 2006",
+      "level": 2,
+      "page": 9,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 358.32,
+        "x1": 257.68,
+        "y1": 369.43,
+        "width": 167.64,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.5,
+      "features": {}
+    },
+    {
+      "id": 103,
+      "text": "stakeholders and other interested parties.",
+      "level": 2,
+      "page": 9,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 392.77,
+        "x1": 266.22,
+        "y1": 403.89,
+        "width": 176.18,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 104,
+      "text": "Result: The ODL is implemented and validated",
+      "level": 2,
+      "page": 9,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 415.81,
+        "x1": 291.26,
+        "y1": 426.92,
+        "width": 201.21,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.5,
+      "features": {}
+    },
+    {
+      "id": 105,
+      "text": "Phase III: Operating and Growing the ODL",
+      "level": 1,
+      "page": 9,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 611.32,
+        "x1": 282.46,
+        "y1": 622.44,
+        "width": 192.42,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.75,
+      "features": {}
+    },
+    {
+      "id": 106,
+      "text": "Timeline: January 2007 -",
+      "level": 1,
+      "page": 9,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 634.36,
+        "x1": 197.63,
+        "y1": 645.47,
+        "width": 107.59,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {}
+    },
+    {
+      "id": 107,
+      "text": "Result: The ODL is fully operational and sustainable",
+      "level": 1,
+      "page": 9,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 668.8,
+        "x1": 312.53,
+        "y1": 679.92,
+        "width": 222.49,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.5,
+      "features": {}
+    },
+    {
+      "id": 108,
+      "text": "to enhance the ODL.",
+      "level": 1,
+      "page": 10,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 83.75,
+        "x1": 180.27,
+        "y1": 94.87,
+        "width": 90.23,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 109,
+      "text": "(university, colleges, public libraries and schools).",
+      "level": 2,
+      "page": 10,
+      "bbox": {
+        "x0": 90.05,
+        "y0": 152.76,
+        "x1": 298.99,
+        "y1": 163.88,
+        "width": 208.94,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.5,
+      "features": {}
+    },
+    {
+      "id": 110,
+      "text": "during the same period",
+      "level": 3,
+      "page": 10,
+      "bbox": {
+        "x0": 126.05,
+        "y0": 291.74,
+        "x1": 225.55,
+        "y1": 302.86,
+        "width": 99.5,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {}
+    },
+    {
+      "id": 111,
+      "text": "OVERVIEW OF ODL FUNDING MODEL",
+      "level": 2,
+      "page": 10,
+      "bbox": {
+        "x0": 245.81,
+        "y0": 320.67,
+        "x1": 423.01,
+        "y1": 331.78,
+        "width": 177.21,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.8,
+      "features": {
+        "semantic": {
+          "group": "overview",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 112,
+      "text": "Funding Source",
+      "level": 3,
+      "page": 10,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 344.1,
+        "x1": 205.68,
+        "y1": 357.49,
+        "width": 91.28,
+        "height": 13.39
+      },
+      "font_info": {
+        "size": 12.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.85,
+      "features": {}
+    },
+    {
+      "id": 113,
+      "text": "$35M (70%)",
+      "level": 4,
+      "page": 10,
+      "bbox": {
+        "x0": 300.44,
+        "y0": 358.43,
+        "x1": 354.97,
+        "y1": 369.54,
+        "width": 54.53,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.53,
+      "features": {}
+    },
+    {
+      "id": 114,
+      "text": "$33.75M (45%)",
+      "level": 5,
+      "page": 10,
+      "bbox": {
+        "x0": 408.06,
+        "y0": 358.43,
+        "x1": 475.78,
+        "y1": 369.54,
+        "width": 67.72,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.53,
+      "features": {}
+    },
+    {
+      "id": 115,
+      "text": "Government",
+      "level": 4,
+      "page": 10,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 358.43,
+        "x1": 169.78,
+        "y1": 369.54,
+        "width": 55.38,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 116,
+      "text": "$10M (20%)",
+      "level": 5,
+      "page": 10,
+      "bbox": {
+        "x0": 300.47,
+        "y0": 370.43,
+        "x1": 354.98,
+        "y1": 381.54,
+        "width": 54.51,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.53,
+      "features": {}
+    },
+    {
+      "id": 117,
+      "text": "$22.5M (30%)",
+      "level": 5,
+      "page": 10,
+      "bbox": {
+        "x0": 410.72,
+        "y0": 370.43,
+        "x1": 473.14,
+        "y1": 381.54,
+        "width": 62.42,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.53,
+      "features": {}
+    },
+    {
+      "id": 118,
+      "text": "Libraries",
+      "level": 5,
+      "page": 10,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 370.43,
+        "x1": 153.16,
+        "y1": 381.54,
+        "width": 38.76,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 119,
+      "text": "$4.5M (9%)",
+      "level": 5,
+      "page": 10,
+      "bbox": {
+        "x0": 301.78,
+        "y0": 382.43,
+        "x1": 353.55,
+        "y1": 393.55,
+        "width": 51.78,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.53,
+      "features": {}
+    },
+    {
+      "id": 120,
+      "text": "$15M (20%)",
+      "level": 5,
+      "page": 10,
+      "bbox": {
+        "x0": 414.68,
+        "y0": 382.43,
+        "x1": 469.24,
+        "y1": 393.55,
+        "width": 54.55,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.53,
+      "features": {}
+    },
+    {
+      "id": 121,
+      "text": "Endowment",
+      "level": 5,
+      "page": 10,
+      "bbox": {
+        "x0": 114.41,
+        "y0": 382.43,
+        "x1": 167.75,
+        "y1": 393.55,
+        "width": 53.34,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 122,
+      "text": "$0.5M (1%)",
+      "level": 5,
+      "page": 10,
+      "bbox": {
+        "x0": 301.8,
+        "y0": 394.43,
+        "x1": 353.59,
+        "y1": 405.55,
+        "width": 51.79,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.53,
+      "features": {}
+    },
+    {
+      "id": 123,
+      "text": "$3.75M (5%)",
+      "level": 5,
+      "page": 10,
+      "bbox": {
+        "x0": 413.39,
+        "y0": 394.43,
+        "x1": 470.58,
+        "y1": 405.55,
+        "width": 57.19,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.53,
+      "features": {}
+    },
+    {
+      "id": 124,
+      "text": "Gifts/In-Kind",
+      "level": 5,
+      "page": 10,
+      "bbox": {
+        "x0": 114.41,
+        "y0": 394.43,
+        "x1": 168.96,
+        "y1": 405.55,
+        "width": 54.55,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 125,
+      "text": "TOTAL ANNUAL",
+      "level": 5,
+      "page": 10,
+      "bbox": {
+        "x0": 114.41,
+        "y0": 406.31,
+        "x1": 195.06,
+        "y1": 417.43,
+        "width": 80.65,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.68,
+      "features": {}
+    },
+    {
+      "id": 126,
+      "text": "represent an investment of $5.00 per citizen.",
+      "level": 2,
+      "page": 10,
+      "bbox": {
+        "x0": 90.05,
+        "y0": 545.06,
+        "x1": 292.15,
+        "y1": 556.17,
+        "width": 202.1,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {}
+    },
+    {
+      "id": 127,
+      "text": "Appendix B:",
+      "level": 1,
+      "page": 11,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 92.52,
+        "x1": 173.53,
+        "y1": 109.43,
+        "width": 77.49,
+        "height": 16.91
+      },
+      "font_info": {
+        "size": 12.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.85,
+      "features": {
+        "semantic": {
+          "group": "appendix",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 128,
+      "text": "ODL Steering Committee Terms of Reference",
+      "level": 2,
+      "page": 11,
+      "bbox": {
+        "x0": 198.02,
+        "y0": 92.52,
+        "x1": 477.87,
+        "y1": 109.43,
+        "width": 279.85,
+        "height": 16.91
+      },
+      "font_info": {
+        "size": 12.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.7,
+      "features": {}
+    },
+    {
+      "id": 129,
+      "text": "1. Preamble",
+      "level": 1,
+      "page": 11,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 136.79,
+        "x1": 146.07,
+        "y1": 147.9,
+        "width": 56.03,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 1.0,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 130,
+      "text": "2. Terms of Reference",
+      "level": 1,
+      "page": 11,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 217.31,
+        "x1": 191.93,
+        "y1": 228.43,
+        "width": 101.89,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.9,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 131,
+      "text": "responsibilities include:",
+      "level": 2,
+      "page": 11,
+      "bbox": {
+        "x0": 95.8,
+        "y0": 263.4,
+        "x1": 195.01,
+        "y1": 274.51,
+        "width": 99.21,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {}
+    },
+    {
+      "id": 132,
+      "text": "staffing, and evaluation;",
+      "level": 3,
+      "page": 11,
+      "bbox": {
+        "x0": 131.79,
+        "y0": 309.36,
+        "x1": 233.81,
+        "y1": 320.48,
+        "width": 102.01,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 133,
+      "text": "making;",
+      "level": 4,
+      "page": 11,
+      "bbox": {
+        "x0": 131.79,
+        "y0": 343.93,
+        "x1": 167.92,
+        "y1": 355.05,
+        "width": 36.12,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 134,
+      "text": "2.3 recruiting and managing the business planner(s);",
+      "level": 2,
+      "page": 11,
+      "bbox": {
+        "x0": 95.8,
+        "y0": 355.46,
+        "x1": 319.11,
+        "y1": 366.57,
+        "width": 223.32,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.4,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 135,
+      "text": "expenditures;",
+      "level": 3,
+      "page": 11,
+      "bbox": {
+        "x0": 131.79,
+        "y0": 378.39,
+        "x1": 191.29,
+        "y1": 389.5,
+        "width": 59.5,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 136,
+      "text": "of the business plan;",
+      "level": 4,
+      "page": 11,
+      "bbox": {
+        "x0": 131.79,
+        "y0": 424.48,
+        "x1": 220.99,
+        "y1": 435.6,
+        "width": 89.19,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 137,
+      "text": "2.8 presenting the business plan to funders",
+      "level": 2,
+      "page": 11,
+      "bbox": {
+        "x0": 95.8,
+        "y0": 435.88,
+        "x1": 278.98,
+        "y1": 447.0,
+        "width": 183.18,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.4,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 138,
+      "text": "and education communities.",
+      "level": 3,
+      "page": 11,
+      "bbox": {
+        "x0": 131.79,
+        "y0": 458.93,
+        "x1": 252.49,
+        "y1": 470.05,
+        "width": 120.7,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 139,
+      "text": "3. Membership",
+      "level": 1,
+      "page": 11,
+      "bbox": {
+        "x0": 90.03,
+        "y0": 481.85,
+        "x1": 159.62,
+        "y1": 492.97,
+        "width": 69.59,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.9,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 140,
+      "text": "representatives to the steering committee",
+      "level": 2,
+      "page": 11,
+      "bbox": {
+        "x0": 95.79,
+        "y0": 516.41,
+        "x1": 271.65,
+        "y1": 527.53,
+        "width": 175.86,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 141,
+      "text": "3.1 Schools:",
+      "level": 2,
+      "page": 11,
+      "bbox": {
+        "x0": 95.79,
+        "y0": 539.45,
+        "x1": 150.51,
+        "y1": 550.56,
+        "width": 54.72,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 142,
+      "text": "3.2 Universities:",
+      "level": 1,
+      "page": 11,
+      "bbox": {
+        "x0": 95.79,
+        "y0": 585.42,
+        "x1": 165.38,
+        "y1": 596.54,
+        "width": 69.59,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 143,
+      "text": "3.3 Colleges:",
+      "level": 2,
+      "page": 11,
+      "bbox": {
+        "x0": 95.79,
+        "y0": 608.47,
+        "x1": 153.62,
+        "y1": 619.59,
+        "width": 57.83,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 144,
+      "text": "3.4 Public libraries:",
+      "level": 2,
+      "page": 11,
+      "bbox": {
+        "x0": 95.78,
+        "y0": 631.4,
+        "x1": 177.75,
+        "y1": 642.51,
+        "width": 81.97,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 145,
+      "text": "4. Appointment Criteria and Process",
+      "level": 1,
+      "page": 12,
+      "bbox": {
+        "x0": 90.07,
+        "y0": 164.19,
+        "x1": 264.4,
+        "y1": 175.3,
+        "width": 174.33,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.9,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 146,
+      "text": "representatives to the Steering Committee.",
+      "level": 2,
+      "page": 12,
+      "bbox": {
+        "x0": 131.83,
+        "y0": 199.83,
+        "x1": 314.24,
+        "y1": 210.95,
+        "width": 182.4,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {}
+    },
+    {
+      "id": 147,
+      "text": "Desired characteristics for steering committee appointees include:",
+      "level": 3,
+      "page": 12,
+      "bbox": {
+        "x0": 126.07,
+        "y0": 223.84,
+        "x1": 404.11,
+        "y1": 234.95,
+        "width": 278.04,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {}
+    },
+    {
+      "id": 148,
+      "text": "Strategic thinkers;",
+      "level": 4,
+      "page": 12,
+      "bbox": {
+        "x0": 126.08,
+        "y0": 247.96,
+        "x1": 204.25,
+        "y1": 259.08,
+        "width": 78.17,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.35,
+      "features": {}
+    },
+    {
+      "id": 149,
+      "text": "Committed to the concept of multi-sector partnerships;",
+      "level": 5,
+      "page": 12,
+      "bbox": {
+        "x0": 126.08,
+        "y0": 260.2,
+        "x1": 355.53,
+        "y1": 271.32,
+        "width": 229.45,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.3,
+      "features": {}
+    },
+    {
+      "id": 150,
+      "text": "Knowledgeable about digital libraries and resources;",
+      "level": 5,
+      "page": 12,
+      "bbox": {
+        "x0": 126.08,
+        "y0": 272.32,
+        "x1": 347.59,
+        "y1": 283.44,
+        "width": 221.51,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.3,
+      "features": {}
+    },
+    {
+      "id": 151,
+      "text": "Knowledgeable about government structures;",
+      "level": 5,
+      "page": 12,
+      "bbox": {
+        "x0": 126.08,
+        "y0": 284.56,
+        "x1": 319.68,
+        "y1": 295.68,
+        "width": 193.6,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.35,
+      "features": {}
+    },
+    {
+      "id": 152,
+      "text": "Respected by their communities; influential;",
+      "level": 5,
+      "page": 12,
+      "bbox": {
+        "x0": 126.08,
+        "y0": 296.68,
+        "x1": 310.64,
+        "y1": 307.8,
+        "width": 184.56,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.35,
+      "features": {}
+    },
+    {
+      "id": 153,
+      "text": "Able to take a consultative approach;",
+      "level": 2,
+      "page": 12,
+      "bbox": {
+        "x0": 126.08,
+        "y0": 308.81,
+        "x1": 283.54,
+        "y1": 319.92,
+        "width": 157.46,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.3,
+      "features": {
+        "semantic": {
+          "group": "approach",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 154,
+      "text": "5. Term",
+      "level": 1,
+      "page": 12,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 359.63,
+        "x1": 134.33,
+        "y1": 370.74,
+        "width": 44.29,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.9,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 155,
+      "text": "6. Chair",
+      "level": 1,
+      "page": 12,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 417.11,
+        "x1": 135.05,
+        "y1": 428.22,
+        "width": 45.01,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.9,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 156,
+      "text": "Role of the Chair:",
+      "level": 2,
+      "page": 12,
+      "bbox": {
+        "x0": 95.8,
+        "y0": 465.46,
+        "x1": 171.78,
+        "y1": 476.58,
+        "width": 75.98,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {}
+    },
+    {
+      "id": 157,
+      "text": "7. Meetings",
+      "level": 1,
+      "page": 12,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 545.87,
+        "x1": 152.21,
+        "y1": 556.98,
+        "width": 62.17,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.9,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 158,
+      "text": "conducted by e-mail, and teleconference.",
+      "level": 2,
+      "page": 12,
+      "bbox": {
+        "x0": 95.8,
+        "y0": 580.55,
+        "x1": 271.47,
+        "y1": 591.66,
+        "width": 175.67,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 159,
+      "text": "8. Lines of Accountability and Communication",
+      "level": 1,
+      "page": 12,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 603.35,
+        "x1": 309.55,
+        "y1": 614.46,
+        "width": 219.51,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.75,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 160,
+      "text": "funders.",
+      "level": 2,
+      "page": 12,
+      "bbox": {
+        "x0": 131.79,
+        "y0": 638.03,
+        "x1": 168.75,
+        "y1": 649.14,
+        "width": 36.95,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 161,
+      "text": "government reporting regulations for funds received.",
+      "level": 3,
+      "page": 12,
+      "bbox": {
+        "x0": 131.79,
+        "y0": 707.04,
+        "x1": 353.4,
+        "y1": 718.16,
+        "width": 221.61,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.5,
+      "features": {}
+    },
+    {
+      "id": 162,
+      "text": "Community Services Cluster, ADM’s and Deputy Ministers.",
+      "level": 4,
+      "page": 13,
+      "bbox": {
+        "x0": 131.81,
+        "y0": 118.22,
+        "x1": 381.43,
+        "y1": 129.34,
+        "width": 249.62,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {}
+    },
+    {
+      "id": 163,
+      "text": "9. Financial and Administrative Policies",
+      "level": 1,
+      "page": 13,
+      "bbox": {
+        "x0": 90.04,
+        "y0": 141.14,
+        "x1": 278.27,
+        "y1": 152.25,
+        "width": 188.23,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.9,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 164,
+      "text": "9.1 Service on the Steering Committee is non-remunerative",
+      "level": 2,
+      "page": 13,
+      "bbox": {
+        "x0": 95.81,
+        "y0": 164.3,
+        "x1": 347.06,
+        "y1": 175.41,
+        "width": 251.25,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.5,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 165,
+      "text": "policies of the Ontario Library Association",
+      "level": 3,
+      "page": 13,
+      "bbox": {
+        "x0": 131.82,
+        "y0": 187.22,
+        "x1": 307.6,
+        "y1": 198.34,
+        "width": 175.79,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.5,
+      "features": {}
+    },
+    {
+      "id": 166,
+      "text": "9.3 Conflict of Interest:",
+      "level": 2,
+      "page": 13,
+      "bbox": {
+        "x0": 95.81,
+        "y0": 198.75,
+        "x1": 192.28,
+        "y1": 209.86,
+        "width": 96.47,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {
+        "numbering": {
+          "pattern": "decimal_nested",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 167,
+      "text": "Appendix C:",
+      "level": 1,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 92.52,
+        "x1": 173.51,
+        "y1": 109.43,
+        "width": 77.47,
+        "height": 16.91
+      },
+      "font_info": {
+        "size": 12.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.85,
+      "features": {
+        "semantic": {
+          "group": "appendix",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 168,
+      "text": "ODL’s Envisioned Electronic Resources",
+      "level": 2,
+      "page": 14,
+      "bbox": {
+        "x0": 198.0,
+        "y0": 92.52,
+        "x1": 440.57,
+        "y1": 109.43,
+        "width": 242.57,
+        "height": 16.91
+      },
+      "font_info": {
+        "size": 12.0,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.75,
+      "features": {}
+    },
+    {
+      "id": 169,
+      "text": "of their education, life and work. Some examples:",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 182.88,
+        "x1": 305.26,
+        "y1": 194.0,
+        "width": 209.22,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.6,
+      "features": {
+        "semantic": {
+          "group": "examples",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 170,
+      "text": "1. Reference Resources",
+      "level": 1,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 205.92,
+        "x1": 201.07,
+        "y1": 217.03,
+        "width": 105.03,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.75,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 171,
+      "text": "- directories: companies, associations, organizations, governments, educational institutions,",
+      "level": 2,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 228.96,
+        "x1": 480.2,
+        "y1": 240.07,
+        "width": 384.16,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.5,
+      "features": {}
+    },
+    {
+      "id": 172,
+      "text": "etc. etc.",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 240.36,
+        "x1": 131.57,
+        "y1": 251.48,
+        "width": 35.53,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 173,
+      "text": "- almanacs, country information",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 251.88,
+        "x1": 230.45,
+        "y1": 263.0,
+        "width": 134.41,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 174,
+      "text": "- dictionaries, thesauri, encyclopedias",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 263.41,
+        "x1": 255.7,
+        "y1": 274.52,
+        "width": 159.66,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 175,
+      "text": "-consumer information",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 274.93,
+        "x1": 193.02,
+        "y1": 286.05,
+        "width": 96.98,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 176,
+      "text": "- phone books,",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 286.46,
+        "x1": 161.57,
+        "y1": 297.57,
+        "width": 65.53,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 177,
+      "text": "- travel guides, entertainment guides",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 297.86,
+        "x1": 253.8,
+        "y1": 308.97,
+        "width": 157.76,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 178,
+      "text": "- weather information",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 309.38,
+        "x1": 187.49,
+        "y1": 320.5,
+        "width": 91.45,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 179,
+      "text": "- media/newspapers",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 320.91,
+        "x1": 184.32,
+        "y1": 332.02,
+        "width": 88.28,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 180,
+      "text": "- leisure time, recreational activity guides",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 332.43,
+        "x1": 268.29,
+        "y1": 343.55,
+        "width": 172.25,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.4,
+      "features": {}
+    },
+    {
+      "id": 181,
+      "text": "- indexing and abstracting services",
+      "level": 0,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 343.95,
+        "x1": 243.9,
+        "y1": 355.07,
+        "width": 147.86,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {
+        "semantic": {
+          "group": "abstract",
+          "keywords_matched": []
+        }
+      }
+    },
+    {
+      "id": 182,
+      "text": "- currency converters,",
+      "level": 1,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 355.48,
+        "x1": 190.0,
+        "y1": 366.59,
+        "width": 93.96,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 183,
+      "text": "- virtual reference services",
+      "level": 2,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 366.88,
+        "x1": 209.01,
+        "y1": 378.0,
+        "width": 112.97,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 184,
+      "text": "-vocational/career information",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 378.41,
+        "x1": 223.0,
+        "y1": 389.52,
+        "width": 126.96,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 185,
+      "text": "-internet search engines",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 389.93,
+        "x1": 200.01,
+        "y1": 401.05,
+        "width": 103.97,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 186,
+      "text": "-current awareness services",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 401.45,
+        "x1": 217.03,
+        "y1": 412.57,
+        "width": 120.99,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 187,
+      "text": "2. Subject Guides",
+      "level": 1,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 424.49,
+        "x1": 173.39,
+        "y1": 435.61,
+        "width": 77.35,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.65,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 188,
+      "text": "-arts and humanities",
+      "level": 1,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 447.41,
+        "x1": 184.29,
+        "y1": 458.52,
+        "width": 88.25,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 189,
+      "text": "- business and economics",
+      "level": 1,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 458.93,
+        "x1": 208.53,
+        "y1": 470.05,
+        "width": 112.5,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 190,
+      "text": "- education",
+      "level": 2,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 470.46,
+        "x1": 145.36,
+        "y1": 481.57,
+        "width": 49.32,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 191,
+      "text": "-recreation and sports",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 481.98,
+        "x1": 190.41,
+        "y1": 493.1,
+        "width": 94.37,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 192,
+      "text": "-entertainment - games, activities for kids",
+      "level": 4,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 493.38,
+        "x1": 270.5,
+        "y1": 504.5,
+        "width": 174.46,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.4,
+      "features": {}
+    },
+    {
+      "id": 193,
+      "text": "-health information",
+      "level": 4,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 504.91,
+        "x1": 176.8,
+        "y1": 516.02,
+        "width": 80.76,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 194,
+      "text": "-science and technology",
+      "level": 4,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 516.43,
+        "x1": 200.96,
+        "y1": 527.55,
+        "width": 104.92,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 195,
+      "text": "-social sciences",
+      "level": 4,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 527.96,
+        "x1": 165.31,
+        "y1": 539.07,
+        "width": 69.27,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 196,
+      "text": "-society and culture",
+      "level": 4,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 539.48,
+        "x1": 180.42,
+        "y1": 550.59,
+        "width": 84.38,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 197,
+      "text": "3. Educational tool-kits",
+      "level": 1,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 562.4,
+        "x1": 193.43,
+        "y1": 573.51,
+        "width": 97.38,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.55,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    },
+    {
+      "id": 198,
+      "text": "-guides to information gathering methodologies, information literacy",
+      "level": 2,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 585.43,
+        "x1": 379.88,
+        "y1": 596.55,
+        "width": 283.84,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.4,
+      "features": {}
+    },
+    {
+      "id": 199,
+      "text": "-study guides",
+      "level": 2,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 596.96,
+        "x1": 154.89,
+        "y1": 608.07,
+        "width": 58.85,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 200,
+      "text": "-study skill development",
+      "level": 2,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 608.48,
+        "x1": 199.49,
+        "y1": 619.6,
+        "width": 103.45,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 201,
+      "text": "-web-based curricula",
+      "level": 2,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 620.01,
+        "x1": 186.51,
+        "y1": 631.12,
+        "width": 90.47,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 202,
+      "text": "-internet search guides",
+      "level": 3,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 631.41,
+        "x1": 194.62,
+        "y1": 642.53,
+        "width": 98.58,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.45,
+      "features": {}
+    },
+    {
+      "id": 203,
+      "text": "4. Journals, books, maps, music etc.",
+      "level": 1,
+      "page": 14,
+      "bbox": {
+        "x0": 96.04,
+        "y0": 654.45,
+        "x1": 251.58,
+        "y1": 665.56,
+        "width": 155.54,
+        "height": 11.12
+      },
+      "font_info": {
+        "size": 9.960000038146973,
+        "weight": "normal",
+        "family": "unknown",
+        "style": "normal"
+      },
+      "confidence": 0.5,
+      "features": {
+        "numbering": {
+          "pattern": "decimal",
+          "has_numbering": true
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "extraction_version": "1.0.0",
+    "format_version": "1.0",
+    "generator": "PDF-Heading-Extractor-Hybrid",
+    "extraction_date": "2025-07-26T00:23:33.927480",
+    "settings": {
+      "include_confidence": true,
+      "include_debug": false,
+      "output_format": "json"
+    }
+  },
+  "hierarchy_tree": {
+    "Ontario’s Libraries": {
+      "level": 1,
+      "page": 1,
+      "children": {
+        "Working Together": {
+          "level": 2,
+          "page": 1,
+          "children": {}
+        },
+        "quest f": {
+          "level": 1,
+          "page": 1,
+          "children": {}
+        },
+        "r Pr": {
+          "level": 1,
+          "page": 1,
+          "children": {}
+        },
+        "oposal": {
+          "level": 1,
+          "page": 1,
+          "children": {}
+        },
+        "RFP: R": {
+          "level": 1,
+          "page": 1,
+          "children": {}
+        },
+        "To Present a Proposal for Developing": {
+          "level": 1,
+          "page": 1,
+          "children": {
+            "the Business Plan for the Ontario": {
+              "level": 2,
+              "page": 1,
+              "children": {}
+            },
+            "Digital Library": {
+              "level": 2,
+              "page": 1,
+              "children": {
+                "March 21, 2003": {
+                  "level": 3,
+                  "page": 1,
+                  "children": {}
+                }
+              }
+            },
+            "learners and effective contributors towards Ontario’s prosperity.": {
+              "level": 2,
+              "page": 1,
+              "children": {}
+            }
+          }
+        },
+        "Ontario’s Digital Library": {
+          "level": 1,
+          "page": 2,
+          "children": {}
+        },
+        "A Critical Component for Implementing Ontario’s Road Map to": {
+          "level": 1,
+          "page": 2,
+          "children": {}
+        },
+        "Prosperity Strategy": {
+          "level": 1,
+          "page": 2,
+          "children": {}
+        }
+      }
+    },
+    "Summary": {
+      "level": 0,
+      "page": 2,
+      "children": {
+        "developed is to document and clearly communicate:": {
+          "level": 1,
+          "page": 2,
+          "children": {
+            "the financial plan for the implementation": {
+              "level": 2,
+              "page": 2,
+              "children": {
+                "revenues, etc.": {
+                  "level": 3,
+                  "page": 2,
+                  "children": {}
+                }
+              }
+            },
+            "implementation and operational stages": {
+              "level": 2,
+              "page": 2,
+              "children": {
+                "the marketing and communications plan for the ODL": {
+                  "level": 3,
+                  "page": 2,
+                  "children": {
+                    "later than September 30, 2003": {
+                      "level": 4,
+                      "page": 2,
+                      "children": {
+                        "Timeline:": {
+                          "level": 5,
+                          "page": 2,
+                          "children": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "April 21, 2003.": {
+              "level": 2,
+              "page": 2,
+              "children": {
+                "committee .": {
+                  "level": 3,
+                  "page": 2,
+                  "children": {
+                    "commence as soon as possible thereafter.": {
+                      "level": 4,
+                      "page": 2,
+                      "children": {
+                        "March 2003": {
+                          "level": 5,
+                          "page": 2,
+                          "children": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "seek further response to these Terms of Reference.": {
+          "level": 1,
+          "page": 3,
+          "children": {
+            "information or question responses.": {
+              "level": 2,
+              "page": 3,
+              "children": {}
+            }
+          }
+        },
+        "Background": {
+          "level": 1,
+          "page": 3,
+          "children": {}
+        },
+        "skills and resources at work or at home.": {
+          "level": 1,
+          "page": 3,
+          "children": {}
+        },
+        "content infrastructure needed to support a knowledge society.": {
+          "level": 1,
+          "page": 3,
+          "children": {
+            "rooms.": {
+              "level": 2,
+              "page": 3,
+              "children": {}
+            }
+          }
+        },
+        "Equitable access for all Ontarians:": {
+          "level": 1,
+          "page": 4,
+          "children": {
+            "Ontario citizens": {
+              "level": 2,
+              "page": 4,
+              "children": {}
+            },
+            "services for library clients.": {
+              "level": 2,
+              "page": 4,
+              "children": {}
+            }
+          }
+        },
+        "Shared decision-making and accountability:": {
+          "level": 1,
+          "page": 4,
+          "children": {
+            "licenses and services": {
+              "level": 2,
+              "page": 4,
+              "children": {}
+            },
+            "communities and institutions.": {
+              "level": 2,
+              "page": 4,
+              "children": {}
+            }
+          }
+        },
+        "Shared governance structure:": {
+          "level": 1,
+          "page": 4,
+          "children": {}
+        },
+        "Shared funding:": {
+          "level": 1,
+          "page": 4,
+          "children": {}
+        },
+        "Local points of entry:": {
+          "level": 1,
+          "page": 5,
+          "children": {
+            "providing the underpinning, not overshadowing.": {
+              "level": 2,
+              "page": 5,
+              "children": {}
+            },
+            "Services envisioned for the ODL’s include:": {
+              "level": 2,
+              "page": 5,
+              "children": {}
+            },
+            "Access:": {
+              "level": 2,
+              "page": 5,
+              "children": {
+                "to credible web sites and electronic resources": {
+                  "level": 3,
+                  "page": 5,
+                  "children": {
+                    "to digital government information": {
+                      "level": 4,
+                      "page": 5,
+                      "children": {}
+                    },
+                    "to local digital collections": {
+                      "level": 4,
+                      "page": 5,
+                      "children": {}
+                    }
+                  }
+                }
+              }
+            },
+            "Guidance and Advice:": {
+              "level": 2,
+              "page": 5,
+              "children": {
+                "to support e-learning": {
+                  "level": 3,
+                  "page": 5,
+                  "children": {
+                    "to assist citizens as they use web-links": {
+                      "level": 4,
+                      "page": 5,
+                      "children": {}
+                    }
+                  }
+                }
+              }
+            },
+            "Training:": {
+              "level": 2,
+              "page": 5,
+              "children": {
+                "for library workers": {
+                  "level": 3,
+                  "page": 5,
+                  "children": {
+                    "for the general public": {
+                      "level": 4,
+                      "page": 5,
+                      "children": {}
+                    }
+                  }
+                }
+              }
+            },
+            "Provincial Purchasing & Licensing:": {
+              "level": 2,
+              "page": 5,
+              "children": {}
+            },
+            "Technological Support:": {
+              "level": 2,
+              "page": 5,
+              "children": {
+                "library web sites": {
+                  "level": 3,
+                  "page": 5,
+                  "children": {}
+                },
+                "What could the ODL really mean?": {
+                  "level": 3,
+                  "page": 5,
+                  "children": {}
+                }
+              }
+            }
+          }
+        },
+        "For each Ontario citizen it could mean:": {
+          "level": 1,
+          "page": 5,
+          "children": {
+            "resources for their personal, educational and professional needs;": {
+              "level": 2,
+              "page": 5,
+              "children": {
+                "community, school, or academic library;": {
+                  "level": 3,
+                  "page": 5,
+                  "children": {
+                    "perspectives;": {
+                      "level": 4,
+                      "page": 5,
+                      "children": {
+                        "experience": {
+                          "level": 5,
+                          "page": 5,
+                          "children": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "For each Ontario student it could mean:": {
+              "level": 2,
+              "page": 5,
+              "children": {
+                "resources and services": {
+                  "level": 3,
+                  "page": 5,
+                  "children": {
+                    "elementary, secondary or post-secondary levels": {
+                      "level": 4,
+                      "page": 5,
+                      "children": {}
+                    }
+                  }
+                }
+              }
+            },
+            "For each Ontario library it could mean:": {
+              "level": 2,
+              "page": 6,
+              "children": {
+                "and services": {
+                  "level": 3,
+                  "page": 6,
+                  "children": {
+                    "expertise": {
+                      "level": 4,
+                      "page": 6,
+                      "children": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "For the Ontario government it could mean:": {
+          "level": 1,
+          "page": 6,
+          "children": {
+            "(supports Ontario’s lifelong learning strategy)": {
+              "level": 2,
+              "page": 6,
+              "children": {
+                "knowledge supports and tools": {
+                  "level": 3,
+                  "page": 6,
+                  "children": {}
+                }
+              }
+            }
+          }
+        },
+        "ODL can be found in the appendixes.": {
+          "level": 1,
+          "page": 6,
+          "children": {
+            "The Business Plan to be Developed": {
+              "level": 2,
+              "page": 6,
+              "children": {}
+            }
+          }
+        },
+        "2007. The planning process must also secure the full commitment of all stakeholders, as": {
+          "level": 1,
+          "page": 6,
+          "children": {
+            "represented on the Steering Committee.": {
+              "level": 2,
+              "page": 6,
+              "children": {
+                "Specifically, the business plan must include:": {
+                  "level": 3,
+                  "page": 6,
+                  "children": {}
+                }
+              }
+            }
+          }
+        },
+        "the commitment of all stakeholders to their responsibilities": {
+          "level": 1,
+          "page": 7,
+          "children": {
+            "indicate how this consultative process will be approached.": {
+              "level": 2,
+              "page": 7,
+              "children": {
+                "Milestones": {
+                  "level": 3,
+                  "page": 7,
+                  "children": {
+                    "for responses to be evaluated.": {
+                      "level": 4,
+                      "page": 7,
+                      "children": {
+                        "no later than September 30, 2003.": {
+                          "level": 5,
+                          "page": 7,
+                          "children": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "Approach and Specific Proposal Requirements": {
+              "level": 2,
+              "page": 7,
+              "children": {}
+            }
+          }
+        },
+        "electronic resource publishers/vendors.": {
+          "level": 1,
+          "page": 7,
+          "children": {}
+        },
+        "The proposal should include the following information:": {
+          "level": 1,
+          "page": 7,
+          "children": {
+            "a) name of the firm/consultant": {
+              "level": 2,
+              "page": 7,
+              "children": {
+                "responsibilities on this project and relevant experience/qualifications": {
+                  "level": 3,
+                  "page": 7,
+                  "children": {
+                    "planning and building stakeholder commitment": {
+                      "level": 4,
+                      "page": 7,
+                      "children": {
+                        "including a timeline": {
+                          "level": 5,
+                          "page": 7,
+                          "children": {}
+                        },
+                        "structure": {
+                          "level": 5,
+                          "page": 7,
+                          "children": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Evaluation and Awarding of Contract": {
+          "level": 1,
+          "page": 8,
+          "children": {
+            "Demonstrated experience": {
+              "level": 2,
+              "page": 8,
+              "children": {
+                "Cost, including expenses": {
+                  "level": 3,
+                  "page": 8,
+                  "children": {}
+                },
+                "Timeline and projected completion date": {
+                  "level": 3,
+                  "page": 8,
+                  "children": {}
+                }
+              }
+            }
+          }
+        },
+        "(mridley@uoguelph.ca).": {
+          "level": 1,
+          "page": 8,
+          "children": {}
+        },
+        "Committee.": {
+          "level": 1,
+          "page": 8,
+          "children": {}
+        },
+        "Appendix A:  ODL Envisioned Phases & Funding": {
+          "level": 1,
+          "page": 9,
+          "children": {
+            "Phase I:  Business Planning": {
+              "level": 2,
+              "page": 9,
+              "children": {}
+            },
+            "Timeline: March 2003 – September 2003": {
+              "level": 2,
+              "page": 9,
+              "children": {
+                "Result: The ODL business plan": {
+                  "level": 3,
+                  "page": 9,
+                  "children": {}
+                }
+              }
+            },
+            "communication components so critical in a consultative process.": {
+              "level": 2,
+              "page": 9,
+              "children": {}
+            },
+            "Phase II: Implementing and Transitioning": {
+              "level": 2,
+              "page": 9,
+              "children": {}
+            },
+            "Timeline: April 2004 – December 2006": {
+              "level": 2,
+              "page": 9,
+              "children": {}
+            },
+            "stakeholders and other interested parties.": {
+              "level": 2,
+              "page": 9,
+              "children": {}
+            },
+            "Result: The ODL is implemented and validated": {
+              "level": 2,
+              "page": 9,
+              "children": {}
+            }
+          }
+        },
+        "Phase III: Operating and Growing the ODL": {
+          "level": 1,
+          "page": 9,
+          "children": {}
+        },
+        "Timeline: January 2007 -": {
+          "level": 1,
+          "page": 9,
+          "children": {}
+        },
+        "Result: The ODL is fully operational and sustainable": {
+          "level": 1,
+          "page": 9,
+          "children": {}
+        },
+        "to enhance the ODL.": {
+          "level": 1,
+          "page": 10,
+          "children": {
+            "(university, colleges, public libraries and schools).": {
+              "level": 2,
+              "page": 10,
+              "children": {
+                "during the same period": {
+                  "level": 3,
+                  "page": 10,
+                  "children": {}
+                }
+              }
+            },
+            "OVERVIEW OF ODL FUNDING MODEL": {
+              "level": 2,
+              "page": 10,
+              "children": {
+                "Funding Source": {
+                  "level": 3,
+                  "page": 10,
+                  "children": {
+                    "$35M (70%)": {
+                      "level": 4,
+                      "page": 10,
+                      "children": {
+                        "$33.75M (45%)": {
+                          "level": 5,
+                          "page": 10,
+                          "children": {}
+                        }
+                      }
+                    },
+                    "Government": {
+                      "level": 4,
+                      "page": 10,
+                      "children": {
+                        "$10M (20%)": {
+                          "level": 5,
+                          "page": 10,
+                          "children": {}
+                        },
+                        "$22.5M (30%)": {
+                          "level": 5,
+                          "page": 10,
+                          "children": {}
+                        },
+                        "Libraries": {
+                          "level": 5,
+                          "page": 10,
+                          "children": {}
+                        },
+                        "$4.5M (9%)": {
+                          "level": 5,
+                          "page": 10,
+                          "children": {}
+                        },
+                        "$15M (20%)": {
+                          "level": 5,
+                          "page": 10,
+                          "children": {}
+                        },
+                        "Endowment": {
+                          "level": 5,
+                          "page": 10,
+                          "children": {}
+                        },
+                        "$0.5M (1%)": {
+                          "level": 5,
+                          "page": 10,
+                          "children": {}
+                        },
+                        "$3.75M (5%)": {
+                          "level": 5,
+                          "page": 10,
+                          "children": {}
+                        },
+                        "Gifts/In-Kind": {
+                          "level": 5,
+                          "page": 10,
+                          "children": {}
+                        },
+                        "TOTAL ANNUAL": {
+                          "level": 5,
+                          "page": 10,
+                          "children": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "represent an investment of $5.00 per citizen.": {
+              "level": 2,
+              "page": 10,
+              "children": {}
+            }
+          }
+        },
+        "Appendix B:": {
+          "level": 1,
+          "page": 11,
+          "children": {
+            "ODL Steering Committee Terms of Reference": {
+              "level": 2,
+              "page": 11,
+              "children": {}
+            }
+          }
+        },
+        "1. Preamble": {
+          "level": 1,
+          "page": 11,
+          "children": {}
+        },
+        "2. Terms of Reference": {
+          "level": 1,
+          "page": 11,
+          "children": {
+            "responsibilities include:": {
+              "level": 2,
+              "page": 11,
+              "children": {
+                "staffing, and evaluation;": {
+                  "level": 3,
+                  "page": 11,
+                  "children": {
+                    "making;": {
+                      "level": 4,
+                      "page": 11,
+                      "children": {}
+                    }
+                  }
+                }
+              }
+            },
+            "2.3 recruiting and managing the business planner(s);": {
+              "level": 2,
+              "page": 11,
+              "children": {
+                "expenditures;": {
+                  "level": 3,
+                  "page": 11,
+                  "children": {
+                    "of the business plan;": {
+                      "level": 4,
+                      "page": 11,
+                      "children": {}
+                    }
+                  }
+                }
+              }
+            },
+            "2.8 presenting the business plan to funders": {
+              "level": 2,
+              "page": 11,
+              "children": {
+                "and education communities.": {
+                  "level": 3,
+                  "page": 11,
+                  "children": {}
+                }
+              }
+            }
+          }
+        },
+        "3. Membership": {
+          "level": 1,
+          "page": 11,
+          "children": {
+            "representatives to the steering committee": {
+              "level": 2,
+              "page": 11,
+              "children": {}
+            },
+            "3.1 Schools:": {
+              "level": 2,
+              "page": 11,
+              "children": {}
+            }
+          }
+        },
+        "3.2 Universities:": {
+          "level": 1,
+          "page": 11,
+          "children": {
+            "3.3 Colleges:": {
+              "level": 2,
+              "page": 11,
+              "children": {}
+            },
+            "3.4 Public libraries:": {
+              "level": 2,
+              "page": 11,
+              "children": {}
+            }
+          }
+        },
+        "4. Appointment Criteria and Process": {
+          "level": 1,
+          "page": 12,
+          "children": {
+            "representatives to the Steering Committee.": {
+              "level": 2,
+              "page": 12,
+              "children": {
+                "Desired characteristics for steering committee appointees include:": {
+                  "level": 3,
+                  "page": 12,
+                  "children": {
+                    "Strategic thinkers;": {
+                      "level": 4,
+                      "page": 12,
+                      "children": {
+                        "Committed to the concept of multi-sector partnerships;": {
+                          "level": 5,
+                          "page": 12,
+                          "children": {}
+                        },
+                        "Knowledgeable about digital libraries and resources;": {
+                          "level": 5,
+                          "page": 12,
+                          "children": {}
+                        },
+                        "Knowledgeable about government structures;": {
+                          "level": 5,
+                          "page": 12,
+                          "children": {}
+                        },
+                        "Respected by their communities; influential;": {
+                          "level": 5,
+                          "page": 12,
+                          "children": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "Able to take a consultative approach;": {
+              "level": 2,
+              "page": 12,
+              "children": {}
+            }
+          }
+        },
+        "5. Term": {
+          "level": 1,
+          "page": 12,
+          "children": {}
+        },
+        "6. Chair": {
+          "level": 1,
+          "page": 12,
+          "children": {
+            "Role of the Chair:": {
+              "level": 2,
+              "page": 12,
+              "children": {}
+            }
+          }
+        },
+        "7. Meetings": {
+          "level": 1,
+          "page": 12,
+          "children": {
+            "conducted by e-mail, and teleconference.": {
+              "level": 2,
+              "page": 12,
+              "children": {}
+            }
+          }
+        },
+        "8. Lines of Accountability and Communication": {
+          "level": 1,
+          "page": 12,
+          "children": {
+            "funders.": {
+              "level": 2,
+              "page": 12,
+              "children": {
+                "government reporting regulations for funds received.": {
+                  "level": 3,
+                  "page": 12,
+                  "children": {
+                    "Community Services Cluster, ADM’s and Deputy Ministers.": {
+                      "level": 4,
+                      "page": 13,
+                      "children": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "9. Financial and Administrative Policies": {
+          "level": 1,
+          "page": 13,
+          "children": {
+            "9.1 Service on the Steering Committee is non-remunerative": {
+              "level": 2,
+              "page": 13,
+              "children": {
+                "policies of the Ontario Library Association": {
+                  "level": 3,
+                  "page": 13,
+                  "children": {}
+                }
+              }
+            },
+            "9.3 Conflict of Interest:": {
+              "level": 2,
+              "page": 13,
+              "children": {}
+            }
+          }
+        },
+        "Appendix C:": {
+          "level": 1,
+          "page": 14,
+          "children": {
+            "ODL’s Envisioned Electronic Resources": {
+              "level": 2,
+              "page": 14,
+              "children": {
+                "of their education, life and work. Some examples:": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                }
+              }
+            }
+          }
+        },
+        "1. Reference Resources": {
+          "level": 1,
+          "page": 14,
+          "children": {
+            "- directories: companies, associations, organizations, governments, educational institutions,": {
+              "level": 2,
+              "page": 14,
+              "children": {
+                "etc. etc.": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                },
+                "- almanacs, country information": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                },
+                "- dictionaries, thesauri, encyclopedias": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                },
+                "-consumer information": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                },
+                "- phone books,": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                },
+                "- travel guides, entertainment guides": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                },
+                "- weather information": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                },
+                "- media/newspapers": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                },
+                "- leisure time, recreational activity guides": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "- indexing and abstracting services": {
+      "level": 0,
+      "page": 14,
+      "children": {
+        "- currency converters,": {
+          "level": 1,
+          "page": 14,
+          "children": {
+            "- virtual reference services": {
+              "level": 2,
+              "page": 14,
+              "children": {
+                "-vocational/career information": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                },
+                "-internet search engines": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                },
+                "-current awareness services": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                }
+              }
+            }
+          }
+        },
+        "2. Subject Guides": {
+          "level": 1,
+          "page": 14,
+          "children": {}
+        },
+        "-arts and humanities": {
+          "level": 1,
+          "page": 14,
+          "children": {}
+        },
+        "- business and economics": {
+          "level": 1,
+          "page": 14,
+          "children": {
+            "- education": {
+              "level": 2,
+              "page": 14,
+              "children": {
+                "-recreation and sports": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {
+                    "-entertainment - games, activities for kids": {
+                      "level": 4,
+                      "page": 14,
+                      "children": {}
+                    },
+                    "-health information": {
+                      "level": 4,
+                      "page": 14,
+                      "children": {}
+                    },
+                    "-science and technology": {
+                      "level": 4,
+                      "page": 14,
+                      "children": {}
+                    },
+                    "-social sciences": {
+                      "level": 4,
+                      "page": 14,
+                      "children": {}
+                    },
+                    "-society and culture": {
+                      "level": 4,
+                      "page": 14,
+                      "children": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "3. Educational tool-kits": {
+          "level": 1,
+          "page": 14,
+          "children": {
+            "-guides to information gathering methodologies, information literacy": {
+              "level": 2,
+              "page": 14,
+              "children": {}
+            },
+            "-study guides": {
+              "level": 2,
+              "page": 14,
+              "children": {}
+            },
+            "-study skill development": {
+              "level": 2,
+              "page": 14,
+              "children": {}
+            },
+            "-web-based curricula": {
+              "level": 2,
+              "page": 14,
+              "children": {
+                "-internet search guides": {
+                  "level": 3,
+                  "page": 14,
+                  "children": {}
+                }
+              }
+            }
+          }
+        },
+        "4. Journals, books, maps, music etc.": {
+          "level": 1,
+          "page": 14,
+          "children": {}
+        }
+      }
+    }
+  }
+}
