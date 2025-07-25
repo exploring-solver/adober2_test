@@ -451,24 +451,25 @@ class PDFProcessor:
         return os.getenv("FAST_MODE", "false").lower() == "true"
     
     def save_output(self, result: Dict[str, Any], output_path: Optional[str] = None, 
-               formats: Optional[List[str]] = None, 
-               auto_filename: bool = True) -> Dict[str, str]:
+           formats: Optional[List[str]] = None, 
+           auto_filename: bool = True) -> Dict[str, str]:
         """Save processing results to file(s) with automatic path handling."""
         
-        from config.settings import JSON_OUTPUT_DIR, CSV_OUTPUT_DIR, OUTPUT_DIR
+        from config.settings import JSON_OUTPUT_DIR, OUTPUT_DIR
         
         if formats is None:
             formats = ["json"]
         
         # Handle automatic filename generation
         if output_path is None or auto_filename:
-            # Generate filename from document info
-            doc_info = result.get("document_info", {})
-            filename = doc_info.get("filename", "output")
+            # Generate filename from document title
+            if "title" in result:
+                filename = result["title"]
+            else:
+                filename = "outline"
             
             # Remove extension and sanitize
-            base_name = Path(filename).stem
-            safe_name = "".join(c for c in base_name if c.isalnum() or c in (' ', '-', '_')).rstrip()
+            safe_name = "".join(c for c in filename if c.isalnum() or c in (' ', '-', '_')).rstrip()
             safe_name = safe_name.replace(' ', '_')
             
             # Add timestamp to avoid conflicts
@@ -482,13 +483,9 @@ class PDFProcessor:
         
         try:
             for format_type in formats:
-                # Determine output directory based on format
                 if format_type == "json":
                     output_dir = JSON_OUTPUT_DIR
                     extension = ".json"
-                elif format_type == "csv":
-                    output_dir = CSV_OUTPUT_DIR
-                    extension = ".csv"
                 else:
                     output_dir = OUTPUT_DIR
                     extension = f".{format_type}"
@@ -499,17 +496,9 @@ class PDFProcessor:
                 # Create full output path
                 output_file = output_dir / f"{final_name}{extension}"
                 
-                # Save based on format
+                # Save in the clean format
                 if format_type == "json":
                     self.output_formatter.save_json(result, output_file)
-                elif format_type == "csv":
-                    self.output_formatter.save_csv(result, output_file)
-                elif format_type == "xml":
-                    self.output_formatter.save_xml(result, output_file)
-                elif format_type == "markdown":
-                    self.output_formatter.save_markdown(result, output_file)
-                elif format_type == "html":
-                    self.output_formatter.save_html_outline(result, output_file)
                 
                 output_files[format_type] = str(output_file)
                 self.logger.info(f"Saved {format_type.upper()} output to: {output_file}")
@@ -659,3 +648,4 @@ class PDFProcessor:
             "warnings": self.stats["warnings"],
             "document_analysis": self.stats.get("document_info", {})
         }
+        
