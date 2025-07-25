@@ -8,3 +8,6 @@
 
 ### Chatgpt project debugging and chat for main.py relevance score
 - https://chatgpt.com/c/68838907-651c-800c-99f0-c4bb88aa2c79
+
+#### claude 1b:
+https://claude.ai/chat/701909fb-2177-4ce8-94db-b953eb2e5d25
