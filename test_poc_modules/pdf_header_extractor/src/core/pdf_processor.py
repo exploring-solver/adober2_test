@@ -1,0 +1,572 @@
+import os
+import time
+import logging
+from pathlib import Path
+from typing import Dict, Any, List, Optional, Tuple
+import fitz  # PyMuPDF
+import pdfplumber
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeoutError
+
+from core.candidate_generator import CandidateGenerator
+from core.semantic_filter import SemanticFilter
+from core.hierarchy_assigner import HierarchyAssigner
+from core.output_formatter import OutputFormatter
+from utils.validation import validate_pdf, detect_language
+from utils.text_utils import clean_text, normalize_whitespace
+from config.settings import (
+    MAX_PROCESSING_TIME, MAX_FILE_SIZE_MB, 
+    OUTPUT_DIR, INCLUDE_DEBUG_INFO
+)
+
+
+class PDFProcessor:
+    """Main orchestrator for PDF heading extraction using hybrid approach."""
+    
+    def __init__(self, language: str = 'auto', debug: bool = False):
+        self.language = language
+        self.debug = debug
+        self.logger = logging.getLogger(__name__)
+        
+        # Initialize components
+        self.candidate_generator = CandidateGenerator(language=language, debug=debug)
+        self.semantic_filter = SemanticFilter(language=language, debug=debug) if not self._is_fast_mode() else None
+        self.hierarchy_assigner = HierarchyAssigner(language=language, debug=debug)
+        self.output_formatter = OutputFormatter(debug=debug)
+        
+        # Processing statistics
+        self.stats = {
+            "start_time": None,
+            "end_time": None,
+            "processing_stages": [],
+            "warnings": [],
+            "document_info": {}
+        }
+    
+    def process(self, pdf_path: str, timeout: Optional[int] = None) -> Dict[str, Any]:
+        """Main processing pipeline with timeout protection."""
+        self.stats["start_time"] = time.time()
+        timeout = timeout or MAX_PROCESSING_TIME
+        
+        self.logger.info(f"Starting PDF processing: {pdf_path}")
+        
+        try:
+            # Use ThreadPoolExecutor for timeout control
+            with ThreadPoolExecutor(max_workers=1) as executor:
+                future = executor.submit(self._process_internal, pdf_path)
+                result = future.result(timeout=timeout)
+                
+        except FutureTimeoutError:
+            self.logger.error(f"Processing timeout after {timeout}s")
+            raise TimeoutError(f"PDF processing exceeded {timeout} second limit")
+        except Exception as e:
+            self.logger.error(f"Processing failed: {str(e)}")
+            raise
+        
+        self.stats["end_time"] = time.time()
+        self.stats["processing_time"] = self.stats["end_time"] - self.stats["start_time"]
+        
+        self.logger.info(f"Processing completed in {self.stats['processing_time']:.2f}s")
+        return result
+    
+    def _process_internal(self, pdf_path: str) -> Dict[str, Any]:
+        """Internal processing pipeline."""
+        
+        # Stage 1: Validate and analyze PDF
+        self._add_stage("pdf_validation")
+        document_info = self._analyze_pdf(pdf_path)
+        
+        # Stage 2: Check for structured PDF tags (Adobe approach)
+        self._add_stage("structure_detection")
+        structured_headings = self._extract_structured_headings(pdf_path)
+        
+        if structured_headings:
+            self.logger.info("Found structured PDF tags, using native extraction")
+            headings = structured_headings
+            hierarchy_tree = self._build_simple_tree(headings)
+        else:
+            # Stage 3: Generate candidates using heuristics
+            self._add_stage("candidate_generation")
+            candidates = self.candidate_generator.generate_candidates(pdf_path)
+            
+            if not candidates:
+                self.logger.warning("No heading candidates found")
+                return self._create_empty_result(document_info)
+            
+            # Stage 4: Apply semantic filtering (if enabled)
+            if self.semantic_filter:
+                self._add_stage("semantic_filtering")
+                filtered_candidates = self.semantic_filter.filter_candidates(
+                    candidates, pdf_path
+                )
+            else:
+                filtered_candidates = candidates
+            
+            # Stage 5: Assign hierarchy levels
+            self._add_stage("hierarchy_assignment")
+            headings = self.hierarchy_assigner.assign_hierarchy(filtered_candidates)
+            
+            # Stage 6: Generate hierarchy tree
+            hierarchy_tree = self.hierarchy_assigner.generate_hierarchy_tree(
+                [self._dict_to_node(h) for h in headings]
+            )
+        
+        # Stage 7: Format output
+        self._add_stage("output_formatting")
+        
+        # Compile processing statistics
+        processing_stats = {
+            **self.stats,
+            "hierarchy_stats": self.hierarchy_assigner.get_hierarchy_statistics(
+                [self._dict_to_node(h) for h in headings]
+            ) if headings else {}
+        }
+        
+        # Format final result
+        result = self.output_formatter.format_results(
+            headings=headings,
+            document_info={**document_info, **self.stats},
+            hierarchy_tree=hierarchy_tree,
+            processing_stats=processing_stats if INCLUDE_DEBUG_INFO else None
+        )
+        
+        return result
+    
+    def _analyze_pdf(self, pdf_path: str) -> Dict[str, Any]:
+        """Analyze PDF document and extract metadata."""
+        
+        # Basic validation
+        if not validate_pdf(pdf_path):
+            raise ValueError(f"Invalid PDF file: {pdf_path}")
+        
+        file_size = os.path.getsize(pdf_path)
+        if file_size > MAX_FILE_SIZE_MB * 1024 * 1024:
+            self.logger.warning(f"Large file size: {file_size / (1024*1024):.1f}MB")
+        
+        document_info = {
+            "filename": Path(pdf_path).name,
+            "file_path": str(pdf_path),
+            "file_size": file_size,
+            "processing_method": "hybrid"
+        }
+        
+        # Extract PDF metadata using PyMuPDF
+        try:
+            with fitz.open(pdf_path) as doc:
+                metadata = doc.metadata
+                document_info.update({
+                    "total_pages": len(doc),
+                    "title": metadata.get("title", ""),
+                    "author": metadata.get("author", ""),
+                    "subject": metadata.get("subject", ""),
+                    "creator": metadata.get("creator", ""),
+                    "creation_date": metadata.get("creationDate", ""),
+                    "modification_date": metadata.get("modDate", ""),
+                })
+                
+                # Detect language if set to auto
+                if self.language == 'auto':
+                    detected_lang = self._detect_document_language(doc)
+                    document_info["language"] = detected_lang
+                    self.language = detected_lang
+                else:
+                    document_info["language"] = self.language
+                
+                # Analyze document structure
+                structure_info = self._analyze_document_structure(doc)
+                document_info.update(structure_info)
+                
+        except Exception as e:
+            self.logger.warning(f"Failed to extract PDF metadata: {e}")
+            document_info.update({
+                "total_pages": 0,
+                "language": self.language,
+            })
+        
+        return document_info
+    
+    def _extract_structured_headings(self, pdf_path: str) -> Optional[List[Dict[str, Any]]]:
+        """Try to extract headings from PDF structure/tags (Adobe approach)."""
+        
+        try:
+            with fitz.open(pdf_path) as doc:
+                # Check if document has structural information
+                if not doc.is_pdf or not hasattr(doc, 'get_toc'):
+                    return None
+                
+                # Extract table of contents
+                toc = doc.get_toc()
+                if not toc:
+                    return None
+                
+                self.logger.info(f"Found structured TOC with {len(toc)} entries")
+                
+                structured_headings = []
+                for i, (level, title, page_num) in enumerate(toc):
+                    # Find the actual text position on the page
+                    try:
+                        page = doc.load_page(page_num - 1)  # 0-indexed
+                        
+                        # Search for the title text on the page
+                        text_instances = page.search_for(title.strip())
+                        if text_instances:
+                            bbox = text_instances[0]  # First occurrence
+                        else:
+                            # Fallback bbox if text not found
+                            bbox = [0, 0, 100, 20]
+                        
+                        heading = {
+                            "text": clean_text(title),
+                            "level": max(1, min(level, 6)),  # Clamp to 1-6
+                            "page": page_num,
+                            "bbox": list(bbox),
+                            "font_info": {
+                                "size": 14,  # Default size for structured headings
+                                "weight": "bold",
+                                "family": "unknown"
+                            },
+                            "confidence": 1.0,  # High confidence for structured data
+                            "features": {
+                                "source": "pdf_structure",
+                                "toc_index": i
+                            }
+                        }
+                        
+                        structured_headings.append(heading)
+                        
+                    except Exception as e:
+                        self.logger.warning(f"Failed to process TOC entry '{title}': {e}")
+                        continue
+                
+                return structured_headings if structured_headings else None
+                
+        except Exception as e:
+            self.logger.debug(f"Structured extraction failed: {e}")
+            return None
+    
+    def _detect_document_language(self, doc: fitz.Document) -> str:
+        """Detect document language from content."""
+        
+        # Sample text from first few pages
+        sample_text = ""
+        for page_num in range(min(3, len(doc))):
+            page = doc.load_page(page_num)
+            page_text = page.get_text()
+            sample_text += page_text[:1000]  # First 1000 chars per page
+        
+        if len(sample_text.strip()) < 100:
+            return 'en'  # Default to English if insufficient text
+        
+        # Use language detection utility
+        detected_language = detect_language(sample_text)
+        self.logger.debug(f"Detected language: {detected_language}")
+        
+        return detected_language
+    
+    def _analyze_document_structure(self, doc: fitz.Document) -> Dict[str, Any]:
+        """Analyze document structure and layout characteristics."""
+        
+        structure_info = {
+            "has_images": False,
+            "has_tables": False,
+            "is_multi_column": False,
+            "avg_line_height": 0,
+            "font_analysis": {},
+            "layout_complexity": "simple"
+        }
+        
+        try:
+            font_sizes = []
+            font_families = set()
+            line_heights = []
+            has_images = False
+            
+            # Analyze first 3 pages for structure
+            for page_num in range(min(3, len(doc))):
+                page = doc.load_page(page_num)
+                
+                # Check for images
+                if page.get_images():
+                    has_images = True
+                
+                # Analyze text blocks
+                blocks = page.get_text("dict")["blocks"]
+                for block in blocks:
+                    if "lines" not in block:
+                        continue
+                    
+                    for line in block["lines"]:
+                        if len(line["spans"]) > 0:
+                            # Collect font information
+                            for span in line["spans"]:
+                                font_sizes.append(span["size"])
+                                font_families.add(span["font"])
+                            
+                            # Calculate line height
+                            bbox = line["bbox"]
+                            line_heights.append(bbox[3] - bbox[1])
+                
+                # Check for multi-column layout
+                if self._detect_multi_column_layout(page):
+                    structure_info["is_multi_column"] = True
+            
+            # Compile font analysis
+            if font_sizes:
+                structure_info["font_analysis"] = {
+                    "unique_sizes": len(set(font_sizes)),
+                    "size_range": [min(font_sizes), max(font_sizes)],
+                    "avg_size": sum(font_sizes) / len(font_sizes),
+                    "font_families": list(font_families)
+                }
+            
+            if line_heights:
+                structure_info["avg_line_height"] = sum(line_heights) / len(line_heights)
+            
+            structure_info["has_images"] = has_images
+            
+            # Determine layout complexity
+            complexity_score = 0
+            if structure_info["is_multi_column"]: complexity_score += 2
+            if has_images: complexity_score += 1
+            if len(font_families) > 3: complexity_score += 1
+            if structure_info["font_analysis"].get("unique_sizes", 0) > 5: complexity_score += 1
+            
+            if complexity_score >= 4:
+                structure_info["layout_complexity"] = "complex"
+            elif complexity_score >= 2:
+                structure_info["layout_complexity"] = "moderate"
+            
+        except Exception as e:
+            self.logger.warning(f"Structure analysis failed: {e}")
+        
+        return structure_info
+    
+    def _detect_multi_column_layout(self, page: fitz.Page) -> bool:
+        """Detect if page has multi-column layout."""
+        
+        try:
+            blocks = page.get_text("dict")["blocks"]
+            text_blocks = [b for b in blocks if "lines" in b]
+            
+            if len(text_blocks) < 4:  # Need sufficient blocks
+                return False
+            
+            # Group blocks by horizontal position
+            left_blocks = []
+            right_blocks = []
+            page_width = page.rect.width
+            middle = page_width / 2
+            
+            for block in text_blocks:
+                bbox = block["bbox"]
+                block_center = (bbox[0] + bbox[2]) / 2
+                
+                if block_center < middle * 0.8:  # Left side
+                    left_blocks.append(block)
+                elif block_center > middle * 1.2:  # Right side
+                    right_blocks.append(block)
+            
+            # Multi-column if we have blocks on both sides
+            return len(left_blocks) >= 2 and len(right_blocks) >= 2
+            
+        except Exception:
+            return False
+    
+    def _build_simple_tree(self, headings: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Build simple hierarchy tree for structured headings."""
+        
+        tree = {}
+        stack = []
+        
+        for heading in headings:
+            level = heading["level"]
+            text = heading["text"]
+            
+            # Adjust stack to current level
+            while len(stack) >= level:
+                stack.pop()
+            
+            # Create node
+            node = {
+                "level": level,
+                "page": heading["page"],
+                "children": {}
+            }
+            
+            if not stack:
+                # Root level
+                tree[text] = node
+                stack.append((text, node))
+            else:
+                # Child node
+                parent_name, parent_node = stack[-1]
+                parent_node["children"][text] = node
+                stack.append((text, node))
+        
+        return tree
+    
+    def _create_empty_result(self, document_info: Dict[str, Any]) -> Dict[str, Any]:
+        """Create empty result when no headings found."""
+        
+        self.stats["warnings"].append("No headings detected in document")
+        
+        return self.output_formatter.format_results(
+            headings=[],
+            document_info={**document_info, **self.stats},
+            hierarchy_tree={},
+            processing_stats=self.stats if INCLUDE_DEBUG_INFO else None
+        )
+    
+    def _dict_to_node(self, heading_dict: Dict[str, Any]):
+        """Convert heading dictionary to HierarchyNode for tree building."""
+        from core.hierarchy_assigner import HierarchyNode
+        
+        return HierarchyNode(
+            text=heading_dict["text"],
+            level=heading_dict["level"],
+            page=heading_dict["page"],
+            bbox=tuple(heading_dict["bbox"]),
+            font_size=heading_dict["font_info"]["size"],
+            confidence=heading_dict.get("confidence", 0.0)
+        )
+    
+    def _add_stage(self, stage_name: str) -> None:
+        """Add processing stage with timestamp."""
+        
+        stage_info = {
+            "name": stage_name,
+            "timestamp": time.time(),
+            "duration": None
+        }
+        
+        if self.stats["processing_stages"]:
+            # Calculate duration of previous stage
+            prev_stage = self.stats["processing_stages"][-1]
+            prev_stage["duration"] = stage_info["timestamp"] - prev_stage["timestamp"]
+        
+        self.stats["processing_stages"].append(stage_info)
+        self.logger.debug(f"Starting stage: {stage_name}")
+    
+    def _is_fast_mode(self) -> bool:
+        """Check if running in fast mode (skip semantic filtering)."""
+        return os.getenv("FAST_MODE", "false").lower() == "true"
+    
+    def save_output(self, result: Dict[str, Any], output_path: str, 
+                   formats: Optional[List[str]] = None) -> Dict[str, str]:
+        """Save processing results to file(s)."""
+        
+        if formats is None:
+            formats = ["json"]
+        
+        output_path = Path(output_path)
+        output_files = {}
+        
+        try:
+            if len(formats) == 1:
+                # Single format
+                format_type = formats[0]
+                if format_type == "json":
+                    self.output_formatter.save_json(result, output_path)
+                elif format_type == "csv":
+                    self.output_formatter.save_csv(result, output_path)
+                elif format_type == "xml":
+                    self.output_formatter.save_xml(result, output_path)
+                elif format_type == "markdown":
+                    self.output_formatter.save_markdown(result, output_path)
+                elif format_type == "html":
+                    self.output_formatter.save_html_outline(result, output_path)
+                
+                output_files[format_type] = str(output_path)
+            else:
+                # Multiple formats
+                base_path = output_path.with_suffix('')  # Remove extension
+                output_files = self.output_formatter.export_multiple_formats(
+                    result, base_path, formats
+                )
+            
+        except Exception as e:
+            self.logger.error(f"Failed to save output: {e}")
+            raise
+        
+        return output_files
+    
+    def process_batch(self, pdf_paths: List[str], 
+                     output_dir: Optional[str] = None,
+                     max_workers: int = 2) -> Dict[str, Any]:
+        """Process multiple PDFs in batch mode."""
+        
+        output_dir = Path(output_dir) if output_dir else OUTPUT_DIR
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        results = {}
+        failed = {}
+        
+        self.logger.info(f"Starting batch processing of {len(pdf_paths)} files")
+        
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            # Submit all jobs
+            future_to_path = {
+                executor.submit(self.process, pdf_path): pdf_path 
+                for pdf_path in pdf_paths
+            }
+            
+            # Collect results
+            for future in future_to_path:
+                pdf_path = future_to_path[future]
+                try:
+                    result = future.result(timeout=MAX_PROCESSING_TIME)
+                    results[pdf_path] = result
+                    
+                    # Save individual result
+                    output_file = output_dir / f"{Path(pdf_path).stem}_headings.json"
+                    self.save_output(result, output_file)
+                    
+                except Exception as e:
+                    self.logger.error(f"Failed to process {pdf_path}: {e}")
+                    failed[pdf_path] = str(e)
+        
+        # Create batch summary
+        batch_summary = {
+            "total_files": len(pdf_paths),
+            "successful": len(results),
+            "failed": len(failed),
+            "success_rate": len(results) / len(pdf_paths) * 100,
+            "failed_files": failed,
+            "output_directory": str(output_dir)
+        }
+        
+        # Save batch summary
+        summary_file = output_dir / "batch_summary.json"
+        with open(summary_file, 'w', encoding='utf-8') as f:
+            import json
+            json.dump(batch_summary, f, indent=2, ensure_ascii=False)
+        
+        self.logger.info(f"Batch processing complete: {len(results)}/{len(pdf_paths)} successful")
+        
+        return {
+            "results": results,
+            "summary": batch_summary
+        }
+    
+    def get_processing_stats(self) -> Dict[str, Any]:
+        """Get detailed processing statistics."""
+        
+        if not self.stats["processing_stages"]:
+            return {}
+        
+        # Calculate stage durations
+        total_time = self.stats.get("processing_time", 0)
+        stage_breakdown = {}
+        
+        for stage in self.stats["processing_stages"]:
+            if stage["duration"] is not None:
+                stage_breakdown[stage["name"]] = {
+                    "duration": round(stage["duration"], 3),
+                    "percentage": round((stage["duration"] / total_time) * 100, 1) if total_time > 0 else 0
+                }
+        
+        return {
+            "total_processing_time": total_time,
+            "stage_breakdown": stage_breakdown,
+            "warnings": self.stats["warnings"],
+            "document_analysis": self.stats.get("document_info", {})
+        }
