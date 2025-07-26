@@ -15,78 +15,6 @@ This tool automatically extracts headings (Title, H1, H2, H3) from PDF documents
 - **High Accuracy**: Multi-strategy approach for superior heading detection
 - **Robust Fallbacks**: Multiple detection strategies ensure reliability
 
-## Achieved Features & Technical Capabilities
-
-### Core AI & Intelligence Features
-- **Multi-Strategy Ensemble**: Combines Adobe-grade structure detection + semantic AI + heuristic analysis
-- **Adaptive Intelligence**: Dynamic threshold adjustment based on document characteristics
-- **Cultural AI**: Language-aware processing with cultural pattern recognition for 5+ languages
-- **Semantic Verification**: Transformer-based contextual analysis using sentence embeddings
-- **Self-Learning Thresholds**: Document-adaptive scoring using percentile-based font analysis
-- **Hybrid AI Architecture**: First-of-its-kind combination of rule-based + AI approaches
-
-### Advanced Multilingual Support
-- **5-Language Intelligence**: English, Japanese, Hindi, Arabic, Chinese with cultural nuances
-- **Unicode Normalization**: Advanced text cleaning with character encoding detection
-- **Language Auto-Detection**: Intelligent language identification from document content
-- **Cultural Pattern Matching**: Region-specific numbering, heading styles, and layout preferences
-- **RTL/Vertical Layout Awareness**: Handles right-to-left and vertical text orientations
-
-### Performance & Optimization Features
-- **Sub-10 Second Processing**: Hackathon-compliant speed for 50-page documents
-- **CPU-Only Architecture**: No GPU dependencies, AMD64 compatible
-- **Memory Efficient**: Under 200MB total model footprint with intelligent caching
-- **Parallel Processing**: Multi-threaded candidate generation and filtering
-- **Smart Fallbacks**: Multiple detection strategies ensure 90%+ success rate
-- **Production-Ready Architecture**: Containerizable with minimal dependencies
-
-### Advanced Document Analysis
-- **Multi-Column Awareness**: Automatic column detection and reading order
-- **Header/Footer Recognition**: Smart region detection and exclusion
-- **Margin Analysis**: Dynamic margin detection and text flow analysis
-- **Whitespace Intelligence**: Spacing-based heading detection algorithms
-- **Typography Analysis**: Font hierarchy detection with statistical modeling
-- **Document Type Classification**: Academic, technical, book, report detection
-
-### Deep Content Understanding
-- **Semantic Context Analysis**: Embedding-based relevance scoring
-- **Key Term Extraction**: TF-IDF based concept identification
-- **Hierarchy Validation**: Multi-level heading structure verification
-- **Content Quality Assessment**: Text density and readability metrics
-- **Fragment Merging**: Intelligent reconstruction of split headings
-- **Noise Filtering**: URL, email, and non-heading pattern exclusion
-
-### User Experience & Developer Features
-- **Multiple Output Formats**: JSON, CSV, XML, HTML, Markdown export
-- **Interactive HTML**: Collapsible tree views with confidence scores
-- **Round 1A Compliance**: Competition-specific JSON formatting
-- **Debug Visualizations**: Comprehensive processing statistics and insights
-- **CLI Interface**: Command-line tools with rich options
-- **Python API**: Programmatic access with comprehensive documentation
-
-### Analytics & Intelligence Engine
-- **Confidence Scoring**: Multi-factor heading likelihood assessment
-- **Performance Metrics**: Processing time breakdown and optimization insights
-- **Quality Indicators**: Heading distribution analysis and consistency checking
-- **Font Intelligence**: Advanced typography analysis with weight classification
-- **Layout Complexity Assessment**: Document structure complexity scoring
-- **Statistical Analysis**: Percentile-based thresholds and distribution analysis
-
-### Production & Enterprise Features
-- **Batch Processing**: Multi-document workflows with progress tracking
-- **Error Resilience**: Comprehensive exception handling and graceful degradation
-- **Memory Management**: Intelligent caching with automatic cleanup
-- **Scalable Design**: Thread-safe components for concurrent processing
-- **Extensive Logging**: Multi-level debug output with performance metrics
-- **Validation Pipeline**: Input/output validation with detailed error reporting
-
-### Competitive Advantages
-- **90-95% Accuracy** on academic papers and technical documents
-- **Multilingual Bonus Points**: Cultural intelligence for international documents
-- **Zero GPU Dependencies** with optimized CPU performance
-- **Enterprise Architecture** with comprehensive error handling
-- **Extensible Framework** for future AI model integration
-
 ## How It Works
 
 Our hybrid approach uses a **three-stage pipeline**:
@@ -222,10 +150,10 @@ python -m src.main document.pdf --debug --round1a --output result.json
 
 | Document Type | Processing Time | Accuracy | Multilingual Bonus |
 |---------------|----------------|----------|-------------------|
-| Academic Papers | 2-5 seconds | 90-95% | Full Support |
-| Technical Manuals | 3-7 seconds | 85-92% | Full Support |
-| Books/Reports | 4-8 seconds | 88-94% | Full Support |
-| Complex Layouts | 6-10 seconds | 82-90% | Full Support |
+| Academic Papers | 2-5 seconds | 90-95% | ✅ Full Support |
+| Technical Manuals | 3-7 seconds | 85-92% | ✅ Full Support |
+| Books/Reports | 4-8 seconds | 88-94% | ✅ Full Support |
+| Complex Layouts | 6-10 seconds | 82-90% | ✅ Full Support |
 
 ## Hackathon Optimizations
 
@@ -276,6 +204,15 @@ This provides:
 - Candidate generation statistics
 - Semantic filtering scores
 - Hierarchy assignment logic
+
+## Architecture Overview
+
+```
+PDF Input → Structure Check → Candidate Generation → Semantic Filtering → Hierarchy Assignment → JSON Output
+     ↓           ↓                    ↓                     ↓                      ↓              ↓
+   Validate   Adobe TOC         Font Analysis        AI Verification      Level Assignment   Round1A Format
+              Detection         Layout Patterns      Context Analysis     Cultural Rules     
+```
 
 ## What Makes This System Unique
 
