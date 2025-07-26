@@ -991,7 +991,7 @@ class CacheManager:
 def create_performance_optimized_processor(enable_caching: bool = True, 
                                          enable_multilingual: bool = False) -> AdvancedDocumentProcessor:
     """Factory function to create optimized processor"""
-    cache_dir = "./cache" if enable_caching else None
+    cache_dir = "./cache" if enable_caching else "./cache_disabled"  # <-- Fix here
     
     processor = AdvancedDocumentProcessor(
         cache_dir=cache_dir,
@@ -1058,7 +1058,7 @@ def main():
         os.makedirs(args.output_dir, exist_ok=True)
         output_path = os.path.join(args.output_dir, args.output_file)
         
-        with open(output_path, 'w') as f:
+        with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(result, f, indent=2, ensure_ascii=False)
         
         # Performance metrics
