@@ -1,0 +1,1734 @@
+{
+    "title": "ISTQB Expert Level Modules Overview",
+    "outline": [
+        {
+            "level": "H1",
+            "text": "Overview",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "Foundation Level Extensions",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "Version 1.0",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "International Software Testing Qualifications Board",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "Overview",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "Overview",
+            "page": 3
+        },
+        {
+            "level": "H1",
+            "text": "Revision History",
+            "page": 3
+        },
+        {
+            "level": "H1",
+            "text": "Overview",
+            "page": 4
+        },
+        {
+            "level": "H1",
+            "text": "Table of Contents",
+            "page": 4
+        },
+        {
+            "level": "H1",
+            "text": "Overview",
+            "page": 5
+        },
+        {
+            "level": "H1",
+            "text": "Acknowledgements",
+            "page": 5
+        },
+        {
+            "level": "H1",
+            "text": "Overview",
+            "page": 6
+        },
+        {
+            "level": "H1",
+            "text": "1. Introduction to the Foundation Level Extensions",
+            "page": 6
+        },
+        {
+            "level": "H1",
+            "text": "Overview",
+            "page": 7
+        },
+        {
+            "level": "H1",
+            "text": "2. Introduction to Foundation Level Agile Tester Extension",
+            "page": 7
+        },
+        {
+            "level": "H2",
+            "text": "2.1 Intended Audience",
+            "page": 7
+        },
+        {
+            "level": "H2",
+            "text": "2.2 Career Paths for Testers",
+            "page": 7
+        },
+        {
+            "level": "H2",
+            "text": "2.3 Learning Objectives",
+            "page": 7
+        },
+        {
+            "level": "H1",
+            "text": "Overview",
+            "page": 8
+        },
+        {
+            "level": "H2",
+            "text": "2.4 Entry Requirements",
+            "page": 8
+        },
+        {
+            "level": "H2",
+            "text": "2.5 Structure and Course Duration",
+            "page": 8
+        },
+        {
+            "level": "H1",
+            "text": "Overview",
+            "page": 9
+        },
+        {
+            "level": "H2",
+            "text": "2.6 Keeping It Current",
+            "page": 9
+        },
+        {
+            "level": "H1",
+            "text": "Overview",
+            "page": 10
+        },
+        {
+            "level": "H1",
+            "text": "3. Overview of the Foundation Level Extension –  Agile Tester",
+            "page": 10
+        },
+        {
+            "level": "H1",
+            "text": "Syllabus",
+            "page": 10
+        },
+        {
+            "level": "H2",
+            "text": "3.1 Business Outcomes",
+            "page": 10
+        },
+        {
+            "level": "H2",
+            "text": "3.2 Content",
+            "page": 10
+        },
+        {
+            "level": "H1",
+            "text": "Overview",
+            "page": 11
+        },
+        {
+            "level": "H1",
+            "text": "Overview",
+            "page": 12
+        },
+        {
+            "level": "H1",
+            "text": "4. References",
+            "page": 12
+        },
+        {
+            "level": "H2",
+            "text": "4.1 Trademarks",
+            "page": 12
+        },
+        {
+            "level": "H2",
+            "text": "4.2 Documents and Web Sites",
+            "page": 12
+        }
+    ],
+    "accessibility": {
+        "pdf_ua_structure": {
+            "document_structure": {
+                "type": "Document",
+                "lang": "en-US",
+                "title": "Overview"
+            },
+            "role_map": {
+                "Document": "document",
+                "H": "heading",
+                "H1": "heading",
+                "H2": "heading",
+                "H3": "heading",
+                "H4": "heading",
+                "H5": "heading",
+                "H6": "heading",
+                "Sect": "section",
+                "P": "paragraph",
+                "L": "list",
+                "LI": "listitem"
+            },
+            "structure_elements": [
+                {
+                    "id": "struct_elem_1",
+                    "structure_type": "H1",
+                    "content": "Overview",
+                    "page": 1,
+                    "bbox": [
+                        252.64999389648438,
+                        189.62002563476562,
+                        365.9539489746094,
+                        216.38002014160156
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_2",
+                    "structure_type": "H1",
+                    "content": "Foundation Level Extensions",
+                    "page": 1,
+                    "bbox": [
+                        139.3459930419922,
+                        244.84402465820312,
+                        479.3563537597656,
+                        271.6040344238281
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_3",
+                    "structure_type": "H1",
+                    "content": "Version 1.0",
+                    "page": 1,
+                    "bbox": [
+                        275.69000244140625,
+                        382.4300231933594,
+                        339.8179931640625,
+                        395.80999755859375
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_4",
+                    "structure_type": "H1",
+                    "content": "International Software Testing Qualifications Board",
+                    "page": 1,
+                    "bbox": [
+                        103.33999633789062,
+                        465.6999816894531,
+                        513.4158935546875,
+                        485.7699890136719
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_5",
+                    "structure_type": "H1",
+                    "content": "Overview",
+                    "page": 2,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_6",
+                    "structure_type": "H1",
+                    "content": "Overview",
+                    "page": 3,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_7",
+                    "structure_type": "H1",
+                    "content": "Revision History",
+                    "page": 3,
+                    "bbox": [
+                        70.94400024414062,
+                        108.93620300292969,
+                        201.52871704101562,
+                        126.73160552978516
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_8",
+                    "structure_type": "H1",
+                    "content": "Overview",
+                    "page": 4,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_9",
+                    "structure_type": "H1",
+                    "content": "Table of Contents",
+                    "page": 4,
+                    "bbox": [
+                        70.94400024414062,
+                        108.93620300292969,
+                        208.75860595703125,
+                        126.73160552978516
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_10",
+                    "structure_type": "H1",
+                    "content": "Overview",
+                    "page": 5,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_11",
+                    "structure_type": "H1",
+                    "content": "Acknowledgements",
+                    "page": 5,
+                    "bbox": [
+                        70.94400024414062,
+                        108.93620300292969,
+                        213.7381591796875,
+                        126.73160552978516
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_12",
+                    "structure_type": "H1",
+                    "content": "Overview",
+                    "page": 6,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_13",
+                    "structure_type": "H1",
+                    "content": "1. Introduction to the Foundation Level Extensions",
+                    "page": 6,
+                    "bbox": [
+                        70.94400024414062,
+                        122.97618103027344,
+                        466.01934814453125,
+                        140.77157592773438
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_14",
+                    "structure_type": "H1",
+                    "content": "Overview",
+                    "page": 7,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_15",
+                    "structure_type": "H1",
+                    "content": "2. Introduction to Foundation Level Agile Tester Extension",
+                    "page": 7,
+                    "bbox": [
+                        70.94400024414062,
+                        122.97618103027344,
+                        523.0668334960938,
+                        140.77157592773438
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_16",
+                    "structure_type": "H1",
+                    "content": "2.1 Intended Audience",
+                    "page": 7,
+                    "bbox": [
+                        70.94400024414062,
+                        217.35379028320312,
+                        218.7164764404297,
+                        233.00839233398438
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_17",
+                    "structure_type": "H1",
+                    "content": "2.2 Career Paths for Testers",
+                    "page": 7,
+                    "bbox": [
+                        70.94400024414062,
+                        484.5238037109375,
+                        255.16290283203125,
+                        500.17840576171875
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_18",
+                    "structure_type": "H1",
+                    "content": "2.3 Learning Objectives",
+                    "page": 7,
+                    "bbox": [
+                        70.94400024414062,
+                        613.673828125,
+                        225.5960693359375,
+                        629.3284301757812
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_19",
+                    "structure_type": "H1",
+                    "content": "Overview",
+                    "page": 8,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_20",
+                    "structure_type": "H1",
+                    "content": "2.4 Entry Requirements",
+                    "page": 8,
+                    "bbox": [
+                        70.94400024414062,
+                        156.99380493164062,
+                        225.6297607421875,
+                        172.64840698242188
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_21",
+                    "structure_type": "H1",
+                    "content": "2.5 Structure and Course Duration",
+                    "page": 8,
+                    "bbox": [
+                        70.94400024414062,
+                        217.11380004882812,
+                        291.9490661621094,
+                        232.76840209960938
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_22",
+                    "structure_type": "H1",
+                    "content": "Overview",
+                    "page": 9,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_23",
+                    "structure_type": "H1",
+                    "content": "2.6 Keeping It Current",
+                    "page": 9,
+                    "bbox": [
+                        70.94400024414062,
+                        133.95376586914062,
+                        215.51954650878906,
+                        149.60836791992188
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_24",
+                    "structure_type": "H1",
+                    "content": "Overview",
+                    "page": 10,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_25",
+                    "structure_type": "H1",
+                    "content": "3. Overview of the Foundation Level Extension –  Agile Tester",
+                    "page": 10,
+                    "bbox": [
+                        70.94400024414062,
+                        117.49411010742188,
+                        541.0394287109375,
+                        138.7847442626953
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_26",
+                    "structure_type": "H1",
+                    "content": "Syllabus",
+                    "page": 10,
+                    "bbox": [
+                        106.93380737304688,
+                        138.33787536621094,
+                        176.96627807617188,
+                        156.13327026367188
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_27",
+                    "structure_type": "H1",
+                    "content": "3.1 Business Outcomes",
+                    "page": 10,
+                    "bbox": [
+                        70.94400024414062,
+                        187.95376586914062,
+                        226.28260803222656,
+                        203.60836791992188
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_28",
+                    "structure_type": "H1",
+                    "content": "3.2 Content",
+                    "page": 10,
+                    "bbox": [
+                        70.94400024414062,
+                        533.0038452148438,
+                        150.98606872558594,
+                        548.658447265625
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_29",
+                    "structure_type": "H1",
+                    "content": "Overview",
+                    "page": 11,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_30",
+                    "structure_type": "H1",
+                    "content": "Overview",
+                    "page": 12,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_31",
+                    "structure_type": "H1",
+                    "content": "4. References",
+                    "page": 12,
+                    "bbox": [
+                        70.94400024414062,
+                        122.97618103027344,
+                        184.21214294433594,
+                        140.77157592773438
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_32",
+                    "structure_type": "H1",
+                    "content": "4.1 Trademarks",
+                    "page": 12,
+                    "bbox": [
+                        70.94400024414062,
+                        171.39376831054688,
+                        176.55291748046875,
+                        187.04837036132812
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_33",
+                    "structure_type": "H1",
+                    "content": "4.2 Documents and Web Sites",
+                    "page": 12,
+                    "bbox": [
+                        70.94400024414062,
+                        257.4637756347656,
+                        267.7581481933594,
+                        273.1183776855469
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                }
+            ],
+            "tagged_elements": [
+                {
+                    "id": "struct_elem_1",
+                    "tag": "H1",
+                    "content": "Overview",
+                    "page": 1,
+                    "bbox": [
+                        252.64999389648438,
+                        189.62002563476562,
+                        365.9539489746094,
+                        216.38002014160156
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_2",
+                    "tag": "H1",
+                    "content": "Foundation Level Extensions",
+                    "page": 1,
+                    "bbox": [
+                        139.3459930419922,
+                        244.84402465820312,
+                        479.3563537597656,
+                        271.6040344238281
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_3",
+                    "tag": "H1",
+                    "content": "Version 1.0",
+                    "page": 1,
+                    "bbox": [
+                        275.69000244140625,
+                        382.4300231933594,
+                        339.8179931640625,
+                        395.80999755859375
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_4",
+                    "tag": "H1",
+                    "content": "International Software Testing Qualifications Board",
+                    "page": 1,
+                    "bbox": [
+                        103.33999633789062,
+                        465.6999816894531,
+                        513.4158935546875,
+                        485.7699890136719
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_5",
+                    "tag": "H1",
+                    "content": "Overview",
+                    "page": 2,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_6",
+                    "tag": "H1",
+                    "content": "Overview",
+                    "page": 3,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_7",
+                    "tag": "H1",
+                    "content": "Revision History",
+                    "page": 3,
+                    "bbox": [
+                        70.94400024414062,
+                        108.93620300292969,
+                        201.52871704101562,
+                        126.73160552978516
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_8",
+                    "tag": "H1",
+                    "content": "Overview",
+                    "page": 4,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_9",
+                    "tag": "H1",
+                    "content": "Table of Contents",
+                    "page": 4,
+                    "bbox": [
+                        70.94400024414062,
+                        108.93620300292969,
+                        208.75860595703125,
+                        126.73160552978516
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_10",
+                    "tag": "H1",
+                    "content": "Overview",
+                    "page": 5,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_11",
+                    "tag": "H1",
+                    "content": "Acknowledgements",
+                    "page": 5,
+                    "bbox": [
+                        70.94400024414062,
+                        108.93620300292969,
+                        213.7381591796875,
+                        126.73160552978516
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_12",
+                    "tag": "H1",
+                    "content": "Overview",
+                    "page": 6,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_13",
+                    "tag": "H1",
+                    "content": "1. Introduction to the Foundation Level Extensions",
+                    "page": 6,
+                    "bbox": [
+                        70.94400024414062,
+                        122.97618103027344,
+                        466.01934814453125,
+                        140.77157592773438
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_14",
+                    "tag": "H1",
+                    "content": "Overview",
+                    "page": 7,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_15",
+                    "tag": "H1",
+                    "content": "2. Introduction to Foundation Level Agile Tester Extension",
+                    "page": 7,
+                    "bbox": [
+                        70.94400024414062,
+                        122.97618103027344,
+                        523.0668334960938,
+                        140.77157592773438
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_16",
+                    "tag": "H1",
+                    "content": "2.1 Intended Audience",
+                    "page": 7,
+                    "bbox": [
+                        70.94400024414062,
+                        217.35379028320312,
+                        218.7164764404297,
+                        233.00839233398438
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_17",
+                    "tag": "H1",
+                    "content": "2.2 Career Paths for Testers",
+                    "page": 7,
+                    "bbox": [
+                        70.94400024414062,
+                        484.5238037109375,
+                        255.16290283203125,
+                        500.17840576171875
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_18",
+                    "tag": "H1",
+                    "content": "2.3 Learning Objectives",
+                    "page": 7,
+                    "bbox": [
+                        70.94400024414062,
+                        613.673828125,
+                        225.5960693359375,
+                        629.3284301757812
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_19",
+                    "tag": "H1",
+                    "content": "Overview",
+                    "page": 8,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_20",
+                    "tag": "H1",
+                    "content": "2.4 Entry Requirements",
+                    "page": 8,
+                    "bbox": [
+                        70.94400024414062,
+                        156.99380493164062,
+                        225.6297607421875,
+                        172.64840698242188
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_21",
+                    "tag": "H1",
+                    "content": "2.5 Structure and Course Duration",
+                    "page": 8,
+                    "bbox": [
+                        70.94400024414062,
+                        217.11380004882812,
+                        291.9490661621094,
+                        232.76840209960938
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_22",
+                    "tag": "H1",
+                    "content": "Overview",
+                    "page": 9,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_23",
+                    "tag": "H1",
+                    "content": "2.6 Keeping It Current",
+                    "page": 9,
+                    "bbox": [
+                        70.94400024414062,
+                        133.95376586914062,
+                        215.51954650878906,
+                        149.60836791992188
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_24",
+                    "tag": "H1",
+                    "content": "Overview",
+                    "page": 10,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_25",
+                    "tag": "H1",
+                    "content": "3. Overview of the Foundation Level Extension –  Agile Tester",
+                    "page": 10,
+                    "bbox": [
+                        70.94400024414062,
+                        117.49411010742188,
+                        541.0394287109375,
+                        138.7847442626953
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_26",
+                    "tag": "H1",
+                    "content": "Syllabus",
+                    "page": 10,
+                    "bbox": [
+                        106.93380737304688,
+                        138.33787536621094,
+                        176.96627807617188,
+                        156.13327026367188
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_27",
+                    "tag": "H1",
+                    "content": "3.1 Business Outcomes",
+                    "page": 10,
+                    "bbox": [
+                        70.94400024414062,
+                        187.95376586914062,
+                        226.28260803222656,
+                        203.60836791992188
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_28",
+                    "tag": "H1",
+                    "content": "3.2 Content",
+                    "page": 10,
+                    "bbox": [
+                        70.94400024414062,
+                        533.0038452148438,
+                        150.98606872558594,
+                        548.658447265625
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_29",
+                    "tag": "H1",
+                    "content": "Overview",
+                    "page": 11,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_30",
+                    "tag": "H1",
+                    "content": "Overview",
+                    "page": 12,
+                    "bbox": [
+                        74.42400360107422,
+                        41.58000183105469,
+                        127.78800964355469,
+                        54.96000289916992
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_31",
+                    "tag": "H1",
+                    "content": "4. References",
+                    "page": 12,
+                    "bbox": [
+                        70.94400024414062,
+                        122.97618103027344,
+                        184.21214294433594,
+                        140.77157592773438
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_32",
+                    "tag": "H1",
+                    "content": "4.1 Trademarks",
+                    "page": 12,
+                    "bbox": [
+                        70.94400024414062,
+                        171.39376831054688,
+                        176.55291748046875,
+                        187.04837036132812
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_33",
+                    "tag": "H1",
+                    "content": "4.2 Documents and Web Sites",
+                    "page": 12,
+                    "bbox": [
+                        70.94400024414062,
+                        257.4637756347656,
+                        267.7581481933594,
+                        273.1183776855469
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                }
+            ],
+            "reading_order": [
+                "struct_elem_1",
+                "struct_elem_2",
+                "struct_elem_3",
+                "struct_elem_4",
+                "struct_elem_5",
+                "struct_elem_6",
+                "struct_elem_7",
+                "struct_elem_8",
+                "struct_elem_9",
+                "struct_elem_10",
+                "struct_elem_11",
+                "struct_elem_12",
+                "struct_elem_13",
+                "struct_elem_14",
+                "struct_elem_15",
+                "struct_elem_16",
+                "struct_elem_17",
+                "struct_elem_18",
+                "struct_elem_19",
+                "struct_elem_20",
+                "struct_elem_21",
+                "struct_elem_22",
+                "struct_elem_23",
+                "struct_elem_24",
+                "struct_elem_25",
+                "struct_elem_26",
+                "struct_elem_27",
+                "struct_elem_28",
+                "struct_elem_29",
+                "struct_elem_30",
+                "struct_elem_31",
+                "struct_elem_32",
+                "struct_elem_33"
+            ],
+            "accessibility_metadata": {
+                "creation_date": "2025-07-27T00:04:41.690097",
+                "creator": "PDF-Heading-Extractor",
+                "accessibility_features": [
+                    "structuredNavigation",
+                    "readingOrder",
+                    "alternativeText",
+                    "tableHeaders"
+                ],
+                "language": "en-US",
+                "reading_order_specified": true,
+                "structure_tree_present": true,
+                "heading_structure_logical": true
+            },
+            "hierarchical_structure": {
+                "type": "document",
+                "children": [
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Overview",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Foundation Level Extensions",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Version 1.0",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "International Software Testing Qualifications Board",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Overview",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Overview",
+                        "page": 3,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Revision History",
+                        "page": 3,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Overview",
+                        "page": 4,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Table of Contents",
+                        "page": 4,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Overview",
+                        "page": 5,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Acknowledgements",
+                        "page": 5,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Overview",
+                        "page": 6,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "1. Introduction to the Foundation Level Extensions",
+                        "page": 6,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Overview",
+                        "page": 7,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "2. Introduction to Foundation Level Agile Tester Extension",
+                        "page": 7,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "2.1 Intended Audience",
+                        "page": 7,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "2.2 Career Paths for Testers",
+                        "page": 7,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "2.3 Learning Objectives",
+                        "page": 7,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Overview",
+                        "page": 8,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "2.4 Entry Requirements",
+                        "page": 8,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "2.5 Structure and Course Duration",
+                        "page": 8,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Overview",
+                        "page": 9,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "2.6 Keeping It Current",
+                        "page": 9,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Overview",
+                        "page": 10,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "3. Overview of the Foundation Level Extension –  Agile Tester",
+                        "page": 10,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Syllabus",
+                        "page": 10,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "3.1 Business Outcomes",
+                        "page": 10,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "3.2 Content",
+                        "page": 10,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Overview",
+                        "page": 11,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Overview",
+                        "page": 12,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "4. References",
+                        "page": 12,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "4.1 Trademarks",
+                        "page": 12,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "4.2 Documents and Web Sites",
+                        "page": 12,
+                        "children": []
+                    }
+                ],
+                "level": 0
+            }
+        },
+        "metadata": {
+            "total_headings": 33,
+            "level_distribution": {
+                "1": 31,
+                "2": 2
+            },
+            "has_proper_hierarchy": true,
+            "missing_h1": true,
+            "accessibility_score": 100.0,
+            "issues": [
+                "Missing H1 heading - document should start with H1"
+            ],
+            "recommendations": [
+                "Add an H1 heading at the beginning of the document"
+            ],
+            "compliance": {
+                "wcag_2.1_aa": false,
+                "pdf_ua": false,
+                "section_508": false
+            }
+        },
+        "aria_labels": {
+            "heading_1": "Heading level 1: Overview",
+            "heading_2": "Heading level 1: Foundation Level Extensions",
+            "heading_3": "Heading level 1: Version 1.0",
+            "heading_4": "Heading level 1: International Software Testing Qualifications Board",
+            "heading_5": "Heading level 1: Overview on page 2",
+            "heading_6": "Heading level 1: Overview on page 3",
+            "heading_7": "Heading level 1: Revision History on page 3",
+            "heading_8": "Heading level 1: Overview on page 4",
+            "heading_9": "Heading level 1: Table of Contents on page 4",
+            "heading_10": "Heading level 1: Overview on page 5",
+            "heading_11": "Heading level 1: Acknowledgements on page 5",
+            "heading_12": "Heading level 1: Overview on page 6",
+            "heading_13": "Heading level 1: 1. Introduction to the Foundation Level Extensions on page 6",
+            "heading_14": "Heading level 1: Overview on page 7",
+            "heading_15": "Heading level 1: 2. Introduction to Foundation Level Agile Tester Extension on page 7",
+            "heading_16": "Heading level 1: 2.1 Intended Audience on page 7",
+            "heading_17": "Heading level 1: 2.2 Career Paths for Testers on page 7",
+            "heading_18": "Heading level 1: 2.3 Learning Objectives on page 7",
+            "heading_19": "Heading level 1: Overview on page 8",
+            "heading_20": "Heading level 1: 2.4 Entry Requirements on page 8",
+            "heading_21": "Heading level 1: 2.5 Structure and Course Duration on page 8",
+            "heading_22": "Heading level 1: Overview on page 9",
+            "heading_23": "Heading level 1: 2.6 Keeping It Current on page 9",
+            "heading_24": "Heading level 1: Overview on page 10",
+            "heading_25": "Heading level 1: 3. Overview of the Foundation Level Extension –  Agile Tester on page 10",
+            "heading_26": "Heading level 1: Syllabus on page 10",
+            "heading_27": "Heading level 1: 3.1 Business Outcomes on page 10",
+            "heading_28": "Heading level 1: 3.2 Content on page 10",
+            "heading_29": "Heading level 1: Overview on page 11",
+            "heading_30": "Heading level 1: Overview on page 12",
+            "heading_31": "Heading level 1: 4. References on page 12",
+            "heading_32": "Heading level 1: 4.1 Trademarks on page 12",
+            "heading_33": "Heading level 1: 4.2 Documents and Web Sites on page 12"
+        },
+        "structure_xml_available": true,
+        "compliance_summary": {
+            "wcag_2_1_aa": false,
+            "pdf_ua": false,
+            "section_508": false,
+            "accessibility_score": 100.0
+        }
+    }
+}

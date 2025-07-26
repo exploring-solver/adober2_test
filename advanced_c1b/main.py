@@ -26,7 +26,8 @@ import networkx as nx
 from dataclasses import dataclass
 import warnings
 warnings.filterwarnings('ignore')
-
+from transformers import AutoTokenizer, AutoModel
+import torch
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -83,7 +84,30 @@ class AdvancedDocumentProcessor:
             logger.info("Loaded and cached spaCy model")
         
         # Load sentence transformer with INT8 quantization simulation
-        self.sentence_model = SentenceTransformer('all-MiniLM-L6-v2')
+        # self.sentence_model = SentenceTransformer('all-MiniLM-L6-v2')
+        
+
+        # Load Qwen2-0.5B
+        self.tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-0.5B")
+        self.qwen_model = AutoModel.from_pretrained("Qwen/Qwen2-0.5B")
+        self.device = torch.device('cpu') 
+        # self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') 
+        self.qwen_model.to(self.device)
+    
+        # Create sentence_model wrapper for compatibility
+        self.sentence_model = self._create_qwen_wrapper()
+        # Create a custom encode method
+        def qwen_encode(self, texts):
+            if isinstance(texts, str):
+                texts = [texts]
+            
+            with torch.no_grad():
+                inputs = self.tokenizer(texts, padding=True, truncation=True, 
+                                    max_length=512, return_tensors='pt')
+                outputs = self.qwen_model(**inputs)
+                # Use mean pooling of last hidden states
+                embeddings = outputs.last_hidden_state.mean(dim=1)
+                return embeddings.numpy()
         logger.info("Loaded sentence transformer model")
         
         # Initialize TF-IDF for keyword-based relevance
@@ -106,6 +130,49 @@ class AdvancedDocumentProcessor:
         if self.enable_multilingual:
             self._setup_multilingual_support()
 
+    def _create_qwen_wrapper(self):
+        """Create a wrapper to make Qwen2 compatible with SentenceTransformer interface"""
+        class QwenWrapper:
+            def __init__(self, tokenizer, model, device):
+                self.tokenizer = tokenizer
+                self.model = model
+                self.device = device
+            
+            def encode(self, texts, batch_size=32, show_progress_bar=False, **kwargs):
+                if isinstance(texts, str):
+                    texts = [texts]
+                
+                all_embeddings = []
+                
+                # Process in batches to handle memory
+                for i in range(0, len(texts), batch_size):
+                    batch_texts = texts[i:i + batch_size]
+                    
+                    with torch.no_grad():
+                        inputs = self.tokenizer(
+                            batch_texts, 
+                            padding=True, 
+                            truncation=True, 
+                            max_length=512, 
+                            return_tensors='pt'
+                        )
+                        
+                        # Move to device
+                        inputs = {k: v.to(self.device) for k, v in inputs.items()}
+                        
+                        outputs = self.model(**inputs)
+                        
+                        # Mean pooling
+                        embeddings = outputs.last_hidden_state.mean(dim=1)
+                        
+                        # Move back to CPU and convert to numpy
+                        embeddings = embeddings.cpu().numpy()
+                        all_embeddings.append(embeddings)
+                
+                # Concatenate all batches
+                return np.concatenate(all_embeddings, axis=0)
+        
+        return QwenWrapper(self.tokenizer, self.qwen_model, self.device)
     def _setup_multilingual_support(self):
         """Setup multilingual processing capabilities"""
         logger.info("Setting up multilingual support...")
@@ -991,7 +1058,7 @@ class CacheManager:
 def create_performance_optimized_processor(enable_caching: bool = True, 
                                          enable_multilingual: bool = False) -> AdvancedDocumentProcessor:
     """Factory function to create optimized processor"""
-    cache_dir = "./cache" if enable_caching else "./cache_disabled"  # <-- Fix here
+    cache_dir = "./cache" if enable_caching else "./cache_disabled"
     
     processor = AdvancedDocumentProcessor(
         cache_dir=cache_dir,
@@ -1001,7 +1068,7 @@ def create_performance_optimized_processor(enable_caching: bool = True,
     # Add performance optimizations
     if enable_caching:
         processor.cache_manager = CacheManager()
-        # Monkey patch the sentence model encode method for caching
+        # Monkey patch the encode method for caching
         original_encode = processor.sentence_model.encode
         
         def cached_encode(texts, **kwargs):
@@ -1009,16 +1076,30 @@ def create_performance_optimized_processor(enable_caching: bool = True,
                 texts = [texts]
             
             results = []
-            for text in texts:
+            uncached_texts = []
+            uncached_indices = []
+            
+            # Check cache for each text
+            for i, text in enumerate(texts):
                 cached = processor.cache_manager.load_cached_embedding(text)
                 if cached is not None:
-                    results.append(cached)
+                    results.append((i, cached))
                 else:
-                    embedding = original_encode([text], **kwargs)[0]
-                    processor.cache_manager.cache_embeddings(text, embedding)
-                    results.append(embedding)
+                    uncached_texts.append(text)
+                    uncached_indices.append(i)
             
-            return np.array(results)
+            # Process uncached texts
+            if uncached_texts:
+                new_embeddings = original_encode(uncached_texts, **kwargs)
+                
+                # Cache new embeddings and add to results
+                for idx, (text, embedding) in enumerate(zip(uncached_texts, new_embeddings)):
+                    processor.cache_manager.cache_embeddings(text, embedding)
+                    results.append((uncached_indices[idx], embedding))
+            
+            # Sort results by original order and extract embeddings
+            results.sort(key=lambda x: x[0])
+            return np.array([embedding for _, embedding in results])
         
         processor.sentence_model.encode = cached_encode
     

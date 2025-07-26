@@ -1,0 +1,1185 @@
+{
+    "title": "To Present a Proposal for Developing the Business Plan for the Ontario Digital Library",
+    "outline": [
+        {
+            "level": "H1",
+            "text": "Ontario’s Libraries",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "Working Together",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "oposal",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "RFP: R",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "RFP: Request f",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "quest f",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "quest for Pr",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "r Pr",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "r Proposal",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "oposal",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "RFP: R",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "RFP: R",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "quest f",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "r Pr",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "oposal",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "To Present a Proposal for Developing",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "the Business Plan for the Ontario",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "Digital Library",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "March 21, 2003",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "Ontario’s Digital Library",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "A Critical Component for Implementing Ontario’s Road Map to",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "Prosperity Strategy",
+            "page": 2
+        }
+    ],
+    "accessibility": {
+        "pdf_ua_structure": {
+            "document_structure": {
+                "type": "Document",
+                "lang": "en-US",
+                "title": "Ontario’s Libraries"
+            },
+            "role_map": {
+                "Document": "document",
+                "H": "heading",
+                "H1": "heading",
+                "H2": "heading",
+                "H3": "heading",
+                "H4": "heading",
+                "H5": "heading",
+                "H6": "heading",
+                "Sect": "section",
+                "P": "paragraph",
+                "L": "list",
+                "LI": "listitem"
+            },
+            "structure_elements": [
+                {
+                    "id": "struct_elem_1",
+                    "structure_type": "H1",
+                    "content": "Ontario’s Libraries",
+                    "page": 1,
+                    "bbox": [
+                        95.44059753417969,
+                        72.08401489257812,
+                        238.64328002929688,
+                        94.5716552734375
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_2",
+                    "structure_type": "H1",
+                    "content": "Working Together",
+                    "page": 1,
+                    "bbox": [
+                        95.44059753417969,
+                        94.63546752929688,
+                        235.36988830566406,
+                        117.12310791015625
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_3",
+                    "structure_type": "H1",
+                    "content": "oposal",
+                    "page": 1,
+                    "bbox": [
+                        385.561279296875,
+                        156.5159454345703,
+                        489.32281494140625,
+                        201.66030883789062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_4",
+                    "structure_type": "H1",
+                    "content": "RFP: R",
+                    "page": 1,
+                    "bbox": [
+                        90.05634307861328,
+                        156.5159454345703,
+                        193.7730712890625,
+                        201.66030883789062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_5",
+                    "structure_type": "H1",
+                    "content": "RFP: Request f",
+                    "page": 1,
+                    "bbox": [
+                        90.31266784667969,
+                        156.5159454345703,
+                        316.0793151855469,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_6",
+                    "structure_type": "H1",
+                    "content": "quest f",
+                    "page": 1,
+                    "bbox": [
+                        209.4694366455078,
+                        156.5159454345703,
+                        316.1434020996094,
+                        201.66030883789062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_7",
+                    "structure_type": "H1",
+                    "content": "quest for Pr",
+                    "page": 1,
+                    "bbox": [
+                        209.66168212890625,
+                        156.5159454345703,
+                        387.115234375,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_8",
+                    "structure_type": "H1",
+                    "content": "r Pr",
+                    "page": 1,
+                    "bbox": [
+                        332.1506042480469,
+                        156.5159454345703,
+                        387.21136474609375,
+                        201.66030883789062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_9",
+                    "structure_type": "H1",
+                    "content": "r Proposal",
+                    "page": 1,
+                    "bbox": [
+                        332.34283447265625,
+                        156.5159454345703,
+                        489.0344543457031,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_10",
+                    "structure_type": "H1",
+                    "content": "oposal",
+                    "page": 1,
+                    "bbox": [
+                        385.3690490722656,
+                        156.5159454345703,
+                        497.4065246582031,
+                        201.66030883789062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_11",
+                    "structure_type": "H1",
+                    "content": "RFP: R",
+                    "page": 1,
+                    "bbox": [
+                        90.02429962158203,
+                        156.7722930908203,
+                        193.74102783203125,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_12",
+                    "structure_type": "H1",
+                    "content": "RFP: R",
+                    "page": 1,
+                    "bbox": [
+                        90.28062438964844,
+                        156.7722930908203,
+                        193.99734497070312,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_13",
+                    "structure_type": "H1",
+                    "content": "quest f",
+                    "page": 1,
+                    "bbox": [
+                        209.66168212890625,
+                        156.7722930908203,
+                        316.3356628417969,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_14",
+                    "structure_type": "H1",
+                    "content": "r Pr",
+                    "page": 1,
+                    "bbox": [
+                        332.310791015625,
+                        156.7722930908203,
+                        387.3715515136719,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_15",
+                    "structure_type": "H1",
+                    "content": "oposal",
+                    "page": 1,
+                    "bbox": [
+                        385.52923583984375,
+                        156.7722930908203,
+                        489.290771484375,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_16",
+                    "structure_type": "H1",
+                    "content": "To Present a Proposal for Developing",
+                    "page": 1,
+                    "bbox": [
+                        131.80059814453125,
+                        248.39999389648438,
+                        482.0615234375,
+                        275.1839904785156
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_17",
+                    "structure_type": "H1",
+                    "content": "the Business Plan for the Ontario",
+                    "page": 1,
+                    "bbox": [
+                        131.80059814453125,
+                        276.0,
+                        440.57269287109375,
+                        302.78399658203125
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_18",
+                    "structure_type": "H1",
+                    "content": "Digital Library",
+                    "page": 1,
+                    "bbox": [
+                        131.80059814453125,
+                        303.6000061035156,
+                        262.14703369140625,
+                        330.3840026855469
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_19",
+                    "structure_type": "H1",
+                    "content": "March 21, 2003",
+                    "page": 1,
+                    "bbox": [
+                        238.2406005859375,
+                        342.46380615234375,
+                        379.3942565917969,
+                        364.8284606933594
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_20",
+                    "structure_type": "H1",
+                    "content": "Ontario’s Digital Library",
+                    "page": 2,
+                    "bbox": [
+                        90.04060363769531,
+                        88.59601593017578,
+                        320.04559326171875,
+                        116.8323745727539
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_21",
+                    "structure_type": "H1",
+                    "content": "A Critical Component for Implementing Ontario’s Road Map to",
+                    "page": 2,
+                    "bbox": [
+                        90.04060363769531,
+                        120.31608581542969,
+                        484.937255859375,
+                        138.12744140625
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_22",
+                    "structure_type": "H1",
+                    "content": "Prosperity Strategy",
+                    "page": 2,
+                    "bbox": [
+                        90.04060363769531,
+                        138.6700897216797,
+                        214.4951171875,
+                        156.4814453125
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                }
+            ],
+            "tagged_elements": [
+                {
+                    "id": "struct_elem_1",
+                    "tag": "H1",
+                    "content": "Ontario’s Libraries",
+                    "page": 1,
+                    "bbox": [
+                        95.44059753417969,
+                        72.08401489257812,
+                        238.64328002929688,
+                        94.5716552734375
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_2",
+                    "tag": "H1",
+                    "content": "Working Together",
+                    "page": 1,
+                    "bbox": [
+                        95.44059753417969,
+                        94.63546752929688,
+                        235.36988830566406,
+                        117.12310791015625
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_3",
+                    "tag": "H1",
+                    "content": "oposal",
+                    "page": 1,
+                    "bbox": [
+                        385.561279296875,
+                        156.5159454345703,
+                        489.32281494140625,
+                        201.66030883789062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_4",
+                    "tag": "H1",
+                    "content": "RFP: R",
+                    "page": 1,
+                    "bbox": [
+                        90.05634307861328,
+                        156.5159454345703,
+                        193.7730712890625,
+                        201.66030883789062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_5",
+                    "tag": "H1",
+                    "content": "RFP: Request f",
+                    "page": 1,
+                    "bbox": [
+                        90.31266784667969,
+                        156.5159454345703,
+                        316.0793151855469,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_6",
+                    "tag": "H1",
+                    "content": "quest f",
+                    "page": 1,
+                    "bbox": [
+                        209.4694366455078,
+                        156.5159454345703,
+                        316.1434020996094,
+                        201.66030883789062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_7",
+                    "tag": "H1",
+                    "content": "quest for Pr",
+                    "page": 1,
+                    "bbox": [
+                        209.66168212890625,
+                        156.5159454345703,
+                        387.115234375,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_8",
+                    "tag": "H1",
+                    "content": "r Pr",
+                    "page": 1,
+                    "bbox": [
+                        332.1506042480469,
+                        156.5159454345703,
+                        387.21136474609375,
+                        201.66030883789062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_9",
+                    "tag": "H1",
+                    "content": "r Proposal",
+                    "page": 1,
+                    "bbox": [
+                        332.34283447265625,
+                        156.5159454345703,
+                        489.0344543457031,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_10",
+                    "tag": "H1",
+                    "content": "oposal",
+                    "page": 1,
+                    "bbox": [
+                        385.3690490722656,
+                        156.5159454345703,
+                        497.4065246582031,
+                        201.66030883789062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_11",
+                    "tag": "H1",
+                    "content": "RFP: R",
+                    "page": 1,
+                    "bbox": [
+                        90.02429962158203,
+                        156.7722930908203,
+                        193.74102783203125,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_12",
+                    "tag": "H1",
+                    "content": "RFP: R",
+                    "page": 1,
+                    "bbox": [
+                        90.28062438964844,
+                        156.7722930908203,
+                        193.99734497070312,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_13",
+                    "tag": "H1",
+                    "content": "quest f",
+                    "page": 1,
+                    "bbox": [
+                        209.66168212890625,
+                        156.7722930908203,
+                        316.3356628417969,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_14",
+                    "tag": "H1",
+                    "content": "r Pr",
+                    "page": 1,
+                    "bbox": [
+                        332.310791015625,
+                        156.7722930908203,
+                        387.3715515136719,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_15",
+                    "tag": "H1",
+                    "content": "oposal",
+                    "page": 1,
+                    "bbox": [
+                        385.52923583984375,
+                        156.7722930908203,
+                        489.290771484375,
+                        201.91665649414062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_16",
+                    "tag": "H1",
+                    "content": "To Present a Proposal for Developing",
+                    "page": 1,
+                    "bbox": [
+                        131.80059814453125,
+                        248.39999389648438,
+                        482.0615234375,
+                        275.1839904785156
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_17",
+                    "tag": "H1",
+                    "content": "the Business Plan for the Ontario",
+                    "page": 1,
+                    "bbox": [
+                        131.80059814453125,
+                        276.0,
+                        440.57269287109375,
+                        302.78399658203125
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_18",
+                    "tag": "H1",
+                    "content": "Digital Library",
+                    "page": 1,
+                    "bbox": [
+                        131.80059814453125,
+                        303.6000061035156,
+                        262.14703369140625,
+                        330.3840026855469
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_19",
+                    "tag": "H1",
+                    "content": "March 21, 2003",
+                    "page": 1,
+                    "bbox": [
+                        238.2406005859375,
+                        342.46380615234375,
+                        379.3942565917969,
+                        364.8284606933594
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_20",
+                    "tag": "H1",
+                    "content": "Ontario’s Digital Library",
+                    "page": 2,
+                    "bbox": [
+                        90.04060363769531,
+                        88.59601593017578,
+                        320.04559326171875,
+                        116.8323745727539
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_21",
+                    "tag": "H1",
+                    "content": "A Critical Component for Implementing Ontario’s Road Map to",
+                    "page": 2,
+                    "bbox": [
+                        90.04060363769531,
+                        120.31608581542969,
+                        484.937255859375,
+                        138.12744140625
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_22",
+                    "tag": "H1",
+                    "content": "Prosperity Strategy",
+                    "page": 2,
+                    "bbox": [
+                        90.04060363769531,
+                        138.6700897216797,
+                        214.4951171875,
+                        156.4814453125
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                }
+            ],
+            "reading_order": [
+                "struct_elem_1",
+                "struct_elem_2",
+                "struct_elem_3",
+                "struct_elem_4",
+                "struct_elem_5",
+                "struct_elem_6",
+                "struct_elem_7",
+                "struct_elem_8",
+                "struct_elem_9",
+                "struct_elem_10",
+                "struct_elem_11",
+                "struct_elem_12",
+                "struct_elem_13",
+                "struct_elem_14",
+                "struct_elem_15",
+                "struct_elem_16",
+                "struct_elem_17",
+                "struct_elem_18",
+                "struct_elem_19",
+                "struct_elem_20",
+                "struct_elem_21",
+                "struct_elem_22"
+            ],
+            "accessibility_metadata": {
+                "creation_date": "2025-07-27T01:44:59.058973",
+                "creator": "PDF-Heading-Extractor",
+                "accessibility_features": [
+                    "structuredNavigation",
+                    "readingOrder",
+                    "alternativeText",
+                    "tableHeaders"
+                ],
+                "language": "en-US",
+                "reading_order_specified": true,
+                "structure_tree_present": true,
+                "heading_structure_logical": true
+            },
+            "hierarchical_structure": {
+                "type": "document",
+                "children": [
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Ontario’s Libraries",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Working Together",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "oposal",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "RFP: R",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "RFP: Request f",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "quest f",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "quest for Pr",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "r Pr",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "r Proposal",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "oposal",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "RFP: R",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "RFP: R",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "quest f",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "r Pr",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "oposal",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "To Present a Proposal for Developing",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "the Business Plan for the Ontario",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Digital Library",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "March 21, 2003",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Ontario’s Digital Library",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "A Critical Component for Implementing Ontario’s Road Map to",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Prosperity Strategy",
+                        "page": 2,
+                        "children": []
+                    }
+                ],
+                "level": 0
+            }
+        },
+        "metadata": {
+            "total_headings": 22,
+            "level_distribution": {
+                "1": 18,
+                "2": 3,
+                "3": 1
+            },
+            "has_proper_hierarchy": true,
+            "missing_h1": true,
+            "accessibility_score": 100.0,
+            "issues": [
+                "Missing H1 heading - document should start with H1"
+            ],
+            "recommendations": [
+                "Add an H1 heading at the beginning of the document"
+            ],
+            "compliance": {
+                "wcag_2.1_aa": false,
+                "pdf_ua": false,
+                "section_508": false
+            }
+        },
+        "aria_labels": {
+            "heading_1": "Heading level 1: Ontario’s Libraries",
+            "heading_2": "Heading level 1: Working Together",
+            "heading_3": "Heading level 1: oposal",
+            "heading_4": "Heading level 1: RFP: R",
+            "heading_5": "Heading level 1: RFP: Request f",
+            "heading_6": "Heading level 1: quest f",
+            "heading_7": "Heading level 1: quest for Pr",
+            "heading_8": "Heading level 1: r Pr",
+            "heading_9": "Heading level 1: r Proposal",
+            "heading_10": "Heading level 1: oposal",
+            "heading_11": "Heading level 1: RFP: R",
+            "heading_12": "Heading level 1: RFP: R",
+            "heading_13": "Heading level 1: quest f",
+            "heading_14": "Heading level 1: r Pr",
+            "heading_15": "Heading level 1: oposal",
+            "heading_16": "Heading level 1: To Present a Proposal for Developing",
+            "heading_17": "Heading level 1: the Business Plan for the Ontario",
+            "heading_18": "Heading level 1: Digital Library",
+            "heading_19": "Heading level 1: March 21, 2003",
+            "heading_20": "Heading level 1: Ontario’s Digital Library on page 2",
+            "heading_21": "Heading level 1: A Critical Component for Implementing Ontario’s Road Map to on page 2",
+            "heading_22": "Heading level 1: Prosperity Strategy on page 2"
+        },
+        "structure_xml_available": true,
+        "compliance_summary": {
+            "wcag_2_1_aa": false,
+            "pdf_ua": false,
+            "section_508": false,
+            "accessibility_score": 100.0
+        }
+    }
+}

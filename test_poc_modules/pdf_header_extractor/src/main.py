@@ -47,14 +47,16 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
     startup_time = time.time()
     
     try:
+        logger.info("Step: Starting main extraction CLI")
+        
         # Validate PDF
-        logger.info(f"Validating PDF: {pdf_path}")
+        logger.info(f"Step: Validating PDF at {pdf_path}")
         if not validate_pdf(pdf_path):
             click.echo(f"Error: Invalid PDF file: {pdf_path}")
             return
         
         # Initialize processor with lazy loading (fast startup)
-        logger.info("Initializing PDF processor with lazy loading...")
+        logger.info("Step: Initializing PDFProcessor")
         init_start = time.time()
         
         processor = PDFProcessor(language=language, debug=debug)
@@ -63,6 +65,7 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
         logger.info(f"Processor initialized in {init_time:.3f}s (models not loaded yet)")
         
         # Optional: Preload models for production use
+        logger.info("Step: Preloading models" if preload else "Step: Skipping preload")
         if preload:
             logger.info("Preloading models...")
             preload_start = time.time()
@@ -79,6 +82,7 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
             logger.info(f"Model preloading completed in {preload_time:.3f}s")
         
         # Optional: Warm up models
+        logger.info("Step: Warming up models" if warmup else "Step: Skipping warmup")
         if warmup:
             logger.info("Warming up models...")
             warmup_start = time.time()
@@ -93,6 +97,7 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
             logger.info(f"Model warmup completed in {warmup_time:.3f}s")
         
         # Process PDF (models loaded on demand during processing)
+        logger.info("Step: Processing PDF")
         logger.info("Starting PDF processing...")
         processing_start = time.time()
         
@@ -106,6 +111,7 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
         processing_time = time.time() - processing_start
         
         # Save or display results
+        logger.info(f"Step: Saving output to {output}" if output else "Step: Printing output to console")
         if output:
             # Determine output formats
             formats = ["json"]
@@ -131,6 +137,7 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
                 click.echo(f"PDF/UA: {'✓' if compliance['pdf_ua'] else '✗'}")
                 click.echo(f"Section 508: {'✓' if compliance['section_508'] else '✗'}")
         
+        logger.info("Step: Extraction complete")
         # Performance summary
         total_time = time.time() - startup_time
         logger.info(f"Processing completed in {processing_time:.2f}s (total: {total_time:.2f}s)")

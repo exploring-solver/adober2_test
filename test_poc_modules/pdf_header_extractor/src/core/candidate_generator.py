@@ -125,61 +125,7 @@ class CandidateGenerator:
             "sample_text": sample_text[:500]  # Keep sample for further analysis
         }
         
-        self.logger.debug(f"Document stats: {self.document_stats}")
-    
-    def _extract_page_candidates(self, page: fitz.Page, page_num: int) -> List[HeadingCandidate]:
-        """Extract heading candidates from a single page with multilingual awareness."""
-        candidates = []
-        blocks = page.get_text("dict")["blocks"]
-        page_height = page.rect.height
-        
-        for block_idx, block in enumerate(blocks):
-            if "lines" not in block:
-                continue
-                
-            # Process each line in the block
-            for line_idx, line in enumerate(block["lines"]):
-                line_text = ""
-                line_bbox = line["bbox"]
-                spans = line["spans"]
-                
-                if not spans:
-                    continue
-                
-                # Combine spans in the line
-                dominant_span = max(spans, key=lambda s: (s["size"], len(s["text"])))
-                line_text = " ".join([span["text"].strip() for span in spans])
-                
-                if not self._is_potential_heading_text(line_text):
-                    continue
-                
-                # Calculate features with language awareness
-                features = self._extract_line_features(
-                    line, line_text, line_bbox, page.rect.height, page.rect.width, 
-                    block_idx, line_idx, blocks
-                )
-
-                # Create candidate
-                candidate = HeadingCandidate(
-                    text=line_text.strip(),
-                    page=page_num + 1,
-                    bbox=line_bbox,
-                    font_size=dominant_span["size"],
-                    font_weight=self._get_font_weight(dominant_span["flags"]),
-                    font_family=dominant_span["font"],
-                    is_bold=bool(dominant_span["flags"] & 2**4),
-                    is_italic=bool(dominant_span["flags"] & 2**1),
-                    alignment=self._determine_alignment(line_bbox, page.rect.width),
-                    position_ratio=line_bbox[1] / page_height,
-                    line_spacing_before=features["spacing_before"],
-                    line_spacing_after=features["spacing_after"],
-                    text_length=len(line_text.strip()),
-                    features=features
-                )
-                
-                candidates.append(candidate)
-        
-        return candidates
+        self.logger.debug(f"Document stats: {self.document_stats}") 
     
     def _extract_line_features(self, line: Dict, text: str, bbox: Tuple,
                            page_height: float, page_width: float,
@@ -284,64 +230,120 @@ class CandidateGenerator:
                 return True
         return False
     
-    def _is_potential_heading_text(self, text: str) -> bool:
-        """Quick filter for potential heading text with enhanced CJK filtering."""
+    def _extract_page_candidates(self, page: fitz.Page, page_num: int) -> List[HeadingCandidate]:
+        """Extract heading candidates from a single page with better text consolidation."""
+        candidates = []
+        blocks = page.get_text("dict")["blocks"]
+        page_height = page.rect.height
+        
+        for block_idx, block in enumerate(blocks):
+            if "lines" not in block:
+                continue
+            
+            # Process each line in the block, but consolidate spans properly
+            for line_idx, line in enumerate(block["lines"]):
+                if not line["spans"]:
+                    continue
+                
+                # **FIX 1: Properly consolidate all spans in a line**
+                line_text = ""
+                dominant_span = None
+                max_span_length = 0
+                
+                for span in line["spans"]:
+                    text = span["text"].strip()
+                    if text:
+                        line_text += text + " "
+                        if len(text) > max_span_length:
+                            max_span_length = len(text)
+                            dominant_span = span
+                
+                line_text = line_text.strip()
+                
+                # **FIX 2: Better text validation**
+                if not self._is_potential_heading_text_improved(line_text):
+                    continue
+                
+                # **FIX 3: Use the line bbox, not span bbox**
+                line_bbox = line["bbox"]
+                
+                if not dominant_span:
+                    continue
+                
+                # Calculate features with language awareness
+                features = self._extract_line_features(
+                    line, line_text, line_bbox, page.rect.height, page.rect.width, 
+                    block_idx, line_idx, blocks
+                )
+
+                # Create candidate
+                candidate = HeadingCandidate(
+                    text=line_text,
+                    page=page_num + 1,
+                    bbox=line_bbox,  # Use line bbox, not span bbox
+                    font_size=dominant_span["size"],
+                    font_weight=self._get_font_weight(dominant_span["flags"]),
+                    font_family=dominant_span["font"],
+                    is_bold=bool(dominant_span["flags"] & 2**4),
+                    is_italic=bool(dominant_span["flags"] & 2**1),
+                    alignment=self._determine_alignment(line_bbox, page.rect.width),
+                    position_ratio=line_bbox[1] / page_height,
+                    line_spacing_before=features["spacing_before"],
+                    line_spacing_after=features["spacing_after"],
+                    text_length=len(line_text),
+                    features=features
+                )
+                
+                candidates.append(candidate)
+        
+        return candidates
+
+    def _is_potential_heading_text_improved(self, text: str) -> bool:
+        """Improved text validation for potential headings."""
         text = text.strip()
         
-        # Basic length check (adjusted for CJK)
-        if self.detected_language in ['japanese', 'chinese']:
-            # More lenient for CJK but reject very short unless clear heading
-            if len(text) < 1:
-                return False
-            if len(text) < 3 and not re.search(r'[章節項目録]', text):
-                return False
-            # Reject very long text (likely paragraphs) unless clear chapter
-            if len(text) > 40 and not re.search(r'^第[一二三四五六七八九十\d]+章', text):
-                return False
-        else:
-            # Original logic for non-CJK languages
-            if len(text) < MIN_HEADING_LENGTH or len(text) > MAX_HEADING_LENGTH:
-                return False
-        
-        # Skip page numbers, footnotes, headers/footers
-        if re.match(r'^\d+$', text):  # Just numbers
+        # **FIX 4: Better length filtering**
+        if len(text) < 3:  # Too short
+            return False
+        if len(text) > 200:  # Too long for a heading
             return False
         
-        if re.match(r'^[ivxlcdm]+$', text.lower()):  # Roman numerals only
+        # **FIX 5: Filter out obvious non-headings**
+        # Skip if mostly numbers
+        if re.match(r'^\d+$', text):
             return False
         
-        # CJK-specific rejection patterns
-        if self.detected_language in ['japanese', 'chinese']:
-            # Reject if it has CJK rejection patterns
-            if self._has_cjk_reject_pattern(text):
-                return False
-            
-            # Reject list items
-            if re.match(r'^[•·]\s', text) or re.match(r'^\d+\.\s[^章節]', text):
-                return False
-            
-            # Check if it's just punctuation
-            if re.match(r'^[\s\.,;:!?\-\(\)\[\]{}]*$', text):
-                return False
-        else:
-            # Enhanced filtering for non-CJK languages (original logic)
-            if re.match(r'^[\s\.,;:!?\-\(\)\[\]{}]*$', text):
-                return False
+        # Skip if it's just punctuation
+        if re.match(r'^[\s\.,;:!?\-\(\)\[\]{}]*$', text):
+            return False
         
-        # Skip common non-heading patterns
-        skip_patterns = [
-            r'^page \d+',
-            r'^\d+/\d+',      
-            r'^www\.',         # URLs
-            r'^http',          # URLs
-            r'@',              # Email patterns
-        ]
+        # Skip if it looks like a URL or email
+        if re.search(r'(http|www\.|@)', text.lower()):
+            return False
         
-        for pattern in skip_patterns:
-            if re.search(pattern, text.lower()):
-                return False
+        # Skip if it's clearly body text (ends with period and is long)
+        if text.endswith('.') and len(text) > 50:
+            return False
         
-        return True
+        # **FIX 6: Accept text that looks like headings**
+        # Accept if it has heading patterns
+        if re.match(r'^\d+\.', text) or re.match(r'^[IVX]+\.', text):
+            return True
+        
+        # Accept if it ends with colon (section headers)
+        if text.endswith(':'):
+            return True
+        
+        # Accept if it's title case or all caps (but not too long)
+        if (text.istitle() or text.isupper()) and len(text) < 100:
+            return True
+        
+        # Accept if it contains common heading words
+        heading_words = ['chapter', 'section', 'introduction', 'conclusion', 'summary', 'background']
+        if any(word in text.lower() for word in heading_words):
+            return True
+        
+        return True  # Be permissive, let other filters handle it
     
     def _get_font_weight(self, flags: int) -> str:
         """Extract font weight from flags."""
@@ -542,78 +544,149 @@ class CandidateGenerator:
         return min(boost, 1.0)  # Cap at 1.0
     
     def _filter_candidates(self, candidates: List[HeadingCandidate]) -> List[HeadingCandidate]:
-        """Apply filters to remove unlikely candidates with enhanced CJK filtering."""
+        """Improved filtering to remove text fragments and keep real headings."""
         filtered = []
         
-        for candidate in candidates:
-            # Skip if has CJK reject patterns (for CJK languages)
-            if (self.detected_language in ['japanese', 'chinese'] and 
-                candidate.features.get("has_cjk_reject_pattern", False)):
+        # **FIX 12: Group candidates by similarity to merge fragments**
+        merged_candidates = self._merge_text_fragments(candidates)
+        
+        for candidate in merged_candidates:
+            text = candidate.text.strip()
+            
+            # **FIX 13: Better filtering rules**
+            
+            # Skip very short text unless it's clearly a section marker
+            if len(text) < 3:
                 continue
             
-            # Font size filter (adjusted for language)
-            size_threshold = self.document_stats["avg_font_size"] * FONT_SIZE_THRESHOLD_RATIO
+            # Skip text fragments (incomplete words/sentences)
+            if self._is_text_fragment(text):
+                continue
             
-            # More lenient threshold for CJK languages, but stricter overall
-            if self.detected_language in ['japanese', 'chinese']:
-                # Stricter font requirements unless it's a clear chapter/section
-                if (candidate.features.get("is_cjk_chapter", False) or 
-                    candidate.features.get("is_cjk_section", False)):
-                    size_threshold *= 0.7  # More lenient for clear patterns
-                else:
-                    size_threshold *= 1.1  # Stricter for general text
+            # Skip if it looks like body text
+            if self._looks_like_body_text(text):
+                continue
             
+            # Font size filter (more lenient)
+            size_threshold = self.document_stats["avg_font_size"] * 1.1  # Reduced from 1.3
             if candidate.font_size < size_threshold:
-                continue
-            
-            # Length filters (adjusted for language)
-            min_length = MIN_HEADING_LENGTH
-            max_length = MAX_HEADING_LENGTH
-            
-            # Adjust for CJK languages where characters convey more meaning
-            if self.detected_language in ['japanese', 'chinese']:
-                min_length = max(1, MIN_HEADING_LENGTH // 2)
-                max_length = MAX_HEADING_LENGTH * 1.5  # Slightly more restrictive
-                
-                # Special handling for very short text
-                if candidate.text_length < 3:
-                    # Only allow if it has clear heading markers
-                    if not (candidate.features.get("is_cjk_chapter", False) or 
-                           candidate.features.get("is_cjk_section", False)):
-                        continue
-            
-            if candidate.text_length < min_length or candidate.text_length > max_length:
-                continue
-            
-            # Skip if mostly punctuation (adjusted for language)
-            if self.detected_language in ['japanese', 'chinese']:
-                # For CJK, check character ratio differently
-                cjk_chars = len(re.findall(r'[\u4e00-\u9fff\u3041-\u3096\u30A1-\u30FA]', candidate.text))
-                total_chars = len(candidate.text.replace(' ', ''))
-                if total_chars > 0 and cjk_chars / total_chars < 0.2:
-                    # Not enough meaningful characters, unless it's clearly a heading
-                    if not (candidate.features.get("is_cjk_chapter", False) or 
-                           candidate.features.get("is_cjk_section", False)):
-                        continue
-            else:
-                # For non-CJK languages, use alpha ratio
-                alpha_ratio = sum(c.isalpha() for c in candidate.text) / len(candidate.text)
-                if alpha_ratio < 0.3:
+                # Allow smaller fonts if they have other heading indicators
+                if not (candidate.is_bold or text.endswith(':') or 
+                    re.match(r'^\d+\.', text) or 
+                    any(word in text.lower() for word in ['summary', 'background', 'timeline'])):
                     continue
             
-            # Apply general linguistic heading detection
-            heading_analysis = is_likely_heading(candidate.text, self.detected_language)
-            if heading_analysis["confidence"] < 0.1:  # Very low threshold
-                continue
-            
-            # Store the linguistic analysis
-            candidate.features["linguistic_analysis"] = heading_analysis
-            
+            # Keep candidates that pass all filters
             filtered.append(candidate)
         
         self.logger.debug(f"Filtered {len(candidates)} -> {len(filtered)} candidates")
         return filtered
     
+    def _is_text_fragment(self, text: str) -> bool:
+        """Check if text appears to be a fragment."""
+        # Ends abruptly without proper word completion
+        if len(text) < 10 and not text[-1].isalnum() and not text.endswith(':'):
+            return True
+        
+        # Starts with lowercase (likely continuation)
+        if text and text[0].islower() and not text.startswith('e.g.'):
+            return True
+        
+        # Contains incomplete words
+        if re.search(r'\b[a-z]{1,2}$', text):  # Ends with very short word
+            return True
+        
+        return False
+
+    def _looks_like_body_text(self, text: str) -> bool:
+        """Check if text looks like body text rather than a heading."""
+        # Too long for a typical heading
+        if len(text) > 150:
+            return True
+        
+        # Contains multiple sentences
+        if text.count('.') > 1 or text.count('?') > 0:
+            return True
+        
+        # Starts with common body text patterns
+        body_starters = ['the ', 'this ', 'that ', 'these ', 'those ', 'it ', 'there ']
+        if any(text.lower().startswith(starter) for starter in body_starters):
+            return True
+        
+        return False
+    
+    def _merge_text_fragments(self, candidates: List[HeadingCandidate]) -> List[HeadingCandidate]:
+        """Merge text fragments that belong to the same heading."""
+        if not candidates:
+            return candidates
+        
+        # Sort candidates by page and position
+        sorted_candidates = sorted(candidates, key=lambda x: (x.page, x.bbox[1], x.bbox[0]))
+        
+        merged = []
+        current_group = [sorted_candidates[0]]
+        
+        for i in range(1, len(sorted_candidates)):
+            current = sorted_candidates[i]
+            prev = sorted_candidates[i-1]
+            
+            # Check if candidates should be merged
+            if (current.page == prev.page and 
+                abs(current.bbox[1] - prev.bbox[1]) < 5 and  # Same line (within 5 points)
+                abs(current.bbox[0] - prev.bbox[2]) < 20):   # Close horizontally
+                
+                current_group.append(current)
+            else:
+                # Process the current group
+                if len(current_group) > 1:
+                    merged_candidate = self._merge_candidate_group(current_group)
+                    merged.append(merged_candidate)
+                else:
+                    merged.append(current_group[0])
+                
+                current_group = [current]
+        
+        # Handle the last group
+        if len(current_group) > 1:
+            merged_candidate = self._merge_candidate_group(current_group)
+            merged.append(merged_candidate)
+        else:
+            merged.append(current_group[0])
+        
+        return merged
+    def _merge_candidate_group(self, group: List[HeadingCandidate]) -> HeadingCandidate:
+        """Merge a group of candidates into a single candidate."""
+        # Combine text
+        combined_text = " ".join(candidate.text.strip() for candidate in group)
+        
+        # Use properties from the first (leftmost) candidate
+        first = group[0]
+        last = group[-1]
+        
+        # Create merged bounding box
+        merged_bbox = (
+            first.bbox[0],  # Left from first
+            min(c.bbox[1] for c in group),  # Top from highest
+            last.bbox[2],   # Right from last
+            max(c.bbox[3] for c in group)   # Bottom from lowest
+        )
+        
+        return HeadingCandidate(
+            text=combined_text,
+            page=first.page,
+            bbox=merged_bbox,
+            font_size=max(c.font_size for c in group),  # Use largest font size
+            font_weight=first.font_weight,
+            font_family=first.font_family,
+            is_bold=any(c.is_bold for c in group),
+            is_italic=first.is_italic,
+            alignment=first.alignment,
+            position_ratio=first.position_ratio,
+            line_spacing_before=first.line_spacing_before,
+            line_spacing_after=last.line_spacing_after,
+            text_length=len(combined_text),
+            features=first.features.copy()
+        )
     def _score_candidates(self, candidates: List[HeadingCandidate]) -> List[HeadingCandidate]:
         """Score candidates based on multiple features with enhanced CJK scoring."""
         for candidate in candidates:

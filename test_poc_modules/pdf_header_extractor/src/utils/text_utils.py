@@ -351,7 +351,7 @@ def enhance_heading_detection_for_cjk(text: str, language: str) -> Dict[str, Any
 
 
 def clean_text(text: str) -> str:
-    """Clean and normalize text for processing."""
+    logging.info(f"Step: Cleaning text: {text[:50]}...")
     if not text:
         return ""
     
@@ -380,7 +380,7 @@ def clean_text(text: str) -> str:
 
 
 def normalize_whitespace(text: str) -> str:
-    """Normalize whitespace in text."""
+    logging.info(f"Step: Normalizing whitespace in text: {text[:50]}...")
     if not text:
         return ""
     
@@ -420,7 +420,7 @@ def remove_extra_spaces(text: str) -> str:
 
 
 def extract_sentences(text: str, language: str = 'english') -> List[str]:
-    """Extract sentences from text using language-aware tokenization with robust fallback."""
+    logging.info(f"Step: Extracting sentences for language: {language}")
     if not text or not text.strip():
         return []
 
@@ -472,7 +472,7 @@ def _simple_sentence_split(text: str) -> List[str]:
 
 def extract_words(text: str, language: str = 'english', 
                  include_stopwords: bool = True) -> List[str]:
-    """Extract words from text with advanced language-aware tokenization."""
+    logging.info(f"Step: Extracting words for language: {language}")
     if not text:
         return []
     
@@ -513,6 +513,7 @@ def _simple_word_split(text: str) -> List[str]:
 
 
 def detect_language(text: str) -> str:
+    logging.info(f"Step: Detecting language for text: {text[:50]}...")
     """Detect the language of the given text."""
     if not text or len(text.strip()) < 10:
         return 'en'  # Default to English for short texts
@@ -578,6 +579,7 @@ def _simple_language_detection(text: str) -> str:
 
 
 def is_likely_heading(text: str, language: str = 'english') -> Dict[str, Any]:
+    logging.info(f"Step: Checking if text is likely heading: {text[:50]}...")
     """Analyze if text is likely to be a heading based on linguistic features with CJK support."""
     if not text:
         return {"is_heading": False, "confidence": 0.0, "reasons": []}
@@ -685,6 +687,7 @@ def is_likely_heading(text: str, language: str = 'english') -> Dict[str, Any]:
 
 
 def extract_key_phrases(text: str, max_phrases: int = 10) -> List[Tuple[str, float]]:
+    logging.info(f"Step: Extracting key phrases from text: {text[:50]}...")
     """Extract key phrases from text using frequency and linguistic patterns."""
     if not text:
         return []
@@ -723,6 +726,7 @@ def extract_key_phrases(text: str, max_phrases: int = 10) -> List[Tuple[str, flo
 
 
 def calculate_text_similarity(text1: str, text2: str) -> float:
+    logging.info(f"Step: Calculating similarity between two texts")
     """Calculate similarity between two texts using simple metrics."""
     if not text1 or not text2:
         return 0.0
@@ -815,6 +819,7 @@ def contains_url_or_email(text: str) -> bool:
 
 
 def get_text_statistics(text: str) -> Dict[str, Any]:
+    logging.info(f"Step: Getting text statistics for: {text[:50]}...")
     """Get comprehensive statistics about the text."""
     if not text:
         return {}

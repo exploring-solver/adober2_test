@@ -70,6 +70,7 @@ class LayoutUtils:
         self.min_text_block_width = 20
         
     def analyze_page_layout(self, page: fitz.Page) -> LayoutStructure:
+        self.logger.info(f"Step: Analyzing layout for page {page.number}")
         """Analyze the layout structure of a single page."""
         
         page_rect = page.rect
@@ -110,6 +111,7 @@ class LayoutUtils:
         )
     
     def _extract_text_blocks(self, page: fitz.Page) -> List[Dict[str, Any]]:
+        self.logger.info(f"Step: Extracting text blocks from page {page.number}")
         """Extract text blocks with position and content information."""
         
         blocks = []
@@ -153,8 +155,8 @@ class LayoutUtils:
         
         return blocks
     
-    def _detect_margins(self, text_blocks: List[Dict[str, Any]], 
-                       page_rect: fitz.Rect) -> Tuple[float, float, float, float]:
+    def _detect_margins(self, text_blocks, page_rect):
+        self.logger.info("Step: Detecting page margins")
         """Detect page margins based on text block positions."""
         
         if not text_blocks:
@@ -183,9 +185,8 @@ class LayoutUtils:
         
         return margins
     
-    def _detect_columns(self, text_blocks: List[Dict[str, Any]], 
-                       page_rect: fitz.Rect, 
-                       margins: Tuple[float, float, float, float]) -> ColumnInfo:
+    def _detect_columns(self, text_blocks, page_rect, margins):
+        self.logger.info("Step: Detecting columns")
         """Detect column structure in the page."""
         
         if not text_blocks:
@@ -235,9 +236,8 @@ class LayoutUtils:
             confidence=consistency
         )
     
-    def _find_column_boundaries(self, x_positions: List[float], 
-                               margins: Tuple[float, float, float, float],
-                               page_width: float) -> List[Tuple[float, float]]:
+    def _find_column_boundaries(self, x_positions, margins, page_width):
+        self.logger.info("Step: Finding column boundaries")
         """Find column boundaries from x-positions."""
         
         # Use histogram to find natural breaks
@@ -275,8 +275,8 @@ class LayoutUtils:
         
         return boundaries if boundaries else [(margins[3], page_width - margins[1])]
     
-    def _check_column_consistency(self, text_blocks: List[Dict[str, Any]], 
-                                 column_boundaries: List[Tuple[float, float]]) -> float:
+    def _check_column_consistency(self, text_blocks, column_boundaries):
+        self.logger.info("Step: Checking column consistency")
         """Check how consistently text blocks align with detected columns."""
         
         if not text_blocks or len(column_boundaries) <= 1:
@@ -300,8 +300,8 @@ class LayoutUtils:
         
         return aligned_blocks / len(text_blocks) if text_blocks else 0.0
     
-    def _filter_body_blocks(self, text_blocks: List[Dict[str, Any]], 
-                           page_rect: fitz.Rect) -> List[Dict[str, Any]]:
+    def _filter_body_blocks(self, text_blocks, page_rect):
+        self.logger.info("Step: Filtering body blocks")
         """Filter out header/footer blocks to get body text."""
         
         page_height = page_rect.height
@@ -325,8 +325,8 @@ class LayoutUtils:
         
         return body_blocks
     
-    def _detect_header_region(self, text_blocks: List[Dict[str, Any]], 
-                             page_rect: fitz.Rect) -> Optional[LayoutRegion]:
+    def _detect_header_region(self, text_blocks, page_rect):
+        self.logger.info("Step: Detecting header region")
         """Detect header region on the page."""
         
         page_height = page_rect.height
@@ -354,8 +354,8 @@ class LayoutUtils:
             elements=header_blocks
         )
     
-    def _detect_footer_region(self, text_blocks: List[Dict[str, Any]], 
-                             page_rect: fitz.Rect) -> Optional[LayoutRegion]:
+    def _detect_footer_region(self, text_blocks, page_rect):
+        self.logger.info("Step: Detecting footer region")
         """Detect footer region on the page."""
         
         page_height = page_rect.height
@@ -383,10 +383,8 @@ class LayoutUtils:
             elements=footer_blocks
         )
     
-    def _define_body_region(self, page_rect: fitz.Rect, 
-                           margins: Tuple[float, float, float, float],
-                           header_region: Optional[LayoutRegion],
-                           footer_region: Optional[LayoutRegion]) -> LayoutRegion:
+    def _define_body_region(self, page_rect, margins, header_region, footer_region):
+        self.logger.info("Step: Defining body region")
         """Define the main body region of the page."""
         
         # Start with page margins
@@ -411,8 +409,8 @@ class LayoutUtils:
             elements=[]
         )
     
-    def _classify_layout_type(self, columns: ColumnInfo, 
-                             text_blocks: List[Dict[str, Any]]) -> str:
+    def _classify_layout_type(self, columns, text_blocks):
+        self.logger.info("Step: Classifying layout type")
         """Classify the overall layout type."""
         
         if columns.column_count == 1:
@@ -428,8 +426,8 @@ class LayoutUtils:
             else:
                 return "simple"
     
-    def _calculate_layout_consistency(self, text_blocks: List[Dict[str, Any]], 
-                                    columns: ColumnInfo) -> float:
+    def _calculate_layout_consistency(self, text_blocks, columns):
+        self.logger.info("Step: Calculating layout consistency")
         """Calculate overall layout consistency score."""
         
         if not text_blocks:
@@ -450,7 +448,8 @@ class LayoutUtils:
         
         return np.mean(scores)
     
-    def _calculate_alignment_consistency(self, text_blocks: List[Dict[str, Any]]) -> float:
+    def _calculate_alignment_consistency(self, text_blocks):
+        self.logger.info("Step: Calculating alignment consistency")
         """Calculate how consistently text blocks are aligned."""
         
         if len(text_blocks) < 2:
@@ -475,7 +474,8 @@ class LayoutUtils:
         alignment_score = 1.0 - (len(unique_edges) - 1) / len(text_blocks)
         return max(0.0, alignment_score)
     
-    def _calculate_spacing_consistency(self, text_blocks: List[Dict[str, Any]]) -> float:
+    def _calculate_spacing_consistency(self, text_blocks):
+        self.logger.info("Step: Calculating spacing consistency")
         """Calculate consistency of spacing between text blocks."""
         
         if len(text_blocks) < 2:
@@ -509,7 +509,8 @@ class LayoutUtils:
         
         return consistency_score
     
-    def _create_default_layout(self, page_rect: fitz.Rect) -> LayoutStructure:
+    def _create_default_layout(self, page_rect):
+        self.logger.info("Step: Creating default layout")
         """Create default layout structure when no text blocks are found."""
         
         default_margins = (72, 72, 72, 72)  # 1 inch margins
@@ -542,7 +543,8 @@ class LayoutUtils:
             consistency_score=1.0
         )
     
-    def analyze_text_alignment(self, text_blocks: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def analyze_text_alignment(self, text_blocks):
+        self.logger.info("Step: Analyzing text alignment")
         """Analyze text alignment patterns in the document."""
         
         if not text_blocks:
@@ -593,8 +595,8 @@ class LayoutUtils:
             "alignment_consistency": alignment_consistency
         }
     
-    def detect_reading_order(self, text_blocks: List[Dict[str, Any]], 
-                           columns: ColumnInfo) -> List[Dict[str, Any]]:
+    def detect_reading_order(self, text_blocks, columns):
+        self.logger.info("Step: Detecting reading order")
         """Determine the reading order of text blocks."""
         
         if not text_blocks:
@@ -626,8 +628,8 @@ class LayoutUtils:
         
         return ordered_blocks
     
-    def calculate_whitespace_distribution(self, text_blocks: List[Dict[str, Any]], 
-                                        page_rect: fitz.Rect) -> Dict[str, float]:
+    def calculate_whitespace_distribution(self, text_blocks, page_rect):
+        self.logger.info("Step: Calculating whitespace distribution")
         """Calculate distribution of whitespace on the page."""
         
         if not text_blocks:
@@ -658,7 +660,8 @@ class LayoutUtils:
             "page_area": page_area
         }
     
-    def get_layout_summary(self, layout: LayoutStructure) -> Dict[str, Any]:
+    def get_layout_summary(self, layout):
+        self.logger.info("Step: Getting layout summary")
         """Generate a human-readable summary of the layout analysis."""
         
         summary = {

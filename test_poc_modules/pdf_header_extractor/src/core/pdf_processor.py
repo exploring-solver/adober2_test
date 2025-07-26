@@ -43,6 +43,7 @@ class PDFProcessor:
         }
     
     def process(self, pdf_path: str, timeout: Optional[int] = None) -> Dict[str, Any]:
+        self.logger.info(f"Step: Starting process for {pdf_path}")
         """Main processing pipeline with timeout protection and accessibility support."""
         self.stats["start_time"] = time.time()
         timeout = timeout or MAX_PROCESSING_TIME
@@ -69,6 +70,7 @@ class PDFProcessor:
         return result
     
     def process_for_round1a(self, pdf_path: str) -> Dict[str, Any]:
+        self.logger.info("Step: Processing for Round 1A format")
         """Process PDF for Round 1A format (clean format without accessibility)."""
         self.logger.info("Processing for Round 1A format (no accessibility metadata)")
         
@@ -82,15 +84,18 @@ class PDFProcessor:
         }
     
     def _process_internal(self, pdf_path: str) -> Dict[str, Any]:
+        self.logger.info("Step: Internal processing pipeline started")
         """Internal processing pipeline with accessibility tagging."""
         
         # Stage 1: Validate and analyze PDF
         self._add_stage("pdf_validation")
         document_info = self._analyze_pdf(pdf_path)
+        self.logger.info(f"Step: Document info extracted: {document_info}")
         
         # Stage 2: Check for structured PDF tags (Adobe approach)
         self._add_stage("structure_detection")
         structured_headings = self._extract_structured_headings(pdf_path)
+        self.logger.info(f"Step: Structured headings extracted: {structured_headings}")
         
         if structured_headings:
             self.logger.info("Found structured PDF tags, using native extraction")
@@ -100,6 +105,7 @@ class PDFProcessor:
             # Stage 3: Generate candidates using heuristics
             self._add_stage("candidate_generation")
             candidates = self.candidate_generator.generate_candidates(pdf_path)
+            self.logger.info(f"Step: Candidate headings generated: {len(candidates) if candidates else 0}")
             
             if not candidates:
                 self.logger.warning("No heading candidates found")
@@ -111,12 +117,14 @@ class PDFProcessor:
                 filtered_candidates = self.semantic_filter.filter_candidates(
                     candidates, pdf_path
                 )
+                self.logger.info(f"Step: Semantic filtering applied: {len(filtered_candidates) if filtered_candidates else 0}")
             else:
                 filtered_candidates = candidates
             
             # Stage 5: Assign hierarchy levels
             self._add_stage("hierarchy_assignment")
             headings = self.hierarchy_assigner.assign_hierarchy(filtered_candidates)
+            self.logger.info(f"Step: Hierarchy assigned: {len(headings) if headings else 0}")
             
             # Stage 6: Generate hierarchy tree
             hierarchy_tree = self.hierarchy_assigner.generate_hierarchy_tree(
@@ -125,6 +133,7 @@ class PDFProcessor:
         
         # Stage 7: Format output with accessibility
         self._add_stage("output_formatting")
+        self.logger.info(f"Step: Output formatted")
         
         # Compile processing statistics
         processing_stats = {
@@ -153,6 +162,7 @@ class PDFProcessor:
         return result
     
     def _analyze_pdf(self, pdf_path: str) -> Dict[str, Any]:
+        self.logger.info(f"Step: Analyzing PDF metadata for {pdf_path}")
         """Analyze PDF document and extract metadata."""
         
         # Basic validation
@@ -206,6 +216,7 @@ class PDFProcessor:
         return document_info
     
     def _extract_structured_headings(self, pdf_path: str) -> Optional[List[Dict[str, Any]]]:
+        self.logger.info(f"Step: Extracting structured headings from {pdf_path}")
         """Try to extract headings from PDF structure/tags (Adobe approach)."""
         
         try:
@@ -265,6 +276,7 @@ class PDFProcessor:
             return None
     
     def _detect_document_language(self, doc: fitz.Document) -> str:
+        self.logger.info("Step: Detecting document language")
         """Detect document language from content."""
         
         # Sample text from first few pages
@@ -284,6 +296,7 @@ class PDFProcessor:
         return detected_language
     
     def _analyze_document_structure(self, doc: fitz.Document) -> Dict[str, Any]:
+        self.logger.info("Step: Analyzing document structure")
         """Analyze document structure and layout characteristics."""
         
         structure_info = {
@@ -362,6 +375,7 @@ class PDFProcessor:
         return structure_info
     
     def _detect_multi_column_layout(self, page: fitz.Page) -> bool:
+        self.logger.info("Step: Detecting multi-column layout")
         """Detect if page has multi-column layout."""
         
         try:
@@ -393,6 +407,7 @@ class PDFProcessor:
             return False
     
     def _build_simple_tree(self, headings: List[Dict[str, Any]]) -> Dict[str, Any]:
+        self.logger.info("Step: Building simple hierarchy tree")
         """Build simple hierarchy tree for structured headings."""
         
         tree = {}
@@ -426,6 +441,7 @@ class PDFProcessor:
         return tree
     
     def _create_empty_result(self, document_info: Dict[str, Any]) -> Dict[str, Any]:
+        self.logger.info("Step: Creating empty result")
         """Create empty result when no headings found."""
         
         self.stats["warnings"].append("No headings detected in document")
@@ -438,6 +454,7 @@ class PDFProcessor:
         )
     
     def _dict_to_node(self, heading_dict: Dict[str, Any]):
+        self.logger.info(f"Step: Converting heading dict to node: {heading_dict}")
         """Convert heading dictionary to HierarchyNode for tree building."""
         from src.core.hierarchy_assigner import HierarchyNode
         
@@ -451,6 +468,7 @@ class PDFProcessor:
         )
     
     def _add_stage(self, stage_name: str) -> None:
+        self.logger.info(f"Step: Adding processing stage: {stage_name}")
         """Add processing stage with timestamp."""
         
         stage_info = {
@@ -471,9 +489,8 @@ class PDFProcessor:
         """Check if running in fast mode (skip semantic filtering)."""
         return os.getenv("FAST_MODE", "false").lower() == "true"
     
-    def save_output(self, result: Dict[str, Any], output_path: Optional[str] = None, 
-           formats: Optional[List[str]] = None, 
-           auto_filename: bool = True) -> Dict[str, str]:
+    def save_output(self, result: Dict[str, Any], output_path: Optional[str] = None, formats: Optional[List[str]] = None, auto_filename: bool = True) -> Dict[str, str]:
+        self.logger.info(f"Step: Saving output in formats {formats} to {output_path}")
         """Save processing results to file(s) with automatic path handling and accessibility support."""
         
         from config.settings import JSON_OUTPUT_DIR, OUTPUT_DIR
@@ -537,8 +554,8 @@ class PDFProcessor:
         
         return output_files
 
-    def save_output_to_custom_path(self, result: Dict[str, Any], custom_path: str, 
-                                formats: Optional[List[str]] = None) -> Dict[str, str]:
+    def save_output_to_custom_path(self, result: Dict[str, Any], custom_path: str, formats: Optional[List[str]] = None) -> Dict[str, str]:
+        self.logger.info(f"Step: Saving output to custom path {custom_path} in formats {formats}")
         """Save output to a specific custom path with accessibility support."""
         
         if formats is None:
@@ -604,10 +621,8 @@ class PDFProcessor:
         
         return output_files
 
-    def process_batch(self, pdf_paths: List[str], 
-                     output_dir: Optional[str] = None,
-                     max_workers: int = 2,
-                     include_accessibility: bool = False) -> Dict[str, Any]:
+    def process_batch(self, pdf_paths: List[str], output_dir: Optional[str] = None, max_workers: int = 2, include_accessibility: bool = False) -> Dict[str, Any]:
+        self.logger.info(f"Step: Starting batch processing for {len(pdf_paths)} PDFs")
         """Process multiple PDFs in batch mode with optional accessibility support."""
         
         output_dir = Path(output_dir) if output_dir else OUTPUT_DIR

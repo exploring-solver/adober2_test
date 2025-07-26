@@ -11,3 +11,7 @@
 
 #### claude 1b:
 https://claude.ai/chat/701909fb-2177-4ce8-94db-b953eb2e5d25
+
+- made changes chats 
+- 1a : https://claude.ai/chat/a8b52f4f-4b84-4434-99b4-5138707516ca
+- 1b llm replacement https://claude.ai/chat/a413a048-dc36-4570-8520-7deadace73ad

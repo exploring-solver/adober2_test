@@ -24,8 +24,12 @@ class OutputFormatter:
                       processing_stats: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """Format extraction results into the clean custom outline format with accessibility metadata."""
         
+        self.logger.info(f"Step: Formatting results - headings count: {len(headings)}")
+        
         # Generate accessibility metadata
         accessibility_data = self.generate_accessibility_tags(headings)
+        
+        self.logger.debug(f"Step: Accessibility metadata generated: {accessibility_data}")
         
         # Use the custom format as the main format
         result = self.format_results_custom(headings, document_info)
@@ -38,7 +42,7 @@ class OutputFormatter:
     def generate_accessibility_tags(self, headings: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Generate comprehensive accessibility metadata and tags."""
         
-        self.logger.info("Generating accessibility tags and metadata")
+        self.logger.info(f"Step: Generating accessibility tags for {len(headings)} headings")
         
         # Generate PDF/UA structure
         pdf_ua_structure = self.accessibility_tagger.generate_pdf_ua_structure(headings)
@@ -64,6 +68,8 @@ class OutputFormatter:
     
     def save_pdf_ua_xml(self, headings: List[Dict[str, Any]], output_path: str) -> None:
         """Save PDF/UA accessibility structure as XML file."""
+        self.logger.info(f"Step: Saving PDF/UA XML to {output_path}")
+        
         output_path = Path(output_path)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
@@ -79,6 +85,8 @@ class OutputFormatter:
     def format_results_custom(self, headings: List[Dict[str, Any]], 
                              document_info: Dict[str, Any]) -> Dict[str, Any]:
         """Format extraction results into the custom outline format with only essential fields."""
+        
+        self.logger.info(f"Step: Formatting custom results for {len(headings)} headings")
         
         # Extract document title - use a simple title based on the document
         title = "Overview Foundation Level Extensions"
@@ -123,6 +131,8 @@ class OutputFormatter:
             }
             
             outline.append(outline_item)
+        
+        self.logger.debug(f"Step: Custom outline: {outline}")
         
         # Return ONLY title and outline - no metadata, no extra fields
         return {
@@ -312,6 +322,8 @@ class OutputFormatter:
     def save_json(self, result: Dict[str, Any], output_path: str, 
                   pretty: bool = True) -> None:
         """Save results as clean JSON file (now uses custom format)."""
+        self.logger.info(f"Step: Saving JSON to {output_path}")
+        
         output_path = Path(output_path)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
@@ -339,6 +351,8 @@ class OutputFormatter:
     
     def save_csv(self, result: Dict[str, Any], output_path: str) -> None:
         """Save headings as CSV file."""
+        self.logger.info(f"Step: Saving CSV to {output_path}")
+        
         output_path = Path(output_path)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
@@ -376,6 +390,8 @@ class OutputFormatter:
     
     def save_xml(self, result: Dict[str, Any], output_path: str) -> None:
         """Save results as XML file."""
+        self.logger.info(f"Step: Saving XML to {output_path}")
+        
         output_path = Path(output_path)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
@@ -413,6 +429,8 @@ class OutputFormatter:
     
     def save_markdown(self, result: Dict[str, Any], output_path: str) -> None:
         """Save headings as Markdown outline."""
+        self.logger.info(f"Step: Saving Markdown to {output_path}")
+        
         output_path = Path(output_path)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
@@ -449,6 +467,8 @@ class OutputFormatter:
     
     def save_html_outline(self, result: Dict[str, Any], output_path: str) -> None:
         """Save headings as HTML outline with collapsible tree."""
+        self.logger.info(f"Step: Saving HTML outline to {output_path}")
+        
         output_path = Path(output_path)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
@@ -531,6 +551,8 @@ class OutputFormatter:
     def export_multiple_formats(self, result: Dict[str, Any], 
                                base_path: str, formats: List[str]) -> Dict[str, str]:
         """Export results in multiple formats."""
+        self.logger.info(f"Step: Exporting multiple formats: {formats} to base path {base_path}")
+        
         base_path = Path(base_path)
         output_files = {}
         
