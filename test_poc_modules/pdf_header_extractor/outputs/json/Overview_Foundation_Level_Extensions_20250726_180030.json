@@ -1,0 +1,2034 @@
+{
+    "title": "Overview Foundation Level Extensions",
+    "outline": [
+        {
+            "level": "H1",
+            "text": "PDF テスト用サンプル文書",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "はじめに",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "テキストフォーマットの例",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "1. 太字テキスト は強調に使用されます。",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "リスト",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "順序なしリストの例：",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "• 項目 1",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "• 項目 2",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "• 項目 3",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "順序ありリストの例：",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "1. 第一項目",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "2. 第二項目",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "3. 第三項目",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "引用",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "ヘッダー 3",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "ヘッダー 1",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "ヘッダー 2",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "行 1 、列 3",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "行 1 、列 1",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "行 1 、列 2",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "行 2 、列 3",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "行 2 、列 1",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "行 2 、列 2",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "章構成の例",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "第 1 章　基本概念",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "この章では基本的な概念について説明します。",
+            "page": 1
+        },
+        {
+            "level": "H2",
+            "text": "1.1 定義",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "重要な用語の定義を行います。",
+            "page": 2
+        },
+        {
+            "level": "H2",
+            "text": "1.2 原理",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "基本原理について詳しく解説します。",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "第 2 章　応用例",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "実際の応用例を紹介します。",
+            "page": 2
+        },
+        {
+            "level": "H2",
+            "text": "2.1 事例研究",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "具体的な事例を通して理解を深めます。",
+            "page": 2
+        },
+        {
+            "level": "H2",
+            "text": "2.2 実装方法",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "実装の詳細について説明します。",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "まとめ",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "す。",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "ルとリソースについては、私たちのサイトをご覧ください。",
+            "page": 2
+        }
+    ],
+    "accessibility": {
+        "pdf_ua_structure": {
+            "document_structure": {
+                "type": "Document",
+                "lang": "en-US",
+                "title": "PDF テスト用サンプル文書"
+            },
+            "role_map": {
+                "Document": "document",
+                "H": "heading",
+                "H1": "heading",
+                "H2": "heading",
+                "H3": "heading",
+                "H4": "heading",
+                "H5": "heading",
+                "H6": "heading",
+                "Sect": "section",
+                "P": "paragraph",
+                "L": "list",
+                "LI": "listitem"
+            },
+            "structure_elements": [
+                {
+                    "id": "struct_elem_1",
+                    "structure_type": "H1",
+                    "content": "PDF テスト用サンプル文書",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        15.077999114990234,
+                        247.59002685546875,
+                        39.197998046875
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_2",
+                    "structure_type": "H1",
+                    "content": "はじめに",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        53.130001068115234,
+                        95.4749984741211,
+                        72.91500091552734
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_3",
+                    "structure_type": "H1",
+                    "content": "テキストフォーマットの例",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        136.23001098632812,
+                        214.0800323486328,
+                        156.01499938964844
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_4",
+                    "structure_type": "H1",
+                    "content": "1. 太字テキスト は強調に使用されます。",
+                    "page": 1,
+                    "bbox": [
+                        45.162498474121094,
+                        167.552001953125,
+                        258.19854736328125,
+                        183.6320037841797
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_5",
+                    "structure_type": "H1",
+                    "content": "リスト",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        248.1300048828125,
+                        80.65499877929688,
+                        267.9150085449219
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_6",
+                    "structure_type": "H1",
+                    "content": "順序なしリストの例：",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        279.7039794921875,
+                        154.42800903320312,
+                        295.531982421875
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_7",
+                    "structure_type": "H1",
+                    "content": "• 項目 1",
+                    "page": 1,
+                    "bbox": [
+                        45.474998474121094,
+                        309.75201416015625,
+                        87.11500549316406,
+                        325.8320007324219
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_8",
+                    "structure_type": "H1",
+                    "content": "• 項目 2",
+                    "page": 1,
+                    "bbox": [
+                        45.474998474121094,
+                        334.552001953125,
+                        87.11500549316406,
+                        350.6319885253906
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_9",
+                    "structure_type": "H1",
+                    "content": "• 項目 3",
+                    "page": 1,
+                    "bbox": [
+                        45.474998474121094,
+                        359.35198974609375,
+                        87.11500549316406,
+                        375.4319763183594
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_10",
+                    "structure_type": "H1",
+                    "content": "順序ありリストの例：",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        390.40399169921875,
+                        154.42800903320312,
+                        406.23199462890625
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_11",
+                    "structure_type": "H1",
+                    "content": "1. 第一項目",
+                    "page": 1,
+                    "bbox": [
+                        45.162506103515625,
+                        420.4519958496094,
+                        104.47850799560547,
+                        436.531982421875
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_12",
+                    "structure_type": "H1",
+                    "content": "2. 第二項目",
+                    "page": 1,
+                    "bbox": [
+                        45.162506103515625,
+                        444.75201416015625,
+                        104.47850799560547,
+                        460.8320007324219
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_13",
+                    "structure_type": "H1",
+                    "content": "3. 第三項目",
+                    "page": 1,
+                    "bbox": [
+                        45.162506103515625,
+                        469.052001953125,
+                        104.47850799560547,
+                        485.1319885253906
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_14",
+                    "structure_type": "H1",
+                    "content": "引用",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        501.030029296875,
+                        65.81999969482422,
+                        520.8150024414062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_15",
+                    "structure_type": "H1",
+                    "content": "ヘッダー 3",
+                    "page": 1,
+                    "bbox": [
+                        401.82501220703125,
+                        598.032958984375,
+                        449.1590270996094,
+                        612.1029663085938
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_16",
+                    "structure_type": "H1",
+                    "content": "ヘッダー 1",
+                    "page": 1,
+                    "bbox": [
+                        42.5,
+                        598.032958984375,
+                        89.8340072631836,
+                        612.1029663085938
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_17",
+                    "structure_type": "H1",
+                    "content": "ヘッダー 2",
+                    "page": 1,
+                    "bbox": [
+                        221.66250610351562,
+                        598.032958984375,
+                        268.99652099609375,
+                        612.1029663085938
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_18",
+                    "structure_type": "H1",
+                    "content": "行 1 、列 3",
+                    "page": 1,
+                    "bbox": [
+                        401.82501220703125,
+                        619.8704833984375,
+                        443.9510498046875,
+                        633.9404907226562
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_19",
+                    "structure_type": "H1",
+                    "content": "行 1 、列 1",
+                    "page": 1,
+                    "bbox": [
+                        42.499969482421875,
+                        619.8704833984375,
+                        84.6259765625,
+                        633.9404907226562
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_20",
+                    "structure_type": "H1",
+                    "content": "行 1 、列 2",
+                    "page": 1,
+                    "bbox": [
+                        221.6624755859375,
+                        619.8704833984375,
+                        263.78851318359375,
+                        633.9404907226562
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_21",
+                    "structure_type": "H1",
+                    "content": "行 2 、列 3",
+                    "page": 1,
+                    "bbox": [
+                        401.82501220703125,
+                        641.7079467773438,
+                        443.9510498046875,
+                        655.7779541015625
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_22",
+                    "structure_type": "H1",
+                    "content": "行 2 、列 1",
+                    "page": 1,
+                    "bbox": [
+                        42.499969482421875,
+                        641.7079467773438,
+                        84.6259765625,
+                        655.7779541015625
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_23",
+                    "structure_type": "H1",
+                    "content": "行 2 、列 2",
+                    "page": 1,
+                    "bbox": [
+                        221.6624755859375,
+                        641.7079467773438,
+                        263.78851318359375,
+                        655.7779541015625
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_24",
+                    "structure_type": "H1",
+                    "content": "章構成の例",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        673.842529296875,
+                        110.29499816894531,
+                        693.6275024414062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_25",
+                    "structure_type": "H1",
+                    "content": "第 1 章　基本概念",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        707.64599609375,
+                        137.03399658203125,
+                        725.7360229492188
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_26",
+                    "structure_type": "H1",
+                    "content": "この章では基本的な概念について説明します。",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        735.41650390625,
+                        284.4960632324219,
+                        751.2445068359375
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_27",
+                    "structure_type": "H1",
+                    "content": "1.1 定義",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        767.5645141601562,
+                        88.1760025024414,
+                        783.64453125
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_28",
+                    "structure_type": "H1",
+                    "content": "重要な用語の定義を行います。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        2.204000473022461,
+                        201.72003173828125,
+                        18.031999588012695
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_29",
+                    "structure_type": "H1",
+                    "content": "1.2 原理",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        34.35200500488281,
+                        88.1760025024414,
+                        50.432003021240234
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_30",
+                    "structure_type": "H1",
+                    "content": "基本原理について詳しく解説します。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        64.0040054321289,
+                        237.20404052734375,
+                        79.83200073242188
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_31",
+                    "structure_type": "H1",
+                    "content": "第 2 章　応用例",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        96.53350067138672,
+                        123.70950317382812,
+                        114.62349700927734
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_32",
+                    "structure_type": "H1",
+                    "content": "実際の応用例を紹介します。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        124.30400085449219,
+                        189.9000244140625,
+                        140.1320037841797
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_33",
+                    "structure_type": "H1",
+                    "content": "2.1 事例研究",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        156.45199584960938,
+                        111.81600189208984,
+                        172.53199768066406
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_34",
+                    "structure_type": "H1",
+                    "content": "具体的な事例を通して理解を深めます。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        186.10400390625,
+                        249.0240478515625,
+                        201.9320068359375
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_35",
+                    "structure_type": "H1",
+                    "content": "2.2 実装方法",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        218.2519989013672,
+                        111.81600189208984,
+                        234.33200073242188
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_36",
+                    "structure_type": "H1",
+                    "content": "実装の詳細について説明します。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        247.9040069580078,
+                        213.55203247070312,
+                        263.73199462890625
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_37",
+                    "structure_type": "H1",
+                    "content": "まとめ",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        279.6300048828125,
+                        80.65499877929688,
+                        299.4150085449219
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_38",
+                    "structure_type": "H1",
+                    "content": "す。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        331.0040283203125,
+                        59.81999969482422,
+                        346.8320007324219
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_39",
+                    "structure_type": "H1",
+                    "content": "ルとリソースについては、私たちのサイトをご覧ください。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        381.10400390625,
+                        355.45208740234375,
+                        396.9319763183594
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                }
+            ],
+            "tagged_elements": [
+                {
+                    "id": "struct_elem_1",
+                    "tag": "H1",
+                    "content": "PDF テスト用サンプル文書",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        15.077999114990234,
+                        247.59002685546875,
+                        39.197998046875
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_2",
+                    "tag": "H1",
+                    "content": "はじめに",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        53.130001068115234,
+                        95.4749984741211,
+                        72.91500091552734
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_3",
+                    "tag": "H1",
+                    "content": "テキストフォーマットの例",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        136.23001098632812,
+                        214.0800323486328,
+                        156.01499938964844
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_4",
+                    "tag": "H1",
+                    "content": "1. 太字テキスト は強調に使用されます。",
+                    "page": 1,
+                    "bbox": [
+                        45.162498474121094,
+                        167.552001953125,
+                        258.19854736328125,
+                        183.6320037841797
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_5",
+                    "tag": "H1",
+                    "content": "リスト",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        248.1300048828125,
+                        80.65499877929688,
+                        267.9150085449219
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_6",
+                    "tag": "H1",
+                    "content": "順序なしリストの例：",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        279.7039794921875,
+                        154.42800903320312,
+                        295.531982421875
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_7",
+                    "tag": "H1",
+                    "content": "• 項目 1",
+                    "page": 1,
+                    "bbox": [
+                        45.474998474121094,
+                        309.75201416015625,
+                        87.11500549316406,
+                        325.8320007324219
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_8",
+                    "tag": "H1",
+                    "content": "• 項目 2",
+                    "page": 1,
+                    "bbox": [
+                        45.474998474121094,
+                        334.552001953125,
+                        87.11500549316406,
+                        350.6319885253906
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_9",
+                    "tag": "H1",
+                    "content": "• 項目 3",
+                    "page": 1,
+                    "bbox": [
+                        45.474998474121094,
+                        359.35198974609375,
+                        87.11500549316406,
+                        375.4319763183594
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_10",
+                    "tag": "H1",
+                    "content": "順序ありリストの例：",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        390.40399169921875,
+                        154.42800903320312,
+                        406.23199462890625
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_11",
+                    "tag": "H1",
+                    "content": "1. 第一項目",
+                    "page": 1,
+                    "bbox": [
+                        45.162506103515625,
+                        420.4519958496094,
+                        104.47850799560547,
+                        436.531982421875
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_12",
+                    "tag": "H1",
+                    "content": "2. 第二項目",
+                    "page": 1,
+                    "bbox": [
+                        45.162506103515625,
+                        444.75201416015625,
+                        104.47850799560547,
+                        460.8320007324219
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_13",
+                    "tag": "H1",
+                    "content": "3. 第三項目",
+                    "page": 1,
+                    "bbox": [
+                        45.162506103515625,
+                        469.052001953125,
+                        104.47850799560547,
+                        485.1319885253906
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_14",
+                    "tag": "H1",
+                    "content": "引用",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        501.030029296875,
+                        65.81999969482422,
+                        520.8150024414062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_15",
+                    "tag": "H1",
+                    "content": "ヘッダー 3",
+                    "page": 1,
+                    "bbox": [
+                        401.82501220703125,
+                        598.032958984375,
+                        449.1590270996094,
+                        612.1029663085938
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_16",
+                    "tag": "H1",
+                    "content": "ヘッダー 1",
+                    "page": 1,
+                    "bbox": [
+                        42.5,
+                        598.032958984375,
+                        89.8340072631836,
+                        612.1029663085938
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_17",
+                    "tag": "H1",
+                    "content": "ヘッダー 2",
+                    "page": 1,
+                    "bbox": [
+                        221.66250610351562,
+                        598.032958984375,
+                        268.99652099609375,
+                        612.1029663085938
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_18",
+                    "tag": "H1",
+                    "content": "行 1 、列 3",
+                    "page": 1,
+                    "bbox": [
+                        401.82501220703125,
+                        619.8704833984375,
+                        443.9510498046875,
+                        633.9404907226562
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_19",
+                    "tag": "H1",
+                    "content": "行 1 、列 1",
+                    "page": 1,
+                    "bbox": [
+                        42.499969482421875,
+                        619.8704833984375,
+                        84.6259765625,
+                        633.9404907226562
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_20",
+                    "tag": "H1",
+                    "content": "行 1 、列 2",
+                    "page": 1,
+                    "bbox": [
+                        221.6624755859375,
+                        619.8704833984375,
+                        263.78851318359375,
+                        633.9404907226562
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_21",
+                    "tag": "H1",
+                    "content": "行 2 、列 3",
+                    "page": 1,
+                    "bbox": [
+                        401.82501220703125,
+                        641.7079467773438,
+                        443.9510498046875,
+                        655.7779541015625
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_22",
+                    "tag": "H1",
+                    "content": "行 2 、列 1",
+                    "page": 1,
+                    "bbox": [
+                        42.499969482421875,
+                        641.7079467773438,
+                        84.6259765625,
+                        655.7779541015625
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_23",
+                    "tag": "H1",
+                    "content": "行 2 、列 2",
+                    "page": 1,
+                    "bbox": [
+                        221.6624755859375,
+                        641.7079467773438,
+                        263.78851318359375,
+                        655.7779541015625
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_24",
+                    "tag": "H1",
+                    "content": "章構成の例",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        673.842529296875,
+                        110.29499816894531,
+                        693.6275024414062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_25",
+                    "tag": "H1",
+                    "content": "第 1 章　基本概念",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        707.64599609375,
+                        137.03399658203125,
+                        725.7360229492188
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_26",
+                    "tag": "H1",
+                    "content": "この章では基本的な概念について説明します。",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        735.41650390625,
+                        284.4960632324219,
+                        751.2445068359375
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_27",
+                    "tag": "H1",
+                    "content": "1.1 定義",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        767.5645141601562,
+                        88.1760025024414,
+                        783.64453125
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_28",
+                    "tag": "H1",
+                    "content": "重要な用語の定義を行います。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        2.204000473022461,
+                        201.72003173828125,
+                        18.031999588012695
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_29",
+                    "tag": "H1",
+                    "content": "1.2 原理",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        34.35200500488281,
+                        88.1760025024414,
+                        50.432003021240234
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_30",
+                    "tag": "H1",
+                    "content": "基本原理について詳しく解説します。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        64.0040054321289,
+                        237.20404052734375,
+                        79.83200073242188
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_31",
+                    "tag": "H1",
+                    "content": "第 2 章　応用例",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        96.53350067138672,
+                        123.70950317382812,
+                        114.62349700927734
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_32",
+                    "tag": "H1",
+                    "content": "実際の応用例を紹介します。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        124.30400085449219,
+                        189.9000244140625,
+                        140.1320037841797
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_33",
+                    "tag": "H1",
+                    "content": "2.1 事例研究",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        156.45199584960938,
+                        111.81600189208984,
+                        172.53199768066406
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_34",
+                    "tag": "H1",
+                    "content": "具体的な事例を通して理解を深めます。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        186.10400390625,
+                        249.0240478515625,
+                        201.9320068359375
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_35",
+                    "tag": "H1",
+                    "content": "2.2 実装方法",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        218.2519989013672,
+                        111.81600189208984,
+                        234.33200073242188
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_36",
+                    "tag": "H1",
+                    "content": "実装の詳細について説明します。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        247.9040069580078,
+                        213.55203247070312,
+                        263.73199462890625
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_37",
+                    "tag": "H1",
+                    "content": "まとめ",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        279.6300048828125,
+                        80.65499877929688,
+                        299.4150085449219
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_38",
+                    "tag": "H1",
+                    "content": "す。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        331.0040283203125,
+                        59.81999969482422,
+                        346.8320007324219
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_39",
+                    "tag": "H1",
+                    "content": "ルとリソースについては、私たちのサイトをご覧ください。",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        381.10400390625,
+                        355.45208740234375,
+                        396.9319763183594
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                }
+            ],
+            "reading_order": [
+                "struct_elem_1",
+                "struct_elem_2",
+                "struct_elem_3",
+                "struct_elem_4",
+                "struct_elem_5",
+                "struct_elem_6",
+                "struct_elem_7",
+                "struct_elem_8",
+                "struct_elem_9",
+                "struct_elem_10",
+                "struct_elem_11",
+                "struct_elem_12",
+                "struct_elem_13",
+                "struct_elem_14",
+                "struct_elem_15",
+                "struct_elem_16",
+                "struct_elem_17",
+                "struct_elem_18",
+                "struct_elem_19",
+                "struct_elem_20",
+                "struct_elem_21",
+                "struct_elem_22",
+                "struct_elem_23",
+                "struct_elem_24",
+                "struct_elem_25",
+                "struct_elem_26",
+                "struct_elem_27",
+                "struct_elem_28",
+                "struct_elem_29",
+                "struct_elem_30",
+                "struct_elem_31",
+                "struct_elem_32",
+                "struct_elem_33",
+                "struct_elem_34",
+                "struct_elem_35",
+                "struct_elem_36",
+                "struct_elem_37",
+                "struct_elem_38",
+                "struct_elem_39"
+            ],
+            "accessibility_metadata": {
+                "creation_date": "2025-07-26T18:00:30.125862",
+                "creator": "PDF-Heading-Extractor",
+                "accessibility_features": [
+                    "structuredNavigation",
+                    "readingOrder",
+                    "alternativeText",
+                    "tableHeaders"
+                ],
+                "language": "en-US",
+                "reading_order_specified": true,
+                "structure_tree_present": true,
+                "heading_structure_logical": true
+            },
+            "hierarchical_structure": {
+                "type": "document",
+                "children": [
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "PDF テスト用サンプル文書",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "はじめに",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "テキストフォーマットの例",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "1. 太字テキスト は強調に使用されます。",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "リスト",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "順序なしリストの例：",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "• 項目 1",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "• 項目 2",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "• 項目 3",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "順序ありリストの例：",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "1. 第一項目",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "2. 第二項目",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "3. 第三項目",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "引用",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "ヘッダー 3",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "ヘッダー 1",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "ヘッダー 2",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "行 1 、列 3",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "行 1 、列 1",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "行 1 、列 2",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "行 2 、列 3",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "行 2 、列 1",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "行 2 、列 2",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "章構成の例",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "第 1 章　基本概念",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "この章では基本的な概念について説明します。",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "1.1 定義",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "重要な用語の定義を行います。",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "1.2 原理",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "基本原理について詳しく解説します。",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "第 2 章　応用例",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "実際の応用例を紹介します。",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "2.1 事例研究",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "具体的な事例を通して理解を深めます。",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "2.2 実装方法",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "実装の詳細について説明します。",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "まとめ",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "す。",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "ルとリソースについては、私たちのサイトをご覧ください。",
+                        "page": 2,
+                        "children": []
+                    }
+                ],
+                "level": 0
+            }
+        },
+        "metadata": {
+            "total_headings": 39,
+            "level_distribution": {
+                "1": 28,
+                "2": 11
+            },
+            "has_proper_hierarchy": true,
+            "missing_h1": true,
+            "accessibility_score": 100.0,
+            "issues": [
+                "Missing H1 heading - document should start with H1"
+            ],
+            "recommendations": [
+                "Add an H1 heading at the beginning of the document"
+            ],
+            "compliance": {
+                "wcag_2.1_aa": false,
+                "pdf_ua": false,
+                "section_508": false
+            }
+        },
+        "aria_labels": {
+            "heading_1": "Heading level 1: PDF テスト用サンプル文書",
+            "heading_2": "Heading level 1: はじめに",
+            "heading_3": "Heading level 1: テキストフォーマットの例",
+            "heading_4": "Heading level 1: 1. 太字テキスト は強調に使用されます。",
+            "heading_5": "Heading level 1: リスト",
+            "heading_6": "Heading level 1: 順序なしリストの例：",
+            "heading_7": "Heading level 1: • 項目 1",
+            "heading_8": "Heading level 1: • 項目 2",
+            "heading_9": "Heading level 1: • 項目 3",
+            "heading_10": "Heading level 1: 順序ありリストの例：",
+            "heading_11": "Heading level 1: 1. 第一項目",
+            "heading_12": "Heading level 1: 2. 第二項目",
+            "heading_13": "Heading level 1: 3. 第三項目",
+            "heading_14": "Heading level 1: 引用",
+            "heading_15": "Heading level 1: ヘッダー 3",
+            "heading_16": "Heading level 1: ヘッダー 1",
+            "heading_17": "Heading level 1: ヘッダー 2",
+            "heading_18": "Heading level 1: 行 1 、列 3",
+            "heading_19": "Heading level 1: 行 1 、列 1",
+            "heading_20": "Heading level 1: 行 1 、列 2",
+            "heading_21": "Heading level 1: 行 2 、列 3",
+            "heading_22": "Heading level 1: 行 2 、列 1",
+            "heading_23": "Heading level 1: 行 2 、列 2",
+            "heading_24": "Heading level 1: 章構成の例",
+            "heading_25": "Heading level 1: 第 1 章　基本概念",
+            "heading_26": "Heading level 1: この章では基本的な概念について説明します。",
+            "heading_27": "Heading level 1: 1.1 定義",
+            "heading_28": "Heading level 1: 重要な用語の定義を行います。 on page 2",
+            "heading_29": "Heading level 1: 1.2 原理 on page 2",
+            "heading_30": "Heading level 1: 基本原理について詳しく解説します。 on page 2",
+            "heading_31": "Heading level 1: 第 2 章　応用例 on page 2",
+            "heading_32": "Heading level 1: 実際の応用例を紹介します。 on page 2",
+            "heading_33": "Heading level 1: 2.1 事例研究 on page 2",
+            "heading_34": "Heading level 1: 具体的な事例を通して理解を深めます。 on page 2",
+            "heading_35": "Heading level 1: 2.2 実装方法 on page 2",
+            "heading_36": "Heading level 1: 実装の詳細について説明します。 on page 2",
+            "heading_37": "Heading level 1: まとめ on page 2",
+            "heading_38": "Heading level 1: す。 on page 2",
+            "heading_39": "Heading level 1: ルとリソースについては、私たちのサイトをご覧ください。 on page 2"
+        },
+        "structure_xml_available": true,
+        "compliance_summary": {
+            "wcag_2_1_aa": false,
+            "pdf_ua": false,
+            "section_508": false,
+            "accessibility_score": 100.0
+        }
+    }
+}

@@ -13,6 +13,7 @@ from config.settings import (
 )
 from config.cultural_patterns import CULTURAL_PATTERNS
 from src.utils.text_utils import clean_text, extract_sentences
+from src.models.embedding_model import EmbeddingModel
 
 #patch start
 import nltk
@@ -43,36 +44,47 @@ print(">>> Applied safe punkt_tab monkey patch.")
 
 
 class SemanticFilter:
-    """Smart semantic filtering using embeddings to verify heading candidates."""
+    """Smart semantic filtering using embeddings to verify heading candidates with lazy loading."""
     
     def __init__(self, language: str = 'auto', debug: bool = False):
         self.language = language
         self.debug = debug
         self.logger = logging.getLogger(__name__)
         
-        # Initialize embedding model
-        self.model = None
+        # NEW: Use enhanced EmbeddingModel with lazy loading instead of direct SentenceTransformer
+        self.embedding_model = None
         self._load_embedding_model()
         
         # Semantic patterns and thresholds
         self.similarity_threshold = SEMANTIC_SIMILARITY_THRESHOLD
         self.context_window = CONTEXT_WINDOW
         
-        # Cache for embeddings to avoid recomputation
-        self.embedding_cache = {}
+        # Cache for embeddings to avoid recomputation (now handled by EmbeddingModel)
+        # self.embedding_cache = {}  # REMOVED: Now handled by EmbeddingModel
         
         # Heading patterns for different document types
         self.heading_patterns = self._load_heading_patterns()
     
     def _load_embedding_model(self) -> None:
-        """Load sentence transformer model with error handling."""
+        """Load embedding model with lazy loading and error handling."""
         try:
-            self.logger.info(f"Loading embedding model: {EMBEDDING_MODEL}")
-            self.model = SentenceTransformer(EMBEDDING_MODEL)
-            self.logger.info("Embedding model loaded successfully")
+            self.logger.info(f"Initializing embedding model with lazy loading: {EMBEDDING_MODEL}")
+            
+            # NEW: Use our enhanced EmbeddingModel instead of direct SentenceTransformer
+            self.embedding_model = EmbeddingModel(
+                model_name=EMBEDDING_MODEL,
+                cache_embeddings=True
+            )
+            
+            # Optional: Preload model for immediate availability
+            # Comment out this line if you want pure lazy loading
+            # self.embedding_model.preload_model()
+            
+            self.logger.info("Embedding model initialized successfully with lazy loading")
+            
         except Exception as e:
-            self.logger.error(f"Failed to load embedding model: {e}")
-            self.model = None
+            self.logger.error(f"Failed to initialize embedding model: {e}")
+            self.embedding_model = None
     
     def _load_heading_patterns(self) -> Dict[str, List[str]]:
         """Load semantic patterns for different heading types."""
@@ -111,8 +123,8 @@ class SemanticFilter:
         return patterns
     
     def filter_candidates(self, candidates: List, pdf_path: str) -> List:
-        """Filter heading candidates using semantic analysis."""
-        if not self.model or not candidates:
+        """Filter heading candidates using semantic analysis with lazy loading."""
+        if not self.embedding_model or not candidates:
             self.logger.warning("Semantic filtering disabled - model not loaded or no candidates")
             return candidates
         
@@ -324,18 +336,12 @@ class SemanticFilter:
             if not surrounding_paragraphs:
                 return 0.5  # Neutral score if no context
             
-            # Get candidate embedding
-            candidate_embedding = self._get_embedding(candidate_text)
-            
-            # Get context embeddings
+            # NEW: Use embedding model instead of direct model access
             context_similarities = []
             for paragraph in surrounding_paragraphs[:self.context_window * 2]:
                 if len(paragraph) > 20:  # Skip very short paragraphs
-                    context_embedding = self._get_embedding(paragraph)
-                    similarity = cosine_similarity(
-                        candidate_embedding.reshape(1, -1),
-                        context_embedding.reshape(1, -1)
-                    )[0][0]
+                    # Use the embedding model's compute_similarity method
+                    similarity = self.embedding_model.compute_similarity(candidate_text, paragraph)
                     context_similarities.append(similarity)
             
             if context_similarities:
@@ -443,14 +449,10 @@ class SemanticFilter:
         return composite
     
     def _get_embedding(self, text: str) -> np.ndarray:
-        """Get embedding for text with caching."""
-        if text in self.embedding_cache:
-            return self.embedding_cache[text]
-        
+        """Get embedding for text using the embedding model."""
+        # NEW: Use embedding model instead of direct model access
         try:
-            embedding = self.model.encode(text, convert_to_tensor=False)
-            self.embedding_cache[text] = embedding
-            return embedding
+            return self.embedding_model.encode(text)
         except Exception as e:
             self.logger.warning(f"Failed to get embedding for text: {e}")
             # Return zero embedding as fallback
@@ -515,7 +517,7 @@ class SemanticFilter:
                 context_scores.append(semantic_scores.get('context_similarity', 0.0))
         
         if scores:
-            return {
+            stats = {
                 "total_candidates": len(filtered_candidates),
                 "avg_composite_score": round(np.mean(scores), 3),
                 "avg_pattern_score": round(np.mean(pattern_scores), 3),
@@ -526,10 +528,30 @@ class SemanticFilter:
                     "low (<0.4)": sum(1 for s in scores if s < 0.4)
                 }
             }
+            
+            # Add model performance stats if available
+            if self.embedding_model:
+                model_stats = self.embedding_model.get_performance_stats()
+                stats.update(model_stats)
+            
+            return stats
         
         return {}
     
     def clear_cache(self) -> None:
-        """Clear embedding cache to free memory."""
-        self.embedding_cache.clear()
-        self.logger.debug("Embedding cache cleared")
+        """Clear all caches to free memory."""
+        if self.embedding_model:
+            self.embedding_model.clear_cache()
+        self.logger.debug("All caches cleared")
+    
+    def preload_model(self) -> bool:
+        """Preload the embedding model for faster access."""
+        if self.embedding_model:
+            return self.embedding_model.preload_model()
+        return False
+    
+    def get_model_info(self) -> Dict[str, Any]:
+        """Get information about the embedding model."""
+        if self.embedding_model:
+            return self.embedding_model.get_model_info()
+        return {"model_loaded": False}

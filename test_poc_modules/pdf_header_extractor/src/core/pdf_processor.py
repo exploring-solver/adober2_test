@@ -20,7 +20,7 @@ from config.settings import (
 
 
 class PDFProcessor:
-    """Main orchestrator for PDF heading extraction using hybrid approach."""
+    """Main orchestrator for PDF heading extraction using hybrid approach with accessibility support."""
     
     def __init__(self, language: str = 'auto', debug: bool = False):
         self.language = language
@@ -43,11 +43,11 @@ class PDFProcessor:
         }
     
     def process(self, pdf_path: str, timeout: Optional[int] = None) -> Dict[str, Any]:
-        """Main processing pipeline with timeout protection."""
+        """Main processing pipeline with timeout protection and accessibility support."""
         self.stats["start_time"] = time.time()
         timeout = timeout or MAX_PROCESSING_TIME
         
-        self.logger.info(f"Starting PDF processing: {pdf_path}")
+        self.logger.info(f"Starting PDF processing with accessibility support: {pdf_path}")
         
         try:
             # Use ThreadPoolExecutor for timeout control
@@ -68,8 +68,21 @@ class PDFProcessor:
         self.logger.info(f"Processing completed in {self.stats['processing_time']:.2f}s")
         return result
     
+    def process_for_round1a(self, pdf_path: str) -> Dict[str, Any]:
+        """Process PDF for Round 1A format (clean format without accessibility)."""
+        self.logger.info("Processing for Round 1A format (no accessibility metadata)")
+        
+        # Process normally but return clean format
+        result = self.process(pdf_path)
+        
+        # Return only the clean outline format for Round 1A
+        return {
+            "title": result.get("title", "Document"),
+            "outline": result.get("outline", [])
+        }
+    
     def _process_internal(self, pdf_path: str) -> Dict[str, Any]:
-        """Internal processing pipeline."""
+        """Internal processing pipeline with accessibility tagging."""
         
         # Stage 1: Validate and analyze PDF
         self._add_stage("pdf_validation")
@@ -110,7 +123,7 @@ class PDFProcessor:
                 [self._dict_to_node(h) for h in headings]
             )
         
-        # Stage 7: Format output
+        # Stage 7: Format output with accessibility
         self._add_stage("output_formatting")
         
         # Compile processing statistics
@@ -121,13 +134,21 @@ class PDFProcessor:
             ) if headings else {}
         }
         
-        # Format final result
+        # Format final result with accessibility metadata
         result = self.output_formatter.format_results(
             headings=headings,
             document_info={**document_info, **self.stats},
             hierarchy_tree=hierarchy_tree,
             processing_stats=processing_stats if INCLUDE_DEBUG_INFO else None
         )
+        
+        # Log accessibility summary
+        if "accessibility" in result:
+            acc_summary = result["accessibility"]["compliance_summary"]
+            self.logger.info(f"Accessibility Score: {acc_summary['accessibility_score']:.1f}/100")
+            self.logger.info(f"Compliance - WCAG: {'✓' if acc_summary['wcag_2_1_aa'] else '✗'}, "
+                           f"PDF/UA: {'✓' if acc_summary['pdf_ua'] else '✗'}, "
+                           f"Section 508: {'✓' if acc_summary['section_508'] else '✗'}")
         
         return result
     
@@ -453,7 +474,7 @@ class PDFProcessor:
     def save_output(self, result: Dict[str, Any], output_path: Optional[str] = None, 
            formats: Optional[List[str]] = None, 
            auto_filename: bool = True) -> Dict[str, str]:
-        """Save processing results to file(s) with automatic path handling."""
+        """Save processing results to file(s) with automatic path handling and accessibility support."""
         
         from config.settings import JSON_OUTPUT_DIR, OUTPUT_DIR
         
@@ -486,6 +507,9 @@ class PDFProcessor:
                 if format_type == "json":
                     output_dir = JSON_OUTPUT_DIR
                     extension = ".json"
+                elif format_type == "pdf_ua_xml":
+                    output_dir = OUTPUT_DIR
+                    extension = "_accessibility.xml"
                 else:
                     output_dir = OUTPUT_DIR
                     extension = f".{format_type}"
@@ -496,9 +520,13 @@ class PDFProcessor:
                 # Create full output path
                 output_file = output_dir / f"{final_name}{extension}"
                 
-                # Save in the clean format
+                # Save in the appropriate format
                 if format_type == "json":
                     self.output_formatter.save_json(result, output_file)
+                elif format_type == "pdf_ua_xml":
+                    # Extract headings for accessibility XML
+                    headings = result.get("outline", [])
+                    self.output_formatter.save_pdf_ua_xml(headings, output_file)
                 
                 output_files[format_type] = str(output_file)
                 self.logger.info(f"Saved {format_type.upper()} output to: {output_file}")
@@ -511,7 +539,7 @@ class PDFProcessor:
 
     def save_output_to_custom_path(self, result: Dict[str, Any], custom_path: str, 
                                 formats: Optional[List[str]] = None) -> Dict[str, str]:
-        """Save output to a specific custom path."""
+        """Save output to a specific custom path with accessibility support."""
         
         if formats is None:
             formats = ["json"]
@@ -537,6 +565,9 @@ class PDFProcessor:
                     self.output_formatter.save_markdown(result, custom_path)
                 elif format_type == "html":
                     self.output_formatter.save_html_outline(result, custom_path)
+                elif format_type == "pdf_ua_xml":
+                    headings = result.get("outline", [])
+                    self.output_formatter.save_pdf_ua_xml(headings, custom_path)
                 
                 output_files[format_type] = str(custom_path)
             else:
@@ -544,7 +575,10 @@ class PDFProcessor:
                 base_path = custom_path.with_suffix('')
                 
                 for format_type in formats:
-                    format_path = base_path.with_suffix(f'.{format_type}')
+                    if format_type == "pdf_ua_xml":
+                        format_path = base_path.with_suffix('_accessibility.xml')
+                    else:
+                        format_path = base_path.with_suffix(f'.{format_type}')
                     
                     if format_type == "json":
                         self.output_formatter.save_json(result, format_path)
@@ -556,6 +590,9 @@ class PDFProcessor:
                         self.output_formatter.save_markdown(result, format_path)
                     elif format_type == "html":
                         self.output_formatter.save_html_outline(result, format_path)
+                    elif format_type == "pdf_ua_xml":
+                        headings = result.get("outline", [])
+                        self.output_formatter.save_pdf_ua_xml(headings, format_path)
                     
                     output_files[format_type] = str(format_path)
             
@@ -569,8 +606,9 @@ class PDFProcessor:
 
     def process_batch(self, pdf_paths: List[str], 
                      output_dir: Optional[str] = None,
-                     max_workers: int = 2) -> Dict[str, Any]:
-        """Process multiple PDFs in batch mode."""
+                     max_workers: int = 2,
+                     include_accessibility: bool = False) -> Dict[str, Any]:
+        """Process multiple PDFs in batch mode with optional accessibility support."""
         
         output_dir = Path(output_dir) if output_dir else OUTPUT_DIR
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -579,6 +617,8 @@ class PDFProcessor:
         failed = {}
         
         self.logger.info(f"Starting batch processing of {len(pdf_paths)} files")
+        if include_accessibility:
+            self.logger.info("Accessibility metadata will be included")
         
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             # Submit all jobs
@@ -595,21 +635,45 @@ class PDFProcessor:
                     results[pdf_path] = result
                     
                     # Save individual result
-                    output_file = output_dir / f"{Path(pdf_path).stem}_headings.json"
-                    self.save_output(result, output_file)
+                    formats = ["json"]
+                    if include_accessibility:
+                        formats.append("pdf_ua_xml")
+                    
+                    output_file = output_dir / f"{Path(pdf_path).stem}_headings"
+                    self.save_output_to_custom_path(result, output_file, formats)
                     
                 except Exception as e:
                     self.logger.error(f"Failed to process {pdf_path}: {e}")
                     failed[pdf_path] = str(e)
         
-        # Create batch summary
+        # Create batch summary with accessibility stats
+        accessibility_summary = {}
+        if include_accessibility and results:
+            total_score = 0
+            compliant_count = 0
+            
+            for pdf_path, result in results.items():
+                if "accessibility" in result:
+                    acc_data = result["accessibility"]["compliance_summary"]
+                    total_score += acc_data["accessibility_score"]
+                    if acc_data["wcag_2_1_aa"]:
+                        compliant_count += 1
+            
+            accessibility_summary = {
+                "average_accessibility_score": total_score / len(results),
+                "wcag_compliant_documents": compliant_count,
+                "compliance_rate": (compliant_count / len(results)) * 100
+            }
+        
         batch_summary = {
             "total_files": len(pdf_paths),
             "successful": len(results),
             "failed": len(failed),
             "success_rate": len(results) / len(pdf_paths) * 100,
             "failed_files": failed,
-            "output_directory": str(output_dir)
+            "output_directory": str(output_dir),
+            "accessibility_included": include_accessibility,
+            "accessibility_summary": accessibility_summary
         }
         
         # Save batch summary
@@ -619,6 +683,9 @@ class PDFProcessor:
             json.dump(batch_summary, f, indent=2, ensure_ascii=False)
         
         self.logger.info(f"Batch processing complete: {len(results)}/{len(pdf_paths)} successful")
+        if accessibility_summary:
+            self.logger.info(f"Average accessibility score: {accessibility_summary['average_accessibility_score']:.1f}/100")
+            self.logger.info(f"WCAG compliant: {accessibility_summary['compliance_rate']:.1f}%")
         
         return {
             "results": results,
@@ -648,4 +715,38 @@ class PDFProcessor:
             "warnings": self.stats["warnings"],
             "document_analysis": self.stats.get("document_info", {})
         }
+    
+    def clear_caches(self) -> None:
+        """Clear all component caches to free memory."""
         
+        try:
+            if self.semantic_filter:
+                self.semantic_filter.clear_cache()
+            
+            if hasattr(self.candidate_generator, 'clear_cache'):
+                self.candidate_generator.clear_cache()
+            
+            if hasattr(self.hierarchy_assigner, 'clear_cache'):
+                self.hierarchy_assigner.clear_cache()
+            
+            self.logger.info("All component caches cleared")
+            
+        except Exception as e:
+            self.logger.warning(f"Failed to clear some caches: {e}")
+            
+    def get_accessibility_summary(self, result: Dict[str, Any]) -> Dict[str, Any]:
+        """Extract accessibility summary from processing result."""
+        
+        if "accessibility" not in result:
+            return {"accessibility_available": False}
+        
+        acc_data = result["accessibility"]
+        summary = {
+            "accessibility_available": True,
+            "compliance_summary": acc_data["compliance_summary"],
+            "total_issues": len(acc_data["metadata"]["issues"]),
+            "recommendations_count": len(acc_data["metadata"]["recommendations"]),
+            "structure_xml_available": acc_data["structure_xml_available"]
+        }
+        
+        return summary
