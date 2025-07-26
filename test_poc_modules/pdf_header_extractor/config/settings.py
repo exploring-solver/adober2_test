@@ -17,7 +17,7 @@ MAX_FILE_SIZE_MB = 100
 
 # Font Analysis Thresholds
 # Make font thresholds more inclusive
-FONT_SIZE_THRESHOLD_RATIO = 1.01  # No fixed ratio, use percentile-based
+FONT_SIZE_THRESHOLD_RATIO = 1.05  # No fixed ratio, use percentile-based
 MIN_FONT_SIZE_FOR_HEADING = 8    # Lower absolute minimum
 RELATIVE_SIZE_BONUS = 1.0        # Remove fixed bonus
 BOLD_WEIGHT_THRESHOLD = 400      # Lower threshold
@@ -26,8 +26,8 @@ MAX_HEADING_LENGTH = 300         # Allow longer headings
 
 # Semantic Filtering
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-SEMANTIC_SIMILARITY_THRESHOLD = 0.4
-CONTEXT_WINDOW = 5  # paragraphs before/after
+SEMANTIC_SIMILARITY_THRESHOLD = 0.5
+CONTEXT_WINDOW = 3  # paragraphs before/after
 
 # Hierarchy Assignment
 MAX_HIERARCHY_LEVELS = 6

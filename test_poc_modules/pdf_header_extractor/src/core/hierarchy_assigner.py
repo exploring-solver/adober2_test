@@ -35,6 +35,7 @@ class HierarchyAssigner:
         
         # Hierarchy detection strategies
         self.strategies = [
+            self._assign_by_cjk_patterns,  # New CJK-specific strategy first
             self._assign_by_font_hierarchy,
             self._assign_by_numbering_pattern,
             self._assign_by_position_and_spacing,
@@ -49,6 +50,10 @@ class HierarchyAssigner:
         if not candidates:
             return []
         
+        # Detect language from candidates if not set
+        if self.language == 'auto' and candidates:
+            self.language = self._detect_language_from_candidates(candidates)
+        
         # Convert candidates to hierarchy nodes
         nodes = [self._candidate_to_node(candidate) for candidate in candidates]
         
@@ -56,6 +61,11 @@ class HierarchyAssigner:
         strategy_results = []
         for strategy in self.strategies:
             try:
+                # Skip CJK strategy for non-CJK languages
+                if (strategy.__name__ == '_assign_by_cjk_patterns' and 
+                    self.language not in ['japanese', 'chinese']):
+                    continue
+                    
                 result = strategy(nodes.copy())
                 strategy_results.append(result)
                 self.logger.debug(f"Strategy {strategy.__name__} completed")
@@ -74,6 +84,23 @@ class HierarchyAssigner:
         self.logger.info(f"Final hierarchy: {len(output)} headings across {max([h['level'] for h in output], default=0)} levels")
         return output
     
+    def _detect_language_from_candidates(self, candidates: List[HeadingCandidate]) -> str:
+        """Detect language from candidate text."""
+        sample_text = " ".join([c.text for c in candidates[:5]])  # Sample first 5
+        
+        # Simple detection based on character sets
+        if re.search(r'[\u4e00-\u9fff]', sample_text):
+            if re.search(r'[\u3041-\u3096\u30A1-\u30FA]', sample_text):
+                return 'japanese'
+            else:
+                return 'chinese'
+        elif re.search(r'[\u0900-\u097F]', sample_text):
+            return 'hindi'
+        elif re.search(r'[\u0600-\u06FF]', sample_text):
+            return 'arabic'
+        else:
+            return 'english'
+    
     def _candidate_to_node(self, candidate) -> HierarchyNode:
         """Convert heading candidate to hierarchy node."""
         return HierarchyNode(
@@ -85,6 +112,103 @@ class HierarchyAssigner:
             confidence=candidate.confidence_score,
             numbering_pattern=candidate.features.get('numbering_type'),
         )
+    
+    def _assign_by_cjk_patterns(self, nodes: List[HierarchyNode]) -> List[HierarchyNode]:
+        """Assign levels based on CJK-specific patterns with enhanced detection."""
+        if self.language not in ['japanese', 'chinese']:
+            return nodes
+        
+        for node in nodes:
+            text = node.text.strip()
+            level = self._detect_heading_level_cjk(text, node.font_size, nodes)
+            node.level = level
+        
+        return nodes
+    
+    def _detect_heading_level_cjk(self, text: str, font_size: float, all_nodes: List[HierarchyNode]) -> int:
+        """Detect heading level for CJK text with comprehensive pattern matching."""
+        
+        # Calculate average font size for reference
+        avg_font_size = np.mean([n.font_size for n in all_nodes]) if all_nodes else font_size
+        
+        # Level 1: Chapter markers (highest priority)
+        chapter_patterns = [
+            r'^第[一二三四五六七八九十\d]+章',     # 第一章, 第1章
+            r'^Chapter\s*[一二三四五六七八九十\d]+', # Chapter 1 (mixed)
+            r'^序章',                            # Prologue chapter
+            r'^終章',                            # Final chapter
+            r'^付録[一二三四五六七八九十\d]*',      # Appendix
+        ]
+        
+        for pattern in chapter_patterns:
+            if re.search(pattern, text):
+                return 1
+        
+        # Level 1: Major section markers
+        major_section_patterns = [
+            r'^第[一二三四五六七八九十\d]+部',     # 第一部 (Part)
+            r'^第[一二三四五六七八九十\d]+編',     # 第一編 (Volume)
+            r'^はじめに$',                       # Introduction (Japanese)
+            r'^序論$',                          # Introduction (Japanese)
+            r'^結論$',                          # Conclusion (Japanese)
+            r'^まとめ$',                        # Summary (Japanese)
+            r'^引言$',                          # Introduction (Chinese)
+            r'^结论$',                          # Conclusion (Chinese)
+            r'^总结$',                          # Summary (Chinese)
+            r'^参考文献$',                       # References
+            r'^謝辞$',                          # Acknowledgments (Japanese)
+            r'^致谢$',                          # Acknowledgments (Chinese)
+        ]
+        
+        for pattern in major_section_patterns:
+            if re.search(pattern, text):
+                return 1
+        
+        # Level 2: Section markers
+        section_patterns = [
+            r'^第[一二三四五六七八九十\d]+節',     # 第一節, 第1節
+            r'^\d+\.\d+\s+[^\s]',              # 1.1 Title (with space and content)
+            r'^[一二三四五六七八九十]+、',         # 一、二、三、
+            r'^（[一二三四五六七八九十\d]+）',    # （一）（二）
+            r'^\([一二三四五六七八九十\d]+\)',    # (一)(二)
+        ]
+        
+        for pattern in section_patterns:
+            if re.search(pattern, text):
+                return 2
+        
+        # Level 3: Subsection markers
+        subsection_patterns = [
+            r'^\d+\.\d+\.\d+',                # 1.1.1
+            r'^[一二三四五六七八九十]+\.',        # 一. 二. 三.
+            r'^[abc一二三]\)',                 # a) b) c) or 一) 二)
+            r'^[\(（][abc一二三\d]+[\)）]',      # (a) (b) or （一）（二）
+        ]
+        
+        for pattern in subsection_patterns:
+            if re.search(pattern, text):
+                return 3
+        
+        # Level 4+: Minor subsections
+        minor_patterns = [
+            r'^\d+\.\d+\.\d+\.\d+',           # 1.1.1.1
+            r'^・',                           # Bullet points (Japanese)
+            r'^•',                            # Bullet points
+        ]
+        
+        for pattern in minor_patterns:
+            if re.search(pattern, text):
+                return 4
+        
+        # Fallback: Use font size relative to document average
+        if font_size > avg_font_size * 1.5:
+            return 1
+        elif font_size > avg_font_size * 1.2:
+            return 2
+        elif font_size > avg_font_size * 1.1:
+            return 3
+        else:
+            return 4
     
     def _assign_by_font_hierarchy(self, nodes: List[HierarchyNode]) -> List[HierarchyNode]:
         """Assign levels based on font size distribution analysis."""
@@ -111,9 +235,17 @@ class HierarchyAssigner:
                 current_level += 1
             level_mapping[size] = min(current_level, 6)  # Max level 6
         
-        # Apply mapping
+        # Apply mapping, but be more conservative for CJK languages
         for node in nodes:
-            node.level = level_mapping.get(node.font_size, 3)  # Default to level 3
+            suggested_level = level_mapping.get(node.font_size, 3)
+            
+            # For CJK languages, prefer pattern-based levels if available
+            if self.language in ['japanese', 'chinese']:
+                pattern_level = self._detect_heading_level_cjk(node.text, node.font_size, nodes)
+                # Use the more conservative (higher) level between pattern and font
+                node.level = min(suggested_level, pattern_level)
+            else:
+                node.level = suggested_level
         
         return nodes
 
@@ -144,65 +276,106 @@ class HierarchyAssigner:
         for node in nodes:
             level = 2  # Default
             
-            # Top of page likely higher level
-            if node.bbox[1] < 150:  # Top 150 points
-                level = 1
-            
-            # Large spacing suggests higher level
-            spacing_before = getattr(node, 'spacing_before', 0)
-            if spacing_before > 15:
-                level = max(1, level - 1)
-            elif spacing_before > 8:
-                level = max(2, level)
-            
-            # Bold text suggests higher level
-            if getattr(node, 'is_bold', False):
-                level = max(1, level - 1)
+            # For CJK languages, prioritize pattern matching
+            if self.language in ['japanese', 'chinese']:
+                pattern_level = self._detect_heading_level_cjk(node.text, node.font_size, nodes)
+                level = pattern_level
+            else:
+                # Top of page likely higher level
+                if node.bbox[1] < 150:  # Top 150 points
+                    level = 1
+                
+                # Large spacing suggests higher level
+                spacing_before = getattr(node, 'spacing_before', 0)
+                if spacing_before > 15:
+                    level = max(1, level - 1)
+                elif spacing_before > 8:
+                    level = max(2, level)
+                
+                # Bold text suggests higher level
+                if getattr(node, 'is_bold', False):
+                    level = max(1, level - 1)
             
             node.level = level
         
         return nodes
     
     def _assign_by_numbering_pattern(self, nodes: List[HierarchyNode]) -> List[HierarchyNode]:
-        """Assign levels based on numbering patterns."""
+        """Assign levels based on numbering patterns with enhanced CJK support."""
+        
+        # Enhanced numbering hierarchy including CJK patterns
         numbering_hierarchy = {
-            'decimal': 1,      # 1. 2. 3.
-            'decimal_nested': 2,  # 1.1, 1.2
-            'roman': 1,        # I. II. III.
-            'alpha': 2,        # A. B. C.
-            'chapter': 1,      # Chapter 1
-            'section': 2,   
-            'decimal_nested_deep': 3,
+            # English patterns
+            'decimal': 1,                    # 1. 2. 3.
+            'decimal_nested': 2,             # 1.1, 1.2
+            'decimal_nested_deep': 3,        # 1.1.1
+            'roman': 1,                      # I. II. III.
+            'alpha': 2,                      # A. B. C.
+            'chapter': 1,                    # Chapter 1
+            'section': 2,                    # Section 1
+            
+            # CJK patterns
+            'japanese_chapter': 1,           # 第1章
+            'japanese_kanji_chapter': 1,     # 第一章
+            'japanese_section': 2,           # 第1節
+            'japanese_kanji_list': 2,        # 一、二、三、
+            'chinese_chapter': 1,            # 第1章
+            'chinese_kanji_chapter': 1,      # 第一章
         }
         
         for node in nodes:
             text = node.text.strip()
+            detected_level = None
             
-            # Detect numbering patterns
-            if re.match(r'^\d+\.\d+\.\d+', text):  # 1.1.1
-                node.level = 3
-                node.numbering_pattern = 'decimal_nested_deep'
-            elif re.match(r'^\d+\.\d+', text):  # 1.1
-                node.level = 2
-                node.numbering_pattern = 'decimal_nested'
-            elif re.match(r'^\d+\.', text):  # 1.
-                node.level = 1
-                node.numbering_pattern = 'decimal'
-            elif re.match(r'^[IVX]+\.', text):  # I.
-                node.level = 1
-                node.numbering_pattern = 'roman'
-            elif re.match(r'^[A-Z]\.', text):  # A.
-                node.level = 2
-                node.numbering_pattern = 'alpha'
-            elif re.search(r'^Chapter \d+', text, re.IGNORECASE):
-                node.level = 1
-                node.numbering_pattern = 'chapter'
-            elif re.search(r'^Section \d+', text, re.IGNORECASE):
-                node.level = 2
-                node.numbering_pattern = 'section'
+            # Enhanced CJK pattern detection
+            if self.language in ['japanese', 'chinese']:
+                if re.match(r'^第\d+章', text) or re.match(r'^第[一二三四五六七八九十]+章', text):
+                    detected_level = 1
+                    node.numbering_pattern = 'cjk_chapter'
+                elif re.match(r'^第\d+節', text) or re.match(r'^第[一二三四五六七八九十]+節', text):
+                    detected_level = 2
+                    node.numbering_pattern = 'cjk_section'
+                elif re.match(r'^\d+\.\d+\.\d+', text):  # 1.1.1
+                    detected_level = 3
+                    node.numbering_pattern = 'decimal_nested_deep'
+                elif re.match(r'^\d+\.\d+', text):  # 1.1
+                    detected_level = 2
+                    node.numbering_pattern = 'decimal_nested'
+                elif re.match(r'^\d+\.', text):  # 1.
+                    detected_level = 1
+                    node.numbering_pattern = 'decimal'
+                elif re.match(r'^[一二三四五六七八九十]+、', text):  # 一、
+                    detected_level = 2
+                    node.numbering_pattern = 'cjk_kanji_list'
+                elif re.match(r'^（[一二三四五六七八九十\d]+）', text):  # （一）
+                    detected_level = 3
+                    node.numbering_pattern = 'cjk_parenthetical'
             else:
-                # No clear numbering, use font-based fallback
-                continue
+                # Original English pattern detection
+                if re.match(r'^\d+\.\d+\.\d+', text):  # 1.1.1
+                    detected_level = 3
+                    node.numbering_pattern = 'decimal_nested_deep'
+                elif re.match(r'^\d+\.\d+', text):  # 1.1
+                    detected_level = 2
+                    node.numbering_pattern = 'decimal_nested'
+                elif re.match(r'^\d+\.', text):  # 1.
+                    detected_level = 1
+                    node.numbering_pattern = 'decimal'
+                elif re.match(r'^[IVX]+\.', text):  # I.
+                    detected_level = 1
+                    node.numbering_pattern = 'roman'
+                elif re.match(r'^[A-Z]\.', text):  # A.
+                    detected_level = 2
+                    node.numbering_pattern = 'alpha'
+                elif re.search(r'^Chapter \d+', text, re.IGNORECASE):
+                    detected_level = 1
+                    node.numbering_pattern = 'chapter'
+                elif re.search(r'^Section \d+', text, re.IGNORECASE):
+                    detected_level = 2
+                    node.numbering_pattern = 'section'
+            
+            if detected_level:
+                node.level = detected_level
         
         return nodes
     
@@ -231,8 +404,9 @@ class HierarchyAssigner:
         return nodes
     
     def _assign_by_keywords(self, nodes: List[HierarchyNode]) -> List[HierarchyNode]:
-        """Assign levels based on common heading keywords."""
+        """Assign levels based on common heading keywords with enhanced CJK support."""
         
+        # Enhanced keyword levels including CJK
         keyword_levels = {
             # Level 0 (Title)
             'title': 0, 'abstract': 0, 'summary': 0,
@@ -249,6 +423,12 @@ class HierarchyAssigner:
             
             # Level 3 (Sub-subsections)
             'subsection': 3, 'details': 3, 'examples': 3,
+            
+            # CJK keywords
+            'はじめに': 1, '序論': 1, '結論': 1, 'まとめ': 1,  # Japanese
+            '参考文献': 1, '付録': 1, '謝辞': 1,
+            '引言': 1, '结论': 1, '总结': 1, '参考文献': 1,      # Chinese
+            '附录': 1, '致谢': 1,
         }
         
         # Add cultural keywords
@@ -259,10 +439,12 @@ class HierarchyAssigner:
         
         for node in nodes:
             text_lower = node.text.lower().strip()
+            original_text = node.text.strip()  # Keep original for CJK
             
-            # Check for exact matches first
+            # Check for exact matches first (including CJK)
             for keyword, level in keyword_levels.items():
-                if keyword in text_lower:
+                if (keyword in text_lower or 
+                    (self.language in ['japanese', 'chinese'] and keyword in original_text)):
                     node.level = min(node.level, level)
                     node.semantic_group = keyword
                     break
@@ -303,25 +485,35 @@ class HierarchyAssigner:
     
     def _combine_strategies(self, strategy_results: List[List[HierarchyNode]], 
                           original_nodes: List[HierarchyNode]) -> List[HierarchyNode]:
-        """Combine results from multiple strategies using ensemble approach."""
+        """Combine results from multiple strategies using ensemble approach with CJK weighting."""
         
         if not strategy_results:
             return original_nodes
         
         # Create mapping from text to level votes
         level_votes = defaultdict(list)
+        strategy_weights = defaultdict(float)
         
-        for strategy_result in strategy_results:
+        for i, strategy_result in enumerate(strategy_results):
+            # Give higher weight to CJK pattern strategy for CJK languages
+            weight = 2.0 if (i == 0 and self.language in ['japanese', 'chinese']) else 1.0
+            
             for node in strategy_result:
                 level_votes[node.text].append(node.level)
+                strategy_weights[node.text] += weight
         
-        # Assign final levels using median voting
+        # Assign final levels using weighted median voting
         final_nodes = []
         for original_node in original_nodes:
             votes = level_votes.get(original_node.text, [original_node.level])
             
-            # Use median of votes, with bias towards lower levels (higher importance)
-            final_level = int(np.median(votes))
+            # Use weighted median of votes, with bias towards lower levels (higher importance)
+            if self.language in ['japanese', 'chinese'] and len(votes) > 1:
+                # For CJK, prefer the most confident (lowest) level
+                final_level = min(votes)
+            else:
+                # Use median for other languages
+                final_level = int(np.median(votes))
             
             # Create final node
             final_node = HierarchyNode(
@@ -340,7 +532,7 @@ class HierarchyAssigner:
         return final_nodes
     
     def _validate_and_fix_hierarchy(self, nodes: List[HierarchyNode]) -> List[HierarchyNode]:
-        """Validate and fix common hierarchy issues."""
+        """Validate and fix common hierarchy issues with CJK awareness."""
         
         if not nodes:
             return nodes
@@ -355,12 +547,25 @@ class HierarchyAssigner:
         for i, node in enumerate(nodes):
             current_level = node.level
             
-            # Ensure we don't skip levels (max jump of 1)
-            if current_level > prev_level + 1:
-                current_level = prev_level + 1
+            # For CJK languages, be more lenient with level jumps if clear patterns exist
+            if self.language in ['japanese', 'chinese']:
+                # Allow level jumps for clear chapter patterns
+                if re.search(r'^第[一二三四五六七八九十\d]+章', node.text):
+                    current_level = 1  # Force chapters to level 1
+                elif re.search(r'^第[一二三四五六七八九十\d]+節', node.text):
+                    current_level = min(current_level, 2)  # Force sections to level 2 or higher
+                else:
+                    # Ensure we don't skip levels (max jump of 1)
+                    if current_level > prev_level + 1:
+                        current_level = prev_level + 1
+            else:
+                # Original logic for non-CJK languages
+                # Ensure we don't skip levels (max jump of 1)
+                if current_level > prev_level + 1:
+                    current_level = prev_level + 1
             
             # Ensure reasonable bounds
-            current_level = max(0, min(current_level, MAX_HIERARCHY_LEVELS))
+            current_level = max(1, min(current_level, MAX_HIERARCHY_LEVELS))
             
             # Special case: if first heading is not level 1, make it level 1
             if i == 0 and current_level > 1:
@@ -466,8 +671,8 @@ class HierarchyAssigner:
         """Detect the overall document structure type."""
         
         # Analyze patterns
-        has_chapters = any("chapter" in node.text.lower() for node in nodes)
-        has_sections = any("section" in node.text.lower() for node in nodes)
+        has_chapters = any("chapter" in node.text.lower() or "章" in node.text for node in nodes)
+        has_sections = any("section" in node.text.lower() or "節" in node.text for node in nodes)
         has_numbering = any(node.numbering_pattern for node in nodes)
         level_distribution = Counter(node.level for node in nodes)
         
@@ -492,9 +697,10 @@ class HierarchyAssigner:
         if doc_type == "book_style":
             # Ensure chapters are level 1, sections are level 2
             for node in nodes:
-                if "chapter" in node.text.lower():
+                text_lower = node.text.lower()
+                if "chapter" in text_lower or "章" in node.text:
                     node.level = 1
-                elif "section" in node.text.lower():
+                elif "section" in text_lower or "節" in node.text:
                     node.level = 2
         
         elif doc_type == "academic_paper":
@@ -508,12 +714,16 @@ class HierarchyAssigner:
                 "discussion": 1,
                 "conclusion": 1,
                 "references": 1,
+                # CJK academic terms
+                "はじめに": 1, "序論": 1, "結論": 1, "まとめ": 1,
+                "引言": 1, "结论": 1, "总结": 1,
             }
             
             for node in nodes:
                 text_lower = node.text.lower()
+                original_text = node.text  # For CJK matching
                 for keyword, level in academic_mapping.items():
-                    if keyword in text_lower:
+                    if keyword in text_lower or keyword in original_text:
                         node.level = level
                         break
         

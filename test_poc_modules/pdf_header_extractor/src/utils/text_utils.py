@@ -25,6 +25,76 @@ except ImportError:
     NLTK_AVAILABLE = False
     logging.warning("NLTK not available, some text processing features will be limited")
 
+# SentencePiece imports for better CJK tokenization
+try:
+    import sentencepiece as spm
+    SENTENCEPIECE_AVAILABLE = True
+except ImportError:
+    SENTENCEPIECE_AVAILABLE = False
+    logging.warning("SentencePiece not available, CJK tokenization will use fallback methods")
+
+# Additional tokenizers for specific languages
+try:
+    import MeCab
+    MECAB_AVAILABLE = True
+except ImportError:
+    MECAB_AVAILABLE = False
+
+
+class TokenizerManager:
+    """Manages different tokenizers for various languages."""
+    
+    def __init__(self):
+        self.logger = logging.getLogger(__name__)
+        self.tokenizers = {}
+        self._initialize_tokenizers()
+    
+    def _initialize_tokenizers(self):
+        """Initialize available tokenizers."""
+        # Initialize SentencePiece models if available
+        if SENTENCEPIECE_AVAILABLE:
+            self._load_sentencepiece_models()
+        
+        # Initialize MeCab for Japanese if available
+        if MECAB_AVAILABLE:
+            try:
+                self.tokenizers['mecab'] = MeCab.Tagger('-Owakati')
+                self.logger.info("MeCab tokenizer initialized")
+            except Exception as e:
+                self.logger.warning(f"Failed to initialize MeCab: {e}")
+    
+    def _load_sentencepiece_models(self):
+        """Load SentencePiece models for different languages."""
+        model_configs = {
+            'japanese': 'data/models/japanese_tokenizer.model',
+            'chinese': 'data/models/chinese_tokenizer.model',
+            'multilingual': 'data/models/multilingual_tokenizer.model'
+        }
+        
+        for lang, model_path in model_configs.items():
+            try:
+                if Path(model_path).exists():
+                    sp = spm.SentencePieceProcessor()
+                    sp.load(model_path)
+                    self.tokenizers[f'sp_{lang}'] = sp
+                    self.logger.info(f"Loaded SentencePiece model for {lang}")
+                else:
+                    self.logger.debug(f"SentencePiece model not found: {model_path}")
+            except Exception as e:
+                self.logger.warning(f"Failed to load SentencePiece model for {lang}: {e}")
+    
+    def get_tokenizer(self, language: str, tokenizer_type: str = 'auto'):
+        """Get appropriate tokenizer for language."""
+        if tokenizer_type == 'sentencepiece' and f'sp_{language}' in self.tokenizers:
+            return self.tokenizers[f'sp_{language}']
+        elif tokenizer_type == 'mecab' and language == 'japanese' and 'mecab' in self.tokenizers:
+            return self.tokenizers['mecab']
+        return None
+
+
+# Global tokenizer manager instance
+_tokenizer_manager = TokenizerManager()
+
 
 class TextUtils:
     """Advanced text processing and analysis utilities."""
@@ -93,6 +163,191 @@ class TextUtils:
                     nltk.download(data_name, quiet=True)
                 except Exception as e:
                     self.logger.warning(f"Failed to download NLTK data '{data_name}': {e}")
+
+
+def tokenize_japanese(text: str) -> List[str]:
+    """Advanced Japanese tokenization using SentencePiece or MeCab."""
+    if not text or not text.strip():
+        return []
+    
+    text = clean_text(text)
+    
+    # Try SentencePiece first
+    if SENTENCEPIECE_AVAILABLE:
+        tokenizer = _tokenizer_manager.get_tokenizer('japanese', 'sentencepiece')
+        if tokenizer:
+            try:
+                tokens = tokenizer.encode_as_pieces(text)
+                # Filter out empty tokens and special characters
+                return [token for token in tokens if token.strip() and not token.startswith('▁')]
+            except Exception as e:
+                logging.warning(f"SentencePiece tokenization failed: {e}")
+    
+    # Try MeCab as fallback
+    if MECAB_AVAILABLE:
+        tokenizer = _tokenizer_manager.get_tokenizer('japanese', 'mecab')
+        if tokenizer:
+            try:
+                result = tokenizer.parse(text).strip()
+                tokens = result.split()
+                return [token for token in tokens if token.strip()]
+            except Exception as e:
+                logging.warning(f"MeCab tokenization failed: {e}")
+    
+    # Final fallback: character-based splitting for Japanese
+    return _japanese_character_split(text)
+
+
+def tokenize_chinese(text: str) -> List[str]:
+    """Chinese tokenization using SentencePiece."""
+    if not text or not text.strip():
+        return []
+    
+    text = clean_text(text)
+    
+    # Try SentencePiece
+    if SENTENCEPIECE_AVAILABLE:
+        tokenizer = _tokenizer_manager.get_tokenizer('chinese', 'sentencepiece')
+        if tokenizer:
+            try:
+                tokens = tokenizer.encode_as_pieces(text)
+                return [token for token in tokens if token.strip() and not token.startswith('▁')]
+            except Exception as e:
+                logging.warning(f"SentencePiece Chinese tokenization failed: {e}")
+    
+    # Fallback: character-based splitting
+    return _chinese_character_split(text)
+
+
+def tokenize_multilingual(text: str, language: str = 'auto') -> List[str]:
+    """Universal tokenization that handles multiple languages intelligently."""
+    if not text or not text.strip():
+        return []
+    
+    text = clean_text(text)
+    
+    # Detect language if auto
+    if language == 'auto':
+        language = detect_language(text)
+    
+    # Use language-specific tokenizers
+    if language == 'japanese':
+        return tokenize_japanese(text)
+    elif language == 'chinese':
+        return tokenize_chinese(text)
+    elif language in ['arabic', 'hindi']:
+        return _handle_rtl_languages(text, language)
+    else:
+        # Use NLTK for European languages
+        return extract_words(text, language)
+
+
+def _japanese_character_split(text: str) -> List[str]:
+    """Fallback Japanese tokenization using character patterns."""
+    # Simple regex-based approach for Japanese
+    tokens = []
+    
+    # Split on hiragana/katakana word boundaries and kanji
+    japanese_pattern = re.compile(r'[ひ-ゞ]+|[ァ-ヾ]+|[一-龯]+|[a-zA-Z0-9]+')
+    matches = japanese_pattern.findall(text)
+    
+    for match in matches:
+        if len(match.strip()) > 0:
+            tokens.append(match)
+    
+    return tokens
+
+
+def _chinese_character_split(text: str) -> List[str]:
+    """Fallback Chinese tokenization using character patterns."""
+    # Simple character-based splitting for Chinese
+    chinese_chars = re.findall(r'[一-龯]+', text)
+    latin_words = re.findall(r'[a-zA-Z0-9]+', text)
+    
+    # Combine and maintain order approximately
+    tokens = []
+    for char_group in chinese_chars:
+        # Split long character sequences
+        if len(char_group) > 4:
+            for i in range(0, len(char_group), 2):
+                tokens.append(char_group[i:i+2])
+        else:
+            tokens.append(char_group)
+    
+    tokens.extend(latin_words)
+    return tokens
+
+
+def _handle_rtl_languages(text: str, language: str) -> List[str]:
+    """Handle right-to-left languages like Arabic and Hindi."""
+    if language == 'arabic':
+        # Arabic word tokenization
+        arabic_words = re.findall(r'[\u0600-\u06FF]+', text)
+        latin_words = re.findall(r'[a-zA-Z0-9]+', text)
+        return arabic_words + latin_words
+    
+    elif language == 'hindi':
+        # Hindi/Devanagari tokenization
+        hindi_words = re.findall(r'[\u0900-\u097F]+', text)
+        latin_words = re.findall(r'[a-zA-Z0-9]+', text)
+        return hindi_words + latin_words
+    
+    return text.split()
+
+
+def enhance_heading_detection_for_cjk(text: str, language: str) -> Dict[str, Any]:
+    """Enhanced heading detection specifically for CJK languages."""
+    if not text:
+        return {"is_heading": False, "confidence": 0.0, "reasons": []}
+    
+    reasons = []
+    score = 0.0
+    
+    # Get language-appropriate tokens
+    if language == 'japanese':
+        tokens = tokenize_japanese(text)
+    elif language == 'chinese':
+        tokens = tokenize_chinese(text)
+    else:
+        tokens = text.split()
+    
+    # CJK-specific patterns
+    if language in ['japanese', 'chinese']:
+        # Check for chapter markers
+        chapter_markers = ['章', '節', '第', '部', '篇']
+        for marker in chapter_markers:
+            if marker in text:
+                score += 0.3
+                reasons.append(f"contains_{marker}")
+                break
+        
+        # Check for numbering patterns
+        if re.search(r'第[一二三四五六七八九十\d]+[章節部篇]', text):
+            score += 0.4
+            reasons.append("numbered_chapter")
+        
+        # Token count analysis for CJK
+        if 1 <= len(tokens) <= 6:
+            score += 0.2
+            reasons.append("appropriate_token_count")
+    
+    # Length analysis for CJK (characters, not words)
+    char_count = len(text.strip())
+    if 2 <= char_count <= 20:
+        score += 0.2
+        reasons.append("appropriate_character_length")
+    
+    confidence = max(0.0, min(1.0, score))
+    is_heading = confidence >= 0.4
+    
+    return {
+        "is_heading": is_heading,
+        "confidence": confidence,
+        "reasons": reasons,
+        "token_count": len(tokens),
+        "character_count": char_count,
+        "language": language
+    }
 
 
 def clean_text(text: str) -> str:
@@ -217,11 +472,15 @@ def _simple_sentence_split(text: str) -> List[str]:
 
 def extract_words(text: str, language: str = 'english', 
                  include_stopwords: bool = True) -> List[str]:
-    """Extract words from text with language-aware tokenization."""
+    """Extract words from text with advanced language-aware tokenization."""
     if not text:
         return []
     
     text = clean_text(text)
+    
+    # Use multilingual tokenization for better results
+    if language in ['japanese', 'chinese']:
+        return tokenize_multilingual(text, language)
     
     if NLTK_AVAILABLE:
         try:
@@ -319,11 +578,17 @@ def _simple_language_detection(text: str) -> str:
 
 
 def is_likely_heading(text: str, language: str = 'english') -> Dict[str, Any]:
-    """Analyze if text is likely to be a heading based on linguistic features."""
+    """Analyze if text is likely to be a heading based on linguistic features with CJK support."""
     if not text:
         return {"is_heading": False, "confidence": 0.0, "reasons": []}
     
     text = text.strip()
+    
+    # Use enhanced CJK detection if applicable
+    if language in ['japanese', 'chinese']:
+        return enhance_heading_detection_for_cjk(text, language)
+    
+    # Original logic for other languages
     reasons = []
     score = 0.0
     
@@ -647,3 +912,16 @@ def split_into_chunks(text: str, chunk_size: int = 1000, overlap: int = 100) -> 
             break
     
     return chunks
+
+
+def get_tokenizer_info() -> Dict[str, Any]:
+    """Get information about available tokenizers."""
+    info = {
+        "sentencepiece_available": SENTENCEPIECE_AVAILABLE,
+        "mecab_available": MECAB_AVAILABLE,
+        "nltk_available": NLTK_AVAILABLE,
+        "langdetect_available": LANGDETECT_AVAILABLE,
+        "loaded_models": list(_tokenizer_manager.tokenizers.keys())
+    }
+    
+    return info

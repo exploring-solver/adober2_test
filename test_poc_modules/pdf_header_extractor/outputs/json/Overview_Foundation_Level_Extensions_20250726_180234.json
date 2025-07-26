@@ -1,0 +1,633 @@
+{
+    "title": "Overview Foundation Level Extensions",
+    "outline": [
+        {
+            "level": "H1",
+            "text": "PDF 测试样本文档",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "简介",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "文本格式示例",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "列表",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "引用",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "表格",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "章节结构示例",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "第一章　基本概念",
+            "page": 1
+        },
+        {
+            "level": "H1",
+            "text": "第二章　应用实例",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "第三章　高级主题",
+            "page": 2
+        },
+        {
+            "level": "H1",
+            "text": "总结",
+            "page": 2
+        }
+    ],
+    "accessibility": {
+        "pdf_ua_structure": {
+            "document_structure": {
+                "type": "Document",
+                "lang": "en-US",
+                "title": "PDF 测试样本文档"
+            },
+            "role_map": {
+                "Document": "document",
+                "H": "heading",
+                "H1": "heading",
+                "H2": "heading",
+                "H3": "heading",
+                "H4": "heading",
+                "H5": "heading",
+                "H6": "heading",
+                "Sect": "section",
+                "P": "paragraph",
+                "L": "list",
+                "LI": "listitem"
+            },
+            "structure_elements": [
+                {
+                    "id": "struct_elem_1",
+                    "structure_type": "H1",
+                    "content": "PDF 测试样本文档",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        15.077999114990234,
+                        176.29200744628906,
+                        39.197998046875
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_2",
+                    "structure_type": "H1",
+                    "content": "简介",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        53.130001068115234,
+                        65.81999969482422,
+                        72.91500091552734
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_3",
+                    "structure_type": "H1",
+                    "content": "文本格式示例",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        136.23001098632812,
+                        125.12999725341797,
+                        156.01499938964844
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_4",
+                    "structure_type": "H1",
+                    "content": "列表",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        248.1300048828125,
+                        65.81999969482422,
+                        267.9150085449219
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_5",
+                    "structure_type": "H1",
+                    "content": "引用",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        501.030029296875,
+                        65.81999969482422,
+                        520.8150024414062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_6",
+                    "structure_type": "H1",
+                    "content": "表格",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        564.3300170898438,
+                        65.81999969482422,
+                        584.114990234375
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_7",
+                    "structure_type": "H1",
+                    "content": "章节结构示例",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        673.842529296875,
+                        125.12999725341797,
+                        693.6275024414062
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_8",
+                    "structure_type": "H1",
+                    "content": "第一章　基本概念",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        707.9295043945312,
+                        142.77149963378906,
+                        725.7360229492188
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_9",
+                    "structure_type": "H1",
+                    "content": "第二章　应用实例",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        96.81700134277344,
+                        142.77149963378906,
+                        114.62349700927734
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_10",
+                    "structure_type": "H1",
+                    "content": "第三章　高级主题",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        280.7170104980469,
+                        142.77149963378906,
+                        298.52349853515625
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                },
+                {
+                    "id": "struct_elem_11",
+                    "structure_type": "H1",
+                    "content": "总结",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        463.5299987792969,
+                        65.81999969482422,
+                        483.31500244140625
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                }
+            ],
+            "tagged_elements": [
+                {
+                    "id": "struct_elem_1",
+                    "tag": "H1",
+                    "content": "PDF 测试样本文档",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        15.077999114990234,
+                        176.29200744628906,
+                        39.197998046875
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_2",
+                    "tag": "H1",
+                    "content": "简介",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        53.130001068115234,
+                        65.81999969482422,
+                        72.91500091552734
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_3",
+                    "tag": "H1",
+                    "content": "文本格式示例",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        136.23001098632812,
+                        125.12999725341797,
+                        156.01499938964844
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_4",
+                    "tag": "H1",
+                    "content": "列表",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        248.1300048828125,
+                        65.81999969482422,
+                        267.9150085449219
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_5",
+                    "tag": "H1",
+                    "content": "引用",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        501.030029296875,
+                        65.81999969482422,
+                        520.8150024414062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_6",
+                    "tag": "H1",
+                    "content": "表格",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        564.3300170898438,
+                        65.81999969482422,
+                        584.114990234375
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_7",
+                    "tag": "H1",
+                    "content": "章节结构示例",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        673.842529296875,
+                        125.12999725341797,
+                        693.6275024414062
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_8",
+                    "tag": "H1",
+                    "content": "第一章　基本概念",
+                    "page": 1,
+                    "bbox": [
+                        36.0,
+                        707.9295043945312,
+                        142.77149963378906,
+                        725.7360229492188
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_9",
+                    "tag": "H1",
+                    "content": "第二章　应用实例",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        96.81700134277344,
+                        142.77149963378906,
+                        114.62349700927734
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_10",
+                    "tag": "H1",
+                    "content": "第三章　高级主题",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        280.7170104980469,
+                        142.77149963378906,
+                        298.52349853515625
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                },
+                {
+                    "id": "struct_elem_11",
+                    "tag": "H1",
+                    "content": "总结",
+                    "page": 2,
+                    "bbox": [
+                        36.0,
+                        463.5299987792969,
+                        65.81999969482422,
+                        483.31500244140625
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                }
+            ],
+            "reading_order": [
+                "struct_elem_1",
+                "struct_elem_2",
+                "struct_elem_3",
+                "struct_elem_4",
+                "struct_elem_5",
+                "struct_elem_6",
+                "struct_elem_7",
+                "struct_elem_8",
+                "struct_elem_9",
+                "struct_elem_10",
+                "struct_elem_11"
+            ],
+            "accessibility_metadata": {
+                "creation_date": "2025-07-26T18:02:34.338677",
+                "creator": "PDF-Heading-Extractor",
+                "accessibility_features": [
+                    "structuredNavigation",
+                    "readingOrder",
+                    "alternativeText",
+                    "tableHeaders"
+                ],
+                "language": "en-US",
+                "reading_order_specified": true,
+                "structure_tree_present": true,
+                "heading_structure_logical": true
+            },
+            "hierarchical_structure": {
+                "type": "document",
+                "children": [
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "PDF 测试样本文档",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "简介",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "文本格式示例",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "列表",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "引用",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "表格",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "章节结构示例",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "第一章　基本概念",
+                        "page": 1,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "第二章　应用实例",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "第三章　高级主题",
+                        "page": 2,
+                        "children": []
+                    },
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "总结",
+                        "page": 2,
+                        "children": []
+                    }
+                ],
+                "level": 0
+            }
+        },
+        "metadata": {
+            "total_headings": 11,
+            "level_distribution": {
+                "1": 11
+            },
+            "has_proper_hierarchy": true,
+            "missing_h1": true,
+            "accessibility_score": 100.0,
+            "issues": [
+                "Missing H1 heading - document should start with H1"
+            ],
+            "recommendations": [
+                "Add an H1 heading at the beginning of the document"
+            ],
+            "compliance": {
+                "wcag_2.1_aa": false,
+                "pdf_ua": false,
+                "section_508": false
+            }
+        },
+        "aria_labels": {
+            "heading_1": "Heading level 1: PDF 测试样本文档",
+            "heading_2": "Heading level 1: 简介",
+            "heading_3": "Heading level 1: 文本格式示例",
+            "heading_4": "Heading level 1: 列表",
+            "heading_5": "Heading level 1: 引用",
+            "heading_6": "Heading level 1: 表格",
+            "heading_7": "Heading level 1: 章节结构示例",
+            "heading_8": "Heading level 1: 第一章　基本概念",
+            "heading_9": "Heading level 1: 第二章　应用实例 on page 2",
+            "heading_10": "Heading level 1: 第三章　高级主题 on page 2",
+            "heading_11": "Heading level 1: 总结 on page 2"
+        },
+        "structure_xml_available": true,
+        "compliance_summary": {
+            "wcag_2_1_aa": false,
+            "pdf_ua": false,
+            "section_508": false,
+            "accessibility_score": 100.0
+        }
+    }
+}

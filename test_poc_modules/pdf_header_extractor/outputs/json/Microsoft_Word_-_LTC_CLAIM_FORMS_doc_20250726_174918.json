@@ -1,0 +1,133 @@
+{
+    "title": "Microsoft Word - LTC_CLAIM_FORMS .doc",
+    "outline": [
+        {
+            "level": "H1",
+            "text": "Application form for grant of LTC advance",
+            "page": 1
+        }
+    ],
+    "accessibility": {
+        "pdf_ua_structure": {
+            "document_structure": {
+                "type": "Document",
+                "lang": "en-US",
+                "title": "Application form for grant of LTC advance"
+            },
+            "role_map": {
+                "Document": "document",
+                "H": "heading",
+                "H1": "heading",
+                "H2": "heading",
+                "H3": "heading",
+                "H4": "heading",
+                "H5": "heading",
+                "H6": "heading",
+                "Sect": "section",
+                "P": "paragraph",
+                "L": "list",
+                "LI": "listitem"
+            },
+            "structure_elements": [
+                {
+                    "id": "struct_elem_1",
+                    "structure_type": "H1",
+                    "content": "Application form for grant of LTC advance",
+                    "page": 1,
+                    "bbox": [
+                        199.86000061035156,
+                        106.07836151123047,
+                        437.190673828125,
+                        119.10208129882812
+                    ],
+                    "attributes": {
+                        "role": "heading",
+                        "level": 1,
+                        "lang": "en-US"
+                    },
+                    "parent_id": null,
+                    "children": []
+                }
+            ],
+            "tagged_elements": [
+                {
+                    "id": "struct_elem_1",
+                    "tag": "H1",
+                    "content": "Application form for grant of LTC advance",
+                    "page": 1,
+                    "bbox": [
+                        199.86000061035156,
+                        106.07836151123047,
+                        437.190673828125,
+                        119.10208129882812
+                    ],
+                    "attributes": {
+                        "role": "H1",
+                        "level": 1,
+                        "lang": "en-US"
+                    }
+                }
+            ],
+            "reading_order": [
+                "struct_elem_1"
+            ],
+            "accessibility_metadata": {
+                "creation_date": "2025-07-26T17:49:18.082803",
+                "creator": "PDF-Heading-Extractor",
+                "accessibility_features": [
+                    "structuredNavigation",
+                    "readingOrder",
+                    "alternativeText",
+                    "tableHeaders"
+                ],
+                "language": "en-US",
+                "reading_order_specified": true,
+                "structure_tree_present": true,
+                "heading_structure_logical": true
+            },
+            "hierarchical_structure": {
+                "type": "document",
+                "children": [
+                    {
+                        "type": "heading",
+                        "level": 1,
+                        "text": "Application form for grant of LTC advance",
+                        "page": 1,
+                        "children": []
+                    }
+                ],
+                "level": 0
+            }
+        },
+        "metadata": {
+            "total_headings": 1,
+            "level_distribution": {
+                "1": 1
+            },
+            "has_proper_hierarchy": true,
+            "missing_h1": true,
+            "accessibility_score": 100.0,
+            "issues": [
+                "Missing H1 heading - document should start with H1"
+            ],
+            "recommendations": [
+                "Add an H1 heading at the beginning of the document"
+            ],
+            "compliance": {
+                "wcag_2.1_aa": false,
+                "pdf_ua": false,
+                "section_508": false
+            }
+        },
+        "aria_labels": {
+            "heading_1": "Heading level 1: Application form for grant of LTC advance"
+        },
+        "structure_xml_available": true,
+        "compliance_summary": {
+            "wcag_2_1_aa": false,
+            "pdf_ua": false,
+            "section_508": false,
+            "accessibility_score": 100.0
+        }
+    }
+}

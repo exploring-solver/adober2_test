@@ -13,18 +13,22 @@ import hashlib
 
 from config.settings import EMBEDDING_MODEL, MODEL_DIR
 from src.utils.text_utils import clean_text, normalize_whitespace
+from src.models.lazy_loader import LazyModelLoader 
 
 
 class EmbeddingModel:
-    """Optimized embedding model with caching and batch processing."""
+    """Optimized embedding model with lazy loading, caching and batch processing."""
     
     def __init__(self, model_name: str = None, cache_embeddings: bool = True):
         self.model_name = model_name or EMBEDDING_MODEL
         self.cache_embeddings = cache_embeddings
         self.logger = logging.getLogger(__name__)
         
-        # Model and caching
-        self.model = None
+        # NEW: Lazy model loader instead of direct model loading
+        self.lazy_loader = LazyModelLoader(cache_size_limit=1)
+        self.model = None  # Will be loaded on demand
+        
+        # Embedding caching (separate from model caching)
         self.embedding_cache = {}
         self.cache_file = MODEL_DIR / "embedding_cache.pkl"
         self.cache_lock = Lock()
@@ -42,8 +46,8 @@ class EmbeddingModel:
             "total_time": 0.0
         }
         
-        # Initialize model
-        self._initialize_model()
+        # Initialize (but don't load model yet)
+        self._initialize_model_info()
         self._load_cache()
     
     def _get_optimal_device(self) -> str:
@@ -62,32 +66,37 @@ class EmbeddingModel:
         
         return "cpu"
     
-    def _initialize_model(self) -> None:
-        """Initialize the sentence transformer model."""
+    def _initialize_model_info(self) -> None:
+        """Initialize model info without loading the actual model."""
         try:
-            self.logger.info(f"Loading embedding model: {self.model_name}")
-            start_time = time.time()
+            self.logger.info(f"Preparing lazy loading for model: {self.model_name}")
             
             # Create model directory if it doesn't exist
             MODEL_DIR.mkdir(parents=True, exist_ok=True)
             
-            # Load model with optimizations
-            self.model = SentenceTransformer(self.model_name, device=self.device)
+            # Set default values (will be updated when model is actually loaded)
+            self.embedding_dim = 384  # Default for MiniLM
+            self.max_seq_length = 512
             
-            # Set model to evaluation mode for inference
-            self.model.eval()
-            
-            # Get model info
-            self.embedding_dim = self.model.get_sentence_embedding_dimension()
-            self.max_seq_length = self.model.max_seq_length
-            
-            load_time = time.time() - start_time
-            self.logger.info(f"Model loaded in {load_time:.2f}s - Device: {self.device}, Dim: {self.embedding_dim}")
+            self.logger.info(f"Model info initialized - Device: {self.device}, Estimated Dim: {self.embedding_dim}")
             
         except Exception as e:
-            self.logger.error(f"Failed to load embedding model: {e}")
-            self.model = None
+            self.logger.error(f"Failed to initialize model info: {e}")
             self.embedding_dim = 384  # Default dimension for fallback
+    
+    def _get_model(self) -> Optional[SentenceTransformer]:
+        """Get model using lazy loader (loads on first access)."""
+        if self.model is None:
+            self.logger.info(f"Loading model on demand: {self.model_name}")
+            self.model = self.lazy_loader.load_on_demand(self.model_name, self.device)
+            
+            # Update actual model info once loaded
+            if self.model is not None:
+                self.embedding_dim = self.model.get_sentence_embedding_dimension()
+                self.max_seq_length = self.model.max_seq_length
+                self.logger.info(f"Model loaded - Actual Dim: {self.embedding_dim}, Max Length: {self.max_seq_length}")
+        
+        return self.model
     
     def _load_cache(self) -> None:
         """Load embedding cache from disk."""
@@ -129,9 +138,11 @@ class EmbeddingModel:
     def encode(self, texts: Union[str, List[str]], 
                batch_size: int = 32,
                show_progress: bool = False) -> Union[np.ndarray, List[np.ndarray]]:
-        """Encode text(s) to embeddings with caching and optimization."""
+        """Encode text(s) to embeddings with lazy loading, caching and optimization."""
         
-        if self.model is None:
+        # NEW: Get model using lazy loader
+        model = self._get_model()
+        if model is None:
             self.logger.warning("Model not available, returning zero embeddings")
             if isinstance(texts, str):
                 return np.zeros(self.embedding_dim)
@@ -169,7 +180,7 @@ class EmbeddingModel:
         if texts_to_embed:
             try:
                 with torch.no_grad():  # Disable gradient computation for inference
-                    new_embeddings = self.model.encode(
+                    new_embeddings = model.encode(
                         texts_to_embed,
                         batch_size=batch_size,
                         show_progress_bar=show_progress,
@@ -320,60 +331,99 @@ class EmbeddingModel:
     
     def optimize_for_inference(self) -> None:
         """Optimize model for faster inference."""
-        if self.model is None:
+        model = self._get_model()
+        if model is None:
             return
         
         try:
-            # Set to evaluation mode
-            self.model.eval()
-            
-            # Enable inference optimizations if using CUDA
-            if self.device == "cuda":
-                # Enable mixed precision for faster inference
-                self.model.half() if torch.cuda.is_available() else None
-            
+            # Optimize using lazy loader
+            self.lazy_loader.optimize_for_inference(self.model_name)
             self.logger.info("Model optimized for inference")
             
         except Exception as e:
             self.logger.warning(f"Failed to optimize model: {e}")
     
+    def preload_model(self) -> bool:
+        """Preload the model for faster first access."""
+        try:
+            self.logger.info(f"Preloading model: {self.model_name}")
+            return self.lazy_loader.preload_model(self.model_name, self.device)
+        except Exception as e:
+            self.logger.warning(f"Failed to preload model: {e}")
+            return False
+    
+    def warmup_model(self, sample_texts: List[str] = None) -> None:
+        """Warm up the model with sample texts."""
+        try:
+            self.lazy_loader.warmup(self.model_name, sample_texts)
+        except Exception as e:
+            self.logger.warning(f"Failed to warm up model: {e}")
+    
     def get_model_info(self) -> Dict[str, Any]:
         """Get information about the loaded model."""
-        return {
+        base_info = {
             "model_name": self.model_name,
             "embedding_dimension": self.embedding_dim,
             "max_sequence_length": self.max_seq_length,
             "device": self.device,
-            "cache_size": len(self.embedding_cache),
-            "model_loaded": self.model is not None,
+            "embedding_cache_size": len(self.embedding_cache),
+            "model_loaded": self.lazy_loader.is_model_loaded(self.model_name),
             "stats": self.stats.copy()
         }
+        
+        # Add lazy loader stats
+        loader_stats = self.lazy_loader.get_cache_stats()
+        base_info.update(loader_stats)
+        
+        return base_info
     
     def get_performance_stats(self) -> Dict[str, Any]:
-        """Get performance statistics."""
+        """Get comprehensive performance statistics."""
         total_requests = self.stats["cache_hits"] + self.stats["cache_misses"]
         cache_hit_rate = (self.stats["cache_hits"] / total_requests * 100) if total_requests > 0 else 0
         
         avg_time_per_embedding = (self.stats["total_time"] / self.stats["total_embeddings"]) if self.stats["total_embeddings"] > 0 else 0
         
-        return {
-            "total_embeddings_computed": self.stats["total_embeddings"],
-            "cache_hit_rate": f"{cache_hit_rate:.1f}%",
-            "cache_hits": self.stats["cache_hits"],
-            "cache_misses": self.stats["cache_misses"],
-            "total_processing_time": f"{self.stats['total_time']:.2f}s",
-            "avg_time_per_embedding": f"{avg_time_per_embedding * 1000:.2f}ms",
-            "cache_size": len(self.embedding_cache)
+        embedding_stats = {
+            "embedding_stats": {
+                "total_embeddings_computed": self.stats["total_embeddings"],
+                "cache_hit_rate": f"{cache_hit_rate:.1f}%",
+                "cache_hits": self.stats["cache_hits"],
+                "cache_misses": self.stats["cache_misses"],
+                "total_processing_time": f"{self.stats['total_time']:.2f}s",
+                "avg_time_per_embedding": f"{avg_time_per_embedding * 1000:.2f}ms",
+                "embedding_cache_size": len(self.embedding_cache)
+            }
         }
+        
+        # Add lazy loader performance stats
+        loader_stats = self.lazy_loader.get_cache_stats()
+        embedding_stats.update(loader_stats)
+        
+        # Add memory usage
+        memory_stats = self.lazy_loader.get_memory_usage()
+        embedding_stats["memory_stats"] = memory_stats
+        
+        return embedding_stats
     
     def clear_cache(self) -> None:
-        """Clear the embedding cache."""
+        """Clear both embedding and model caches."""
         with self.cache_lock:
             self.embedding_cache.clear()
             self.stats["cache_hits"] = 0
             self.stats["cache_misses"] = 0
         
-        self.logger.info("Embedding cache cleared")
+        # Clear model cache
+        self.lazy_loader.clear_all_cache()
+        self.model = None
+        
+        self.logger.info("All caches cleared")
+    
+    def clear_model_cache_only(self) -> None:
+        """Clear only the model cache, keep embedding cache."""
+        self.lazy_loader.clear_all_cache()
+        self.model = None
+        self.logger.info("Model cache cleared")
     
     def precompute_embeddings(self, texts: List[str], batch_size: int = 32) -> None:
         """Precompute embeddings for a list of texts."""
@@ -398,5 +448,7 @@ class EmbeddingModel:
         try:
             if hasattr(self, 'embedding_cache') and self.embedding_cache:
                 self._save_cache()
+            if hasattr(self, 'lazy_loader'):
+                self.lazy_loader.clear_all_cache()
         except Exception:
             pass  # Ignore errors during cleanup
