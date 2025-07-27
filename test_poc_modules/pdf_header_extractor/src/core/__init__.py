@@ -22,15 +22,12 @@ try:
     ]
     
 except ImportError as e:
-    # Log import issues but don't fail completely
     import logging
     logging.getLogger(__name__).warning(f"Some core modules not available: {e}")
     __all__ = []
 
-# Version info
 __version__ = "1.0.0"
 
-# Module information
 __doc__ = """
 Core processing pipeline for PDF heading extraction.
 

@@ -25,7 +25,10 @@ MIN_HEADING_LENGTH = 2           # Allow shorter headings
 MAX_HEADING_LENGTH = 300         # Allow longer headings
 
 # Semantic Filtering
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+# EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+# EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L12-v2"
+EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L12-v1" #till now we can use either of the above all give similar accuracy with this one's being slightly higher cause of embedding dim
+#EMBEDDING_MODEL = "sentence-transformers/nli-distilroberta-base-v2" #bigger model gives similar results so shifted to the minilml12v1
 SEMANTIC_SIMILARITY_THRESHOLD = 0.5
 CONTEXT_WINDOW = 3  # paragraphs before/after
 

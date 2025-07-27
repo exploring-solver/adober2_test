@@ -20,18 +20,9 @@ from config.settings import JSON_OUTPUT_DIR
 @click.option('--fast-mode', is_flag=True, help='Enable fast mode (skip semantic filtering)')
 @click.option('--warmup', is_flag=True, help='Warm up models before processing')
 @click.option('--accessibility', is_flag=True, help='Generate accessibility XML output')
-def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup, accessibility):
-    """
-    Extract headings from PDF using lazy-loaded AI models with accessibility support.
-    
-    The system uses intelligent lazy loading for optimal performance:
-    - Fast startup (models loaded only when needed)
-    - Memory efficient (automatic cache management)
-    - Production ready (preloading and warmup options)
-    - Accessibility compliant (PDF/UA, WCAG 2.1 AA, Section 508)
-    """
-    
-    # Setup logging
+@click.option('--metadata', is_flag=True, help='Include full metadata in output (accessibility, document info, etc.)')
+def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup, accessibility, metadata):
+   
     log_level = logging.DEBUG if debug else logging.INFO
     logging.basicConfig(
         level=log_level,
@@ -39,23 +30,25 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
     )
     logger = logging.getLogger(__name__)
     
-    # Set fast mode via environment variable if requested
     if fast_mode:
         os.environ['FAST_MODE'] = 'true'
         logger.info("Fast mode enabled - semantic filtering disabled")
+        
+    if metadata:
+        os.environ['INCLUDE_METADATA'] = 'true'
+        logger.info("Metadata mode enabled - full output with accessibility data")
+    else:
+        os.environ['INCLUDE_METADATA'] = 'false'
+        logger.info("Simple mode enabled - clean output with title and outline only")
     
     startup_time = time.time()
     
-    try:
-        logger.info("Step: Starting main extraction CLI")
-        
-        # Validate PDF
+    try:        
         logger.info(f"Step: Validating PDF at {pdf_path}")
         if not validate_pdf(pdf_path):
             click.echo(f"Error: Invalid PDF file: {pdf_path}")
             return
         
-        # Initialize processor with lazy loading (fast startup)
         logger.info("Step: Initializing PDFProcessor")
         init_start = time.time()
         
@@ -64,13 +57,12 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
         init_time = time.time() - init_start
         logger.info(f"Processor initialized in {init_time:.3f}s (models not loaded yet)")
         
-        # Optional: Preload models for production use
         logger.info("Step: Preloading models" if preload else "Step: Skipping preload")
+        
         if preload:
             logger.info("Preloading models...")
             preload_start = time.time()
             
-            # Preload semantic filter model if not in fast mode
             if not fast_mode and hasattr(processor, 'semantic_filter') and processor.semantic_filter:
                 success = processor.semantic_filter.preload_model()
                 if success:
@@ -81,8 +73,8 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
             preload_time = time.time() - preload_start
             logger.info(f"Model preloading completed in {preload_time:.3f}s")
         
-        # Optional: Warm up models
         logger.info("Step: Warming up models" if warmup else "Step: Skipping warmup")
+        
         if warmup:
             logger.info("Warming up models...")
             warmup_start = time.time()
@@ -96,24 +88,30 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
             warmup_time = time.time() - warmup_start
             logger.info(f"Model warmup completed in {warmup_time:.3f}s")
         
-        # Process PDF (models loaded on demand during processing)
         logger.info("Step: Processing PDF")
         logger.info("Starting PDF processing...")
         processing_start = time.time()
         
         if round1a:
-            # Use Round 1A format
-            result = processor.process_for_round1a(pdf_path)
-        else:
-            # Use standard format with accessibility
+            original_metadata = os.getenv('INCLUDE_METADATA')
+            os.environ['INCLUDE_METADATA'] = 'false'
+            
             result = processor.process(pdf_path)
+            
+            if original_metadata:
+                os.environ['INCLUDE_METADATA'] = original_metadata
+            
+            result = {
+                "title": result.get("title", "Document"),
+                "outline": result.get("outline", [])
+            }
+        else:
+            result = processor.process(pdf_path, include_metadata=metadata)
         
         processing_time = time.time() - processing_start
         
-        # Save or display results
         logger.info(f"Step: Saving output to {output}" if output else "Step: Printing output to console")
         if output:
-            # Determine output formats
             formats = ["json"]
             if accessibility:
                 formats.append("pdf_ua_xml")
@@ -125,11 +123,9 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
                 accessibility_file = Path(output).with_suffix('_accessibility.xml')
                 click.echo(f"Accessibility XML saved to: {accessibility_file}")
         else:
-            # Print clean formatted JSON to console
             click.echo(json.dumps(result, indent=4, ensure_ascii=False))
             
-            # Show accessibility summary if requested
-            if accessibility and "accessibility" in result:
+            if accessibility and metadata and "accessibility" in result:
                 click.echo("\n=== Accessibility Summary ===")
                 compliance = result["accessibility"]["compliance_summary"]
                 click.echo(f"Accessibility Score: {compliance['accessibility_score']:.1f}/100")
@@ -138,11 +134,9 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
                 click.echo(f"Section 508: {'✓' if compliance['section_508'] else '✗'}")
         
         logger.info("Step: Extraction complete")
-        # Performance summary
         total_time = time.time() - startup_time
         logger.info(f"Processing completed in {processing_time:.2f}s (total: {total_time:.2f}s)")
         
-        # Show performance statistics in debug mode
         if debug:
             logger.info("=== Performance Statistics ===")
             logger.info(f"Startup time: {init_time:.3f}s")
@@ -153,7 +147,6 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
             logger.info(f"Processing time: {processing_time:.3f}s")
             logger.info(f"Total time: {total_time:.3f}s")
             
-            # Show model statistics if available
             if not fast_mode and hasattr(processor, 'semantic_filter') and processor.semantic_filter:
                 model_stats = processor.semantic_filter.get_model_info()
                 logger.info("=== Model Statistics ===")
@@ -168,14 +161,12 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
                     logger.info(f"Total load time: {perf_stats.get('total_load_time', 'N/A')}")
                     logger.info(f"Avg load time: {perf_stats.get('avg_load_time', 'N/A')}")
             
-            # Extracted headings summary
             if isinstance(result, dict):
                 outline = result.get('outline', [])
                 if outline:
                     logger.info(f"=== Extraction Summary ===")
                     logger.info(f"Total headings: {len(outline)}")
                     
-                    # Count by level
                     level_counts = {}
                     for item in outline:
                         level = item.get('level', 'unknown')
@@ -184,7 +175,6 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
                     for level, count in sorted(level_counts.items()):
                         logger.info(f"{level}: {count}")
                 
-                # Show accessibility statistics if available
                 if accessibility and "accessibility" in result:
                     acc_data = result["accessibility"]["metadata"]
                     logger.info(f"=== Accessibility Statistics ===")
@@ -193,7 +183,6 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
                     for issue in acc_data['issues']:
                         logger.info(f"  - {issue}")
         
-        # Memory cleanup suggestion
         if debug:
             logger.info("Tip: Models remain in memory for faster subsequent processing")
             logger.info("Use processor.clear_caches() to free memory if needed")
@@ -212,10 +201,8 @@ def main(pdf_path, output, debug, language, round1a, preload, fast_mode, warmup,
 @click.option('--benchmark', is_flag=True, help='Run performance benchmark')
 @click.option('--accessibility-check', is_flag=True, help='Check accessibility compliance')
 def utils(model_info, clear_cache, benchmark, accessibility_check):
-    """Utility commands for model management and accessibility checking."""
     
     if model_info:
-        """Show information about available models."""
         from src.models.embedding_model import EmbeddingModel
         
         model = EmbeddingModel()
@@ -225,7 +212,6 @@ def utils(model_info, clear_cache, benchmark, accessibility_check):
         click.echo(json.dumps(info, indent=2))
     
     if clear_cache:
-        """Clear all model caches."""
         from src.models.embedding_model import EmbeddingModel
         
         model = EmbeddingModel()
@@ -233,26 +219,21 @@ def utils(model_info, clear_cache, benchmark, accessibility_check):
         click.echo("All model caches cleared")
     
     if benchmark:
-        """Run performance benchmark."""
         from src.models.embedding_model import EmbeddingModel
         import time
         
         click.echo("Running performance benchmark...")
         
-        # Test lazy loading performance
         model = EmbeddingModel()
         
-        # First access (with loading)
         start = time.time()
         embedding1 = model.encode("Test text for benchmark")
         first_time = time.time() - start
         
-        # Second access (cached)
         start = time.time()
         embedding2 = model.encode("Another test text")
         second_time = time.time() - start
         
-        # Batch processing
         test_texts = [f"Heading {i}" for i in range(10)]
         start = time.time()
         batch_embeddings = model.encode(test_texts)
@@ -263,16 +244,13 @@ def utils(model_info, clear_cache, benchmark, accessibility_check):
         click.echo(f"Batch processing (10 texts): {batch_time:.3f}s")
         click.echo(f"Speedup factor: {first_time/second_time:.1f}x")
         
-        # Show statistics
         stats = model.get_performance_stats()
         click.echo("\nPerformance Statistics:")
         click.echo(json.dumps(stats, indent=2))
     
     if accessibility_check:
-        """Run accessibility compliance check on sample headings."""
         from src.core.accessibility_tagger import AccessibilityTagger
         
-        # Sample headings for testing
         sample_headings = [
             {"text": "Introduction", "level": "H1", "page": 1},
             {"text": "Background", "level": "H2", "page": 1},
@@ -302,23 +280,17 @@ def utils(model_info, clear_cache, benchmark, accessibility_check):
             click.echo(f"  - {rec}")
 
 
-# Create a multi-command CLI
 @click.group()
 def cli():
-    """PDF Heading Extractor with Lazy Loading and Accessibility Support."""
     pass
 
-# Add commands to the group
 cli.add_command(main, name='extract')
 cli.add_command(utils, name='utils')
 
 if __name__ == '__main__':
-    # Support both direct execution and multi-command
     import sys
     
     if len(sys.argv) > 1 and sys.argv[1] in ['extract', 'utils']:
-        # Multi-command mode
         cli()
     else:
-        # Direct execution mode (backward compatibility)
         main()

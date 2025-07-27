@@ -21,7 +21,6 @@ from src.utils.text_utils import (
 
 @dataclass
 class HeadingCandidate:
-    """Represents a potential heading extracted from PDF."""
     text: str
     page: int
     bbox: Tuple[float, float, float, float]  # x0, y0, x1, y1
@@ -44,7 +43,6 @@ class HeadingCandidate:
 
 
 class CandidateGenerator:
-    """Fast candidate generation using font and layout heuristics with advanced multilingual support."""
     
     def __init__(self, language: str = 'auto', debug: bool = False):
         self.language = language
@@ -55,17 +53,14 @@ class CandidateGenerator:
         self.detected_language = None
         
     def generate_candidates(self, pdf_path: str) -> List[HeadingCandidate]:
-        """Generate heading candidates from PDF using fast heuristics with multilingual support."""
         self.logger.info(f"Generating candidates for: {pdf_path}")
         
         doc = fitz.open(pdf_path)
         candidates = []
         
         try:
-            # First pass: analyze document statistics and detect language
             self._analyze_document_stats(doc)
             
-            # Second pass: extract candidates
             for page_num in range(len(doc)):
                 page = doc.load_page(page_num)
                 page_candidates = self._extract_page_candidates(page, page_num)
@@ -74,7 +69,6 @@ class CandidateGenerator:
         finally:
             doc.close()
             
-        # Filter and score candidates
         filtered_candidates = self._filter_candidates(candidates)
         scored_candidates = self._score_candidates(filtered_candidates)
         
@@ -82,13 +76,12 @@ class CandidateGenerator:
         return scored_candidates
     
     def _analyze_document_stats(self, doc: fitz.Document) -> None:
-        """Analyze document to understand typical font characteristics and detect language."""
         font_sizes = []
         font_families = set()
         text_blocks = []
         sample_text = ""
         
-        for page_num in range(min(3, len(doc))):  # Sample first 3 pages
+        for page_num in range(min(3, len(doc))): 
             page = doc.load_page(page_num)
             blocks = page.get_text("dict")["blocks"]
             
@@ -103,17 +96,14 @@ class CandidateGenerator:
                                 "size": span["size"],
                                 "flags": span["flags"]
                             })
-                            # Collect text for language detection
                             sample_text += span["text"] + " "
         
-        # Detect language if set to auto
         if self.language == 'auto':
             self.detected_language = detect_language(sample_text[:1000])
             self.logger.info(f"Detected language: {self.detected_language}")
         else:
             self.detected_language = self.language
         
-        # Calculate statistics
         self.document_stats = {
             "avg_font_size": np.mean(font_sizes) if font_sizes else 12,
             "median_font_size": np.median(font_sizes) if font_sizes else 12,
@@ -122,7 +112,7 @@ class CandidateGenerator:
             "font_families": font_families,
             "body_text_threshold": np.percentile(font_sizes, 75) if font_sizes else 12,
             "detected_language": self.detected_language,
-            "sample_text": sample_text[:500]  # Keep sample for further analysis
+            "sample_text": sample_text[:500] 
         }
         
         self.logger.debug(f"Document stats: {self.document_stats}") 
@@ -134,7 +124,6 @@ class CandidateGenerator:
         """Extract detailed features for a line with multilingual support."""
         features = {}
         
-        # Spacing analysis
         features["spacing_before"] = self._calculate_spacing_before(
             block_idx, line_idx, blocks
         )
@@ -142,42 +131,35 @@ class CandidateGenerator:
             block_idx, line_idx, blocks
         )
         
-        # Enhanced text pattern analysis with language awareness
         features["has_numbering"] = self._has_numbering_pattern(text)
         features["numbering_type"] = self._detect_numbering_type(text)
         features["has_colon"] = text.strip().endswith(':')
         features["all_caps"] = text.isupper()
         features["title_case"] = text.istitle()
         
-        # CJK-specific pattern detection
         if self.detected_language in ['japanese', 'chinese']:
             features["is_cjk_chapter"] = self._is_cjk_chapter_heading(text)
             features["is_cjk_section"] = self._is_cjk_section_heading(text)
             features["has_cjk_reject_pattern"] = self._has_cjk_reject_pattern(text)
         
-        # Multilingual tokenization for better analysis
         if self.detected_language:
             tokens = tokenize_multilingual(text, self.detected_language)
             features["token_count"] = len(tokens)
-            features["tokens"] = tokens[:10]  # Store first 10 tokens for analysis
+            features["tokens"] = tokens[:10]  
             
-            # Language-specific heading detection
             if self.detected_language in ['japanese', 'chinese']:
                 cjk_analysis = enhance_heading_detection_for_cjk(text, self.detected_language)
                 features["cjk_heading_analysis"] = cjk_analysis
                 features["cjk_confidence"] = cjk_analysis.get("confidence", 0.0)
         
-        # Enhanced position features
         features["is_top_of_page"] = bbox[1] / page_height < TITLE_POSITION_THRESHOLD
         center_pos_ratio = ((bbox[0] + bbox[2]) / 2) / page_width
         features["is_centered"] = abs(0.5 - center_pos_ratio) < CENTER_ALIGNMENT_TOLERANCE
         features["indentation"] = bbox[0]
         
-        # Language-specific features
         if self.detected_language and self.detected_language in self.cultural_patterns:
             features.update(self._extract_cultural_features(text, self.detected_language))
         
-        # Confidence boosters based on language
         features["confidence_boost"] = self._calculate_confidence_boost(text, self.detected_language)
         
         return features
@@ -240,12 +222,10 @@ class CandidateGenerator:
             if "lines" not in block:
                 continue
             
-            # Process each line in the block, but consolidate spans properly
             for line_idx, line in enumerate(block["lines"]):
                 if not line["spans"]:
                     continue
                 
-                # **FIX 1: Properly consolidate all spans in a line**
                 line_text = ""
                 dominant_span = None
                 max_span_length = 0
@@ -260,27 +240,23 @@ class CandidateGenerator:
                 
                 line_text = line_text.strip()
                 
-                # **FIX 2: Better text validation**
                 if not self._is_potential_heading_text_improved(line_text):
                     continue
                 
-                # **FIX 3: Use the line bbox, not span bbox**
                 line_bbox = line["bbox"]
                 
                 if not dominant_span:
                     continue
                 
-                # Calculate features with language awareness
                 features = self._extract_line_features(
                     line, line_text, line_bbox, page.rect.height, page.rect.width, 
                     block_idx, line_idx, blocks
                 )
 
-                # Create candidate
                 candidate = HeadingCandidate(
                     text=line_text,
                     page=page_num + 1,
-                    bbox=line_bbox,  # Use line bbox, not span bbox
+                    bbox=line_bbox, 
                     font_size=dominant_span["size"],
                     font_weight=self._get_font_weight(dominant_span["flags"]),
                     font_family=dominant_span["font"],
@@ -299,88 +275,68 @@ class CandidateGenerator:
         return candidates
 
     def _is_potential_heading_text_improved(self, text: str) -> bool:
-        """Improved text validation for potential headings."""
         text = text.strip()
         
-        # **FIX 4: Better length filtering**
-        if len(text) < 3:  # Too short
+        if len(text) < 3: 
             return False
-        if len(text) > 200:  # Too long for a heading
+        if len(text) > 200:  
             return False
         
-        # **FIX 5: Filter out obvious non-headings**
-        # Skip if mostly numbers
         if re.match(r'^\d+$', text):
             return False
-        
-        # Skip if it's just punctuation
         if re.match(r'^[\s\.,;:!?\-\(\)\[\]{}]*$', text):
             return False
         
-        # Skip if it looks like a URL or email
         if re.search(r'(http|www\.|@)', text.lower()):
             return False
         
-        # Skip if it's clearly body text (ends with period and is long)
         if text.endswith('.') and len(text) > 50:
             return False
-        
-        # **FIX 6: Accept text that looks like headings**
-        # Accept if it has heading patterns
         if re.match(r'^\d+\.', text) or re.match(r'^[IVX]+\.', text):
             return True
-        
-        # Accept if it ends with colon (section headers)
+    
         if text.endswith(':'):
             return True
-        
-        # Accept if it's title case or all caps (but not too long)
         if (text.istitle() or text.isupper()) and len(text) < 100:
             return True
         
-        # Accept if it contains common heading words
         heading_words = ['chapter', 'section', 'introduction', 'conclusion', 'summary', 'background']
         if any(word in text.lower() for word in heading_words):
             return True
         
-        return True  # Be permissive, let other filters handle it
+        return True  
     
     def _get_font_weight(self, flags: int) -> str:
         """Extract font weight from flags."""
-        if flags & 2**4:  # Bold flag
+        if flags & 2**4:  
             return "bold"
         return "normal"
     
     def _determine_alignment(self, bbox: Tuple, page_width: float) -> str:
-        """Determine text alignment based on position."""
         left_margin = bbox[0]
         right_margin = page_width - bbox[2]
         center_pos = (bbox[0] + bbox[2]) / 2
         page_center = page_width / 2
         
-        # Check if centered
         if abs(center_pos - page_center) / page_width < CENTER_ALIGNMENT_TOLERANCE:
             return "center"
         
-        # Check if right-aligned
         if right_margin < left_margin * 0.5:
             return "right"
         
         return "left"
     
     def _calculate_spacing_before(self, block_idx: int, line_idx: int, blocks: List) -> float:
-        """Calculate spacing before current line."""
         if block_idx == 0 and line_idx == 0:
             return 0.0
         
         current_bbox = blocks[block_idx]["lines"][line_idx]["bbox"]
         
-        # Look for previous line
         if line_idx > 0:
             prev_bbox = blocks[block_idx]["lines"][line_idx - 1]["bbox"]
-            return current_bbox[1] - prev_bbox[3]  # Current top - previous bottom
+            return current_bbox[1] - prev_bbox[3] 
         elif block_idx > 0:
-            # Previous block's last line
+           
             prev_block = blocks[block_idx - 1]
             if "lines" in prev_block and prev_block["lines"]:
                 prev_bbox = prev_block["lines"][-1]["bbox"]
@@ -389,16 +345,15 @@ class CandidateGenerator:
         return 0.0
     
     def _calculate_spacing_after(self, block_idx: int, line_idx: int, blocks: List) -> float:
-        """Calculate spacing after current line."""
         current_block = blocks[block_idx]
         current_bbox = current_block["lines"][line_idx]["bbox"]
         
-        # Look for next line
+        
         if line_idx < len(current_block["lines"]) - 1:
             next_bbox = current_block["lines"][line_idx + 1]["bbox"]
             return next_bbox[1] - current_bbox[3]
         elif block_idx < len(blocks) - 1:
-            # Next block's first line
+           
             for next_block in blocks[block_idx + 1:]:
                 if "lines" in next_block and next_block["lines"]:
                     next_bbox = next_block["lines"][0]["bbox"]
@@ -408,14 +363,14 @@ class CandidateGenerator:
     
     def _has_numbering_pattern(self, text: str) -> bool:
         """Check if text has numbering pattern with multilingual support."""
-        # Get language-specific patterns
+     
         if self.detected_language in self.cultural_patterns:
             patterns = self.cultural_patterns[self.detected_language].get('numbering_patterns', [])
             for pattern in patterns:
                 if re.search(pattern, text):
                     return True
         
-        # Default patterns
+     
         default_patterns = [
             r'^\d+\.',           # 1. 2. 3.
             r'^\d+\.\d+',        # 1.1, 1.2
@@ -433,8 +388,6 @@ class CandidateGenerator:
         return False
     
     def _detect_numbering_type(self, text: str) -> Optional[str]:
-        """Detect the type of numbering used with multilingual support."""
-        # Language-specific numbering detection
         if self.detected_language == 'japanese':
             if re.search(r'^第\d+章', text):
                 return "japanese_chapter"
@@ -461,7 +414,6 @@ class CandidateGenerator:
             elif re.search(r'^[\u0660-\u0669]+', text):
                 return "arabic_indic"
         
-        # Default detection
         if re.search(r'^\d+\.', text):
             return "decimal"
         elif re.search(r'^[IVX]+\.', text):
@@ -476,13 +428,11 @@ class CandidateGenerator:
         return None
     
     def _extract_cultural_features(self, text: str, language: str) -> Dict[str, Any]:
-        """Extract language-specific features with enhanced pattern matching."""
         features = {}
         
         if language in self.cultural_patterns:
             patterns = self.cultural_patterns[language]
             
-            # Check for cultural heading styles
             heading_styles = patterns.get('heading_styles', [])
             for style in heading_styles:
                 if style in text:
@@ -490,7 +440,6 @@ class CandidateGenerator:
                     features[f"heading_style_type"] = style
                     break
             
-            # Check for cultural keywords
             heading_keywords = patterns.get('heading_keywords', [])
             for keyword in heading_keywords:
                 if keyword in text:
@@ -498,7 +447,6 @@ class CandidateGenerator:
                     features[f"keyword_matched"] = keyword
                     break
             
-            # Check for cultural numbering
             numbering_patterns = patterns.get('numbering_patterns', [])
             for pattern in numbering_patterns:
                 if re.search(pattern, text):
@@ -506,7 +454,6 @@ class CandidateGenerator:
                     features[f"numbering_pattern"] = pattern
                     break
             
-            # Language-specific character analysis
             if language in ['japanese', 'chinese']:
                 features["contains_cjk"] = bool(re.search(r'[\u4e00-\u9fff]', text))
                 if language == 'japanese':
@@ -523,92 +470,70 @@ class CandidateGenerator:
         return features
     
     def _calculate_confidence_boost(self, text: str, language: str) -> float:
-        """Calculate confidence boost based on language-specific patterns."""
         boost = 0.0
         
         if language in HEADING_CONFIDENCE_BOOSTERS:
             boosters = HEADING_CONFIDENCE_BOOSTERS[language]
             
-            # Pattern-based boosts
             for pattern, boost_value in boosters.get('patterns', []):
                 if re.search(pattern, text):
                     boost += boost_value
-                    break  # Only apply one pattern boost
+                    break 
             
-            # Keyword-based boosts
             for keyword, boost_value in boosters.get('keywords', []):
                 if keyword in text:
                     boost += boost_value
-                    break  # Only apply one keyword boost
+                    break 
         
-        return min(boost, 1.0)  # Cap at 1.0
+        return min(boost, 1.0)  
     
     def _filter_candidates(self, candidates: List[HeadingCandidate]) -> List[HeadingCandidate]:
-        """Improved filtering to remove text fragments and keep real headings."""
         filtered = []
-        
-        # **FIX 12: Group candidates by similarity to merge fragments**
+    
         merged_candidates = self._merge_text_fragments(candidates)
         
         for candidate in merged_candidates:
             text = candidate.text.strip()
             
-            # **FIX 13: Better filtering rules**
-            
-            # Skip very short text unless it's clearly a section marker
             if len(text) < 3:
                 continue
             
-            # Skip text fragments (incomplete words/sentences)
             if self._is_text_fragment(text):
                 continue
             
-            # Skip if it looks like body text
             if self._looks_like_body_text(text):
                 continue
             
-            # Font size filter (more lenient)
-            size_threshold = self.document_stats["avg_font_size"] * 1.1  # Reduced from 1.3
+            size_threshold = self.document_stats["avg_font_size"] * 1.1  
             if candidate.font_size < size_threshold:
-                # Allow smaller fonts if they have other heading indicators
                 if not (candidate.is_bold or text.endswith(':') or 
                     re.match(r'^\d+\.', text) or 
                     any(word in text.lower() for word in ['summary', 'background', 'timeline'])):
                     continue
             
-            # Keep candidates that pass all filters
             filtered.append(candidate)
         
         self.logger.debug(f"Filtered {len(candidates)} -> {len(filtered)} candidates")
         return filtered
     
     def _is_text_fragment(self, text: str) -> bool:
-        """Check if text appears to be a fragment."""
-        # Ends abruptly without proper word completion
         if len(text) < 10 and not text[-1].isalnum() and not text.endswith(':'):
             return True
         
-        # Starts with lowercase (likely continuation)
         if text and text[0].islower() and not text.startswith('e.g.'):
             return True
         
-        # Contains incomplete words
-        if re.search(r'\b[a-z]{1,2}$', text):  # Ends with very short word
+        if re.search(r'\b[a-z]{1,2}$', text): 
             return True
         
         return False
 
     def _looks_like_body_text(self, text: str) -> bool:
-        """Check if text looks like body text rather than a heading."""
-        # Too long for a typical heading
         if len(text) > 150:
             return True
         
-        # Contains multiple sentences
         if text.count('.') > 1 or text.count('?') > 0:
             return True
-        
-        # Starts with common body text patterns
         body_starters = ['the ', 'this ', 'that ', 'these ', 'those ', 'it ', 'there ']
         if any(text.lower().startswith(starter) for starter in body_starters):
             return True
@@ -620,7 +545,6 @@ class CandidateGenerator:
         if not candidates:
             return candidates
         
-        # Sort candidates by page and position
         sorted_candidates = sorted(candidates, key=lambda x: (x.page, x.bbox[1], x.bbox[0]))
         
         merged = []
@@ -630,14 +554,12 @@ class CandidateGenerator:
             current = sorted_candidates[i]
             prev = sorted_candidates[i-1]
             
-            # Check if candidates should be merged
             if (current.page == prev.page and 
-                abs(current.bbox[1] - prev.bbox[1]) < 5 and  # Same line (within 5 points)
-                abs(current.bbox[0] - prev.bbox[2]) < 20):   # Close horizontally
+                abs(current.bbox[1] - prev.bbox[1]) < 5 and  
+                abs(current.bbox[0] - prev.bbox[2]) < 20):  
                 
                 current_group.append(current)
             else:
-                # Process the current group
                 if len(current_group) > 1:
                     merged_candidate = self._merge_candidate_group(current_group)
                     merged.append(merged_candidate)
@@ -646,7 +568,6 @@ class CandidateGenerator:
                 
                 current_group = [current]
         
-        # Handle the last group
         if len(current_group) > 1:
             merged_candidate = self._merge_candidate_group(current_group)
             merged.append(merged_candidate)
@@ -655,27 +576,23 @@ class CandidateGenerator:
         
         return merged
     def _merge_candidate_group(self, group: List[HeadingCandidate]) -> HeadingCandidate:
-        """Merge a group of candidates into a single candidate."""
-        # Combine text
         combined_text = " ".join(candidate.text.strip() for candidate in group)
         
-        # Use properties from the first (leftmost) candidate
         first = group[0]
         last = group[-1]
         
-        # Create merged bounding box
         merged_bbox = (
-            first.bbox[0],  # Left from first
-            min(c.bbox[1] for c in group),  # Top from highest
-            last.bbox[2],   # Right from last
-            max(c.bbox[3] for c in group)   # Bottom from lowest
+            first.bbox[0], 
+            min(c.bbox[1] for c in group),  
+            last.bbox[2],  
+            max(c.bbox[3] for c in group)  
         )
         
         return HeadingCandidate(
             text=combined_text,
             page=first.page,
             bbox=merged_bbox,
-            font_size=max(c.font_size for c in group),  # Use largest font size
+            font_size=max(c.font_size for c in group),  
             font_weight=first.font_weight,
             font_family=first.font_family,
             is_bold=any(c.is_bold for c in group),
@@ -692,27 +609,24 @@ class CandidateGenerator:
         for candidate in candidates:
             score = 0.0
             
-            # Font size score (0-30 points)
+           
             size_ratio = candidate.font_size / self.document_stats["avg_font_size"]
             score += min(30, size_ratio * 10)
             
-            # Bold weight (0-20 points)
+           
             if candidate.is_bold:
                 score += 20
             
-            # Position score (0-15 points)
             if candidate.features.get("is_top_of_page", False):
                 score += 15
-            elif candidate.position_ratio < 0.3:  # Upper part of page
+            elif candidate.position_ratio < 0.3: 
                 score += 10
             
-            # Spacing score (0-15 points)
             if candidate.line_spacing_before > 10:
                 score += 8
             if candidate.line_spacing_after > 5:
                 score += 7
             
-            # Text pattern score (0-20 points)
             if candidate.features.get("has_numbering", False):
                 score += 15
             if candidate.features.get("title_case", False):
@@ -720,55 +634,44 @@ class CandidateGenerator:
             if candidate.features.get("has_colon", False):
                 score += 5
             
-            # Enhanced CJK-specific scoring
             if self.detected_language in ['japanese', 'chinese']:
-                # Stricter font size requirements unless clear heading patterns
                 if candidate.font_size < self.document_stats["avg_font_size"] * 1.2:
                     if not (candidate.features.get("is_cjk_chapter", False) or 
                            candidate.features.get("is_cjk_section", False)):
-                        score *= 0.3  # Heavy penalty for small font without clear patterns
-                
-                # Major bonus for chapter patterns
+                        score *= 0.3  
                 if candidate.features.get("is_cjk_chapter", False):
-                    score += 40  # Strong bonus for chapter headings
+                    score += 40  
                 elif candidate.features.get("is_cjk_section", False):
-                    score += 25  # Good bonus for section headings
+                    score += 25 
                 
-                # CJK confidence from analysis
+               
                 cjk_confidence = candidate.features.get("cjk_confidence", 0.0)
                 score += cjk_confidence * 15
                 
-                # Bonus for containing CJK characters
                 if candidate.features.get("contains_cjk", False):
                     score += 10
             
-            # Language-specific scoring (existing logic)
             if self.detected_language:
-                # Apply confidence boost
+             
                 boost = candidate.features.get("confidence_boost", 0.0)
-                score += boost * 20  # Convert to points
+                score += boost * 20 
                 
-                # Cultural pattern bonuses
                 if candidate.features.get(f"has_{self.detected_language}_heading_style", False):
                     score += 15
                 if candidate.features.get(f"has_{self.detected_language}_numbering", False):
                     score += 10
             
-            # Linguistic analysis bonus
             linguistic_confidence = candidate.features.get("linguistic_analysis", {}).get("confidence", 0.0)
             score += linguistic_confidence * 10
             
-            # Normalize score to 0-1
             candidate.confidence_score = min(1.0, score / 100.0)
         
-        # Sort by confidence score
         candidates.sort(key=lambda x: x.confidence_score, reverse=True)
         
         self.logger.debug(f"Top candidate scores: {[c.confidence_score for c in candidates[:5]]}")
         return candidates
     
     def get_generation_stats(self) -> Dict[str, Any]:
-        """Get statistics about the candidate generation process."""
         return {
             "detected_language": self.detected_language,
             "document_stats": self.document_stats,
