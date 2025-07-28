@@ -1,0 +1,35 @@
+{
+    "challenge_info": {
+        "challenge_id": "round_1b_slum_redevelopment",
+        "test_case_name": "sustainable_slum_redevelopment",
+        "description": "Identify key strategies and technologies for slum redevelopment with minimal displacement and long-term social impact."
+    },
+    "documents": [
+        {
+            "filename": "Cost.pdf",
+            "title": "Cost-Effective State Infrastructure"
+        },
+        {
+            "filename": "Dharavi redevelopment could create new paradigms in social housing.pdf",
+            "title": "Dharavi Redevelopment and Social Housing"
+        },
+        {
+            "filename": "Present Policies.pdf",
+            "title": "Present Slum Policies and Rehabilitation Guidelines"
+        },
+        {
+            "filename": "Slum Upgrading Schemes for Better Liveability.pdf",
+            "title": "Liveability-Oriented Slum Upgrading"
+        },
+        {
+            "filename": "Value of Energy Efficiency Improvements for Low.pdf",
+            "title": "Energy Efficiency in Low-Income Housing"
+        }
+    ],
+    "persona": {
+        "role": "Urban Development Consultant"
+    },
+    "job_to_be_done": {
+        "task": "Identify the most effective strategies and technologies for sustainably redeveloping Indian slums with minimal displacement and long-term social impact."
+    }
+}

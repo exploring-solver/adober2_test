@@ -14,3 +14,6 @@ command : python main.py --input_dir Collection2/PDFs --output_dir output --inpu
 
 for collection3
 command : python main.py --input_dir Collection3/PDFs --output_dir output --input_file Collection3/challenge1b_input.json --output_file challenge1b_output_c3_calc.json
+
+for sample2
+command : python main.py --input_dir sample_input/sample2 --output_dir output --input_file sample_input/sample2_input.json --output_file sample2_output.json

@@ -1,0 +1,106 @@
+{
+  "metadata": {
+    "input_documents": [
+      "Cost.pdf",
+      "Dharavi redevelopment could create new paradigms in social housing.pdf",
+      "Present Policies.pdf",
+      "Slum Upgrading Schemes for Better Liveability.pdf",
+      "Value of Energy Efficiency Improvements for Low.pdf"
+    ],
+    "persona": "Urban Development Consultant",
+    "job_to_be_done": "Identify the most effective strategies and technologies for sustainably redeveloping Indian slums with minimal displacement and long-term social impact.",
+    "processing_timestamp": "2025-07-27T23:56:10.647104",
+    "model_configuration": "ensemble",
+    "total_sections_found": 9,
+    "sections_after_filtering": 9
+  },
+  "extracted_sections": [
+    {
+      "document": "Dharavi redevelopment could create new paradigms in social housing.pdf",
+      "section_title": "Dharavi redevelopment could create new paradigms in social",
+      "importance_rank": 1,
+      "page_number": 1,
+      "relevance_score": 0.6493
+    },
+    {
+      "document": "Present Policies.pdf",
+      "section_title": "Present Policies & Strategies",
+      "importance_rank": 2,
+      "page_number": 1,
+      "relevance_score": 0.5873
+    },
+    {
+      "document": "Present Policies.pdf",
+      "section_title": "Govt. of India contribution =  Rs. 1, 19,000.00",
+      "importance_rank": 3,
+      "page_number": 7,
+      "relevance_score": 0.5554
+    },
+    {
+      "document": "Value of Energy Efficiency Improvements for Low.pdf",
+      "section_title": "Housing in Developing Countries",
+      "importance_rank": 4,
+      "page_number": 1,
+      "relevance_score": 0.5233
+    },
+    {
+      "document": "Value of Energy Efficiency Improvements for Low.pdf",
+      "section_title": "Value of Energy Efficiency Improvements for Low -Income",
+      "importance_rank": 5,
+      "page_number": 1,
+      "relevance_score": 0.5156
+    }
+  ],
+  "subsection_analysis": [
+    {
+      "document": "Dharavi redevelopment could create new paradigms in social housing.pdf",
+      "refined_text": "Dharavi redevelopment could create new paradigms in social housing Dharavi, spread over 239 -hectares and housing close to one million people, had become the epicentre of the COVID -19 pandemic in May 2020. Recently after a three -month long intervention, the World Health Organisation (WHO) Director General Tedros Adhanom Ghebreyesus had praised the Mumbai civic body for successfully containing the outbreak in what was being feared as the most sensitive COVID -19 hotspot in India. He praised the \u2018community engagement\u2019 part and the city government\u2019s formula of \u2018testing, tracing, isolating and treating all those that are sick\u2019 in Dharavi, which has helped in arresting the pace at which the virus was spreading.",
+      "page_number": 1
+    },
+    {
+      "document": "Dharavi redevelopment could create new paradigms in social housing.pdf",
+      "refined_text": "The redevelopment project will look at the revamp of a 239 hectare area, in the heart of Mumbai, housing close to one million people. At present, this cluster houses 20,000 small - scale work units , while the rest are shanties with community toilets \u2014 one toilet complex shared by about 1,400 people .",
+      "page_number": 1
+    },
+    {
+      "document": "Present Policies.pdf",
+      "refined_text": "Present Policies & Strategies Of the settlements considered as sub -standard, slum and squatter settlements rank among the worst and it is the urban poor that live predominantly in such settlements The slum areas are those that are notified under the Slum Improvement and Clearance Areas Act of 1956. Buildings and/or areas that are considered to be unfit for human habitation were declared as the slum areas under Section 3 of the Act. As such, they are considered to be legal structures and are eligible for benefits under the Act.",
+      "page_number": 1
+    },
+    {
+      "document": "Present Policies.pdf",
+      "refined_text": "The squatter of JJ Clusters settlements on the other hand are considered as an encroachment on public or private lands. They are therefore seen as illegal.",
+      "page_number": 1
+    },
+    {
+      "document": "Present Policies.pdf",
+      "refined_text": "The programme of slum clearance was discontinued at the end of 6th plan (1980 -85) i.e. from 1985. Accordingly no major resettlement was carried out till 1990 when a Resettlement Policy was formulated. This did not mean that there ware no resettlement works in progress.",
+      "page_number": 1
+    },
+    {
+      "document": "Present Policies.pdf",
+      "refined_text": "About 25 sq. meters of carpet area (32sq. meters plinth area) would be built up with the following approximate sharing of costs: Govt. of India contribution = Rs. 1, 19,000.00 Beneficiary contribution = Rs. 60,000.00 Land Owning Agency contribution = Rs.",
+      "page_number": 7
+    },
+    {
+      "document": "Present Policies.pdf",
+      "refined_text": "93,000.00 Delhi Govt. contribution = Rs. However, the above is only illustrative in nature and will be determined on pro -rata basis depending upon the carpet area, cost index, location, area and cost of the flat.",
+      "page_number": 7
+    },
+    {
+      "document": "Present Policies.pdf",
+      "refined_text": "The beneficiary contribution amounting to Rs. 60000/ - which will be subject to change per eligible JJ dweller and would be deposited with the nodal Agency in a separate account known as \u2018State Infrastructure Development Fund\u2019. (i) Land Owning Agencies contribution : The land owning agencies on whose lands slums have come up have to make their contribution to the Nodal Agency as may be fixed from time to time for clearing their lands and relocation/ rehabilitation of JJ dwellers.",
+      "page_number": 7
+    },
+    {
+      "document": "Value of Energy Efficiency Improvements for Low.pdf",
+      "refined_text": "Value of Energy Efficiency Improvements for Low -Income Housing in Developing Countries Abstract This deeper look at the value of residential building energy efficiency in developing countries is based on the authors\u2019 research conducted through field studies, energy modeling, and material systems analyses; using actual modest residential structures in South Africa as subjects. Building on earlier findings that show the relationship between increased upfront capital costs for various energy efficiency measures and the reduction in life cycle costs due to decreased operating expenses, the authors now hav e data from improved modeling methods and field data collection that further support the value of including these basic energy efficiency measures in low -income housing units in developing countries, including those with moderate climates. This phase of th e study has greatly improved the efficacy of the analyses utilized and will lead to better optimization of energy efficiency retrofits of the typical government built housing stock in South Africa and other developing countries.",
+      "page_number": 1
+    },
+    {
+      "document": "Value of Energy Efficiency Improvements for Low.pdf",
+      "refined_text": "Value of Energy Efficiency Improvements for Low -Income Housing in Developing Countries Abstract This deeper look at the value of residential building energy efficiency in developing countries is based on the authors\u2019 research conducted through field studies, energy modeling, and material systems analyses; using actual modest residential structures in South Africa as subjects. Building on earlier findings that show the relationship between increased upfront capital costs for various energy efficiency measures and the reduction in life cycle costs due to decreased operating expenses, the authors now hav e data from improved modeling methods and field data collection that further support the value of including these basic energy efficiency measures in low -income housing units in developing countries, including those with moderate climates. This phase of th e study has greatly improved the efficacy of the analyses utilized and will lead to better optimization of energy efficiency retrofits of the typical government built housing stock in South Africa and other developing countries.",
+      "page_number": 1
+    }
+  ]
+}
