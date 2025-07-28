@@ -247,13 +247,54 @@ class HierarchyAssigner:
             node.level = level
         
         return nodes
+    def _extract_document_title_from_headings(self, headings: List[Dict[str, Any]], 
+                                          document_info: Dict[str, Any]) -> str:
+        """Extract document title from the most prominent heading on first page."""
+        
+        logging.debug("Extracting document title from headings...")
 
+        # Find all headings on page 1
+        page_1_headings = [h for h in headings if h.get("page", 1) == 1]
+        logging.debug(f"Found {len(page_1_headings)} headings on page 1.")
+
+        if not page_1_headings:
+            fallback_title = document_info.get("title", "Document Outline").strip() or "Document Outline"
+            logging.info("No headings found on page 1. Falling back to document info title: '%s'", fallback_title)
+            return fallback_title
+
+        # Sort by font size (largest first) and position (topmost first)
+        page_1_headings.sort(key=lambda h: (
+            -h.get("font_info", {}).get("size", 12),
+            h.get("bbox", [0, 0, 0, 0])[1]
+        ))
+        logging.debug("Sorted page 1 headings by font size and vertical position.")
+
+        # Take the most prominent heading as title
+        main_heading = page_1_headings[0]
+        title_text = main_heading.get("text", "").strip()
+        logging.info("Top heading candidate for title: '%s'", title_text)
+
+        # If it's too short or generic, try combining multiple headings
+        if len(title_text) < 10 or title_text.lower() in ['title', 'document', 'page']:
+            logging.warning("Top heading is too short or generic. Attempting to combine multiple headings.")
+            title_parts = []
+            for heading in page_1_headings[:3]:
+                text = heading.get("text", "").strip()
+                if text and len(text) > 2:
+                    title_parts.append(text)
+                    logging.debug("Adding heading text to title_parts: '%s'", text)
+
+            title_text = " ".join(title_parts) if title_parts else "Document Outline"
+            logging.info("Combined heading title: '%s'", title_text)
+
+        return title_text
     def format_results_custom(self, headings: List[Dict[str, Any]], 
                          document_info: Dict[str, Any]) -> Dict[str, Any]:
         
         self.logger.info(f"Step: Formatting custom results for {len(headings)} headings")
         
-        title = document_info.get("title", "").strip()
+        # Extract title from the largest/most prominent heading on page 1
+        title = self._extract_document_title_from_headings(headings, document_info)
         if not title and headings:
             first_text = headings[0].get("text", "").strip()
             if "rfp" in first_text.lower() or "request" in first_text.lower():

@@ -88,6 +88,9 @@ class PDFProcessor:
         self._add_stage("structure_detection")
         structured_headings = self._extract_structured_headings(pdf_path)
         
+        headings = [] # Initialize headings list
+        hierarchy_tree = None
+
         if structured_headings:
             self.logger.info("Found structured PDF tags, using native extraction")
             headings = structured_headings
@@ -137,6 +140,14 @@ class PDFProcessor:
             include_metadata=include_metadata
         )
         
+        # --- MODIFICATION STARTS HERE ---
+        # Determine the most appropriate title and override if necessary
+        chosen_title = self._select_document_title(document_info, headings)
+        if result.get("title") != chosen_title:
+            result["title"] = chosen_title
+            self.logger.info(f"Final document title selected: '{chosen_title}'")
+        # --- MODIFICATION ENDS HERE ---
+
         if include_metadata and "accessibility" in result:
             acc_summary = result["accessibility"]["compliance_summary"]
             self.logger.info(f"Accessibility Score: {acc_summary['accessibility_score']:.1f}/100")
@@ -198,7 +209,10 @@ class PDFProcessor:
         return document_info
     
     def _extract_structured_headings(self, pdf_path: str) -> Optional[List[Dict[str, Any]]]:
-        
+        """
+        Extract structured headings from PDF TOC/outline with validation against visible content.
+        This method now validates that TOC entries actually exist as visible text in the document.
+        """
         try:
             with fitz.open(pdf_path) as doc:
                 if not doc.is_pdf or not hasattr(doc, 'get_toc'):
@@ -208,21 +222,69 @@ class PDFProcessor:
                 if not toc:
                     return None
                 
-                self.logger.info(f"Found structured TOC with {len(toc)} entries")
+                self.logger.info(f"Found structured TOC with {len(toc)} entries - validating against visible content")
+                
+                # Extract all visible text from document for validation
+                visible_text_by_page = {}
+                for page_num in range(len(doc)):
+                    page = doc.load_page(page_num)
+                    page_text = page.get_text().strip()
+                    visible_text_by_page[page_num + 1] = page_text.lower()
                 
                 structured_headings = []
+                validated_count = 0
+                
                 for i, (level, title, page_num) in enumerate(toc):
                     try:
-                        page = doc.load_page(page_num - 1)
+                        title_clean = clean_text(title).strip()
                         
-                        text_instances = page.search_for(title.strip())
-                        if text_instances:
-                            bbox = text_instances[0]
-                        else:
+                        # Skip empty or very short titles
+                        if not title_clean or len(title_clean) < 2:
+                            self.logger.debug(f"Skipping empty/short TOC entry: '{title}'")
+                            continue
+                        
+                        # Validate that this heading actually exists in the visible content
+                        page_text = visible_text_by_page.get(page_num, "")
+                        title_variations = [
+                            title_clean.lower(),
+                            title_clean.lower().replace(' ', ''),  # Remove spaces
+                            title_clean.lower().replace('-', ' '),  # Replace hyphens
+                            title_clean.lower().replace('_', ' '),  # Replace underscores
+                        ]
+                        
+                        # Check if any variation of the title exists in the page text
+                        found_in_visible_text = any(variation in page_text for variation in title_variations)
+                        
+                        if not found_in_visible_text:
+                            self.logger.debug(f"TOC entry '{title_clean}' not found in visible text on page {page_num} - skipping")
+                            continue
+                        
+                        # Additional validation: try to find the text location on the page
+                        try:
+                            page = doc.load_page(page_num - 1)
+                            text_instances = page.search_for(title_clean)
+                            
+                            # If we can't find it with exact search, try partial matches
+                            if not text_instances:
+                                # Try searching for significant words (longer than 3 chars)
+                                words = [w for w in title_clean.split() if len(w) > 3]
+                                if words:
+                                    # Search for the longest word
+                                    longest_word = max(words, key=len)
+                                    text_instances = page.search_for(longest_word)
+                            
+                            if text_instances:
+                                bbox = text_instances[0]
+                            else:
+                                # If still not found, this might be a phantom TOC entry
+                                self.logger.debug(f"Could not locate TOC entry '{title_clean}' on page - might be phantom entry")
+                                bbox = [0, 0, 100, 20]  # Default bbox, but mark with low confidence
+                        except Exception as e:
+                            self.logger.debug(f"Error locating TOC entry '{title_clean}': {e}")
                             bbox = [0, 0, 100, 20]
                         
                         heading = {
-                            "text": clean_text(title),
+                            "text": title_clean,
                             "level": max(1, min(level, 6)),
                             "page": page_num,
                             "bbox": list(bbox),
@@ -231,21 +293,28 @@ class PDFProcessor:
                                 "weight": "bold",
                                 "family": "unknown"
                             },
-                            "confidence": 1.0,
+                            "confidence": 0.9 if found_in_visible_text else 0.3,  # Lower confidence for unverified entries
                             "features": {
                                 "source": "pdf_structure",
-                                "toc_index": i
+                                "toc_index": i,
+                                "validated_against_content": found_in_visible_text
                             }
                         }
                         
                         structured_headings.append(heading)
+                        validated_count += 1
                         
                     except Exception as e:
                         self.logger.warning(f"Failed to process TOC entry '{title}': {e}")
                         continue
                 
-                return structured_headings if structured_headings else None
-                
+                if structured_headings:
+                    self.logger.info(f"Validated {validated_count}/{len(toc)} TOC entries against visible content")
+                    return structured_headings
+                else:
+                    self.logger.info("No valid TOC entries found after content validation - falling back to text analysis")
+                    return None
+                    
         except Exception as e:
             self.logger.debug(f"Structured extraction failed: {e}")
             return None
@@ -436,6 +505,191 @@ class PDFProcessor:
     def _should_include_metadata(self) -> bool:
         return os.getenv("INCLUDE_METADATA", "false").lower() == "true"
     
+    def _select_document_title(self, document_info: Dict[str, Any], headings: List[Dict[str, Any]]) -> str:
+        """
+        Intelligently compares the PDF's metadata title and the first detected heading to select the most appropriate one.
+        Enhanced with comprehensive logging and smart comparison heuristics.
+        """
+        self.logger.info("=== SMART DOCUMENT TITLE SELECTION ===")
+        
+        metadata_title = document_info.get("title", "").strip()
+        first_heading_text = headings[0]["text"].strip() if headings else ""
+        
+        self.logger.info(f"PDF Metadata Title: '{metadata_title}'")
+        self.logger.info(f"First Heading Text: '{first_heading_text}'")
+        
+        # Enhanced generic phrases list
+        generic_phrases = [
+            "untitled", "document", "document1", "new document", "microsoft word",
+            "final", "draft", "report", "presentation", "summary", "pdf",
+            "docx", "doc", "page 1", "header", "footer", "temp", "copy of",
+            "blank", "title", "heading", "chapter 1", "section 1"
+        ]
+
+        def is_generic_or_empty(text: str) -> bool:
+            """Enhanced generic detection with detailed logging"""
+            if not text or len(text) < 3:
+                self.logger.debug(f"'{text}' is generic: too short (length: {len(text)})")
+                return True
+            
+            text_lower = text.lower()
+            for phrase in generic_phrases:
+                if phrase in text_lower:
+                    self.logger.debug(f"'{text}' is generic: contains '{phrase}'")
+                    return True
+            
+            # Additional checks for generic patterns
+            if text_lower.endswith(('.pdf', '.docx', '.doc', '.ppt', '.pptx')):
+                self.logger.debug(f"'{text}' is generic: ends with file extension")
+                return True
+            
+            if text_lower.startswith('microsoft word - '):
+                self.logger.debug(f"'{text}' is generic: Microsoft Word prefix")
+                return True
+            
+            self.logger.debug(f"'{text}' passed generic check")
+            return False
+
+        def score_title_quality(text: str) -> float:
+            """Score title quality from 0.0 to 1.0"""
+            if not text:
+                return 0.0
+            
+            score = 0.5  # Base score
+            text_clean = text.strip()
+            
+            # Length scoring (optimal range: 10-60 characters)
+            length = len(text_clean)
+            if 10 <= length <= 60:
+                score += 0.2
+            elif 5 <= length <= 80:
+                score += 0.1
+            elif length < 5 or length > 100:
+                score -= 0.2
+            
+            # Content indicators
+            if any(c.isalpha() for c in text_clean):  # Contains letters
+                score += 0.1
+            
+            if text_clean.count(' ') >= 1:  # Multi-word title
+                score += 0.1
+            
+            if text_clean and text_clean[0].isupper() and not text_clean.isupper():  # Proper case
+                score += 0.1
+            
+            if ':' in text_clean and text_clean.count(':') == 1:  # Subtitle
+                score += 0.1
+            
+            # Penalties
+            if is_generic_or_empty(text_clean):
+                score -= 0.4
+            
+            if text_clean.startswith(('Chapter', 'Section', 'Part')):
+                score -= 0.2
+            
+            if text_clean.isupper():  # All caps
+                score -= 0.1
+            
+            # Domain-specific bonuses
+            academic_indicators = ['analysis', 'study', 'research', 'investigation', 'report']
+            if any(indicator in text_clean.lower() for indicator in academic_indicators):
+                score += 0.1
+            
+            return max(0.0, min(1.0, score))
+
+        # Heuristic 1: If there are no headings, fall back to metadata title or a default
+        if not first_heading_text:
+            self.logger.info("CASE 1: No headings found")
+            if metadata_title:
+                self.logger.info(f"✓ DECISION: Using metadata title: '{metadata_title}'")
+                return metadata_title
+            else:
+                fallback_title = "Document"
+                self.logger.info(f"⚠ DECISION: Using fallback title: '{fallback_title}'")
+                return fallback_title
+
+        # Heuristic 2: If metadata title is generic or empty, prefer the first heading
+        metadata_is_generic = is_generic_or_empty(metadata_title)
+        heading_is_generic = is_generic_or_empty(first_heading_text)
+        
+        self.logger.info(f"Quality assessment:")
+        self.logger.info(f"  Metadata title is generic: {metadata_is_generic}")
+        self.logger.info(f"  First heading is generic: {heading_is_generic}")
+        
+        if metadata_is_generic and not heading_is_generic:
+            self.logger.info("CASE 2: Metadata title is generic, first heading is good")
+            self.logger.info(f"✓ DECISION: Using first heading: '{first_heading_text}'")
+            return first_heading_text
+        
+        if heading_is_generic and not metadata_is_generic:
+            self.logger.info("CASE 3: First heading is generic, metadata title is good")
+            self.logger.info(f"✓ DECISION: Using metadata title: '{metadata_title}'")
+            return metadata_title
+
+        # Heuristic 3: Both are present and need detailed comparison
+        if not metadata_is_generic and not heading_is_generic:
+            self.logger.info("CASE 4: Both titles are good quality - detailed comparison")
+            
+            # Score both titles
+            metadata_score = score_title_quality(metadata_title)
+            heading_score = score_title_quality(first_heading_text)
+            
+            self.logger.info(f"Quality scores:")
+            self.logger.info(f"  Metadata: {metadata_score:.3f} - '{metadata_title}'")
+            self.logger.info(f"  Heading:  {heading_score:.3f} - '{first_heading_text}'")
+            
+            # Length comparison for additional context
+            metadata_len = len(metadata_title)
+            heading_len = len(first_heading_text)
+            length_ratio = heading_len / metadata_len if metadata_len > 0 else float('inf')
+            
+            self.logger.info(f"Length analysis:")
+            self.logger.info(f"  Metadata length: {metadata_len}")
+            self.logger.info(f"  Heading length: {heading_len}")
+            self.logger.info(f"  Length ratio (heading/metadata): {length_ratio:.2f}")
+            
+            # Decision logic
+            score_diff = heading_score - metadata_score
+            
+            if heading_score > metadata_score + 0.1:  # Heading significantly better
+                self.logger.info(f"✓ DECISION: First heading significantly better (score diff: +{score_diff:.3f}): '{first_heading_text}'")
+                return first_heading_text
+            elif metadata_score > heading_score + 0.1:  # Metadata significantly better
+                self.logger.info(f"✓ DECISION: Metadata title significantly better (score diff: {score_diff:.3f}): '{metadata_title}'")
+                return metadata_title
+            else:
+                # Scores are close - use length heuristic
+                self.logger.info(f"Scores are close (diff: {score_diff:.3f}) - using length heuristic")
+                
+                if length_ratio > 1.5:  # First heading significantly longer
+                    self.logger.info(f"✓ DECISION: First heading much longer and descriptive: '{first_heading_text}'")
+                    return first_heading_text
+                elif length_ratio < 0.67:  # Metadata significantly longer
+                    self.logger.info(f"✓ DECISION: Metadata title much longer and descriptive: '{metadata_title}'")
+                    return metadata_title
+                else:
+                    # Default to first heading (content-derived)
+                    self.logger.info(f"✓ DECISION: Defaulting to first heading (content-derived): '{first_heading_text}'")
+                    return first_heading_text
+        
+        # Heuristic 4: Both are generic - choose the less generic one
+        else:
+            self.logger.info("CASE 5: Both titles are generic - choosing less generic option")
+            
+            metadata_score = score_title_quality(metadata_title)
+            heading_score = score_title_quality(first_heading_text)
+            
+            self.logger.info(f"Generic quality scores:")
+            self.logger.info(f"  Metadata: {metadata_score:.3f}")
+            self.logger.info(f"  Heading: {heading_score:.3f}")
+            
+            if heading_score >= metadata_score:
+                self.logger.info(f"✓ DECISION: First heading less generic: '{first_heading_text}'")
+                return first_heading_text
+            else:
+                self.logger.info(f"✓ DECISION: Metadata title less generic: '{metadata_title}'")
+                return metadata_title
+
     def save_output(self, result: Dict[str, Any], output_path: Optional[str] = None, 
            formats: Optional[List[str]] = None, 
            auto_filename: bool = True) -> Dict[str, str]:

@@ -17,7 +17,7 @@ from src.utils.text_utils import (
     clean_text,
     detect_language
 )
-
+from collections import defaultdict
 
 @dataclass
 class HeadingCandidate:
@@ -54,26 +54,61 @@ class CandidateGenerator:
         
     def generate_candidates(self, pdf_path: str) -> List[HeadingCandidate]:
         self.logger.info(f"Generating candidates for: {pdf_path}")
-        
         doc = fitz.open(pdf_path)
-        candidates = []
+        all_candidates = []
         
+        # First, collect all potential candidates from all pages
         try:
             self._analyze_document_stats(doc)
-            
             for page_num in range(len(doc)):
                 page = doc.load_page(page_num)
                 page_candidates = self._extract_page_candidates(page, page_num)
-                candidates.extend(page_candidates)
+                all_candidates.extend(page_candidates)
                 
         finally:
             doc.close()
-            
+
+        # NEW: Identify and exclude running headers/footers
+        running_elements = self._identify_running_elements(all_candidates)
+        candidates = [cand for cand in all_candidates if cand.text.strip() not in running_elements]
+
+        # Continue with existing filtering and scoring
         filtered_candidates = self._filter_candidates(candidates)
         scored_candidates = self._score_candidates(filtered_candidates)
         
         self.logger.info(f"Generated {len(scored_candidates)} candidates for language: {self.detected_language}")
         return scored_candidates
+    
+    def _identify_running_elements(self, candidates: List[HeadingCandidate], threshold: int = 2) -> set:
+        """Identifies headers or footers based on text that repeats across multiple pages
+        in a consistent vertical position."""
+        
+        text_positions = defaultdict(list)
+        page_count = max([c.page for c in candidates] or [1])
+
+        # Collect text and its vertical position ratio for all candidates
+        for cand in candidates:
+            text_positions[cand.text.strip()].append(cand.position_ratio)
+
+        running_elements = set()
+        # For longer documents, require the text to appear on more pages
+        min_occurrences = max(threshold, int(page_count * 0.2)) if page_count > 10 else threshold
+
+        for text, positions in text_positions.items():
+            # Check if the text appears enough times
+            if len(positions) >= min_occurrences:
+                # Check if all occurrences are in the top 15% of the page (header)
+                is_header = all(p < 0.15 for p in positions)
+                # Check if all occurrences are in the bottom 15% of the page (footer)
+                is_footer = all(p > 0.85 for p in positions)
+
+                if is_header or is_footer:
+                    running_elements.add(text)
+
+        if running_elements:
+            self.logger.info(f"Identified and removed running elements: {running_elements}")
+
+        return running_elements
     
     def _analyze_document_stats(self, doc: fitz.Document) -> None:
         font_sizes = []
@@ -541,7 +576,7 @@ class CandidateGenerator:
         return False
     
     def _merge_text_fragments(self, candidates: List[HeadingCandidate]) -> List[HeadingCandidate]:
-        """Merge text fragments that belong to the same heading."""
+        """Merge text fragments that belong to the same heading with improved logic."""
         if not candidates:
             return candidates
         
@@ -554,10 +589,24 @@ class CandidateGenerator:
             current = sorted_candidates[i]
             prev = sorted_candidates[i-1]
             
-            if (current.page == prev.page and 
-                abs(current.bbox[1] - prev.bbox[1]) < 5 and  
-                abs(current.bbox[0] - prev.bbox[2]) < 20):  
-                
+            # More aggressive merging criteria for multi-line headings
+            should_merge = (
+                current.page == prev.page and
+                abs(current.bbox[1] - prev.bbox[3]) < 15 and  # Vertical proximity (line spacing)
+                (
+                    # Same horizontal alignment (within margin of error)
+                    abs(current.bbox[0] - prev.bbox[0]) < 50 or
+                    # Continuation on next line (reasonable horizontal distance)
+                    abs(current.bbox[0] - prev.bbox[2]) < 100
+                ) and
+                # Font size similarity
+                abs(current.font_size - prev.font_size) < 2 and
+                # Both have similar heading characteristics
+                (current.is_bold == prev.is_bold or 
+                current.font_size > self.document_stats["avg_font_size"] * 1.1)
+            )
+            
+            if should_merge:
                 current_group.append(current)
             else:
                 if len(current_group) > 1:
@@ -568,6 +617,7 @@ class CandidateGenerator:
                 
                 current_group = [current]
         
+        # Handle the last group
         if len(current_group) > 1:
             merged_candidate = self._merge_candidate_group(current_group)
             merged.append(merged_candidate)
@@ -575,16 +625,38 @@ class CandidateGenerator:
             merged.append(current_group[0])
         
         return merged
+    
     def _merge_candidate_group(self, group: List[HeadingCandidate]) -> HeadingCandidate:
-        combined_text = " ".join(candidate.text.strip() for candidate in group)
+        """Merge a group of candidates into a single heading with better text joining."""
+        # Join text with appropriate spacing
+        text_parts = []
+        for candidate in group:
+            text = candidate.text.strip()
+            if text:
+                text_parts.append(text)
         
+        # Smart text joining - add space only if needed
+        combined_text = ""
+        for i, part in enumerate(text_parts):
+            if i == 0:
+                combined_text = part
+            else:
+                # Add space if the previous part doesn't end with punctuation
+                # and current part doesn't start with punctuation
+                if (not combined_text.endswith((':', '-', '—')) and 
+                    not part.startswith((':', '-', '—'))):
+                    combined_text += " " + part
+                else:
+                    combined_text += part
+        
+        # Use the first candidate as base and update with merged properties
         first = group[0]
         last = group[-1]
         
         merged_bbox = (
             first.bbox[0], 
             min(c.bbox[1] for c in group),  
-            last.bbox[2],  
+            max(c.bbox[2] for c in group),  
             max(c.bbox[3] for c in group)  
         )
         
@@ -592,7 +664,7 @@ class CandidateGenerator:
             text=combined_text,
             page=first.page,
             bbox=merged_bbox,
-            font_size=max(c.font_size for c in group),  
+            font_size=max(c.font_size for c in group),
             font_weight=first.font_weight,
             font_family=first.font_family,
             is_bold=any(c.is_bold for c in group),
