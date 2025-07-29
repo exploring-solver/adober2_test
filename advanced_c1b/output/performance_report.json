@@ -1,8 +1,8 @@
 {
-  "processing_time_seconds": 118.46,
-  "documents_processed": 7,
+  "processing_time_seconds": 17.76,
+  "documents_processed": 9,
   "sections_extracted": 5,
-  "subsections_analyzed": 11,
+  "subsections_analyzed": 9,
   "advanced_features_enabled": {
     "concept_graph": true,
     "accessibility_tagging": true,

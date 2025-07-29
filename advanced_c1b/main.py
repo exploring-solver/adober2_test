@@ -84,7 +84,7 @@ class AdvancedDocumentProcessor:
             logger.info("Loaded and cached spaCy model")
         
         # Load sentence transformer with INT8 quantization simulation
-        # self.sentence_model = SentenceTransformer('all-MiniLM-L6-v2')
+        self.sentence_model = SentenceTransformer('all-MiniLM-L6-v2')
         
 
         # Load Qwen2-0.5B
@@ -95,7 +95,7 @@ class AdvancedDocumentProcessor:
         self.qwen_model.to(self.device)
     
         # Create sentence_model wrapper for compatibility
-        self.sentence_model = self._create_qwen_wrapper()
+        # self.sentence_model = self._create_qwen_wrapper()
         # Create a custom encode method
         def qwen_encode(self, texts):
             if isinstance(texts, str):

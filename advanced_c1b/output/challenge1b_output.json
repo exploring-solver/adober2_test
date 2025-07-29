@@ -1,87 +1,93 @@
 {
   "metadata": {
     "input_documents": [
-      "South of France - Cities.pdf",
-      "South of France - Cuisine.pdf",
-      "South of France - History.pdf",
-      "South of France - Restaurants and Hotels.pdf",
-      "South of France - Things to Do.pdf",
-      "South of France - Tips and Tricks.pdf",
-      "South of France - Traditions and Culture.pdf"
+      "Breakfast Ideas.pdf",
+      "Dinner Ideas - Mains_1.pdf",
+      "Dinner Ideas - Mains_2.pdf",
+      "Dinner Ideas - Mains_3.pdf",
+      "Dinner Ideas - Sides_1.pdf",
+      "Dinner Ideas - Sides_2.pdf",
+      "Dinner Ideas - Sides_3.pdf",
+      "Dinner Ideas - Sides_4.pdf",
+      "Lunch Ideas.pdf"
     ],
-    "persona": "Travel Planner",
-    "job_to_be_done": "Plan a trip of 4 days for a group of 10 college friends.",
-    "processing_timestamp": "2025-07-27T01:34:14.554119",
+    "persona": "Food Contractor",
+    "job_to_be_done": "Prepare a vegetarian buffet-style dinner menu for a corporate gathering, including gluten-free items.",
+    "processing_timestamp": "2025-07-30T01:45:38.281472",
     "model_info": {
       "sentence_transformer": "all-MiniLM-L6-v2",
       "spacy_model": "en_core_web_sm",
       "multilingual_support": false
     },
     "performance_metrics": {
-      "total_sections_found": 126,
-      "sections_after_filtering": 126,
-      "concept_graph_nodes": 126,
-      "concept_graph_edges": 5260
+      "total_sections_found": 175,
+      "sections_after_filtering": 175,
+      "concept_graph_nodes": 187,
+      "concept_graph_edges": 8111
     }
   },
   "extracted_sections": [
     {
-      "document": "South of France - Tips and Tricks.pdf",
-      "section_title": "Introduction",
+      "document": "Lunch Ideas.pdf",
+      "section_title": "Quinoa Salad",
       "importance_rank": 1,
-      "page_number": 1,
-      "relevance_score": 0.5771,
-      "accessibility_tags": [
-        "h1"
-      ],
-      "cross_references": [],
-      "citation_count": 0
-    },
-    {
-      "document": "South of France - Restaurants and Hotels.pdf",
-      "section_title": "Introduction",
-      "importance_rank": 2,
-      "page_number": 1,
-      "relevance_score": 0.5424,
-      "accessibility_tags": [
-        "h1"
-      ],
-      "cross_references": [],
-      "citation_count": 0
-    },
-    {
-      "document": "South of France - Things to Do.pdf",
-      "section_title": "Cooki ng Classes",
-      "importance_rank": 3,
-      "page_number": 5,
-      "relevance_score": 0.5163,
-      "accessibility_tags": [
-        "h3"
-      ],
-      "cross_references": [],
-      "citation_count": 0
-    },
-    {
-      "document": "South of France - Cities.pdf",
-      "section_title": "Key Attractions",
-      "importance_rank": 4,
-      "page_number": 3,
-      "relevance_score": 0.519,
-      "accessibility_tags": [
-        "h3"
-      ],
-      "cross_references": [],
-      "citation_count": 0
-    },
-    {
-      "document": "South of France - Traditions and Culture.pdf",
-      "section_title": "Language and Literature",
-      "importance_rank": 5,
       "page_number": 2,
-      "relevance_score": 0.4963,
+      "relevance_score": 0.2724,
       "accessibility_tags": [
         "h3",
-        "technical"
+        "data-heavy"
+      ],
+      "cross_references": [],
+      "citation_count": 0
+    },
+    {
+      "document": "Dinner Ideas - Sides_4.pdf",
+      "section_title": "Pan con Tomate",
+      "importance_rank": 2,
+      "page_number": 1,
+      "relevance_score": 0.271,
+      "accessibility_tags": [
+        "h3",
+        "data-heavy"
+      ],
+      "cross_references": [],
+      "citation_count": 0
+    },
+    {
+      "document": "Dinner Ideas - Mains_3.pdf",
+      "section_title": "Honey Garlic Pork Ribs",
+      "importance_rank": 3,
+      "page_number": 6,
+      "relevance_score": 0.2343,
+      "accessibility_tags": [
+        "h3",
+        "data-heavy"
+      ],
+      "cross_references": [],
+      "citation_count": 0
+    },
+    {
+      "document": "Breakfast Ideas.pdf",
+      "section_title": "Avocado Toast",
+      "importance_rank": 4,
+      "page_number": 3,
+      "relevance_score": 0.2194,
+      "accessibility_tags": [
+        "h3",
+        "data-heavy"
+      ],
+      "cross_references": [],
+      "citation_count": 0
+    },
+    {
+      "document": "Dinner Ideas - Mains_1.pdf",
+      "section_title": "Spaghetti Bolognese",
+      "importance_rank": 5,
+      "page_number": 3,
+      "relevance_score": 0.2507,
+      "accessibility_tags": [
+        "h3",
+        "data-heavy"
       ],
       "cross_references": [],
       "citation_count": 0
@@ -89,115 +95,101 @@
   ],
   "subsection_analysis": [
     {
-      "document": "South of France - Tips and Tricks.pdf",
-      "refined_text": "The Ultimate South of France Travel Companion: Your Comprehensive Guide to Packing, Planning, and Exploring Introduction Planning a trip to the South of France requires thoughtful preparation to ensure a comfortable and enjoyable experience. This guide covers everything from packing essentials to travel tips, catering to all seasons and various activities. Whether you're traveling solo, with kids, or in a group, this guide will help you make the most of your trip.",
+      "document": "Lunch Ideas.pdf",
+      "refined_text": "Turkey and Avocado Sandwich Ingredients: • 2 slices whole grain bread • 4 slices turkey breast",
+      "page_number": 2,
+      "relevance_score": 0.2150670289993286,
+      "accessibility_tags": [
+        "h3",
+        "data-heavy"
+      ],
+      "cross_references": []
+    },
+    {
+      "document": "Lunch Ideas.pdf",
+      "refined_text": "Quinoa Salad Ingredients: • 1 cup cooked quinoa • 1/2 cup cherry tomatoes, halved • 1/2 cucumber, diced • 1/4 cup red onion, finely chopped • 1/4 cup feta cheese, crumbled • 2 tablespoons olive oil • 1 tablespoon lemon juice • Salt and pepper to taste Instructions: • In a large bowl, combine the quinoa, tomatoes, cucumber, red onion, and feta cheese. • Drizzle with olive oil and lemon juice. • Season with salt and pepper, then toss to combine.",
+      "page_number": 2,
+      "relevance_score": 0.14848077297210693,
+      "accessibility_tags": [
+        "h3",
+        "data-heavy"
+      ],
+      "cross_references": []
+    },
+    {
+      "document": "Dinner Ideas - Sides_4.pdf",
+      "refined_text": "o Grate tomatoes and spread on bread. o Drizzle with olive oil and sprinkle with salt. Paneer Tikka • Ingredients : o 1 pound paneer o 1/2 cup yogurt",
       "page_number": 1,
-      "relevance_score": 0.6811549663543701,
+      "relevance_score": 0.30211418867111206,
       "accessibility_tags": [
-        "h1"
+        "h3",
+        "data-heavy"
       ],
       "cross_references": []
     },
     {
-      "document": "South of France - Restaurants and Hotels.pdf",
-      "refined_text": "Comprehensive Guide to Restaurants and Hotels in the South of France Introduction The South of France, known for its stunning landscapes, rich cultural heritage, and exquisite cuisine, is a dream destination for travelers. From the glamorous beaches of the French Riviera to the charming villages of Provence, this region oﬀers a diverse array of experiences. Whether you're looking for budget -friendly options, family -friendly spots, upscale dining, or luxurious experiences, this guide will help you find t he perfect restaurants and hotels for your trip.",
+      "document": "Dinner Ideas - Sides_4.pdf",
+      "refined_text": "o Serve with soy sauce for dipping. Pan con Tomate • Ingredients : o 1 baguette o 4 tomatoes o 2 cloves garlic o 1/4 cup olive oil o 1 teaspoon salt • Instructions : o Slice baguette and toast until golden. o Rub toasted bread with cut garlic cloves.",
       "page_number": 1,
-      "relevance_score": 0.5924813747406006,
-      "accessibility_tags": [
-        "h1"
-      ],
-      "cross_references": []
-    },
-    {
-      "document": "South of France - Things to Do.pdf",
-      "refined_text": "Lyon : Discover the secrets of Lyonnaise cuisine with a hands -on cooking class. • Sarlat : Join a foie gras workshop and learn to prepare this delicacy.",
-      "page_number": 5,
-      "relevance_score": 0.6868184804916382,
-      "accessibility_tags": [
-        "h3"
-      ],
-      "cross_references": []
-    },
-    {
-      "document": "South of France - Things to Do.pdf",
-      "refined_text": "Nice : Take a class to master Niçoise cuisine, including dishes like salade niçoise and socca. Toulouse : Learn to cook regional specialties such as cassoulet. • Marseille : Participate in a seafood cooking class to make dishes like bouillabaisse.",
-      "page_number": 5,
-      "relevance_score": 0.6488277912139893,
-      "accessibility_tags": [
-        "h3"
-      ],
-      "cross_references": []
-    },
-    {
-      "document": "South of France - Things to Do.pdf",
-      "refined_text": "• Bordeaux : Take a day trip to the world-renowned wine region and visit its prestigious châteaux. Cooki ng Classes • Provence : Learn to prepare traditional dishes like ratatouille and bouillabaisse. • Périgord : Join a truﬄe hunting tour followed by a cooking class.",
-      "page_number": 5,
-      "relevance_score": 0.6453937888145447,
-      "accessibility_tags": [
-        "h3"
-      ],
-      "cross_references": []
-    },
-    {
-      "document": "South of France - Cities.pdf",
-      "refined_text": "Key Attractions • Old Port (Vieux -Port) : The heart of Marseille, the Old Port has been a bustling harbor for over 2,600 year s. Today, it is a lively area filled with cafes, restaurants, and markets.",
-      "page_number": 3,
-      "relevance_score": 0.6665236949920654,
-      "accessibility_tags": [
-        "h3"
-      ],
-      "cross_references": []
-    },
-    {
-      "document": "South of France - Cities.pdf",
-      "refined_text": "The city hosts several festivals throughout the year, including the Festival de Marseille, which celeb rates contemporary dance, theater, and music.",
-      "page_number": 3,
-      "relevance_score": 0.6581259965896606,
-      "accessibility_tags": [
-        "h3"
-      ],
-      "cross_references": []
-    },
-    {
-      "document": "South of France - Cities.pdf",
-      "refined_text": "• Fish Market at the Old Port : Visit the fish market at the Old Port to experience the local seafood culture. • Street Art in Cours Julien : Explore the vibrant street art sc ene in the Cours Julien district. Cultural Highlights Marseille is known for its vibrant arts scene, with numerous galleries, theaters, and music venues.",
-      "page_number": 3,
-      "relevance_score": 0.6571173071861267,
-      "accessibility_tags": [
-        "h3"
-      ],
-      "cross_references": []
-    },
-    {
-      "document": "South of France - Traditions and Culture.pdf",
-      "refined_text": "Fête de la Musique Celebrated on June 21st, the Fête de la Musique is a nationwide music festival that or iginated in France. In the South of France, cities and towns come alive with music, as both amateur and professional musicians perform in streets, squares, and parks. The festival promotes a diverse range of musical genres and encourages community particip ation.",
-      "page_number": 2,
-      "relevance_score": 0.645283579826355,
+      "relevance_score": 0.24463649094104767,
       "accessibility_tags": [
         "h3",
-        "technical"
+        "data-heavy"
       ],
       "cross_references": []
     },
     {
-      "document": "South of France - Traditions and Culture.pdf",
-      "refined_text": "Their works often celebrated chivalry, love, and nature. The region's literary heritage also includes famous authors like Marcel Pagnol, whose novels and plays vividly depict Provençal life. Festivals and Celebrations Carnival of Nice Held in Nice from mid -February to early March, the Carnival of Nice is one of the most famous and oldest carnivals in the world.",
-      "page_number": 2,
-      "relevance_score": 0.6273117065429688,
+      "document": "Dinner Ideas - Mains_3.pdf",
+      "refined_text": "• Cover with foil and bake for 2.5 hours, basting occasionally with the sauce. • Remove foil, increase oven to 400°F (200°C), and bake for 15 -20 minutes until caramelized. • Garnish with gre en onions and serve.",
+      "page_number": 6,
+      "relevance_score": 0.20777085423469543,
       "accessibility_tags": [
         "h3",
-        "technical"
+        "data-heavy"
       ],
       "cross_references": []
     },
     {
-      "document": "South of France - Traditions and Culture.pdf",
-      "refined_text": "Eﬀorts to revive and promote the language continue, with festivals and educational programs dedicated to its preservation. Literature and Poetry The South of France has inspired many writers and poets over the centuries. The troubadours of the medieval period, who composed and performed lyrical poetry, were particularly influ ential.",
-      "page_number": 2,
-      "relevance_score": 0.6189340353012085,
+      "document": "Dinner Ideas - Mains_3.pdf",
+      "refined_text": "Honey Garlic Pork Ribs Ingredients: • 2 pounds pork ribs • 1/4 cup honey • 1/4 cup soy sauce • 2 tablespoons rice vinegar • 3 cloves garlic, minced • 1 teaspoon grated ginger • 1 teaspoon paprika • Salt and pepper to taste • Sliced green onions for garnish Instructions: • Preheat oven to 300°F (150°C). • Season ribs with salt, pepper, and paprika, then place in a baking dish. • In a bowl, mix honey, soy sauce, rice vinegar, garlic, and ginger.",
+      "page_number": 6,
+      "relevance_score": 0.13988322019577026,
       "accessibility_tags": [
         "h3",
-        "technical"
+        "data-heavy"
+      ],
+      "cross_references": []
+    },
+    {
+      "document": "Breakfast Ideas.pdf",
+      "refined_text": "Avocado Toast Ingredients: • 2 slices of bread • 1 ripe avocado • Salt and pepper to taste • Optional toppings: cherry tomatoes, red pepper flakes, poached egg Instructions: • Mash the avocado in a bowl and season with salt and pepper. • Spread the mashed avocado on the toast. • Add optional toppings if desired.",
+      "page_number": 3,
+      "relevance_score": 0.14942575991153717,
+      "accessibility_tags": [
+        "h3",
+        "data-heavy"
+      ],
+      "cross_references": []
+    },
+    {
+      "document": "Dinner Ideas - Mains_1.pdf",
+      "refined_text": "Spaghetti Bolognese Ingredients: • 1 pound ground beef • 1 small onion, diced • 2 cloves garlic, minced • 1 carrot, grated • 1 celery stalk, diced • 1 can (28 ounces) crushed tomatoes • 1/4 cup tomato paste • 1/2 cup red wine (optional) • 1 teaspoon dried oregano • 1 teaspoon dried basil • Salt and pepper to taste • Spaghetti for serving • Grated P armesan cheese for garnish Instructions: • In a large skillet, cook ground beef over medium heat until browned. • Add diced onion, minced garlic, grated carrot, and diced celery, sauté until vegetables are tender.",
+      "page_number": 3,
+      "relevance_score": 0.2034173309803009,
+      "accessibility_tags": [
+        "h3",
+        "data-heavy"
+      ],
+      "cross_references": []
+    },
+    {
+      "document": "Dinner Ideas - Mains_1.pdf",
+      "refined_text": "• Stir in crushed tomatoes, tomato paste, red wi ne (if using), oregano, basil, salt, and",
+      "page_number": 3,
+      "relevance_score": 0.13883435726165771,
+      "accessibility_tags": [
+        "h3",
+        "data-heavy"
       ],
       "cross_references": []
     }
@@ -206,26 +198,28 @@
     "concept_insights": {
       "central_sections": [
         {
-          "section_id": "South of France - Cuisine.pdf_6_Culinary Experiences",
-          "centrality_score": 0.0141,
-          "title": "Culinary Experiences"
+          "section_id": "Dinner Ideas - Mains_3.pdf_3_Salmon en Papillote",
+          "centrality_score": 0.021,
+          "title": "Salmon en Papillote"
         },
         {
-          "section_id": "South of France - Cuisine.pdf_3_Famous Dishes",
-          "centrality_score": 0.0095,
-          "title": "Famous Dishes"
+          "section_id": "Breakfast Ideas.pdf_3_Avocado Toast",
+          "centrality_score": 0.0127,
+          "title": "Avocado Toast"
         },
         {
-          "section_id": "South of France - Restaurants and Hotels.pdf_9_Family -Friendly Hotels",
-          "centrality_score": 0.0085,
-          "title": "Family -Friendly Hotels"
+          "section_id": "Lunch Ideas.pdf_2_Quinoa Salad",
+          "centrality_score": 0.0119,
+          "title": "Quinoa Salad"
         }
       ],
       "connected_clusters": {
-        "largest_cluster_size": 126,
-        "total_clusters": 1,
+        "largest_cluster_size": 176,
+        "total_clusters": 12,
         "cluster_descriptions": [
-          "Cluster 1: 126 interconnected sections"
+          "Cluster 1: 176 interconnected sections",
+          "Cluster 2: 1 interconnected sections",
+          "Cluster 3: 1 interconnected sections"
         ]
       }
     },
@@ -239,98 +233,104 @@
       "section_explanations": [
         {
           "rank": 1,
-          "section": "Introduction",
-          "document": "South of France - Tips and Tricks.pdf",
-          "relevance_score": 0.5771371722221375,
-          "reasons": []
+          "section": "Quinoa Salad",
+          "document": "Lunch Ideas.pdf",
+          "relevance_score": 0.27236074209213257,
+          "reasons": [
+            "Contains significant numerical/analytical data"
+          ]
         },
         {
           "rank": 2,
-          "section": "Introduction",
-          "document": "South of France - Restaurants and Hotels.pdf",
-          "relevance_score": 0.5424162149429321,
-          "reasons": []
+          "section": "Pan con Tomate",
+          "document": "Dinner Ideas - Sides_4.pdf",
+          "relevance_score": 0.2709811329841614,
+          "reasons": [
+            "Contains significant numerical/analytical data"
+          ]
         },
         {
           "rank": 3,
-          "section": "Cooki ng Classes",
-          "document": "South of France - Things to Do.pdf",
-          "relevance_score": 0.5162842869758606,
-          "reasons": []
+          "section": "Honey Garlic Pork Ribs",
+          "document": "Dinner Ideas - Mains_3.pdf",
+          "relevance_score": 0.23434723913669586,
+          "reasons": [
+            "Contains significant numerical/analytical data"
+          ]
         },
         {
           "rank": 4,
-          "section": "Key Attractions",
-          "document": "South of France - Cities.pdf",
-          "relevance_score": 0.5190432071685791,
-          "reasons": []
+          "section": "Avocado Toast",
+          "document": "Breakfast Ideas.pdf",
+          "relevance_score": 0.21943625807762146,
+          "reasons": [
+            "Contains significant numerical/analytical data"
+          ]
         },
         {
           "rank": 5,
-          "section": "Language and Literature",
-          "document": "South of France - Traditions and Culture.pdf",
-          "relevance_score": 0.49625781178474426,
+          "section": "Spaghetti Bolognese",
+          "document": "Dinner Ideas - Mains_1.pdf",
+          "relevance_score": 0.2506747841835022,
           "reasons": [
-            "Contains technical content relevant to the task"
+            "Contains significant numerical/analytical data"
           ]
         }
       ]
     },
     "cross_document_connections": [
       {
-        "document1": "South of France - Cities.pdf",
-        "section1": "Conclusion",
-        "document2": "South of France - History.pdf",
-        "section2": "Conclusion",
-        "connection_strength": 0.5366,
-        "shared_concepts": 22
-      },
-      {
-        "document1": "South of France - Cities.pdf",
-        "section1": "Key Attractions",
-        "document2": "South of France - History.pdf",
-        "section2": "Key Historical Sites in Avignon",
+        "document1": "Dinner Ideas - Sides_2.pdf",
+        "section1": "o Oil for fr ying",
+        "document2": "Dinner Ideas - Sides_3.pdf",
+        "section2": "o Oil for frying",
         "connection_strength": 0.44,
-        "shared_concepts": 33
+        "shared_concepts": 11
       },
       {
-        "document1": "South of France - Cities.pdf",
-        "section1": "Key Attractions",
-        "document2": "South of France - History.pdf",
-        "section2": "Key Historical Sites in Montpellier",
-        "connection_strength": 0.4267,
-        "shared_concepts": 32
+        "document1": "Dinner Ideas - Sides_2.pdf",
+        "section1": "o Oil for fr ying",
+        "document2": "Dinner Ideas - Sides_3.pdf",
+        "section2": "Johnny Cakes",
+        "connection_strength": 0.4074,
+        "shared_concepts": 11
       },
       {
-        "document1": "South of France - Cities.pdf",
-        "section1": "Key Attractions",
-        "document2": "South of France - History.pdf",
-        "section2": "Montpellier: A University City with Medieval Charm",
-        "connection_strength": 0.4051,
-        "shared_concepts": 32
+        "document1": "Dinner Ideas - Sides_2.pdf",
+        "section1": "Coconut Rice",
+        "document2": "Dinner Ideas - Sides_4.pdf",
+        "section2": "Rice and Peas",
+        "connection_strength": 0.381,
+        "shared_concepts": 8
       },
       {
-        "document1": "South of France - Cities.pdf",
-        "section1": "Key Attractions",
-        "document2": "South of France - History.pdf",
-        "section2": "Aix-en-Provence: A City of Art and Culture",
-        "connection_strength": 0.3958,
-        "shared_concepts": 38
+        "document1": "Dinner Ideas - Mains_1.pdf",
+        "section1": "Lemon Herb Salmon",
+        "document2": "Dinner Ideas - Mains_3.pdf",
+        "section2": "Salmon en Papillote",
+        "connection_strength": 0.3571,
+        "shared_concepts": 15
+      },
+      {
+        "document1": "Dinner Ideas - Sides_3.pdf",
+        "section1": "o Oil for frying",
+        "document2": "Dinner Ideas - Sides_4.pdf",
+        "section2": "o Oil for frying",
+        "connection_strength": 0.3448,
+        "shared_concepts": 10
       }
     ],
     "accessibility_summary": {
       "content_types": {
-        "h1": 2,
-        "h3": 3,
-        "technical": 1
+        "h3": 5,
+        "data-heavy": 5
       },
       "accessibility_features": {
         "heading_levels_present": [
-          "h1",
           "h3"
         ],
-        "technical_content_sections": 1,
-        "data_heavy_sections": 0
+        "technical_content_sections": 0,
+        "data_heavy_sections": 5
       },
       "structural_elements": {
         "total_cross_references": 0,
